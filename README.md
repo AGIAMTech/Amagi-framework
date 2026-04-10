@@ -1,220 +1,145 @@
-# Amagi/Althea Ecosystem
+# Amagi & Althea Ecosystem
 
-**Architectural, Guaranteed Integrity (A.G.I.) for High-Assurance Systems**
-
-Author: **Alexey Mikhailovich Burlai**  
-ORCID: [0009-0001-4679-5967](https://orcid.org/0009-0001-4679-5967)  
-Contact: lexintrud@gmail.com  
-Date: 2026
+**Architectural, Guaranteed Integrity (A.G.I.) for Life-Critical Systems**
 
 ---
 
-## Overview
+## 📖 Overview
 
-This repository contains the complete **Amagi/Althea Ecosystem** — a dual architecture framework for trustworthy autonomous systems in life-critical domains:
+This repository hosts the complete **Amagi & Althea Ecosystem**, a dual-architecture framework for:
+1.  **Amagi**: Hardware-enforced AI Safety and Compliance (EU AI Act, NIST RMF).
+2.  **Althea**: Open Bioengineering Architecture for Precision Oncology (CRISPR-TTP).
 
-1. **Amagi Framework**: Hardware-enforced AI safety architecture providing structural guarantees for compliance with EU AI Act, NIST AI RMF, ISO 26262.
-2. **Althea Framework**: Open bioengineering platform (CRISPR-TTP) for precision oncology, focused on fusion-driven cancers like Ewing Sarcoma.
-
-Both architectures are fully documented, peer-reviewed, and published on Zenodo with DOIs.
+**Author**: Alexey Mikhailovich Burlai  
+**ORCID**: [0009-0001-4679-5967](https://orcid.org/0009-0001-4679-5967)  
+**Contact**: lexintrud@gmail.com  
+**Legal Entity**: AGIAM Technologies Ltd (UK) / LLC "Althea" (Russia)
 
 ---
 
-## Repository Structure
+## 🏗️ Project Structure
 
-```
+```text
+.
 ├── amagi-framework/          # AI Safety Architecture
-│   ├── README.md
-│   ├── LICENSE.md            # CC BY-NC 4.0 + S-APL notice
-│   ├── docs/                 # Core documentation (v1.0–v1.4)
-│   ├── specs/                # Technical specifications
-│   │   ├── nipu/             # Neuro-Immune Processing Unit
-│   │   └── mem/              # Self-Protecting Memory
-│   ├── regulatory/           # NIST AI RMF Profile, EU AI Act mapping
 │   ├── architecture/         # Open Specification v1.0, Class Definition
-│   ├── legal/                # Trade Secrets Notice, S-APL terms
-│   ├── src/                  # Reference implementations (RTL, pseudocode)
-│   ├── tests/                # Compliance test suites
-│   └── examples/             # Integration examples
+│   ├── docs/                 # Framework versions (v1.0–v1.4)
+│   ├── legal/                # Trade Secrets Notice, S-APL License
+│   ├── regulatory/           # NIST AI RMF Profile, EU AI Act Mapping
+│   ├── specs/                # Component Specifications
+│   │   ├── mem/              # Amagi-MEM (Self-Protecting Memory)
+│   │   └── nipu/             # Amagi-NIPU (Neuro-Immune Processing Unit)
+│   ├── src/                  # Reference Implementations (RTL/Models)
+│   ├── tests/                # Compliance Test Suites
+│   └── examples/             # Integration Examples
 │
-├── althea-framework/         # Bioengineering Architecture (CRISPR-TTP)
-│   ├── README.md
-│   ├── LICENSE.md            # CC0 Public Domain
-│   ├── specs/                # Architectural specifications (v1.0–v4.0)
-│   ├── clinical-protocols/   # SOP v2.0, 21-day GMP workflow
-│   ├── regulatory/           # EMA/FDA correspondence, ATMP classification
-│   └── publications/         # Frontiers in Genetics article, preprints
+├── althea-framework/         # Bioengineering (CRISPR-TTP)
+│   ├── specs/                # Architectural Specifications (v4.0)
+│   ├── clinical-protocols/   # SOP v2.0, GMP Workflows
+│   ├── regulatory/           # EMA/FDA Correspondence
+│   └── publications/         # Peer-reviewed Articles (Frontiers in Genetics)
 │
-├── strategic-partnerships/   # Partnership offers, collaboration formats
-│   ├── STRATEGIC_PARTNERSHIP_OFFER_ALTHEA_AMAGI_v1.0.md
-│   └── Strategic_Partnership_Offer.md
-│
-├── shared/                   # Shared legal and licensing documents
+├── strategic-partnerships/   # Partnership Offers & Collaboration Models
+├── shared/                   # Common Legal & Governance Documents
 │   ├── legal/                # Founding Charter, Institutional Anchor
-│   └── licensing/            # S-APL template, NDA templates
+│   └── licensing/            # S-APL Templates, NDA Drafts
 │
 └── README.md                 # This file
 ```
 
 ---
 
-## Key Documents (with Zenodo DOIs)
+## 🔐 Licensing Model
+
+This project operates under a **Dual-Layer Licensing Strategy**:
+
+### 1. Open Science Layer (Free)
+*   **Amagi Specifications**: CC BY-NC 4.0 (Non-Commercial Research).
+*   **Althea Protocols**: CC0 1.0 (Public Domain).
+*   **Goal**: Establish Prior Art, enable academic research, prevent patent thickets.
+
+### 2. Commercial Layer (S-APL)
+*   **License**: Strict Architectural Principle License (S-APL).
+*   **Governed by**: Laws of England and Wales.
+*   **Covers**: Commercial deployment, "Amagi Compliant" certification, access to Hard IP Suite (GDSII, Netlists).
+*   **Contact**: lexintrud@gmail.com (Subject: "S-APL Inquiry").
+
+> **Note**: Access to trade secrets (implementation details, calibration data) requires an NDA + valid S-APL license.
+
+---
+
+## 📚 Key Publications & DOIs
 
 ### Amagi Framework (AI Safety)
-
-| Document | Version | DOI | License |
-|----------|---------|-----|---------|
-| Amagi Framework v1.0 | v1.0 | 10.5281/zenodo.17679248 | CC BY-NC 4.0 |
-| Amagi Framework v1.3 | v1.3 | 10.5281/zenodo.17696607 | CC BY-NC 4.0 |
-| Amagi Framework v1.4 | v1.4 | 10.5281/zenodo.17849595 | CC BY-NC 4.0 |
-| Amagi-NIPU v1.0 | v1.0 | 10.5281/zenodo.17682668 | CC BY-NC 4.0 |
-| Amagi-MEM v1.0 | v1.0 | 10.5281/zenodo.17679327 | CC BY-NC 4.0 |
-| AMAGI OPEN SPECIFICATION v1.0 | v1.0 | 10.5281/zenodo.17861024 | CC BY-NC 4.0 |
-| NIST AI RMF Profile | v1.0 | 10.5281/zenodo.17849725 | CC BY-NC 4.0 |
-| Amagi Architectural Class Definition | v1.0 | 10.5281/zenodo.17938573 | CC BY-NC 4.0 |
-| Trade Secrets Notice | v1.0 | 10.5281/zenodo.17886699 | CC0 |
-| AGIAM Founding Charter | v1.0 | 10.5281/zenodo.17719569 | CC BY-NC 4.0 |
+| Document | Version | DOI |
+| :--- | :--- | :--- |
+| **Amagi Open Specification** | v1.0 | `10.5281/zenodo.17861024` |
+| **Amagi Framework** | v1.4 | `10.5281/zenodo.17849595` |
+| **Amagi-NIPU** (Processor) | v1.0 | `10.5281/zenodo.17682668` |
+| **Amagi-MEM** (Memory) | v1.0 | `10.5281/zenodo.17679327` |
+| **NIST AI RMF Profile** | Target State | `10.5281/zenodo.17849725` |
+| **Architectural Class Def.** | Anchor v1.0 | `10.5281/zenodo.17938573` |
+| **Trade Secrets Notice** | v1.0 | `10.5281/zenodo.17886699` |
 
 ### Althea Framework (Bioengineering)
-
-| Document | Version | DOI | License |
-|----------|---------|-----|---------|
-| Official Publication (Frontiers in Genetics) | v4.0 | 10.3389/fgene.2026.1727708 | CC BY 4.0 |
-| Genomic Innovation Preprint | v4.0 | 10.5281/zenodo.17780623 | CC BY 4.0 |
-| Clinical Protocol SOP v2.0 | v2.0 | 10.5281/zenodo.17676423 | CC0 |
-| CRISPR Autovaccination v3.0 | v3.0 | 10.5281/zenodo.17246573 | CC0 |
-| TTP Delivery Platform v3.0 | v3.0 | 10.5281/zenodo.17237907 | CC0 |
+| Document | Version | DOI / Link |
+| :--- | :--- | :--- |
+| **Official Publication** | v4.0 | [Frontiers in Genetics](https://doi.org/10.3389/fgene.2026.1727708) |
+| **Genomic Innovation Spec** | v4.0 | `10.5281/zenodo.17780623` |
+| **Clinical Protocol (SOP)** | v2.0 | `10.5281/zenodo.17676423` |
+| **Strategic Partnership** | Offer v1.0 | `10.5281/zenodo.18718186` |
 
 ---
 
-## Licensing Model
-
-### Non-Commercial Use
-- **Amagi Framework**: CC BY-NC 4.0 — free for research, education, academic use.
-- **Althea Framework**: CC0 (Public Domain) — free for any purpose, including commercial.
-
-### Commercial Use
-- **Amagi Framework**: Requires **S-APL** (Strict Architectural Principle License).
-  - Governs commercial deployment, certification, "Amagi Compliant" branding.
-  - Jurisdiction: Laws of England and Wales.
-  - Contact: lexintrud@gmail.com (Subject: "S-APL Inquiry – [Organization]")
-
-- **Althea Framework**: No license required (CC0), but implementation know-how (Hard IP Suite) is protected as trade secrets.
-  - Access requires NDA + collaboration agreement.
-
-### Trade Secrets
-- Concrete implementations (GDSII, netlists, calibration data) are protected under:
-  - US Defend Trade Secrets Act (DTSA)
-  - EU Directive 2016/943
-  - UK Trade Secrets Regulations 2018
-
----
-
-## Core Principles
+## 🛡️ Core Principles
 
 ### Amagi: Six Irreducible Invariants
-1. **Physical Non-Bypassability**
-2. **Irreducible Trusted Computing Base (SCC)**
-3. **Hardware-Enforced Separation of Control and Cognition**
-4. **Immutability of Critical Policy Structures**
-5. **Complete Mediation**
-6. **Complete Audit Integrity**
+1.  **Physical Non-Bypassability**: Control enforced by hardware isolation.
+2.  **Irreducible TCB**: Minimal Security Council Core (SCC).
+3.  **Separation of Control/Cognition**: AI treated as untrusted insider.
+4.  **Immutability**: Policies fused in OTP memory.
+5.  **Complete Mediation**: All actions pass through SCC.
+6.  **Complete Audit Integrity**: Cryptographically signed, append-only logs.
 
 ### Althea: CRISPR-TTP Architecture
-- CRISPR-Cas9 editing of autologous dendritic cells (>94% efficiency)
-- Temporally Programmed Delivery via MR-guided Focused Ultrasound
-- AI Co-pilot for real-time personalization (89.3% sgRNA accuracy)
-- 21-day GMP-ready clinical protocol
+*   **Target**: Fusion-driven cancers (e.g., Ewing Sarcoma).
+*   **Mechanism**: CRISPR-Cas9 edited dendritic cells + FUS-activated nanoparticles.
+*   **Delivery**: Temporally Programmed Delivery (TTP) via MR-guided Focused Ultrasound.
+*   **Status**: Regulatory dialogue with EMA, FDA, Russian MoH initiated.
 
 ---
 
-## Regulatory Alignment
+## 🤝 Strategic Partnerships
 
-### Amagi Framework
-- EU AI Act (Annex III — High-Risk AI Systems)
-- NIST AI Risk Management Framework 1.0 (100% coverage)
-- ISO/IEC 42001:2023 (AI Management Systems)
-- ISO 26262 (ASIL-D — Automotive Functional Safety)
-- DO-178C (Avionics Software Certification)
-- IEC 61508 (Functional Safety)
+We invite collaboration with:
+*   **Semiconductor Companies**: For ASIC/FPGA implementation of Amagi Hard IP.
+*   **Biotech & Pharma**: For clinical translation of Althea protocols.
+*   **Regulators & Auditors**: For certification pathway development.
+*   **Research Institutions**: For joint grants and validation studies.
 
-### Althea Framework
-- EMA ATMP Classification (Advanced Therapy Medicinal Products)
-- FDA CBER INTERACT Process
-- Russian Ministry of Health Expert Evaluation
-- IEC 62304 (Medical Device Software)
-- GDPR / HIPAA (Patient Data Protection)
+**Next Steps**:
+1.  Review the [Strategic Partnership Offer](strategic-partnerships/).
+2.  Contact us at `lexintrud@gmail.com`.
+3.  Execute NDA and S-APL License (for commercial projects).
 
 ---
 
-## Getting Started
+## ⚖️ Legal & Governance
 
-### For Researchers
-1. Clone this repository.
-2. Review documentation in `amagi-framework/docs/` and `althea-framework/specs/`.
-3. Access full specifications on Zenodo via DOIs listed above.
-4. Use freely under CC BY-NC 4.0 (Amagi) or CC0 (Althea).
-
-### For Industry Partners
-1. Review the [Strategic Partnership Offer](strategic-partnerships/STRATEGIC_PARTNERSHIP_OFFER_ALTHEA_AMAGI_v1.0.md).
-2. Contact lexintrud@gmail.com with subject "Partnership Inquiry – Amagi/Althea".
-3. Execute NDA for access to Hard IP Suite.
-4. Obtain S-APL license for commercial Amagi implementations.
-
-### For Regulators & Auditors
-1. Review the [NIST AI RMF Profile](amagi-framework/regulatory/NIST_AI_RMF_Profile.md).
-2. Examine the [Amagi Architectural Class Definition](amagi-framework/architecture/Amagi_Architectural_Class_Definition.md).
-3. Use reference test suites for compliance verification.
+*   **Founding Charter**: [AGIAM Technologies Founding Charter v1.0](shared/legal/AGIAM_Charter_v1.0.md)
+*   **Jurisdiction**: Laws of England and Wales.
+*   **Dispute Resolution**: Binding arbitration in London.
+*   **Ethical Guardrails**: Strict prohibition on mass surveillance, autonomous weapons, and social scoring. Violations result in immediate license revocation.
 
 ---
 
-## Governance
+## 📄 Disclaimer
 
-- **Architectural Custodian**: AGIAM Technologies Ltd (UK)
-- **Author Sovereignty**: Alexey M. Burlai retains veto rights over ethical principles.
-- **Succession Plan**: Steward Committee → CC0 fallback if governance fails.
-- **Dispute Resolution**: Binding arbitration in London (English law).
-
----
-
-## Citation
-
-If you use this work in your research, please cite:
-
-```bibtex
-@misc{burlai2025amagi,
-  author = {Burlai, Alexey Mikhailovich},
-  title = {Amagi Framework: Architecture as Compliance},
-  year = {2025},
-  publisher = {Zenodo},
-  doi = {10.5281/zenodo.17679248},
-  url = {https://doi.org/10.5281/zenodo.17679248}
-}
-
-@article{burlai2026althea,
-  author = {Burlai, Alexey Mikhailovich},
-  title = {Genomic Innovation in Precision Oncology: Integrated CRISPR-TTP Bioengineering Architecture for Ewing Sarcoma},
-  journal = {Frontiers in Genetics},
-  volume = {17},
-  year = {2026},
-  doi = {10.3389/fgene.2026.1727708}
-}
-```
-
----
-
-## Contact
-
-**Alexey Mikhailovich Burlai**  
-Independent Researcher, Sochi, Russia  
-ORCID: https://orcid.org/0009-0001-4679-5967  
-Email: lexintrud@gmail.com  
-
-For commercial licensing: lexintrud@gmail.com (Subject: "S-APL Inquiry" or "Althea Collaboration")
+*   **Medical**: The Althea framework is a research protocol. It does not constitute medical advice. Clinical use requires regulatory approval and independent validation.
+*   **Safety**: Amagi specifications are reference architectures. Implementation responsibility lies with the licensee.
+*   **No Warranty**: Provided "AS-IS" without warranties of any kind.
 
 ---
 
 © 2025–2026 Alexey M. Burlai. All rights reserved.  
-Amagi Framework: CC BY-NC 4.0 (non-commercial) / S-APL (commercial)  
-Althea Framework: CC0 (Public Domain)  
-Hard IP Suite: Protected as Trade Secrets
+**Amagi**: Trust by Design. **Althea**: Survival by Architecture.
