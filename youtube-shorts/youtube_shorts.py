@@ -1,19 +1,23 @@
 #!/usr/bin/env python3
 """
-youtube_shorts.py v2.0 — automated YouTube Shorts generator for ALTHEA Research Brief
+youtube_shorts.py v2.1 — automated YouTube Shorts generator for ALTHEA Research Brief
 
 Pipeline:
-1. Fetch fresh news from althea-tech.ru API (or local SQLite fallback)
-2. Generate branded frame 1080x1920 (Pillow):
+1. Fetch fresh news from althea-tech.ru API (20 latest)
+2. LLM filter via SambaNova Meta-Llama-3.3-70B (if SAMBA_KEY env var is set):
+   - Score each news: relevance + YouTube appeal
+   - Pick top-1 most interesting for Shorts
+   - Falls back to first-available if LLM unavailable
+3. Generate branded frame 1080x1920 (Pillow):
    - Top header bar (AMAGI/ALTHEA/Scio/CTC color-coded)
    - Title + summary (wrapped, Cyrillic-aware)
    - Source attribution
    - Footer with site URL + Telegram bot + hashtags
    - Progress bar at bottom (synced with audio)
-3. Text-to-speech via edge-tts (Microsoft Neural, ru-RU-DmitryNeural, free, no API key)
-4. Assemble MP4 video with FFmpeg (libx264 + AAC)
-5. Upload to YouTube (if YOUTUBE_REFRESH_TOKEN env var is set)
-6. Log to video_log table (prevents re-processing same news)
+4. Text-to-speech via edge-tts (Microsoft Neural, ru-RU-DmitryNeural, free, no API key)
+5. Assemble MP4 video with FFmpeg (libx264 + AAC)
+6. Upload to YouTube (if YOUTUBE_REFRESH_TOKEN env var is set)
+7. Log to state file (prevents re-processing same news)
 
 Runs in GitHub Actions (Ubuntu runner) — no load on Reg.ru server.
 Cron: every 4 hours via .github/workflows/shorts.yml
@@ -127,43 +131,86 @@ def save_processed_id(news_id):
 
 
 # ============================================================
-# NEWS FETCHING
+# NEWS FETCHING + LLM FILTERING
 # ============================================================
 
-def fetch_news():
-    """Fetch latest news from althea-tech.ru API. Returns one fresh news item dict or None."""
-    log('Fetching news from: ' + ALTHEA_API_URL)
+def fetch_news_raw(limit=20):
+    """Fetch latest news from althea-tech.ru API. Returns list of news dicts."""
+    api_url = ALTHEA_API_URL
+    # Override limit if URL supports it
+    if 'limit=' in api_url:
+        import re
+        api_url = re.sub(r'limit=\d+', f'limit={limit}', api_url)
+    elif '?' in api_url:
+        api_url = api_url + f'&limit={limit}'
+    else:
+        api_url = api_url + f'?limit={limit}'
+
+    log('Fetching news from: ' + api_url)
     try:
         req = urllib.request.Request(
-            ALTHEA_API_URL,
+            api_url,
             headers={'User-Agent': 'AmagiShorts/2.0 (github.com/AGIAMTech/Amagi-framework)'}
         )
         with urllib.request.urlopen(req, timeout=15) as r:
             data = json.loads(r.read().decode('utf-8'))
     except urllib.error.URLError as e:
         log('API error: ' + str(e))
-        return None
+        return []
     except Exception as e:
         log('API exception: ' + str(e))
-        return None
+        return []
 
     if not data.get('ok'):
         log('API returned not-ok: ' + str(data)[:200])
-        return None
+        return []
 
-    news_list = data.get('data', [])
+    return data.get('data', [])
+
+
+def fetch_news():
+    """
+    Fetch latest news and select the best one via LLM filter.
+    Falls back to first-available if SAMBA_KEY is not set or LLM fails.
+    Returns one news item dict or None.
+    """
+    news_list = fetch_news_raw(limit=20)
     if not news_list:
-        log('No news in API response')
+        log('No news fetched from API')
         return None
 
-    processed = load_processed_ids()
-    for item in news_list:
-        if str(item.get('id', '')) in processed:
-            continue
-        return item
+    log(f'Got {len(news_list)} news items from API')
 
-    log('All available news already processed (' + str(len(news_list)) + ' items)')
-    return None
+    # Filter out already-processed
+    processed = load_processed_ids()
+    fresh = [n for n in news_list if str(n.get('id', '')) not in processed]
+    if not fresh:
+        log('All available news already processed')
+        return None
+
+    log(f'{len(fresh)} fresh news (after dedup)')
+
+    # Try LLM filter
+    samba_key = os.environ.get('SAMBA_KEY', '')
+    if samba_key:
+        try:
+            # Import lazily to avoid hard dependency
+            from llm_filter import filter_best_news
+            log('Running LLM filter via SambaNova Meta-Llama-3.3-70B...')
+            best = filter_best_news(fresh, min_relevance=4, min_appeal=4)
+            if best:
+                log(f'LLM selected: [{best.get("id")}] {best.get("title", "")[:80]}')
+                log(f'  Score: rel={best.get("llm_relevance", "?")}/10 appeal={best.get("llm_appeal", "?")}/10')
+                log(f'  Reason: {best.get("llm_reason", "")}')
+                return best
+            log('LLM filter returned no suitable news, falling back to first fresh')
+        except ImportError:
+            log('llm_filter module not available, using first fresh news')
+        except Exception as e:
+            log(f'LLM filter error: {e}, falling back to first fresh')
+
+    # Fallback: just return first fresh news
+    return fresh[0]
 
 
 # ============================================================
