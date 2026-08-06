@@ -29,3 +29,15 @@ __pycache__/
 *.so
 *.a
 *.out
+
+# YouTube Shorts — generated artifacts (workflow commits videos separately)
+youtube-shorts/output/
+youtube-shorts/.venv/
+youtube-shorts/**/.processed_ids.json
+youtube-shorts/**/client_secret*.json
+youtube-shorts/**/token.json
+
+# Python venv (local only)
+.venv/
+venv/
+

@@ -1,0 +1,24 @@
+# Output directory (videos and temp files)
+output/
+*.mp4
+*.mp3
+*.png
+!assets/*.png
+
+# State file (processed news IDs)
+.processed_ids.json
+
+# Logs
+*.log
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Secrets (NEVER commit these)
+client_secret*.json
+token.json
+.env
