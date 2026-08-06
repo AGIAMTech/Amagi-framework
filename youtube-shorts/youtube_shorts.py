@@ -45,6 +45,8 @@ STATE_FILE = os.path.join(OUTPUT_DIR, '.processed_ids.json')
 
 # YouTube config
 YOUTUBE_ENABLED = bool(os.environ.get('YOUTUBE_REFRESH_TOKEN'))
+YOUTUBE_CHANNEL_HANDLE = '@ALTHEAResearchBrief'
+YOUTUBE_CHANNEL_URL = 'https://www.youtube.com/@ALTHEAResearchBrief'
 YOUTUBE_CHANNEL_ID = 'UC_xxx'  # Set after first upload
 
 # edge-tts config

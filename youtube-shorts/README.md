@@ -2,9 +2,9 @@
 
 Automated pipeline for generating branded YouTube Shorts from ALTHEA Research Brief news.
 
-**Channel**: [@AmagiFramework](https://www.youtube.com/@AmagiFramework)
+**Channel**: [@ALTHEAResearchBrief](https://www.youtube.com/@ALTHEAResearchBrief)
 **Schedule**: every 4 hours via GitHub Actions
-**Cost**: $0 (edge-tts free, GitHub Actions free tier, YouTube Data API free quota)
+**Cost**: $0 (edge-tts free, GitHub Actions free tier, YouTube Data API free quota, SambaNova LLM free tier)
 
 ---
 
@@ -13,12 +13,15 @@ Automated pipeline for generating branded YouTube Shorts from ALTHEA Research Br
 ```
 GitHub Actions (Ubuntu runner, cron every 4h)
     ↓
-1. Fetch fresh news from althea-tech.ru API
-2. Generate branded PNG frame (1080x1920) via Pillow
-3. Text-to-speech via edge-tts (Microsoft Neural, ru-RU-DmitryNeural)
-4. Assemble MP4 via FFmpeg (libx264 + AAC)
-5. Upload to YouTube (if YOUTUBE_REFRESH_TOKEN configured)
-6. Mark news as processed (state file)
+1. Fetch fresh news from althea-tech.ru API (20 latest)
+2. LLM filter via SambaNova Meta-Llama-3.3-70B:
+   - Score each news: relevance + YouTube appeal
+   - Pick top-1 most interesting for Shorts
+3. Generate branded PNG frame (1080x1920) via Pillow
+4. Text-to-speech via edge-tts (Microsoft Neural, ru-RU-DmitryNeural)
+5. Assemble MP4 via FFmpeg (libx264 + AAC, Ken Burns + progress bar)
+6. Upload to YouTube (if YOUTUBE_REFRESH_TOKEN configured)
+7. Mark news as processed (state file)
 ```
 
 **No load on the production server** — all work happens in GitHub Actions runner.
