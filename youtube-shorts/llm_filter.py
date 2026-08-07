@@ -64,7 +64,7 @@ def log(msg):
 # ============================================================
 
 def call_sambanova(system_prompt: str, user_prompt: str, max_tokens: int = 300, temperature: float = 0.2) -> Optional[str]:
-    """Call SambaNova chat completions API. Returns text response or None."""
+    """Call SambaNova chat completions API with retry on 429. Returns text response or None."""
     if not SAMBA_KEY:
         log('No SAMBA_KEY env var — LLM filter disabled')
         return None
@@ -80,27 +80,44 @@ def call_sambanova(system_prompt: str, user_prompt: str, max_tokens: int = 300, 
         'top_p': 0.9
     }
 
-    try:
-        req = urllib.request.Request(
-            SAMBA_URL,
-            data=json.dumps(payload).encode('utf-8'),
-            headers={
-                'Authorization': 'Bearer ' + SAMBA_KEY,
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            method='POST'
-        )
-        with urllib.request.urlopen(req, timeout=30) as r:
-            data = json.loads(r.read().decode('utf-8'))
-        return data['choices'][0]['message']['content'].strip()
-    except urllib.error.HTTPError as e:
-        body = e.read().decode('utf-8')[:200] if e.fp else ''
-        log(f'SambaNova HTTP {e.code}: {body}')
-        return None
-    except Exception as e:
-        log(f'SambaNova error: {e}')
-        return None
+    # Retry with exponential backoff for 429 (rate limit)
+    max_retries = 3
+    base_delay = 6  # seconds — SambaNova rate limit window is ~1 min
+
+    for attempt in range(max_retries + 1):
+        try:
+            req = urllib.request.Request(
+                SAMBA_URL,
+                data=json.dumps(payload).encode('utf-8'),
+                headers={
+                    'Authorization': 'Bearer ' + SAMBA_KEY,
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                method='POST'
+            )
+            with urllib.request.urlopen(req, timeout=60) as r:
+                data = json.loads(r.read().decode('utf-8'))
+            return data['choices'][0]['message']['content'].strip()
+        except urllib.error.HTTPError as e:
+            if e.code == 429 and attempt < max_retries:
+                delay = base_delay * (attempt + 1)
+                log(f'SambaNova 429 rate limit — retry {attempt+1}/{max_retries} after {delay}s')
+                time.sleep(delay)
+                continue
+            body = e.read().decode('utf-8')[:200] if e.fp else ''
+            log(f'SambaNova HTTP {e.code}: {body}')
+            return None
+        except Exception as e:
+            if attempt < max_retries:
+                delay = base_delay * (attempt + 1)
+                log(f'SambaNova error ({e}) — retry {attempt+1}/{max_retries} after {delay}s')
+                time.sleep(delay)
+                continue
+            log(f'SambaNova error: {e}')
+            return None
+
+    return None
 
 
 # ============================================================
@@ -205,9 +222,10 @@ Return JSON only."""
 
 def filter_best_news(news_list: List[Dict], min_relevance: int = 5, min_appeal: int = 5) -> Optional[Dict]:
     """
-    Score all news items and return the one with highest (relevance + appeal) score.
-    Skips items below min thresholds.
-    Adds 'llm_score', 'llm_category', 'llm_reason' to the returned item.
+    Score all news items in a SINGLE LLM call (batch mode) and return the best one.
+    This avoids hitting SambaNova rate limits (10 RPM free tier).
+
+    Uses one LLM call to score all news at once, then picks the top-scored.
     """
     if not news_list:
         log('Empty news list')
@@ -217,51 +235,110 @@ def filter_best_news(news_list: List[Dict], min_relevance: int = 5, min_appeal: 
         log('No SAMBA_KEY — returning first news item (no LLM filter)')
         return news_list[0]
 
-    log(f'Scoring {len(news_list)} news items via SambaNova...')
+    # === BATCH MODE: single LLM call for all news ===
+    log(f'Batch-scoring {len(news_list)} news items via SambaNova (single call)...')
 
+    # Build compact news list for LLM
+    news_for_llm = []
+    for i, n in enumerate(news_list):
+        news_for_llm.append({
+            'i': i,
+            't': (n.get('title') or '')[:120],
+            's': (n.get('summary') or '')[:200],
+            'c': n.get('category', 'industry'),
+        })
+
+    system_prompt = """Ты — редактор YouTube Shorts канала ALTHEA Research Brief (deep-tech: AI safety, биоинженерия, deepfake-детекция, регуляторика).
+
+Задача: оценить КАЖДУЮ новость по двум критериям:
+1. RELEVANCE (1-10): соответствие deep-tech темам ALTHEA
+   - 10: AI safety, CRISPR, deepfake, hardware security, AI regulation
+   - 7-9: LLM advances, bioinformatics, cybersecurity, functional safety
+   - 4-6: General tech with deep-tech angle
+   - 1-3: Lifestyle, politics, sports, entertainment
+
+2. APPEAL (1-10): интересность для YouTube Shorts (широкая техническая аудитория)
+   - 10: прорыв / конфликт / "wow" фактор
+   - 7-9: конкретный продукт с широким impact
+   - 4-6: полезно, но niche
+   - 1-3: minor version bump, dry technical detail
+
+Категории ALTHEA:
+- amagi: AI safety / hardware security / FPGA / ASIC
+- althea: bioengineering / CRISPR / precision oncology
+- scio: deepfake detection / media forensics
+- ctc: AI therapy coordination / medical AI
+- industry: general deep-tech industry news
+- publication: research paper / scientific publication
+
+Верни СТРОГО JSON массив (без markdown fences), каждый элемент:
+{"i": <индекс>, "r": <relevance 1-10>, "a": <appeal 1-10>, "c": "<category>", "reason": "<одно предложение на русском>"}
+
+Пример: [{"i":0,"r":8,"a":7,"c":"amagi","reason":"..."},{"i":1,"r":3,"a":2,"c":"industry","reason":"..."}]"""
+
+    user_prompt = "Оцени все новости:\n\n" + json.dumps(news_for_llm, ensure_ascii=False, indent=2)
+
+    response = call_sambanova(system_prompt, user_prompt, max_tokens=2000, temperature=0.2)
+    if not response:
+        log('LLM batch call failed — no response')
+        return None
+
+    # Parse JSON from response
+    text = response.strip()
+    if text.startswith('```'):
+        lines = text.split('\n')
+        text = '\n'.join(lines[1:-1] if lines[-1].startswith('```') else lines[1:])
+
+    try:
+        results = json.loads(text)
+    except json.JSONDecodeError as e:
+        log(f'LLM JSON parse error: {e}')
+        log(f'Response (first 500): {response[:500]}')
+        return None
+
+    if not isinstance(results, list):
+        log(f'LLM returned non-list: {type(results)}')
+        return None
+
+    # Map back to news items
     scored = []
-    for i, news in enumerate(news_list):
-        title_preview = (news.get('title') or '')[:60]
-        log(f'  [{i+1}/{len(news_list)}] Scoring: {title_preview}...')
-
-        result = score_news(news)
-        if result is None:
-            log(f'    → scoring failed, skipping')
+    for r in results:
+        try:
+            idx = int(r['i'])
+            if idx < 0 or idx >= len(news_list):
+                continue
+            rel = max(1, min(10, int(r['r'])))
+            app = max(1, min(10, int(r['a'])))
+            cat = r.get('c', news_list[idx].get('category', 'industry'))
+            if cat not in VALID_CATEGORIES:
+                cat = news_list[idx].get('category', 'industry')
+            total = rel + app
+            log(f'  [{idx+1}] rel={rel}/10 app={app}/10 total={total} cat={cat} — {news_list[idx].get("title", "")[:50]}')
+            if rel < min_relevance or app < min_appeal:
+                log(f'      → below threshold, skipping')
+                continue
+            news_copy = dict(news_list[idx])
+            news_copy['llm_score'] = total
+            news_copy['llm_relevance'] = rel
+            news_copy['llm_appeal'] = app
+            news_copy['llm_category'] = cat
+            news_copy['llm_reason'] = r.get('reason', '')
+            news_copy['category'] = cat
+            scored.append(news_copy)
+        except (KeyError, ValueError, TypeError) as e:
+            log(f'  Skip malformed entry: {e}')
             continue
-
-        total = result['relevance'] + result['appeal']
-        log(f'    → rel={result["relevance"]}/10 appeal={result["appeal"]}/10 total={total} cat={result["category"]}')
-
-        if result['relevance'] < min_relevance or result['appeal'] < min_appeal:
-            log(f'    → below threshold (min_rel={min_relevance}, min_app={min_appeal}), skipping')
-            continue
-
-        # Enrich news item with LLM data
-        news_copy = dict(news)
-        news_copy['llm_score'] = total
-        news_copy['llm_relevance'] = result['relevance']
-        news_copy['llm_appeal'] = result['appeal']
-        news_copy['llm_category'] = result['category']
-        news_copy['llm_reason'] = result['reason']
-        # Override category if LLM disagrees
-        news_copy['category'] = result['category']
-        scored.append(news_copy)
-
-        # Rate limit: SambaNova free tier = 10 RPM, be conservative
-        time.sleep(0.5)
 
     if not scored:
         log('No news passed LLM filter')
         return None
 
-    # Sort by total score, return best
     scored.sort(key=lambda n: n['llm_score'], reverse=True)
     best = scored[0]
     log(f'✅ Best: score={best["llm_score"]} cat={best["llm_category"]}')
-    log(f'   Reason: {best["llm_reason"]}')
     log(f'   Title: {best.get("title", "")[:80]}')
+    log(f'   Reason: {best.get("llm_reason", "")}')
 
-    # Also log top-3 for visibility
     if len(scored) > 1:
         log('   Top-3:')
         for i, n in enumerate(scored[:3]):

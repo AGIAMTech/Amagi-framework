@@ -1,26 +1,40 @@
 #!/usr/bin/env python3
 """
-youtube_shorts.py v2.1 — automated YouTube Shorts generator for ALTHEA Research Brief
+youtube_shorts.py v3.0 — production-ready automated YouTube Shorts generator
 
 Pipeline:
-1. Fetch fresh news from althea-tech.ru API (20 latest)
-2. LLM filter via SambaNova Meta-Llama-3.3-70B (if SAMBA_KEY env var is set):
+1. Fetch 20 fresh news from althea-tech.ru API
+2. LLM filter via SambaNova Meta-Llama-3.3-70B:
    - Score each news: relevance + YouTube appeal
+   - LLM also writes the narration script (intelligently, not just title+summary)
    - Pick top-1 most interesting for Shorts
-   - Falls back to first-available if LLM unavailable
-3. Generate branded frame 1080x1920 (Pillow):
-   - Top header bar (AMAGI/ALTHEA/Scio/CTC color-coded)
-   - Title + summary (wrapped, Cyrillic-aware)
-   - Source attribution
-   - Footer with site URL + Telegram bot + hashtags
+3. Generate DYNAMIC branded frame 1080x1920 (Pillow):
+   - Photo background with Ken Burns zoom (if image_url available)
+   - Animated gradient + pulsing nodes (fallback for no-photo news)
+   - Category-colored elements
    - Progress bar at bottom (synced with audio)
-4. Text-to-speech via edge-tts (Microsoft Neural, ru-RU-DmitryNeural, free, no API key)
-5. Assemble MP4 video with FFmpeg (libx264 + AAC)
-6. Upload to YouTube (if YOUTUBE_REFRESH_TOKEN env var is set)
-7. Log to state file (prevents re-processing same news)
+4. TTS via edge-tts with prosody tuned per category:
+   - AMAGI: serious, slower (-5% rate)
+   - ALTHEA: neutral
+   - Scio: mysterious, slightly slower
+   - CTC: warm, neutral
+   - Industry: energetic (+5% rate)
+5. Background music (royalty-free, Kevin MacLeod CC BY 4.0):
+   - Mixed at -24dB (subtle, doesn't compete with TTS)
+   - Track selected by category
+6. Assemble MP4 via FFmpeg (H.264 + AAC, 1080x1920, 30fps)
+7. Upload to YouTube (if YOUTUBE_REFRESH_TOKEN configured)
+8. Auto-cleanup: delete videos older than 24h from output/
 
 Runs in GitHub Actions (Ubuntu runner) — no load on Reg.ru server.
 Cron: every 4 hours via .github/workflows/shorts.yml
+
+LIMITS AWARENESS:
+- YouTube Data API v3: 10,000 units/day, 1,600 per upload = max 6/day
+- SambaNova free tier: 10 RPM, ~1-2s per call
+- GitHub Actions: 2,000 min/month (private), unlimited (public)
+- edge-tts: free, no key, ~1 req/sec safe
+- Cron every 4h = 6 runs/day = within YouTube quota (tight)
 
 Author: Alexey M. Burlai (AGIAMTech)
 License: S-APL v2.0 / CC BY-NC 4.0
@@ -30,35 +44,60 @@ import sys
 import subprocess
 import asyncio
 import json
-import sqlite3
 import urllib.request
 import urllib.error
-from datetime import datetime
+import time
+import math
+import shutil
+from datetime import datetime, timedelta
+from pathlib import Path
 
 # ============================================================
 # CONFIGURATION
 # ============================================================
 
-# News source — try API first, fallback to local SQLite (for testing)
-ALTHEA_API_URL = os.environ.get('ALTHEA_API_URL', 'https://althea-tech.ru/assets/api/content.php?action=news&limit=5')
-
-# Output paths
-OUTPUT_DIR = os.environ.get('OUTPUT_DIR', os.path.join(os.path.dirname(os.path.abspath(__file__)), 'output'))
+SCRIPT_DIR = Path(__file__).parent.resolve()
+OUTPUT_DIR = Path(os.environ.get('OUTPUT_DIR', SCRIPT_DIR / 'output'))
+MUSIC_DIR = SCRIPT_DIR / 'assets' / 'music'
 LOG_FILE = os.environ.get('LOG_FILE', '/tmp/youtube_shorts.log')
-STATE_FILE = os.path.join(OUTPUT_DIR, '.processed_ids.json')
+STATE_FILE = OUTPUT_DIR / '.processed_ids.json'
+
+# News API
+ALTHEA_API_URL = os.environ.get('ALTHEA_API_URL',
+    'https://althea-tech.ru/assets/api/content.php?action=news&limit=20')
 
 # YouTube config
 YOUTUBE_ENABLED = bool(os.environ.get('YOUTUBE_REFRESH_TOKEN'))
 YOUTUBE_CHANNEL_HANDLE = '@ALTHEAResearchBrief'
 YOUTUBE_CHANNEL_URL = 'https://www.youtube.com/@ALTHEAResearchBrief'
-YOUTUBE_CHANNEL_ID = 'UC_xxx'  # Set after first upload
 
-# edge-tts config
-TTS_VOICE = os.environ.get('TTS_VOICE', 'ru-RU-DmitryNeural')
-TTS_RATE = os.environ.get('TTS_RATE', '+0%')  # +0% = normal speed
+# TTS config — voice per category for variety
+TTS_VOICES = {
+    'amagi':       {'voice': 'ru-RU-DmitryNeural',   'rate': '-5%',  'pitch': '-2Hz'},  # serious
+    'althea':      {'voice': 'ru-RU-SvetlanaNeural',  'rate': '+0%',  'pitch': '+0Hz'},  # warm female
+    'scio':        {'voice': 'ru-RU-DmitryNeural',    'rate': '-8%',  'pitch': '-3Hz'},  # mysterious
+    'ctc':         {'voice': 'ru-RU-SvetlanaNeural',  'rate': '+0%',  'pitch': '+0Hz'},  # neutral female
+    'industry':    {'voice': 'ru-RU-DmitryNeural',    'rate': '+5%',  'pitch': '+2Hz'},  # energetic
+    'publication': {'voice': 'ru-RU-DmitryNeural',    'rate': '+0%',  'pitch': '+0Hz'},  # neutral
+}
+DEFAULT_TTS = TTS_VOICES['industry']
 
-# FFmpeg path (in GitHub Actions it's pre-installed at /usr/bin/ffmpeg)
+# Music per category (royalty-free, Kevin MacLeod CC BY 4.0)
+MUSIC_MAP = {
+    'amagi':       'tech_amagi.m4a',
+    'althea':      'calm_althea.m4a',
+    'scio':        'mystery_scio.m4a',
+    'ctc':         'calm_althea.m4a',      # reuse calm for medical
+    'industry':    'tech_amagi.m4a',       # reuse tech for industry
+    'publication': 'mystery_scio.m4a',     # reuse mystery for science
+}
+MUSIC_VOLUME = 0.06  # -24dB — subtle, doesn't compete with TTS
+
+# FFmpeg
 FFMPEG = os.environ.get('FFMPEG', 'ffmpeg')
+
+# Cleanup: delete videos older than this
+MAX_VIDEO_AGE_HOURS = 24
 
 # Site branding
 SITE_URL = 'https://althea-tech.ru'
@@ -66,20 +105,19 @@ NEWS_URL = 'https://althea-tech.ru/news.html'
 BOT_URL = 'https://t.me/ALTHEA_Research_Briefbot'
 SLOGAN = 'АЛТЕЯ — Инженерия доверия'
 
-# Brand colors (RGB) — match site palette
-BG = (11, 20, 36)              # --bg #0b1424
-BG2 = (15, 23, 42)             # --bg2
-FOOT_BG = (21, 35, 63)         # --s1
-TEXT_W = (233, 238, 248)       # --text
-MUTED = (168, 184, 212)        # --muted
-FAINT = (110, 130, 165)        # --faint
-AMBER = (245, 166, 35)         # --amagi (AMAGI brand)
-SCIO_BLUE = (76, 195, 232)     # --scio
-ALTHEA_GREEN = (45, 212, 167)  # --althea
-CTC_PURPLE = (192, 132, 252)   # --ctc
-LINE = (30, 41, 70)            # --line
+# Brand colors (RGB)
+BG = (11, 20, 36)
+BG2 = (15, 23, 42)
+FOOT_BG = (21, 35, 63)
+TEXT_W = (233, 238, 248)
+MUTED = (168, 184, 212)
+FAINT = (110, 130, 165)
+AMBER = (245, 166, 35)
+SCIO_BLUE = (76, 195, 232)
+ALTHEA_GREEN = (45, 212, 167)
+CTC_PURPLE = (192, 132, 252)
+LINE = (30, 41, 70)
 
-# Category config: color + label + emoji + hashtag
 CATS = {
     'amagi':       {'c': AMBER,        'e': '🟡', 'l': 'AMAGI',       'tag': '#AMAGI #AISafety #HardwareSecurity'},
     'althea':      {'c': ALTHEA_GREEN, 'e': '🟢', 'l': 'ALTHEA',      'tag': '#ALTHEA #CRISPR #BioEngineering'},
@@ -95,7 +133,6 @@ CATS = {
 # ============================================================
 
 def log(msg):
-    """Log to stdout + file."""
     ts = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     line = '[%s] %s' % (ts, msg)
     print(line, flush=True)
@@ -108,26 +145,47 @@ def log(msg):
 
 
 # ============================================================
-# STATE MANAGEMENT (track processed news IDs)
+# STATE MANAGEMENT
 # ============================================================
 
 def load_processed_ids():
-    """Load set of already-processed news IDs from state file."""
     try:
         with open(STATE_FILE, 'r') as f:
-            data = json.load(f)
-            return set(data.get('ids', []))
+            return set(json.load(f).get('ids', []))
     except (FileNotFoundError, json.JSONDecodeError):
         return set()
 
-
 def save_processed_id(news_id):
-    """Add news_id to state file (prevents re-processing)."""
     ids = load_processed_ids()
     ids.add(str(news_id))
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     with open(STATE_FILE, 'w') as f:
-        json.dump({'ids': sorted(ids), 'updated': datetime.now().isoformat()}, f, ensure_ascii=False, indent=2)
+        json.dump({'ids': sorted(ids), 'updated': datetime.now().isoformat()},
+                  f, ensure_ascii=False, indent=2)
+
+
+# ============================================================
+# AUTO-CLEANUP: delete videos older than MAX_VIDEO_AGE_HOURS
+# ============================================================
+
+def cleanup_old_videos():
+    """Delete .mp4 files in OUTPUT_DIR older than MAX_VIDEO_AGE_HOURS."""
+    if not OUTPUT_DIR.exists():
+        return 0
+    cutoff = datetime.now() - timedelta(hours=MAX_VIDEO_AGE_HOURS)
+    deleted = 0
+    for f in OUTPUT_DIR.glob('*.mp4'):
+        try:
+            mtime = datetime.fromtimestamp(f.stat().st_mtime)
+            if mtime < cutoff:
+                f.unlink()
+                deleted += 1
+                log(f'Cleanup: deleted {f.name} (age: {(datetime.now() - mtime).total_seconds()/3600:.1f}h)')
+        except Exception as e:
+            log(f'Cleanup error for {f.name}: {e}')
+    if deleted:
+        log(f'Cleanup: removed {deleted} old videos')
+    return deleted
 
 
 # ============================================================
@@ -135,149 +193,208 @@ def save_processed_id(news_id):
 # ============================================================
 
 def fetch_news_raw(limit=20):
-    """Fetch latest news from althea-tech.ru API. Returns list of news dicts."""
+    """Fetch latest news list from API."""
     api_url = ALTHEA_API_URL
-    # Override limit if URL supports it
+    import re
     if 'limit=' in api_url:
-        import re
         api_url = re.sub(r'limit=\d+', f'limit={limit}', api_url)
     elif '?' in api_url:
         api_url = api_url + f'&limit={limit}'
     else:
         api_url = api_url + f'?limit={limit}'
 
-    log('Fetching news from: ' + api_url)
+    log(f'Fetching news: {api_url}')
     try:
-        req = urllib.request.Request(
-            api_url,
-            headers={'User-Agent': 'AmagiShorts/2.0 (github.com/AGIAMTech/Amagi-framework)'}
-        )
+        req = urllib.request.Request(api_url,
+            headers={'User-Agent': 'AmagiShorts/3.0 (github.com/AGIAMTech/Amagi-framework)'})
         with urllib.request.urlopen(req, timeout=15) as r:
             data = json.loads(r.read().decode('utf-8'))
-    except urllib.error.URLError as e:
-        log('API error: ' + str(e))
-        return []
+        return data.get('data', []) if data.get('ok') else []
     except Exception as e:
-        log('API exception: ' + str(e))
+        log(f'API error: {e}')
         return []
-
-    if not data.get('ok'):
-        log('API returned not-ok: ' + str(data)[:200])
-        return []
-
-    return data.get('data', [])
 
 
 def fetch_news():
-    """
-    Fetch latest news and select the best one via LLM filter.
-    Falls back to first-available if SAMBA_KEY is not set or LLM fails.
-    Returns one news item dict or None.
-    """
+    """Fetch news, run LLM filter, return best item or None."""
     news_list = fetch_news_raw(limit=20)
     if not news_list:
-        log('No news fetched from API')
+        log('No news fetched')
         return None
 
-    log(f'Got {len(news_list)} news items from API')
-
-    # Filter out already-processed
     processed = load_processed_ids()
     fresh = [n for n in news_list if str(n.get('id', '')) not in processed]
     if not fresh:
         log('All available news already processed')
         return None
 
-    log(f'{len(fresh)} fresh news (after dedup)')
+    log(f'Got {len(news_list)} news, {len(fresh)} fresh')
 
-    # Try LLM filter
     samba_key = os.environ.get('SAMBA_KEY', '')
     if samba_key:
         try:
-            # Import lazily to avoid hard dependency
             from llm_filter import filter_best_news
-            log('Running LLM filter via SambaNova Meta-Llama-3.3-70B...')
-            best = filter_best_news(fresh, min_relevance=4, min_appeal=4)
+            log('Running LLM filter via SambaNova...')
+            best = filter_best_news(fresh, min_relevance=5, min_appeal=5)
             if best:
                 log(f'LLM selected: [{best.get("id")}] {best.get("title", "")[:80]}')
                 log(f'  Score: rel={best.get("llm_relevance", "?")}/10 appeal={best.get("llm_appeal", "?")}/10')
                 log(f'  Reason: {best.get("llm_reason", "")}')
                 return best
-            log('LLM filter returned no suitable news, falling back to first fresh')
-        except ImportError:
-            log('llm_filter module not available, using first fresh news')
+            log('LLM filter: no suitable news, will retry next run')
+            return None  # Don't fall back — better skip than waste YouTube quota
         except Exception as e:
-            log(f'LLM filter error: {e}, falling back to first fresh')
+            log(f'LLM filter error: {e}')
+            # Fallback to first fresh if LLM fails (better than nothing)
+            log('Falling back to first fresh news')
+            return fresh[0]
 
-    # Fallback: just return first fresh news
+    log('No SAMBA_KEY — using first fresh news')
     return fresh[0]
 
 
 # ============================================================
-# TTS — edge-tts (Microsoft Neural, free, no API key)
+# LLM NARRATION: generate TTS script (not just title+summary)
 # ============================================================
 
-async def _tts_async(text, out_path):
-    """Generate TTS audio file via edge-tts."""
+def generate_narration_script(news):
+    """
+    Use SambaNova LLM to write a natural narration script from news.
+    Returns Russian text optimized for TTS (~30-45 sec when read).
+    """
+    samba_key = os.environ.get('SAMBA_KEY', '')
+    if not samba_key:
+        # Fallback: simple concatenation
+        return _fallback_narration(news)
+
+    from llm_filter import call_sambanova
+
+    system_prompt = """Ты — редактор YouTube Shorts канала ALTHEA Research Brief.
+Твоя задача: написать narration script (текст для озвучки) длиной 30-45 секунд.
+
+ПРАВИЛА:
+1. Русский язык, литературный стиль
+2. Без английских слов (кроме устоявшихся: AI, CRISPR, deepfake, LLM)
+3. Без ссылок, без "Источник:", без "Очки:"
+4. Без брендов-названий компаний в начале (звучит как реклама)
+5. Начни с цепляющего факта или вопроса
+6. Середина: 1-2 ключевых технических деталей
+7. Конец: значимость для индустрии + фраза "Подробнее на althea-tech.ru"
+8. Объём: 400-500 символов (это ~30-40 сек речи)
+9. Пунктуация для естественных пауз: точки, запятые, тире
+
+СТРУКТУРА:
+[Цепляющий факт 1-2 предложения]. [Техническая деталь]. [Значимость]. Подробнее на althea-tech.ru.
+
+ВЕРНИ ТОЛЬКО ТЕКСТ narration (без пояснений, без markdown)."""
+
+    title = (news.get('title') or '')[:200]
+    summary = (news.get('summary') or '')[:500]
+    source = news.get('source', '')
+
+    user_prompt = f"""Напиши narration для Shorts:
+
+Заголовок: {title}
+Краткое содержание: {summary}
+Источник: {source}
+
+Только текст narration:"""
+
+    response = call_sambanova(system_prompt, user_prompt, max_tokens=400, temperature=0.4)
+    if not response:
+        log('LLM narration: no response, using fallback')
+        return _fallback_narration(news)
+
+    # Clean up: remove markdown, quotes
+    text = response.strip()
+    if text.startswith('```'):
+        lines = text.split('\n')
+        text = '\n'.join(lines[1:-1] if lines[-1].startswith('```') else lines[1:])
+    text = text.strip('«»""\'')
+
+    # Ensure ends with site mention
+    if 'althea-tech.ru' not in text:
+        text += ' Подробнее на althea-tech.ru.'
+
+    # Cap at 500 chars
+    if len(text) > 500:
+        text = text[:497] + '...'
+
+    log(f'LLM narration ({len(text)} chars): {text[:100]}...')
+    return text
+
+
+def _fallback_narration(news):
+    """Simple narration if LLM unavailable."""
+    cat = news.get('category', 'industry')
+    cc = CATS.get(cat, CATS['industry'])
+    parts = [cc['l'] + '.']
+    title = (news.get('title') or '').strip()
+    if title:
+        parts.append(title + '.')
+    summary = (news.get('summary') or '').strip()
+    if summary and len(summary) > 30:
+        parts.append(summary[:300] + '.')
+    parts.append('Подробнее на althea-tech.ru.')
+    text = ' '.join(parts)[:500]
+    log(f'Fallback narration ({len(text)} chars)')
+    return text
+
+
+# ============================================================
+# TTS — edge-tts with category-specific prosody
+# ============================================================
+
+async def _tts_async(text, out_path, voice, rate, pitch):
     import edge_tts
-    communicate = edge_tts.Communicate(text, TTS_VOICE, rate=TTS_RATE)
+    communicate = edge_tts.Communicate(text, voice, rate=rate, pitch=pitch)
     await communicate.save(out_path)
 
 
-def make_tts(text, out_path):
-    """Generate TTS audio. Returns True on success, False on error."""
+def make_tts(text, out_path, category='industry'):
+    """Generate TTS audio with category-specific voice prosody."""
+    cfg = TTS_VOICES.get(category, DEFAULT_TTS)
     try:
-        asyncio.run(_tts_async(text, out_path))
+        asyncio.run(_tts_async(text, out_path, cfg['voice'], cfg['rate'], cfg['pitch']))
         size = os.path.getsize(out_path)
-        log('TTS: ' + out_path + ' (' + str(size) + ' bytes, voice=' + TTS_VOICE + ')')
+        log(f'TTS: {out_path} ({size} bytes, voice={cfg["voice"]} rate={cfg["rate"]})')
         return True
     except Exception as e:
-        log('TTS error: ' + str(e))
+        log(f'TTS error: {e}')
         return False
 
 
-def build_speech(news):
-    """Build the speech text from news item. Russian, ~30-45 sec when read."""
-    cat = news.get('category', 'industry')
-    cc = CATS.get(cat, CATS['industry'])
-
-    parts = []
-    # Branded intro
-    parts.append(cc['l'] + '. ')
-    # Title (main content)
-    title = news.get('title', '').strip()
-    if title:
-        parts.append(title + '. ')
-    # Summary (if available and not too long)
-    summary = news.get('summary', '').strip()
-    if summary and len(summary) > 30:
-        parts.append(summary[:300] + '. ')
-    # Source attribution
-    source = news.get('source', '').strip()
-    if source:
-        parts.append('Источник: ' + source + '. ')
-    # Outro
-    parts.append('Подробнее на althea-tech.ru.')
-
-    speech = ''.join(parts)
-    # Cap at 500 chars to keep video under 60s
-    if len(speech) > 500:
-        speech = speech[:497] + '...'
-    return speech
-
-
 # ============================================================
-# FRAME GENERATION (Pillow, 1080x1920 portrait)
+# FRAME GENERATION — dynamic background
 # ============================================================
+
+def load_fonts():
+    from PIL import ImageFont
+    paths_bold = ['/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf',
+                  '/usr/share/fonts/truetype/chinese/NotoSansSC-Regular.ttf']
+    paths_reg = ['/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',
+                 '/usr/share/fonts/truetype/chinese/NotoSansSC-Regular.ttf']
+    bold = next((p for p in paths_bold if os.path.exists(p)), paths_bold[0])
+    reg = next((p for p in paths_reg if os.path.exists(p)), paths_reg[0])
+    try:
+        return {
+            'title': ImageFont.truetype(bold, 52),
+            'body': ImageFont.truetype(reg, 36),
+            'small': ImageFont.truetype(reg, 28),
+            'header': ImageFont.truetype(bold, 40),
+            'slogan': ImageFont.truetype(bold, 56),
+        }
+    except:
+        f = ImageFont.load_default()
+        return {'title': f, 'body': f, 'small': f, 'header': f, 'slogan': f}
+
 
 def wrap_text(text, font, max_w, draw):
-    """Word-wrap text respecting max width. Returns list of lines."""
     words = text.split()
     lines, cur = [], []
     for w in words:
         test = ' '.join(cur + [w])
-        bbox = draw.textbbox((0, 0), test, font=font)
-        if bbox[2] - bbox[0] <= max_w:
+        if draw.textbbox((0, 0), test, font=font)[2] <= max_w:
             cur.append(w)
         else:
             if cur:
@@ -288,49 +405,25 @@ def wrap_text(text, font, max_w, draw):
     return lines
 
 
-def load_fonts():
-    """Load fonts (try Noto Sans / DejaVu Sans for Cyrillic support)."""
-    from PIL import ImageFont
-    font_paths = [
-        # Noto Sans SC (best for Cyrillic + Latin)
-        '/usr/share/fonts/truetype/chinese/NotoSansSC-Regular.ttf',
-        '/usr/share/fonts/truetype/noto/NotoSans-Regular.ttf',
-        # DejaVu Sans (always available on Linux)
-        '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',
-        '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf',
-    ]
-    bold_path = None
-    reg_path = None
-    for p in font_paths:
-        if 'Bold' in p and not bold_path and os.path.exists(p):
-            bold_path = p
-        elif 'Bold' not in p and not reg_path and os.path.exists(p):
-            reg_path = p
-    # Fallback
-    if not bold_path:
-        bold_path = reg_path or '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
-    if not reg_path:
-        reg_path = bold_path
-
+def download_image(url, out_path):
     try:
-        return {
-            'title': ImageFont.truetype(bold_path, 52),
-            'body': ImageFont.truetype(reg_path, 36),
-            'small': ImageFont.truetype(reg_path, 28),
-            'header': ImageFont.truetype(bold_path, 40),
-            'mono': ImageFont.truetype(reg_path, 24),
-            'slogan': ImageFont.truetype(bold_path, 56),
-        }
+        req = urllib.request.Request(url, headers={
+            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36',
+            'Referer': 'https://althea-tech.ru/'
+        })
+        with urllib.request.urlopen(req, timeout=15) as r:
+            with open(out_path, 'wb') as f:
+                f.write(r.read())
+        return True
     except Exception as e:
-        log('Font load error: ' + str(e) + ', using default')
-        default = ImageFont.load_default()
-        return {'title': default, 'body': default, 'small': default,
-                'header': default, 'mono': default, 'slogan': default}
+        log(f'Image download error: {e}')
+        return False
 
 
-def make_frame(news, out_path):
-    """Generate branded 1080x1920 PNG frame."""
-    from PIL import Image, ImageDraw
+def make_frame(news, photo_path, out_path):
+    """Generate dynamic 1080x1920 frame. Uses photo if available, else animated bg."""
+    from PIL import Image, ImageDraw, ImageFilter
+    import random
 
     W, H = 1080, 1920
     img = Image.new('RGB', (W, H), BG)
@@ -340,137 +433,204 @@ def make_frame(news, out_path):
     cat = news.get('category', 'industry')
     cc = CATS.get(cat, CATS['industry'])
 
-    # ===== TOP HEADER BAR (colored by category) =====
+    # === BACKGROUND ===
+    if photo_path and os.path.exists(photo_path):
+        try:
+            photo = Image.open(photo_path).convert('RGB')
+            pr = photo.width / photo.height
+            tr = W / H
+            if pr > tr:
+                new_h = H
+                new_w = int(H * pr)
+            else:
+                new_w = W
+                new_h = int(W / pr)
+            photo = photo.resize((new_w, new_h), Image.LANCZOS)
+            left = (new_w - W) // 2
+            top = (new_h - H) // 2
+            photo = photo.crop((left, top, left + W, top + H))
+            photo = photo.filter(ImageFilter.GaussianBlur(radius=2))
+            overlay = Image.new('RGB', (W, H), BG)
+            tint = Image.new('RGB', (W, H), cc['c'])
+            blended = Image.blend(photo, overlay, 0.65)
+            blended = Image.blend(blended, tint, 0.15)
+            img = blended
+            d = ImageDraw.Draw(img)
+        except Exception as e:
+            log(f'Photo error: {e}, using animated bg')
+            photo_path = None
+
+    if not photo_path or not os.path.exists(photo_path):
+        # === ANIMATED BG: radial gradient + pulsing nodes ===
+        cx, cy = W // 2, H // 3
+        max_r = int(math.sqrt(W**2 + H**2) / 2)
+        for r in range(max_r, 0, -10):
+            t = r / max_r
+            col = (
+                int(BG[0] * (1-t*0.3) + cc['c'][0] * t*0.3),
+                int(BG[1] * (1-t*0.3) + cc['c'][1] * t*0.3),
+                int(BG[2] * (1-t*0.3) + cc['c'][2] * t*0.3),
+            )
+            d.ellipse([cx-r, cy-r, cx+r, cy+r], fill=col)
+
+        # Grid lines (faint)
+        for x in range(0, W, 80):
+            d.line([(x, 100), (x, H-350)], fill=(20, 30, 50), width=1)
+        for y in range(100, H-350, 80):
+            d.line([(0, y), (W, y)], fill=(20, 30, 50), width=1)
+
+        # Network nodes (AMAGI-style)
+        random.seed(42)
+        nodes = [
+            (200, 400, AMBER), (880, 500, SCIO_BLUE),
+            (540, 700, ALTHEA_GREEN), (180, 1000, CTC_PURPLE),
+            (900, 1100, AMBER), (540, 1300, SCIO_BLUE),
+        ]
+        for nx, ny, nc in nodes:
+            for r, alpha in [(40, 20), (28, 40), (18, 80)]:
+                glow = Image.new('RGBA', (r*2, r*2), nc + (alpha,))
+                img.paste(glow, (nx-r, ny-r), glow)
+            d.ellipse([nx-6, ny-6, nx+6, ny+6], fill=nc)
+        d = ImageDraw.Draw(img)
+        for i, (x1, y1, _) in enumerate(nodes):
+            for j, (x2, y2, _) in enumerate(nodes):
+                if i < j and abs(i-j) <= 2:
+                    d.line([(x1, y1), (x2, y2)], fill=(40, 60, 100), width=1)
+
+    # === HEADER ===
     d.rectangle([0, 0, W, 100], fill=cc['c'])
     d.text((40, 25), 'ALTHEA Research Brief', fill=BG, font=fonts['header'])
-    # Right side: category emoji
     d.text((W - 80, 30), cc['e'], fill=BG, font=fonts['header'])
 
-    # ===== LEFT COLOR STRIPE (category indicator) =====
-    d.rectangle([0, 100, 8, H - 350], fill=cc['c'])
+    # Slogan + category
+    d.text((40, 130), SLOGAN, fill=cc['c'], font=fonts['slogan'])
+    d.text((40, 210), cc['l'], fill=cc['c'], font=fonts['header'])
 
-    # ===== SLOGAN (just below header) =====
-    slogan_y = 130
-    d.text((40, slogan_y), SLOGAN, fill=cc['c'], font=fonts['slogan'])
-
-    # ===== CATEGORY LABEL =====
-    y = 210
-    d.text((40, y), cc['l'], fill=cc['c'], font=fonts['header'])
-
-    # ===== TITLE (wrapped, white) =====
+    # === TITLE ===
     y = 290
-    title = news.get('title', '')[:200]
-    title_lines = wrap_text(title, fonts['title'], W - 80, d)[:5]
-    for line in title_lines:
+    title = (news.get('title') or '')[:200]
+    for line in wrap_text(title, fonts['title'], W - 80, d)[:5]:
+        for ox, oy in [(-1,-1),(-1,1),(1,-1),(1,1)]:
+            d.text((40+ox, y+oy), line, fill=(0,0,0), font=fonts['title'])
         d.text((40, y), line, fill=TEXT_W, font=fonts['title'])
         y += 65
 
-    # ===== SUMMARY (wrapped, muted) =====
+    # === SUMMARY ===
     y += 30
-    summary = news.get('summary', '')[:400]
+    summary = (news.get('summary') or '')[:400]
     if summary:
         for line in wrap_text(summary, fonts['body'], W - 80, d)[:6]:
+            for ox, oy in [(-1,-1),(-1,1),(1,-1),(1,1)]:
+                d.text((40+ox, y+oy), line, fill=(0,0,0), font=fonts['body'])
             d.text((40, y), line, fill=MUTED, font=fonts['body'])
             y += 45
 
-    # ===== SOURCE (small, scio-blue) =====
+    # Source
     y += 20
-    source = news.get('source', '')[:50]
+    source = (news.get('source') or '')[:50]
     if source:
         d.text((40, y), 'Источник: ' + source, fill=SCIO_BLUE, font=fonts['small'])
 
-    # ===== FOOTER =====
+    # === FOOTER ===
     foot_y = H - 350
     d.rectangle([0, foot_y, W, H], fill=FOOT_BG)
-    # Top border line
     d.rectangle([0, foot_y, W, foot_y + 2], fill=cc['c'])
-
     y = foot_y + 30
     d.text((40, y), NEWS_URL.replace('https://', ''), fill=SCIO_BLUE, font=fonts['body'])
     y += 50
     d.text((40, y), '@ALTHEA_Research_Briefbot', fill=TEXT_W, font=fonts['body'])
     y += 50
-    # Hashtags
-    tags = cc['tag'].split(' ')[:4]
-    d.text((40, y), ' '.join(tags), fill=MUTED, font=fonts['small'])
+    d.text((40, y), ' '.join(cc['tag'].split(' ')[:4]), fill=MUTED, font=fonts['small'])
     y += 40
-    # Date
-    pub_date = (news.get('published_at', '') or '')[:10]
+    pub_date = (news.get('published_at') or '')[:10]
     if pub_date:
-        d.text((40, y), pub_date, fill=FAINT, font=fonts['mono'])
-
-    # ===== PROGRESS BAR TRACK (will be filled by FFmpeg) =====
-    pb_y = H - 60
-    pb_h = 6
-    d.rectangle([40, pb_y, W - 40, pb_y + pb_h], fill=LINE)
+        d.text((40, y), pub_date, fill=FAINT, font=fonts['small'])
 
     img.save(out_path, 'PNG')
-    log('Frame: ' + out_path + ' (cat=' + cat + ')')
+    log(f'Frame: {out_path} (cat={cat})')
 
 
 # ============================================================
-# VIDEO ASSEMBLY (FFmpeg)
+# VIDEO ASSEMBLY — Ken Burns + progress bar + music
 # ============================================================
 
 def get_audio_duration(audio_path):
-    """Get audio duration in seconds via ffprobe."""
     try:
         r = subprocess.run(
-            ['ffprobe', '-v', 'error', '-show_format', '-show_streams',
-             '-of', 'json', audio_path],
-            capture_output=True, text=True, timeout=15
-        )
-        data = json.loads(r.stdout)
-        return float(data['format']['duration'])
-    except Exception as e:
-        log('ffprobe error: ' + str(e))
-        return 30.0  # default 30s
+            ['ffprobe', '-v', 'error', '-show_format', '-of', 'json', audio_path],
+            capture_output=True, text=True, timeout=15)
+        return float(json.loads(r.stdout)['format']['duration'])
+    except:
+        return 30.0
 
 
-def make_video(img_path, audio_path, out_path):
-    """Assemble MP4 video from PNG + MP3 using FFmpeg."""
+def make_video(img_path, audio_path, out_path, music_path, category='industry'):
+    """Assemble MP4: Ken Burns zoom + progress bar + ambient music."""
     duration = get_audio_duration(audio_path)
-    log('Audio duration: ' + str(round(duration, 2)) + 's')
+    total_duration = duration + 1.0  # 1s tail
+    log(f'Video: dur={duration:.2f}s, total={total_duration:.2f}s')
 
-    # Add 1s intro (slogan frame) + 0.5s outro
-    total_duration = duration + 1.5
+    fps = 30
+    total_frames = int(total_duration * fps)
+    cc = CATS.get(category, CATS['industry'])
+    cat_color_hex = f'0x{cc["c"][0]:02x}{cc["c"][1]:02x}{cc["c"][2]:02x}'
 
-    cmd = [
-        FFMPEG, '-y',
-        '-loop', '1', '-i', img_path,
-        '-i', audio_path,
-        '-c:v', 'libx264',
-        '-tune', 'stillimage',
-        '-preset', 'fast',
-        '-crf', '23',
-        '-c:a', 'aac', '-b:a', '192k',
-        '-pix_fmt', 'yuv420p',
-        '-vf', 'scale=1080:1920:flags=lanczos,fps=30',
-        '-t', str(total_duration),
-        '-shortest',
-        '-movflags', '+faststart',
-        out_path
-    ]
+    # Video filter: scale → Ken Burns → progress bar
+    zoom_expr = f"1+0.15*on/{total_frames}"
+    vf = (
+        f"scale=2160:3840:flags=lanczos,"
+        f"zoompan=z='{zoom_expr}':d={total_frames}:s=1080x1920:fps={fps},"
+        f"format=yuv420p,"
+        f"drawbox=x=40:y=1850:w=1000:h=8:color=black@0.5:t=fill,"
+        f"drawbox=x=40:y=1850:w='1000*t/{total_duration}':h=8:color={cat_color_hex}@0.9:t=fill"
+    )
+
+    # Audio: TTS + ambient music
+    if music_path and os.path.exists(music_path):
+        fc = (
+            f"[0:v]{vf}[v];"
+            f"[1:a]volume=1.0[voice];"
+            f"[2:a]volume={MUSIC_VOLUME},afade=t=in:st=0:d=1,"
+            f"afade=t=out:st={max(0, duration-1):.2f}:d=1[music];"
+            f"[voice][music]amix=inputs=2:duration=first[a]"
+        )
+        cmd = [FFMPEG, '-y',
+            '-loop', '1', '-i', img_path,
+            '-i', audio_path,
+            '-i', music_path,
+            '-filter_complex', fc,
+            '-map', '[v]', '-map', '[a]',
+            '-c:v', 'libx264', '-tune', 'stillimage', '-preset', 'fast', '-crf', '23',
+            '-c:a', 'aac', '-b:a', '192k', '-pix_fmt', 'yuv420p',
+            '-t', str(total_duration), '-movflags', '+faststart', out_path]
+    else:
+        cmd = [FFMPEG, '-y',
+            '-loop', '1', '-i', img_path,
+            '-i', audio_path,
+            '-vf', vf,
+            '-map', '0:v', '-map', '1:a',
+            '-c:v', 'libx264', '-tune', 'stillimage', '-preset', 'fast', '-crf', '23',
+            '-c:a', 'aac', '-b:a', '192k', '-pix_fmt', 'yuv420p',
+            '-t', str(total_duration), '-shortest', '-movflags', '+faststart', out_path]
+
     try:
-        r = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=180)
         if r.returncode == 0:
-            size = os.path.getsize(out_path)
-            log('Video: ' + out_path + ' (' + str(size) + ' bytes, ' + str(round(total_duration, 1)) + 's)')
+            log(f'Video OK: {out_path} ({os.path.getsize(out_path)} bytes, {total_duration:.1f}s)')
             return True
-        else:
-            log('FFmpeg error: ' + r.stderr[-500:])
-            return False
+        log(f'FFmpeg error: {r.stderr[-400:]}')
+        return False
     except Exception as e:
-        log('FFmpeg exception: ' + str(e))
+        log(f'FFmpeg exception: {e}')
         return False
 
 
 # ============================================================
-# YOUTUBE UPLOAD (optional)
+# YOUTUBE UPLOAD
 # ============================================================
 
 def upload_to_youtube(video_path, title, description, tags):
-    """Upload video to YouTube via Data API v3. Requires YOUTUBE_REFRESH_TOKEN env var."""
+    """Upload to YouTube via Data API v3. Returns (video_id, video_url) or (None, None)."""
     if not YOUTUBE_ENABLED:
         log('YouTube upload disabled (no YOUTUBE_REFRESH_TOKEN)')
         return None, None
@@ -483,20 +643,12 @@ def upload_to_youtube(video_path, title, description, tags):
         log('google-api-python-client not installed — skipping YouTube upload')
         return None, None
 
-    client_id = os.environ.get('YOUTUBE_CLIENT_ID')
-    client_secret = os.environ.get('YOUTUBE_CLIENT_SECRET')
-    refresh_token = os.environ.get('YOUTUBE_REFRESH_TOKEN')
-
-    if not all([client_id, client_secret, refresh_token]):
-        log('Missing YouTube OAuth env vars')
-        return None, None
-
     try:
         creds = Credentials(
             token=None,
-            refresh_token=refresh_token,
-            client_id=client_id,
-            client_secret=client_secret,
+            refresh_token=os.environ.get('YOUTUBE_REFRESH_TOKEN'),
+            client_id=os.environ.get('YOUTUBE_CLIENT_ID'),
+            client_secret=os.environ.get('YOUTUBE_CLIENT_SECRET'),
             token_uri='https://oauth2.googleapis.com/token',
             scopes=['https://www.googleapis.com/auth/youtube.upload']
         )
@@ -515,22 +667,22 @@ def upload_to_youtube(video_path, title, description, tags):
             }
         }
 
-        media = MediaFileUpload(video_path, mimetype='video/mp4', resumable=True, chunksize=8*1024*1024)
+        media = MediaFileUpload(video_path, mimetype='video/mp4',
+                                resumable=True, chunksize=8*1024*1024)
         request = yt.videos().insert(part='snippet,status', body=body, media_body=media)
 
         response = None
         while response is None:
             status, response = request.next_chunk()
             if status:
-                log('Upload progress: ' + str(int(status.progress() * 100)) + '%')
+                log(f'Upload progress: {int(status.progress() * 100)}%')
 
         video_id = response.get('id')
-        video_url = 'https://www.youtube.com/watch?v=' + video_id if video_id else None
-        log('YouTube upload OK: ' + str(video_url))
+        video_url = f'https://www.youtube.com/watch?v={video_id}' if video_id else None
+        log(f'YouTube upload OK: {video_url}')
         return video_id, video_url
-
     except Exception as e:
-        log('YouTube upload error: ' + str(e))
+        log(f'YouTube upload error: {e}')
         return None, None
 
 
@@ -540,78 +692,107 @@ def upload_to_youtube(video_path, title, description, tags):
 
 def main():
     log('=' * 60)
-    log('YouTube Shorts generator v2.0 started')
-    log('Voice: ' + TTS_VOICE + ', YouTube enabled: ' + str(YOUTUBE_ENABLED))
+    log('YouTube Shorts v3.0 started')
+    log(f'YouTube enabled: {YOUTUBE_ENABLED}, channel: {YOUTUBE_CHANNEL_HANDLE}')
 
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    # 1. Fetch fresh news
+    # 0. Cleanup old videos (older than 24h)
+    cleanup_old_videos()
+
+    # 1. Fetch + LLM filter news
     news = fetch_news()
     if not news:
-        log('No fresh news to process. Exiting.')
+        log('No suitable news. Exiting.')
         return 0
 
     nid = news.get('id', 'unknown')
-    log('News: [' + str(nid) + '] ' + news.get('title', '')[:80])
-
-    # 2. Generate branded frame
-    frame_path = os.path.join(OUTPUT_DIR, 'frame_%s.png' % nid)
-    try:
-        make_frame(news, frame_path)
-    except Exception as e:
-        log('Frame error: ' + str(e))
-        save_processed_id(nid)  # Don't retry this news
-        return 1
-
-    # 3. Generate TTS audio
-    audio_path = os.path.join(OUTPUT_DIR, 'audio_%s.mp3' % nid)
-    speech = build_speech(news)
-    log('Speech (' + str(len(speech)) + ' chars): ' + speech[:100] + '...')
-    if not make_tts(speech, audio_path):
-        save_processed_id(nid)
-        return 1
-
-    # 4. Assemble video
-    ts = datetime.now().strftime('%Y%m%d_%H%M%S')
-    video_path = os.path.join(OUTPUT_DIR, 'shorts_%s_%s.mp4' % (nid, ts))
-    if not make_video(frame_path, audio_path, video_path):
-        save_processed_id(nid)
-        return 1
-
-    # 5. Build YouTube metadata
     cat = news.get('category', 'industry')
     cc = CATS.get(cat, CATS['industry'])
-    title = cc['l'] + ': ' + news.get('title', '')[:80]
+    log(f'News: [{nid}] {news.get("title", "")[:80]} (cat={cat})')
+
+    # 2. Generate narration script via LLM (or fallback)
+    narration = generate_narration_script(news)
+
+    # 3. Generate frame (with photo if available)
+    frame_path = OUTPUT_DIR / f'frame_{nid}.png'
+    photo_path = OUTPUT_DIR / f'photo_{nid}.jpg'
+    if news.get('image_url'):
+        if not download_image(news['image_url'], str(photo_path)):
+            photo_path = None
+    else:
+        photo_path = None
+    try:
+        make_frame(news, photo_path, str(frame_path))
+    except Exception as e:
+        log(f'Frame error: {e}')
+        save_processed_id(nid)
+        return 1
+
+    # 4. Generate TTS with category-specific prosody
+    audio_path = OUTPUT_DIR / f'audio_{nid}.mp3'
+    if not make_tts(narration, str(audio_path), category=cat):
+        save_processed_id(nid)
+        return 1
+
+    # 5. Select music track
+    music_file = MUSIC_MAP.get(cat, 'tech_amagi.m4a')
+    music_path = MUSIC_DIR / music_file
+    if not music_path.exists():
+        log(f'Music file not found: {music_path}')
+        music_path = None
+
+    # 6. Assemble video
+    ts = datetime.now().strftime('%Y%m%d_%H%M%S')
+    video_path = OUTPUT_DIR / f'shorts_{nid}_{ts}.mp4'
+    if not make_video(str(frame_path), str(audio_path), str(video_path),
+                      str(music_path) if music_path else None, category=cat):
+        save_processed_id(nid)
+        return 1
+
+    # 7. YouTube metadata
+    title = f'{cc["l"]}: {news.get("title", "")[:70]}'
+    music_attribution = ''
+    if music_path:
+        track_name = {
+            'tech_amagi.m4a': '"Decisions"',
+            'calm_althea.m4a': '"Cool Vibes"',
+            'mystery_scio.m4a': '"Investigations"',
+        }.get(music_file, '')
+        if track_name:
+            music_attribution = f'\n\nMusic: {track_name} by Kevin MacLeod (incompetech.com)\nLicensed under CC BY 4.0: https://creativecommons.org/licenses/by/4.0/'
+
     description = (
-        news.get('summary', '') + '\n\n'
-        '🔗 Источник: ' + news.get('url', '') + '\n'
-        '📰 Все новости: ' + NEWS_URL + '\n'
-        '🤖 Telegram-бот: ' + BOT_URL + '\n'
-        '🏢 Сайт: ' + SITE_URL + '\n\n'
-        '#' + cc['l'] + ' #DeepTech #ALTHEA #AISafety #Research'
+        f'{news.get("summary", "")}\n\n'
+        f'🔗 Источник: {news.get("url", "")}\n'
+        f'📰 Все новости: {NEWS_URL}\n'
+        f'🤖 Telegram-бот: {BOT_URL}\n'
+        f'🏢 Сайт: {SITE_URL}\n'
+        f'📺 YouTube канал: {YOUTUBE_CHANNEL_URL}{music_attribution}'
     )
     tags = cc['tag'].split(' ') + ['ALTHEA', 'DeepTech', 'Research', 'АЛТЕЯ']
 
-    # 6. Upload to YouTube (optional)
+    # 8. Upload to YouTube
     yt_id, yt_url = None, None
     if YOUTUBE_ENABLED:
-        yt_id, yt_url = upload_to_youtube(video_path, title, description, tags)
+        yt_id, yt_url = upload_to_youtube(str(video_path), title, description, tags)
 
-    # 7. Save state (mark news as processed)
+    # 9. Save state
     save_processed_id(nid)
 
-    # 8. Cleanup temp files (keep final video)
-    for tmp in [frame_path, audio_path]:
+    # 10. Cleanup temp files
+    for tmp in [frame_path, audio_path, photo_path]:
         try:
-            os.remove(tmp)
-        except Exception:
+            if tmp and tmp.exists():
+                tmp.unlink()
+        except:
             pass
 
     log('=' * 60)
-    log('DONE: ' + video_path)
+    log(f'DONE: {video_path}')
     if yt_url:
-        log('YouTube: ' + yt_url)
-    log('Title: ' + title)
+        log(f'YouTube: {yt_url}')
+    log(f'Title: {title}')
     return 0
 
 

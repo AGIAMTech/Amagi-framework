@@ -1,9 +1,10 @@
-# Output directory (videos and temp files)
+# Output directory (videos and temp files — never committed, only on YouTube)
 output/
 *.mp4
 *.mp3
 *.png
 !assets/*.png
+!assets/music/*.m4a
 
 # State file (processed news IDs)
 .processed_ids.json
