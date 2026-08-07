@@ -217,7 +217,7 @@ def fetch_news_raw(limit=20):
 
 def fetch_news():
     """Fetch news, run LLM filter, return best item or None."""
-    news_list = fetch_news_raw(limit=20)
+    news_list = fetch_news_raw(limit=10)  # 10 instead of 20 — faster LLM, fits context
     if not news_list:
         log('No news fetched')
         return None
@@ -230,11 +230,11 @@ def fetch_news():
 
     log(f'Got {len(news_list)} news, {len(fresh)} fresh')
 
-    samba_key = os.environ.get('SAMBA_KEY', '')
+    samba_key = os.environ.get('OPENROUTER_KEY', '')
     if samba_key:
         try:
             from llm_filter import filter_best_news
-            log('Running LLM filter via SambaNova...')
+            log('Running LLM filter via OpenRouter...')
             best = filter_best_news(fresh, min_relevance=5, min_appeal=5)
             if best:
                 log(f'LLM selected: [{best.get("id")}] {best.get("title", "")[:80]}')
@@ -249,7 +249,7 @@ def fetch_news():
             log('Falling back to first fresh news')
             return fresh[0]
 
-    log('No SAMBA_KEY — using first fresh news')
+    log('No OPENROUTER_KEY — using first fresh news')
     return fresh[0]
 
 
@@ -259,69 +259,24 @@ def fetch_news():
 
 def generate_narration_script(news):
     """
-    Use SambaNova LLM to write a natural narration script from news.
+    Use LLM to write a natural narration script from news.
     Returns Russian text optimized for TTS (~30-45 sec when read).
     """
-    samba_key = os.environ.get('SAMBA_KEY', '')
-    if not samba_key:
+    openrouter_key = os.environ.get('OPENROUTER_KEY', '')
+    if not openrouter_key:
         # Fallback: simple concatenation
         return _fallback_narration(news)
 
-    from llm_filter import call_sambanova
-
-    system_prompt = """Ты — редактор YouTube Shorts канала ALTHEA Research Brief.
-Твоя задача: написать narration script (текст для озвучки) длиной 30-45 секунд.
-
-ПРАВИЛА:
-1. Русский язык, литературный стиль
-2. Без английских слов (кроме устоявшихся: AI, CRISPR, deepfake, LLM)
-3. Без ссылок, без "Источник:", без "Очки:"
-4. Без брендов-названий компаний в начале (звучит как реклама)
-5. Начни с цепляющего факта или вопроса
-6. Середина: 1-2 ключевых технических деталей
-7. Конец: значимость для индустрии + фраза "Подробнее на althea-tech.ru"
-8. Объём: 400-500 символов (это ~30-40 сек речи)
-9. Пунктуация для естественных пауз: точки, запятые, тире
-
-СТРУКТУРА:
-[Цепляющий факт 1-2 предложения]. [Техническая деталь]. [Значимость]. Подробнее на althea-tech.ru.
-
-ВЕРНИ ТОЛЬКО ТЕКСТ narration (без пояснений, без markdown)."""
-
-    title = (news.get('title') or '')[:200]
-    summary = (news.get('summary') or '')[:500]
-    source = news.get('source', '')
-
-    user_prompt = f"""Напиши narration для Shorts:
-
-Заголовок: {title}
-Краткое содержание: {summary}
-Источник: {source}
-
-Только текст narration:"""
-
-    response = call_sambanova(system_prompt, user_prompt, max_tokens=400, temperature=0.4)
-    if not response:
-        log('LLM narration: no response, using fallback')
+    try:
+        from llm_filter import generate_narration
+        narration = generate_narration(news)
+        if narration:
+            return narration
+        log('LLM narration: empty response, using fallback')
         return _fallback_narration(news)
-
-    # Clean up: remove markdown, quotes
-    text = response.strip()
-    if text.startswith('```'):
-        lines = text.split('\n')
-        text = '\n'.join(lines[1:-1] if lines[-1].startswith('```') else lines[1:])
-    text = text.strip('«»""\'')
-
-    # Ensure ends with site mention
-    if 'althea-tech.ru' not in text:
-        text += ' Подробнее на althea-tech.ru.'
-
-    # Cap at 500 chars
-    if len(text) > 500:
-        text = text[:497] + '...'
-
-    log(f'LLM narration ({len(text)} chars): {text[:100]}...')
-    return text
+    except Exception as e:
+        log(f'LLM narration error: {e}, using fallback')
+        return _fallback_narration(news)
 
 
 def _fallback_narration(news):
@@ -567,6 +522,16 @@ def get_audio_duration(audio_path):
 def make_video(img_path, audio_path, out_path, music_path, category='industry'):
     """Assemble MP4: Ken Burns zoom + progress bar + ambient music."""
     duration = get_audio_duration(audio_path)
+    # YouTube Shorts limit: 60s. We target max 50s to be safe.
+    if duration > 50:
+        log(f'Audio too long ({duration:.1f}s), truncating to 50s for Shorts limit')
+        # Truncate audio using ffmpeg
+        truncated_audio = str(audio_path) + '.trunc.mp3'
+        subprocess.run([FFMPEG, '-y', '-i', audio_path, '-t', '50',
+                        '-c', 'copy', truncated_audio],
+                       capture_output=True, timeout=30)
+        audio_path = truncated_audio
+        duration = 50
     total_duration = duration + 1.0  # 1s tail
     log(f'Video: dur={duration:.2f}s, total={total_duration:.2f}s')
 

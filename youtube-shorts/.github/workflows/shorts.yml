@@ -45,7 +45,7 @@ jobs:
           YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
           YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
           ALTHEA_API_URL: ${{ secrets.ALTHEA_API_URL }}
-          SAMBA_KEY: ${{ secrets.SAMBA_KEY }}
+          OPENROUTER_KEY: ${{ secrets.OPENROUTER_KEY }}
           TTS_VOICE: ru-RU-DmitryNeural
         run: |
           python youtube_shorts.py
