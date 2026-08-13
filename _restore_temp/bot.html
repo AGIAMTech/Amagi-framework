@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+  <meta name="google-site-verification" content="C9md1xJRK3-1YIUtjpKgLX-uK6NXKFoj6Rc0kefJXvo" data-althea-google-verify="1" /><script>
+(function(){try{var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();
+</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-ru="ALTHEA Research Brief â Telegram-Ð±Ð¾Ñ â ÐÐÐ Â«ÐÐÐ¢ÐÐ¯Â»" data-en="ALTHEA Research Brief â Telegram Bot â Althea LLC">ALTHEA Research Brief â Telegram-Ð±Ð¾Ñ â ÐÐÐ Â«ÐÐÐ¢ÐÐ¯Â»</title>
+<meta name="description" content="ALTHEA Research Brief â Telegram-Ð±Ð¾Ñ: Ð´Ð°Ð¹Ð´Ð¶ÐµÑÑ deep-tech Ð½Ð¾Ð²Ð¾ÑÑÐµÐ¹ 6 ÑÐ°Ð· Ð² Ð´ÐµÐ½Ñ (ÐºÐ°Ð¶Ð´ÑÐµ 4 ÑÐ°ÑÐ°). AI Safety, CRISPR, deepfake, ÐºÐ¸Ð±ÐµÑÐ±ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ÑÑÑ. ÐÐ¾Ð±Ð°Ð²ÑÑÐµ Ð² ÑÐ²Ð¾Ñ Ð³ÑÑÐ¿Ð¿Ñ.">
+<meta property="og:title" content="ALTHEA Research Brief â Telegram Bot">
+<meta property="og:description" content="Deep-tech brief 6 times a day (every 4 hours): AI safety, CRISPR, deepfake, regulations. Add to your Telegram group.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://althea-tech.ru/bot.html">
+<meta property="og:site_name" content="Althea Tech">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ALTHEA Research Brief â Telegram Bot">
+<meta name="twitter:description" content="Daily curated deep-tech brief. Add to your group.">
+<link rel="canonical" href="https://althea-tech.ru/bot.html">
+<meta name="theme-color" content="#0b1424">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0b1424">
+<!-- Top.Mail.Ru counter -->
+<script type="text/javascript">
+var _tmr = window._tmr || (window._tmr = []);
+_tmr.push({id: "3783624", type: "pageView", start: (new Date()).getTime()});
+(function (d, w, id) {
+  if (d.getElementById(id)) return;
+  var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+  ts.src = "https://top-fwz1.mail.ru/js/code.js";
+  var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+  if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+})(document, window, "tmr-code");
+</script>
+<noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3783624;js=na" style="position:absolute;left:-9999px;" alt="Top.Mail.Ru" /></div></noscript>
+<!-- /Top.Mail.Ru counter -->
+<style>
+
+:root{
+  --disp:'Unbounded',system-ui,sans-serif;--body:'Golos Text',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;
+  --maxw:1200px;
+  --amagi:#f5a623;--althea:#2dd4a7;--scio:#4cc3e8;--ctc:#c084fc;
+  /* === Typography scale (rem-based, adaptive) === */
+  --fs-display:clamp(2.25rem,5vw,3rem);
+  --fs-h1:clamp(1.75rem,4vw,2.5rem);
+  --fs-h2:clamp(1.5rem,3vw,2rem);
+  --fs-h3:clamp(1.125rem,2vw,1.375rem);
+  --fs-h4:1rem;
+  --fs-lead:clamp(1rem,1.5vw,1.125rem);
+  --fs-body:1rem;
+  --fs-body-sm:0.875rem;
+  --fs-meta:0.8125rem;
+  --fs-mono:0.8125rem;
+  --fs-mono-sm:0.6875rem;
+  --fs-mono-xs:0.625rem;
+  --lh-tight:1.1;--lh-snug:1.25;--lh-normal:1.55;--lh-relaxed:1.7;
+  --ls-tight:-0.02em;--ls-normal:0;--ls-wide:0.08em;--ls-xwide:0.18em;
+}
+:root[data-theme="dark"]{
+  --bg:#0b1424;--bg2:#0d1830;--s1:#101c33;--s2:#15233f;--s3:#1a2b4c;
+  --line:rgba(130,160,210,.15);--line2:rgba(130,160,210,.34);
+  --text:#e9eef8;--muted:#a8b8d4;--faint:#8a9bb5;
+  --header-bg:rgba(11,20,36,.92);
+  --glow-1:rgba(245,166,35,.10);
+  --glow-2:rgba(76,195,232,.09);
+  --glow-3:rgba(45,212,167,.07);
+  --inv-body-bg:rgba(0,0,0,.18);
+  --code-bg:#0d1830;--code-fg:#c7d4ea;
+  --selection-fg:#1a1206;
+}
+:root[data-theme="light"]{
+  --bg:#f5f7fb;--bg2:#eef1f6;--s1:#ffffff;--s2:#f0f3f8;--s3:#e6ebf2;
+  --line:rgba(30,60,100,.12);--line2:rgba(30,60,100,.22);
+  --text:#0d1830;--muted:#4a5870;--faint:#6c7a92;
+  --header-bg:rgba(245,247,251,.92);
+  --glow-1:rgba(245,166,35,.06);
+  --glow-2:rgba(76,195,232,.05);
+  --glow-3:rgba(45,212,167,.04);
+  --inv-body-bg:rgba(30,60,100,.05);
+  --code-bg:#1a2438;--code-fg:#e0e6f0;
+  --selection-fg:#1a1206;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%;font-size:16px}
+@media(min-width:768px){html{font-size:17px}}
+@media(min-width:1024px){html{font-size:18px}}
+body{font-family:var(--body);background:var(--bg);color:var(--text);font-size:var(--fs-body);line-height:var(--lh-normal);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;text-rendering:optimizeLegibility}
+button,a{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+input,textarea,button,select{font:inherit}
+::selection{background:var(--amagi);color:#1a1206}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
+.bg-grid{position:fixed;inset:0;z-index:-3;pointer-events:none;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:56px 56px;opacity:.4;
+  -webkit-mask-image:radial-gradient(1300px 800px at 60% -5%,#000,transparent 78%);mask-image:radial-gradient(1300px 800px at 60% -5%,#000,transparent 78%)}
+.bg-glow{position:fixed;inset:0;z-index:-4;pointer-events:none;background:
+  radial-gradient(880px 620px at 86% -8%,var(--glow-1),transparent 62%),
+  radial-gradient(760px 560px at 2% 24%,var(--glow-2),transparent 60%),
+  radial-gradient(820px 640px at 94% 66%,var(--glow-3),transparent 60%),
+  linear-gradient(180deg,var(--bg),var(--bg2))}
+.noise{position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:.04;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.cookies{position:fixed;left:0;right:0;bottom:0;z-index:100;background:var(--s2);border-top:1px solid var(--line2);padding:16px 0;display:none}
+.cookies.show{display:block}
+.cookies .wrap{display:flex;align-items:center;gap:16px}
+.cookies p{font-size:13px;color:var(--muted);flex:1;min-width:260px}
+.cookies p a{color:var(--scio);text-decoration:underline}
+.cookies .btns{display:flex;gap:10px}
+header{position:sticky;top:0;z-index:60;background:var(--header-bg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px}
+.brand{display:flex;align-items:center;gap:11px;flex-shrink:0;white-space:nowrap}
+.brand .mark{width:36px;height:36px;border:1.5px solid var(--amagi);border-radius:8px;display:grid;place-items:center;font-family:var(--disp);font-weight:900;font-size:15px;color:var(--amagi);background:rgba(245,166,35,.12);flex-shrink:0}
+.brand b{font-family:var(--disp);font-weight:900;font-size:16px;letter-spacing:.04em;display:block;line-height:1.1}
+.brand span{font-family:var(--mono);font-size:8.5px;letter-spacing:.26em;color:var(--scio);text-transform:uppercase}
+.menu{display:flex;gap:24px;align-items:center;flex-shrink:1;min-width:0}
+.menu > a,.menu-item-dropdown > a{font-size:14px;color:var(--muted);font-weight:500;position:relative;transition:color .2s;padding:6px 0;letter-spacing:.01em;white-space:nowrap}
+.menu-item-dropdown > a{display:inline-flex;align-items:center;gap:4px}
+.menu > a::after,.menu-item-dropdown > a::after{content:"";position:absolute;left:50%;bottom:0;height:2px;width:0;background:var(--scio);transition:width .25s ease,left .25s ease}
+.menu > a:hover,.menu-item-dropdown > a:hover{color:var(--text)}
+.menu > a:hover::after,.menu-item-dropdown > a:hover::after{width:100%;left:0}
+.menu > a.active{color:var(--scio)}
+.menu > a.active::after{width:100%;left:0}
+.menu-item-dropdown > a .dd-arrow{font-size:9px;margin-left:2px;color:var(--faint);transition:transform .2s}
+.menu-item-dropdown:hover > a .dd-arrow{transform:rotate(180deg);color:var(--scio)}
+.menu-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(-8px);min-width:220px;background:var(--s1);border:1px solid var(--line2);border-radius:10px;padding:6px;opacity:0;visibility:hidden;transition:opacity .2s,transform .2s;z-index:100;box-shadow:0 16px 40px -12px rgba(0,0,0,.4)}
+.menu-item-dropdown:hover .menu-dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.menu-dropdown a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:6px;font-size:13px;color:var(--text);position:relative}
+.menu-dropdown a:hover{background:var(--s2);color:var(--amagi)}
+.menu-dropdown a .dd-code{font-family:var(--mono);font-size:10px;color:var(--faint);letter-spacing:.06em}
+.nav-cta{display:flex;align-items:center;gap:10px;flex-shrink:0;white-space:nowrap}
+.nav-cta{display:flex;align-items:center;gap:10px;flex-shrink:0;white-space:nowrap}
+.lang{font-family:var(--mono);font-size:11.5px;border:1px solid var(--line2);border-radius:8px;overflow:hidden;display:flex}
+.lang button{background:transparent;border:0;color:var(--faint);padding:7px 10px;cursor:pointer;font-family:var(--mono);font-size:11.5px;transition:.2s}
+.lang button.on{background:rgba(76,195,232,.14);color:var(--scio)}.theme-toggle{position:relative;width:50px;height:26px;border:1px solid var(--line2);border-radius:13px;background:var(--s2);cursor:pointer;flex-shrink:0;transition:background .25s,border-color .25s;padding:0}
+.theme-toggle .knob{position:absolute;top:1px;left:1px;width:22px;height:22px;border-radius:50%;background:var(--text);transition:transform .3s cubic-bezier(.4,0,.2,1),background .25s;display:grid;place-items:center;font-size:10px;line-height:1;z-index:2}
+:root[data-theme="light"] .theme-toggle .knob{transform:translateX(24px);background:var(--amagi);color:#1a1206}
+.theme-toggle .ico{position:absolute;top:50%;transform:translateY(-50%);font-size:9px;pointer-events:none;opacity:.6;transition:opacity .25s}
+.theme-toggle .ico-moon{left:6px;color:var(--scio)}
+.theme-toggle .ico-sun{right:6px;color:var(--amagi)}
+:root[data-theme="dark"] .theme-toggle .ico-sun{opacity:.35}
+:root[data-theme="light"] .theme-toggle .ico-moon{opacity:.35}
+.theme-toggle:hover{border-color:var(--line2)}
+.theme-toggle:active .knob{transform:scale(.92)}
+:root[data-theme="light"] .theme-toggle:active .knob{transform:translateX(24px) scale(.92)}
+@media(max-width:760px){.theme-toggle{width:46px;height:24px}.theme-toggle .knob{width:20px;height:20px}:root[data-theme="light"] .theme-toggle .knob{transform:translateX(22px)}}
+
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:13.5px;padding:10px 18px;border-radius:9px;cursor:pointer;transition:.22s;border:1px solid transparent;white-space:nowrap}
+.btn-a{background:var(--amagi);color:#1a1206;box-shadow:0 8px 26px -10px var(--amagi)}
+.btn-a:hover{transform:translateY(-2px);box-shadow:0 14px 36px -10px var(--amagi)}
+.btn-g{background:transparent;border-color:var(--line2);color:var(--text)}
+.btn-g:hover{border-color:var(--scio);color:var(--scio)}
+.burger{display:none;width:40px;height:40px;border:1px solid var(--line2);border-radius:9px;background:var(--s1);cursor:pointer;flex-direction:column;gap:5px;align-items:center;justify-content:center}
+.burger i{width:17px;height:2px;background:var(--text);display:block}
+.open-sec{position:relative;padding:64px 0 50px;overflow:hidden}
+.scan{position:absolute;left:0;right:0;height:2px;top:0;background:linear-gradient(90deg,transparent,var(--amagi),transparent);opacity:.4;animation:scan 9s linear infinite}
+@keyframes scan{0%{transform:translateY(0)}100%{transform:translateY(600px)}}
+.open-grid{display:flex;flex-direction:column;align-items:center;text-align:center;gap:0}
+.eyebrow{font-family:var(--mono);font-size:var(--fs-mono-sm);letter-spacing:.14em;color:var(--scio);text-transform:uppercase;display:inline-flex;align-items:center;gap:10px;margin-bottom:22px;text-align:center}
+.eyebrow::before{content:"";width:30px;height:1px;background:var(--scio)}
+h1{font-family:var(--disp);font-weight:900;font-size:var(--fs-display);line-height:var(--lh-tight);letter-spacing:var(--ls-tight)}
+h1 em{font-style:normal;color:var(--amagi)}
+.lead{color:var(--muted);font-size:var(--fs-lead);max-width:60ch;margin:20px 0 26px;text-align:center}
+.lead b{color:var(--text)}
+.open-cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.readout{display:flex;flex-wrap:wrap;gap:0;margin-top:36px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--s1)}
+.readout div{flex:1;min-width:120px;padding:15px 17px;border-right:1px solid var(--line);transition:.2s}
+.readout div:last-child{border-right:0}
+.readout div:hover{background:var(--s2)}
+.readout b{font-family:var(--disp);font-weight:700;font-size:clamp(16px,1.9vw,22px);display:block}
+.readout b .u{color:var(--scio);font-size:.68em}
+.readout span{font-family:var(--mono);font-size:8.5px;letter-spacing:.07em;color:var(--faint);text-transform:uppercase;display:block;margin-top:5px}
+.board{background:var(--s1);border:1px solid rgba(245,166,35,.35);border-radius:14px;overflow:hidden;box-shadow:0 30px 70px -30px rgba(0,0,0,.6)}
+.board-top{display:flex;align-items:center;gap:8px;padding:12px 17px;background:var(--s2);border-bottom:1px solid var(--line)}
+.dot{width:10px;height:10px;border-radius:50%}
+.board-top .t{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted);margin-left:5px}
+.board-top .live{margin-left:auto;font-family:var(--mono);font-size:9.5px;color:var(--althea);display:flex;align-items:center;gap:6px}
+.pulse{width:7px;height:7px;border-radius:50%;background:var(--althea);animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(45,212,167,.5)}50%{opacity:.5;box-shadow:0 0 0 6px rgba(45,212,167,0)}}
+.inv{list-style:none}
+.inv li{display:flex;align-items:center;gap:13px;padding:11px 17px;border-bottom:1px solid var(--line);transition:.2s}
+.inv li:last-child{border-bottom:0}
+.inv li:hover{background:rgba(245,166,35,.08);transform:translateX(4px)}
+.inv .id{font-family:var(--mono);font-size:10.5px;color:var(--amagi);flex-shrink:0;width:56px}
+.inv .nm{font-size:12.5px;font-weight:500;flex:1}
+.inv .nm small{display:block;font-family:var(--mono);font-size:9px;color:var(--faint);font-weight:400;margin-top:2px}
+.inv .st{font-family:var(--mono);font-size:8.5px;color:var(--althea);border:1px solid rgba(45,212,167,.4);background:rgba(45,212,167,.12);padding:3px 7px;border-radius:6px;flex-shrink:0}
+.board-foot{padding:11px 17px;background:var(--s2);border-top:1px solid var(--line);font-family:var(--mono);font-size:9.5px;color:var(--faint);display:flex;justify-content:center;gap:18px;flex-wrap:wrap;align-items:center}
+.board-foot .ok{color:var(--althea)}
+section{padding:74px 0;position:relative}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:10px;flex-wrap:wrap}
+.sec-num{font-family:var(--mono);font-size:12px;color:var(--acc,var(--amagi));letter-spacing:.12em}
+h2{font-family:var(--disp);font-weight:700;font-size:var(--fs-h2);line-height:var(--lh-snug);letter-spacing:var(--ls-tight)}
+.sec-sub{color:var(--muted);max-width:72ch;margin-bottom:34px;font-size:var(--fs-body-sm);line-height:var(--lh-relaxed)}
+.formula{border-top:1px solid var(--line2)}
+.frow{display:grid;grid-template-columns:1.1fr 1.4fr auto 1.4fr;gap:18px;align-items:center;padding:20px 12px;border-bottom:1px solid var(--line);transition:.22s}
+.frow:hover{background:var(--s1);padding-left:22px}
+.frow .dir{display:flex;align-items:center;gap:12px}
+.frow .dir .chip{width:10px;height:34px;border-radius:3px;background:var(--acc);flex-shrink:0}
+.frow .dir b{font-family:var(--disp);font-weight:700;font-size:14.5px;display:block}
+.frow .dir span{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc)}
+.frow .prob{color:var(--faint);font-size:13px}
+.frow .arr{font-family:var(--mono);font-size:20px;color:var(--acc)}
+.frow .goal{color:var(--text);font-size:13.5px;font-weight:500}
+.frow .goal b{color:var(--acc)}
+.mission{margin-top:28px;background:linear-gradient(115deg,var(--s1),transparent 75%);border-left:3px solid var(--amagi);border-radius:0 14px 14px 0;padding:24px 28px;position:relative;overflow:hidden}
+.mission::before{content:"";position:absolute;inset:0;background:radial-gradient(500px 260px at 96% -8%,rgba(245,166,35,.10),transparent 62%);pointer-events:none}
+.mission .lbl{color:var(--amagi)}
+.mission p{color:var(--text);font-size:15px;max-width:82ch;position:relative}
+.mission p b{color:var(--amagi)}
+.lbl{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;margin-bottom:8px}
+.lbl::before{content:"";width:22px;height:1px;background:currentColor}
+.dom{border-left:3px solid var(--acc);background:linear-gradient(115deg,var(--s1),transparent 72%);border-radius:0 16px 16px 0;padding:30px 30px 26px;margin-bottom:24px;position:relative;overflow:hidden}
+.dom::before{content:"";position:absolute;inset:0;background:radial-gradient(560px 300px at 96% -8%,color-mix(in srgb,var(--acc) 12%,transparent),transparent 62%);pointer-events:none}
+.dom h3{font-family:var(--disp);font-weight:700;font-size:20px;margin-bottom:6px;position:relative}
+.dom .dtag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);display:block;margin-bottom:14px;position:relative}
+.statusline{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;color:var(--acc);border:1px solid color-mix(in srgb,var(--acc) 45%,transparent);background:color-mix(in srgb,var(--acc) 10%,transparent);padding:5px 11px;border-radius:8px;margin-bottom:14px;position:relative}
+.prob,.sol,.how{margin-bottom:16px;position:relative}
+.prob .lbl{color:var(--scio)}.sol .lbl{color:var(--althea)}.how .lbl{color:var(--scio)}
+.prob p,.sol p,.how>p{color:var(--muted);font-size:13.5px;max-width:84ch}
+.prob p b,.sol p b{color:var(--text)}
+.flow{display:flex;flex-wrap:wrap;margin-top:12px;position:relative}
+.fstep{flex:1;min-width:165px;background:var(--s1);border:1px solid var(--line);border-top:3px solid var(--acc);border-radius:10px;padding:14px 14px 12px;position:relative;transition:.22s}
+.fstep:hover{transform:translateY(-4px);border-color:var(--line2)}
+.fstep+.fstep{margin-left:26px}
+.fstep+.fstep::before{content:"â";position:absolute;left:-22px;top:50%;transform:translateY(-50%);color:var(--acc);font-family:var(--mono)}
+.fstep .fn{font-family:var(--mono);font-size:9px;color:var(--acc);display:block;margin-bottom:5px}
+.fstep b{font-size:12.5px;display:block;margin-bottom:4px}
+.fstep span{font-size:11px;color:var(--muted);display:block}
+.chan{display:grid;gap:9px;margin-top:12px;position:relative}
+.chan-row{display:flex;gap:15px;align-items:flex-start;background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:10px;padding:12px 15px;transition:.22s}
+.chan-row:hover{transform:translateX(5px);border-color:var(--line2)}
+.chan-row .ci{font-family:var(--mono);font-size:10px;color:var(--acc);width:80px;flex-shrink:0;padding-top:2px}
+.chan-row b{font-size:12.5px;display:block;margin-bottom:2px}
+.chan-row span{font-size:11px;color:var(--muted)}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;position:relative}
+.fact{font-family:var(--mono);font-size:10px;border:1px solid var(--line2);background:var(--s1);padding:6px 11px;border-radius:8px;color:var(--muted);transition:.2s}
+.fact:hover{border-color:var(--acc);color:var(--acc)}
+.fact b{color:var(--text)}
+.plinks{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;position:relative}
+.plnk{font-family:var(--mono);font-size:10px;color:var(--text);border:1px solid var(--line2);padding:7px 12px;border-radius:9px;transition:.2s;display:inline-flex;align-items:center;gap:7px}
+.plnk:hover{border-color:var(--acc);color:var(--acc);transform:translateY(-2px)}
+.plnk .ar{color:var(--acc)}
+.dcta{margin-top:16px;position:relative}
+.dcta .btn{border-color:color-mix(in srgb,var(--acc) 50%,transparent);color:var(--acc);background:color-mix(in srgb,var(--acc) 10%,transparent)}
+.dcta .btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px -12px var(--acc)}
+.sci{border-left:2px solid var(--line2);margin-left:8px;padding-left:32px;display:grid;gap:22px;position:relative}
+.sci-item{position:relative;background:var(--s1);border:1px solid var(--line);border-radius:14px;padding:20px 22px;transition:.25s}
+.sci-item:hover{border-color:var(--line2);transform:translateX(6px)}
+.sci-item::before{content:"";position:absolute;left:-41px;top:26px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2.5px solid var(--scio)}
+.sci-item.pub::before{border-color:var(--althea);background:var(--althea)}
+.sci-item.rev::before{border-color:var(--amagi)}
+.sci-item .st{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;display:inline-block;padding:3px 9px;border-radius:6px;margin-bottom:10px}
+.st.pub{color:var(--althea);background:rgba(45,212,167,.12);border:1px solid rgba(45,212,167,.4)}
+.st.rev{color:var(--amagi);background:rgba(245,166,35,.12);border:1px solid rgba(245,166,35,.4)}
+.st.pre{color:var(--scio);background:rgba(76,195,232,.12);border:1px solid rgba(76,195,232,.4)}
+.sci-item h3{font-family:var(--disp);font-weight:700;font-size:15px;margin-bottom:4px}
+.sci-item .venue{font-family:var(--mono);font-size:10px;color:var(--faint);margin-bottom:12px}
+.sci-item .what,.sci-item .why{margin-bottom:10px}
+.sci-item .what .lbl{color:var(--scio)}
+.sci-item .why .lbl{color:var(--althea)}
+.sci-item .what p,.sci-item .why p{color:var(--muted);font-size:12.5px}
+.sci-item .what p b,.sci-item .why p b{color:var(--text)}
+.sci-item .doi{font-family:var(--mono);font-size:10px;color:var(--scio);display:inline-block;margin-top:6px}
+.sci-item .doi:hover{text-decoration:underline}
+.copilot-wrap{background:linear-gradient(180deg,var(--s1) 0%,var(--s2) 100%);border:1px solid var(--line2);border-radius:18px;padding:32px 36px;margin-top:14px;position:relative;overflow:hidden}
+.copilot-wrap::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--amagi) 0%,var(--althea) 100%)}
+.copilot-head{display:flex;align-items:center;gap:14px;margin-bottom:18px;flex-wrap:wrap}
+.copilot-tag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--amagi);background:rgba(245,166,35,.12);border:1px solid rgba(245,166,35,.4);padding:4px 10px;border-radius:6px}
+.copilot-bridge{font-family:var(--mono);font-size:10px;color:var(--faint);letter-spacing:.05em}
+.copilot-bridge b{color:var(--althea)}
+.copilot-bridge .sep{color:var(--amagi);margin:0 6px}
+.copilot-modules{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:22px}
+.cmod{background:var(--bg2);border:1px solid var(--line);border-top:3px solid var(--althea);border-radius:10px;padding:16px 16px 14px;transition:.22s}
+.cmod:hover{transform:translateY(-3px);border-color:var(--line2)}
+.cmod .cm-num{font-family:var(--mono);font-size:9px;color:var(--althea);letter-spacing:.08em;display:block;margin-bottom:6px}
+.cmod .cm-name{font-family:var(--disp);font-weight:700;font-size:13px;margin-bottom:6px}
+.cmod .cm-name .en{font-family:var(--mono);font-size:10px;color:var(--faint);font-weight:400;margin-left:4px}
+.cmod .cm-desc{font-size:11.5px;color:var(--muted);line-height:1.55}
+.copilot-limits{background:rgba(245,166,35,.06);border:1px solid rgba(245,166,35,.32);border-left:4px solid var(--amagi);border-radius:0 12px 12px 0;padding:18px 22px;margin-top:6px}
+.copilot-limits .ll{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--amagi);display:block;margin-bottom:8px}
+.copilot-limits .lp{font-size:13px;color:var(--text);line-height:1.6}
+.copilot-limits .lp b{color:var(--amagi)}
+.copilot-limits .ttp{display:inline-flex;gap:6px;align-items:center;margin-top:10px;font-family:var(--mono);font-size:10px;color:var(--faint);background:rgba(0,0,0,.25);padding:5px 10px;border-radius:6px;border:1px solid var(--line)}
+.copilot-limits .ttp b{color:var(--amagi)}
+.copilot-limits .ttp .arr{color:var(--amagi);margin:0 2px}
+.copilot-status{display:flex;align-items:center;gap:14px;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:12px 18px;margin-bottom:18px;flex-wrap:wrap}
+.copilot-status .sk{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.copilot-status .sv{font-family:var(--mono);font-size:11px;color:var(--text);line-height:1.4}
+.copilot-status .sv b{color:var(--althea)}
+.copilot-status .str{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--althea);background:rgba(45,212,167,.10);border:1px solid rgba(45,212,167,.32);padding:4px 10px;border-radius:6px;white-space:nowrap}
+.copilot-verify{background:linear-gradient(135deg,rgba(45,212,167,.05) 0%,rgba(245,166,35,.05) 100%);border:1px solid var(--line2);border-radius:12px;padding:18px 22px;margin-top:14px;position:relative}
+.copilot-verify::before{content:"";position:absolute;left:0;top:18px;bottom:18px;width:3px;background:linear-gradient(180deg,var(--althea) 0%,var(--amagi) 100%);border-radius:0 2px 2px 0}
+.copilot-verify .vl{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);display:block;margin-bottom:8px;padding-left:8px}
+.copilot-verify .vp{font-size:13px;color:var(--muted);line-height:1.6;padding-left:8px}
+.copilot-verify .vp b{color:var(--text)}
+.arch-note{border:1px solid color-mix(in srgb,var(--amagi) 40%,transparent);border-left:3px solid var(--amagi);background:color-mix(in srgb,var(--amagi) 7%,transparent);border-radius:0 10px 10px 0;padding:16px 18px;margin:0 0 18px}
+.arch-note .lbl{color:var(--amagi);font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;margin-bottom:9px}
+.arch-note .lbl::before{content:"";width:22px;height:1px;background:var(--amagi)}
+.arch-note p{color:var(--muted);font-size:13.5px}
+.arch-note b{color:var(--text)}
+.impl-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.impl-chip{font-family:var(--mono);font-size:10.5px;color:var(--amagi);border:1px solid color-mix(in srgb,var(--amagi) 40%,transparent);background:color-mix(in srgb,var(--amagi) 8%,transparent);padding:5px 10px;border-radius:7px}
+.arch-note .impl-note{font-size:12px;margin-top:10px;color:var(--faint)}
+.domains-note{margin-top:14px;padding-top:14px;border-top:1px solid color-mix(in srgb,var(--amagi) 18%,transparent)}
+.domains-note .dlbl{color:var(--amagi);font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;margin-bottom:9px}
+.domains-note .dlbl::before{content:"";width:22px;height:1px;background:var(--amagi)}
+.domains-grid{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
+.domains-chip{font-family:var(--mono);font-size:10px;color:var(--muted);background:color-mix(in srgb,var(--amagi) 5%,transparent);border:1px solid color-mix(in srgb,var(--amagi) 25%,transparent);padding:5px 10px;border-radius:6px}
+.domains-chip b{color:var(--text);font-weight:500}
+.domains-note .dnote{font-size:11.5px;color:var(--faint);margin-top:10px;line-height:1.5}
+
+/* === INTERACTIVE 1: Invariants accordion === */
+.inv-interactive{width:100%;max-width:100%}
+.inv-interactive .inv-item{border-bottom:1px solid var(--line);transition:.2s}
+.inv-interactive .inv-item:last-child{border-bottom:0}
+.inv-interactive .inv-head{display:flex;align-items:center;gap:13px;padding:11px 17px;cursor:pointer;user-select:none;transition:.2s;position:relative}
+.inv-interactive .inv-head:hover{background:rgba(245,166,35,.08);transform:translateX(4px)}
+.inv-interactive .inv-head::after{content:"+";position:absolute;right:17px;color:var(--amagi);font-family:var(--mono);font-size:14px;transition:transform .25s}
+.inv-interactive .inv-item.open .inv-head::after{content:"â"}
+.inv-interactive .inv-head .id{font-family:var(--mono);font-size:10.5px;color:var(--amagi);flex-shrink:0;width:56px}
+.inv-interactive .inv-head .nm{font-size:12.5px;font-weight:500;flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.inv-interactive .inv-head .nm>span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.inv-interactive .inv-head .nm small{display:block;font-family:var(--mono);font-size:9px;color:var(--faint);font-weight:400;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.inv-interactive .inv-head .st{font-family:var(--mono);font-size:8.5px;color:var(--althea);border:1px solid rgba(45,212,167,.4);background:rgba(45,212,167,.12);padding:3px 7px;border-radius:6px;flex-shrink:0;margin-right:28px}
+.inv-interactive .inv-body{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1);background:var(--inv-body-bg)}
+.inv-interactive .inv-item.open .inv-body{max-height:520px}
+.inv-interactive .inv-body-inner{padding:14px 17px 16px 86px;font-size:11.5px;color:var(--muted);line-height:1.6}
+.inv-interactive .inv-body-inner .row{margin-bottom:9px}
+.inv-interactive .inv-body-inner .row:last-child{margin-bottom:0}
+.inv-interactive .inv-body-inner .rlbl{font-family:var(--mono);font-size:9px;color:var(--amagi);letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:3px}
+.inv-interactive .inv-body-inner . rval{color:var(--text)}
+.inv-interactive .inv-body-inner b{color:var(--text)}
+
+/* === INTERACTIVE 2: TTP flow with detail card === */
+.flow.flow-interactive .fstep{cursor:pointer}
+.flow.flow-interactive .fstep:hover{border-color:var(--amagi);box-shadow:0 4px 14px -6px rgba(245,166,35,.4)}
+.flow.flow-interactive .fstep.active{border-color:var(--amagi);background:color-mix(in srgb,var(--amagi) 7%,var(--s1))}
+.flow.flow-interactive .fstep.active::after{content:"â";position:absolute;top:8px;right:10px;color:var(--amagi);font-size:8px}
+.ttp-detail{margin-top:18px;background:linear-gradient(135deg,rgba(245,166,35,.05) 0%,rgba(45,212,167,.04) 100%);border:1px solid var(--line2);border-radius:12px;padding:18px 22px;min-height:130px;transition:.25s}
+.ttp-detail .td-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.ttp-detail .td-num{font-family:var(--mono);font-size:9.5px;color:var(--amagi);letter-spacing:.12em;background:rgba(245,166,35,.12);border:1px solid rgba(245,166,35,.4);padding:3px 9px;border-radius:6px}
+.ttp-detail .td-title{font-family:var(--disp);font-weight:700;font-size:14px;color:var(--text)}
+.ttp-detail .td-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:6px}
+.ttp-detail .td-cell .lbl{font-family:var(--mono);font-size:9px;color:var(--amagi);letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:4px}
+.ttp-detail .td-cell .val{font-size:11.5px;color:var(--muted);line-height:1.55}
+.ttp-detail .td-cell .val b{color:var(--text)}
+.ttp-detail .td-cell.violation .lbl{color:#ff6b6b}
+.ttp-detail .td-cell.violation .val b{color:#ff8585}
+
+/* === INTERACTIVE 3: Ecosystem map === */
+.ecosystem-map{position:relative;background:linear-gradient(180deg,var(--s1) 0%,var(--s2) 100%);border:1px solid var(--line2);border-radius:18px;padding:32px 28px;margin-top:14px}
+.eco-core{margin:0 auto 28px;max-width:280px;background:rgba(245,166,35,.08);border:1.5px solid var(--amagi);border-radius:14px;padding:18px 22px;text-align:center;cursor:pointer;transition:.25s;position:relative}
+.eco-core:hover{transform:translateY(-2px);box-shadow:0 8px 26px -10px rgba(245,166,35,.5)}
+.eco-core .eco-tag{font-family:var(--mono);font-size:9px;color:var(--amagi);letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:5px}
+.eco-core .eco-name{font-family:var(--disp);font-weight:700;font-size:18px;color:var(--text)}
+.eco-core .eco-sub{font-family:var(--mono);font-size:9.5px;color:var(--faint);margin-top:5px}
+.eco-layer{margin-bottom:22px}
+.eco-layer:last-child{margin-bottom:0}
+.eco-layer-lbl{font-family:var(--mono);font-size:9px;color:var(--faint);letter-spacing:.14em;text-transform:uppercase;text-align:center;margin-bottom:12px;display:flex;align-items:center;justify-content:center;gap:10px}
+.eco-layer-lbl::before,.eco-layer-lbl::after{content:"";flex:1;max-width:80px;height:1px;background:var(--line2)}
+.eco-nodes{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.eco-node{background:var(--bg2);border:1px solid var(--line);border-top:3px solid var(--acc,var(--amagi));border-radius:9px;padding:11px 16px;min-width:140px;cursor:pointer;transition:.22s;text-align:center}
+.eco-node:hover{transform:translateY(-3px);border-color:var(--line2);box-shadow:0 6px 18px -8px rgba(0,0,0,.4)}
+.eco-node.active{background:color-mix(in srgb,var(--acc,var(--amagi)) 8%,var(--bg2));border-color:var(--acc,var(--amagi))}
+.eco-node .en-name{font-family:var(--disp);font-weight:600;font-size:13px;color:var(--text);margin-bottom:3px}
+.eco-node .en-role{font-family:var(--mono);font-size:9px;color:var(--faint);letter-spacing:.06em}
+.eco-detail{margin-top:20px;background:rgba(0,0,0,.20);border:1px solid var(--line);border-radius:11px;padding:16px 20px;min-height:90px;transition:.25s}
+.eco-detail .ed-name{font-family:var(--disp);font-weight:700;font-size:14px;color:var(--text);margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.eco-detail .ed-name .ed-chip{font-family:var(--mono);font-size:9px;color:var(--amagi);background:rgba(245,166,35,.12);border:1px solid rgba(245,166,35,.4);padding:2px 8px;border-radius:5px;font-weight:400}
+.eco-detail .ed-desc{font-size:12.5px;color:var(--muted);line-height:1.6}
+.eco-detail .ed-desc b{color:var(--text)}
+
+/* === WHY ARCHITECTURE SECTION === */
+.why-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;margin-top:14px}
+@media(max-width:900px){.why-grid{grid-template-columns:1fr}}
+
+/* === VALIDATED BY BLOCK === */
+.validated{padding:28px 0 4px}
+.validated-head{text-align:center;margin-bottom:16px}
+.validated-head .vlbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+.validated-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:760px;margin:0 auto}
+@media(max-width:768px){.validated-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.validated-grid{grid-template-columns:1fr}}
+.vchip{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;background:var(--s1);border:1px solid var(--line);border-top:3px solid var(--acc,var(--althea));border-radius:0 0 9px 9px;padding:14px 12px 12px;color:var(--text);transition:.22s;cursor:default}
+.vchip:hover{transform:translateY(-2px);border-color:var(--line2);box-shadow:0 6px 18px -8px rgba(0,0,0,.4)}
+.vchip .vchk{color:var(--acc,var(--althea));font-weight:700;font-size:16px;flex-shrink:0}
+.vchip .vtxt{font-weight:600;font-size:12.5px;line-height:1.3}
+.vchip .vsub{font-family:var(--mono);font-size:9.5px;color:var(--faint);margin-top:2px}
+.why-text{background:var(--s1);border:1px solid var(--line);border-left:4px solid var(--amagi);border-radius:0 14px 14px 0;padding:24px 26px}
+.why-text p{font-size:13.5px;color:var(--muted);line-height:1.7;margin-bottom:14px}
+.why-text p:last-child{margin-bottom:0}
+.why-text b{color:var(--text)}
+.why-text .lede{font-size:15px;color:var(--text);font-weight:500;margin-bottom:16px;line-height:1.55}
+
+/* Trust boundary diagram */
+.trust-diagram{background:linear-gradient(180deg,var(--s1) 0%,var(--s2) 100%);border:1px solid var(--line2);border-radius:14px;padding:24px 22px;display:flex;flex-direction:column;gap:0}
+.td-band{padding:14px 16px;border-radius:10px;text-align:center;position:relative;transition:.25s}
+.td-band.untrusted{background:rgba(255,107,107,.06);border:1px solid rgba(255,107,107,.22)}
+.td-band.trusted{background:rgba(245,166,35,.06);border:1px solid rgba(245,166,35,.30)}
+.td-band .td-label{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;display:block;margin-bottom:10px}
+.td-band.untrusted .td-label{color:#ff8585}
+.td-band.trusted .td-label{color:var(--amagi)}
+.td-flow{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
+.td-node{background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:9px 14px;min-width:88px;text-align:center;font-family:var(--mono);font-size:11px;color:var(--text);transition:.22s}
+.td-node.ctc{border-top:3px solid var(--althea);color:var(--althea)}
+.td-node.amagi{border-top:3px solid var(--amagi);color:var(--amagi);font-weight:600}
+.td-node.llm{color:var(--muted)}
+.td-node.hw{border-top:3px solid var(--amagi);font-weight:600}
+.td-arrow{color:var(--faint);font-family:var(--mono);font-size:14px}
+.td-arrow.down{display:block;text-align:center;margin:6px 0;color:var(--amagi)}
+.td-platforms{display:flex;justify-content:center;gap:8px;margin-top:8px;flex-wrap:wrap}
+.td-plat{font-family:var(--mono);font-size:9.5px;color:var(--amagi);background:rgba(245,166,35,.08);border:1px solid rgba(245,166,35,.25);padding:4px 10px;border-radius:6px}
+.td-caption{font-size:11px;color:var(--faint);text-align:center;margin-top:12px;line-height:1.5;font-style:italic}
+.td-caption b{color:var(--amagi);font-style:normal}
+
+/* Comparison table */
+.compare-table{margin-top:24px;background:var(--s1);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.compare-row{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+.compare-row:last-child{border-bottom:0}
+.compare-row.head{background:var(--bg2);font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.compare-row.head .compare-cell{padding:14px 22px;color:var(--faint);font-weight:600}
+.compare-row.head .compare-cell.bad{color:#ff8585}
+.compare-row.head .compare-cell.good{color:var(--amagi)}
+.compare-cell{padding:14px 22px;font-size:13px;color:var(--muted);line-height:1.5;border-right:1px solid var(--line);display:flex;align-items:center;gap:10px}
+.compare-cell:last-child{border-right:0}
+.compare-cell.bad{color:var(--muted)}
+.compare-cell.bad::before{content:"â";color:#ff6b6b;font-family:var(--mono);font-weight:700;flex-shrink:0}
+.compare-cell.good{color:var(--text);font-weight:500}
+.compare-cell.good::before{content:"â";color:var(--althea);font-family:var(--mono);font-weight:700;flex-shrink:0}
+
+/* === TTP SIMULATOR === */
+.ttp-sim{background:linear-gradient(180deg,var(--s1) 0%,var(--s2) 100%);border:1px solid var(--line2);border-radius:18px;padding:28px 30px;margin-top:14px}
+.ttp-sim-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:22px}
+.ttp-sim-title{font-family:var(--disp);font-weight:700;font-size:15px;color:var(--text);display:flex;align-items:center;gap:10px}
+.ttp-sim-title .pulse-led{width:8px;height:8px;border-radius:50%;background:var(--althea);box-shadow:0 0 8px var(--althea);animation:pulse 2s infinite}
+.ttp-sim-controls{display:flex;gap:8px;flex-wrap:wrap}
+.sim-btn{font-family:var(--mono);font-size:11px;color:var(--text);background:var(--bg2);border:1px solid var(--line2);padding:8px 14px;border-radius:7px;cursor:pointer;transition:.22s;letter-spacing:.04em}
+.sim-btn:hover{border-color:var(--amagi);background:color-mix(in srgb,var(--amagi) 8%,var(--bg2))}
+.sim-btn.primary{background:var(--amagi);color:#0a0f1a;border-color:var(--amagi);font-weight:600}
+.sim-btn.primary:hover{background:#ffb945}
+.sim-btn.danger{color:#ff8585;border-color:rgba(255,107,107,.35)}
+.sim-btn.danger:hover{background:rgba(255,107,107,.1);border-color:#ff6b6b}
+.sim-btn.danger.active{background:rgba(255,107,107,.18);border-color:#ff6b6b;color:#ff8585}
+.ttp-sim-track{display:flex;gap:14px;margin-bottom:18px;flex-wrap:wrap}
+.sim-step{flex:1;min-width:140px;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:14px 16px;text-align:center;transition:.3s;position:relative;overflow:hidden}
+.sim-step::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--line);transition:.3s}
+.sim-step.pending{opacity:.5}
+.sim-step.ok{border-color:rgba(45,212,167,.4);background:color-mix(in srgb,var(--althea) 6%,var(--bg2))}
+.sim-step.ok::before{background:var(--althea)}
+.sim-step.fail{border-color:rgba(255,107,107,.5);background:color-mix(in srgb,#ff6b6b 8%,var(--bg2))}
+.sim-step.fail::before{background:#ff6b6b}
+.sim-step .ss-num{font-family:var(--mono);font-size:9px;color:var(--faint);letter-spacing:.12em;display:block;margin-bottom:6px}
+.sim-step .ss-name{font-family:var(--disp);font-weight:700;font-size:13px;color:var(--text);margin-bottom:6px}
+.sim-step .ss-status{font-family:var(--mono);font-size:10px;letter-spacing:.08em;display:flex;align-items:center;justify-content:center;gap:5px;min-height:14px}
+.sim-step.ok .ss-status{color:var(--althea)}
+.sim-step.fail .ss-status{color:#ff8585}
+.sim-step.pending .ss-status{color:var(--faint)}
+.sim-step .ss-detail{font-size:10.5px;color:var(--muted);margin-top:6px;min-height:14px;line-height:1.4}
+.sim-result{background:var(--bg);border:1px solid var(--line2);border-radius:10px;padding:14px 18px;font-family:var(--mono);font-size:11.5px;display:flex;align-items:center;gap:12px;transition:.3s}
+.sim-result.ok{border-left:3px solid var(--althea)}
+.sim_result.fail{border-left:3px solid #ff6b6b}
+.sim-result.cut{border-left:3px solid #ff6b6b;background:rgba(255,107,107,.06)}
+.sim-result .sr-icon{font-size:14px;font-weight:700}
+.sim-result.ok .sr-icon{color:var(--althea)}
+.sim-result.cut .sr-icon{color:#ff6b6b}
+.sim-result .sr-text{flex:1;color:var(--text);line-height:1.5}
+.sim-result .sr-text b{color:var(--amagi)}
+.sim-result.cut .sr-text b{color:#ff8585}
+
+/* === TIMELINE === */
+.timeline{position:relative;padding:20px 0 8px;margin-top:14px}
+.timeline::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--amagi) 0%,var(--althea) 100%);transform:translateX(-50%)}
+.tl-item{position:relative;width:50%;padding:14px 32px;margin-bottom:8px;transition:.25s}
+.tl-item:nth-child(odd){left:0;text-align:right}
+.tl-item:nth-child(even){left:50%;text-align:left}
+.tl-item::before{content:"";position:absolute;top:22px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:2.5px solid var(--amagi);transition:.25s;z-index:2}
+.tl-item:nth-child(odd)::before{right:-7px}
+.tl-item:nth-child(even)::before{left:-7px}
+.tl-item:hover::before{background:var(--amagi);transform:scale(1.2)}
+.tl-card{display:inline-block;background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:12px 18px;max-width:340px;transition:.22s}
+.tl-item:hover .tl-card{border-color:var(--line2);transform:translateY(-2px);box-shadow:0 6px 18px -8px rgba(0,0,0,.4)}
+.tl-year{font-family:var(--disp);font-weight:700;font-size:18px;color:var(--amagi);letter-spacing:-.3px;display:block;margin-bottom:4px}
+.tl-title{font-size:13px;color:var(--text);font-weight:500;display:block;margin-bottom:3px}
+.tl-desc{font-size:11px;color:var(--faint);line-height:1.5}
+@media(max-width:768px){
+  .timeline::before{left:7px}
+  .tl-item{width:100%;left:0!important;text-align:left!important;padding:10px 0 10px 32px}
+  .tl-item::before{left:0!important;right:auto!important}
+  .tl-card{max-width:100%}
+}
+
+/* === FAQ === */
+.faq-list{margin-top:14px;display:flex;flex-direction:column;gap:10px}
+.faq-item{background:var(--s1);border:1px solid var(--line);border-radius:11px;overflow:hidden;transition:.25s}
+.faq-item:hover{border-color:var(--line2)}
+.faq-q{padding:16px 22px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;font-family:var(--disp);font-weight:600;font-size:14px;color:var(--text);user-select:none;transition:.2s}
+.faq-q:hover{color:var(--amagi)}
+.faq-q::after{content:"+";font-family:var(--mono);font-size:18px;color:var(--amagi);transition:transform .25s;flex-shrink:0}
+.faq-item.open .faq-q::after{content:"â"}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1);background:rgba(0,0,0,.18)}
+.faq-item.open .faq-a{max-height:400px}
+.faq-a-inner{padding:0 22px 16px;font-size:12.5px;color:var(--muted);line-height:1.65}
+.faq-a-inner b{color:var(--text)}
+.faq-a-inner code{font-family:var(--mono);font-size:11px;background:rgba(245,166,35,.10);color:var(--amagi);padding:1px 6px;border-radius:4px}
+
+/* === Eco map enhancement: connection lines via CSS === */
+.eco-node.dimmed{opacity:.35;transition:.25s}
+.eco-node.connected{box-shadow:0 0 0 2px var(--acc,var(--amagi)),0 6px 18px -8px rgba(0,0,0,.5)}
+.eco-core.dimmed{opacity:.35;transition:.25s}
+.eco-core.connected{box-shadow:0 0 0 3px var(--amagi),0 10px 30px -10px rgba(245,166,35,.5)}
+.biz{display:grid;gap:14px}
+.biz-band{display:grid;grid-template-columns:210px 1fr auto;gap:26px;align-items:center;background:var(--s1);border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:0 14px 14px 0;padding:24px 28px;transition:.25s;position:relative;overflow:hidden}
+.biz-band:hover{transform:translateX(6px);border-color:var(--line2);box-shadow:0 14px 44px -20px rgba(0,0,0,.55)}
+.biz-band::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:.3s;background:radial-gradient(420px 220px at 100% 0%,color-mix(in srgb,var(--acc) 9%,transparent),transparent 62%)}
+.biz-band:hover::before{opacity:1}
+.biz-name{font-family:var(--disp);font-weight:700;font-size:19px;color:var(--acc)}
+.biz-for{font-family:var(--mono);font-size:10.5px;color:var(--faint);margin-top:7px;line-height:1.5}
+.biz-mid{display:flex;flex-direction:column;gap:10px;position:relative}
+.biz-label{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:11.5px;border:1px solid var(--line2);background:var(--s2);padding:6px 12px;border-radius:8px;color:var(--muted);transition:.2s}
+.chip:hover{border-color:var(--acc);color:var(--acc)}
+.biz-cta{font-family:var(--mono);font-size:11.5px;color:var(--acc);border:1px solid color-mix(in srgb,var(--acc) 45%,transparent);background:color-mix(in srgb,var(--acc) 10%,transparent);padding:10px 16px;border-radius:9px;white-space:nowrap;transition:.2s;position:relative}
+.biz-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px -12px var(--acc)}
+.company{display:grid;grid-template-columns:1.08fr .92fr;gap:18px}
+.req{background:var(--s1);border:1px solid var(--line);border-radius:14px;padding:8px 0}
+.req .row{display:flex;justify-content:space-between;gap:20px;padding:12px 24px;border-bottom:1px solid var(--line)}
+.req .row:last-child{border-bottom:0}
+.req .k{font-family:var(--mono);font-size:10.5px;color:var(--faint);text-transform:uppercase;letter-spacing:.05em}
+.req .v{font-family:var(--mono);font-size:11.5px;color:var(--text);text-align:right}
+.statuses{display:grid;gap:10px}
+.status{display:flex;gap:13px;align-items:flex-start;background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:14px 16px;transition:.2s}
+.status:hover{border-color:rgba(45,212,167,.4)}
+.status .chk{width:22px;height:22px;border-radius:7px;background:rgba(45,212,167,.12);border:1px solid rgba(45,212,167,.4);color:var(--althea);display:grid;place-items:center;flex-shrink:0;font-size:11px}
+.status .chk:empty{background:rgba(245,166,35,.08);border:1px dashed rgba(245,166,35,.45);color:transparent;position:relative}
+.status .chk:empty::after{content:"â¦";position:absolute;color:var(--amagi);font-size:14px;font-weight:700;line-height:1}
+.status b{font-size:13px;display:block}
+.status span{color:var(--muted);font-size:11.5px}
+.it-list{list-style:none;display:grid;gap:10px;margin:18px 0}
+.it-list li{background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--scio);border-radius:0 10px 10px 0;padding:14px 18px;font-size:13.5px;color:var(--muted);transition:.22s}
+.it-list li:hover{border-left-color:var(--amagi);transform:translateX(5px);border-color:var(--line2)}
+.it-list li b{color:var(--text)}
+.it-list .okved{font-family:var(--mono);font-size:11px;color:var(--scio)}
+.it-contact{font-family:var(--mono);font-size:12px;color:var(--faint);margin-top:14px}
+.it-contact a{color:var(--scio)}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:38px}
+.prod{background:var(--s1);border:1px solid var(--line);border-top:3px solid var(--acc);border-radius:12px;padding:22px 22px 20px;transition:.25s;position:relative;overflow:hidden}
+.prod:hover{transform:translateY(-5px);border-color:var(--line2);box-shadow:0 16px 44px -22px rgba(0,0,0,.6)}
+.prod::before{content:"";position:absolute;inset:0;background:radial-gradient(360px 200px at 100% -10%,color-mix(in srgb,var(--acc) 10%,transparent),transparent 60%);pointer-events:none;opacity:0;transition:.3s}
+.prod:hover::before{opacity:1}
+.prod .stage{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);border:1px solid color-mix(in srgb,var(--acc) 45%,transparent);background:color-mix(in srgb,var(--acc) 10%,transparent);padding:4px 9px;border-radius:6px;display:inline-block;margin-bottom:14px;position:relative}
+.prod h3{font-family:var(--disp);font-weight:700;font-size:18px;margin-bottom:6px;position:relative}
+.prod .purpose{font-size:13px;color:var(--text);font-weight:500;margin-bottom:9px;position:relative}
+.prod .pdesc{font-size:12px;color:var(--muted);line-height:1.6;position:relative}
+.techlbl{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:14px;display:inline-flex;align-items:center;gap:8px}
+.techlbl::before{content:"";width:22px;height:1px;background:var(--scio)}
+.techgrid{display:flex;flex-wrap:wrap;gap:10px}
+.tech{font-family:var(--mono);font-size:11.5px;color:var(--muted);border:1px solid var(--line2);background:var(--s1);padding:9px 14px;border-radius:9px;transition:.2s;display:inline-flex;align-items:center;gap:8px}
+.tech:hover{border-color:var(--scio);color:var(--scio);transform:translateY(-2px)}
+.tech .tdot{width:6px;height:6px;border-radius:50%;background:var(--scio);flex-shrink:0}
+.contact{background:var(--s1);border:1px solid var(--line2);border-radius:18px;padding:46px 40px;text-align:center;position:relative;overflow:hidden}
+.contact::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 340px at 50% -10%,rgba(76,195,232,.12),transparent 60%);pointer-events:none}
+.contact h2{position:relative}
+.contact>p{color:var(--muted);max-width:56ch;margin:14px auto 24px;position:relative}
+.contact .chips{justify-content:center;max-width:720px;margin:0 auto 26px;position:relative}
+.contact .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative}
+.contact .addr{font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:24px;position:relative}
+footer{border-top:1px solid var(--line2);padding:42px 0 34px;margin-top:26px}
+.foot{display:flex;justify-content:space-between;gap:26px;flex-wrap:wrap;align-items:flex-start}
+.foot-meta{font-family:var(--mono);font-size:10.5px;color:var(--faint);line-height:2;text-align:right}
+.foot-meta a{color:var(--scio)}.foot-meta a:hover{text-decoration:underline}
+.foot .socials{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.disclaimer{margin-top:24px;padding-top:20px;border-top:1px solid var(--line);font-size:11px;color:var(--faint);max-width:90ch;line-height:1.7}
+.disclaimer b{color:var(--muted)}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.fade-lang{transition:opacity .18s}
+
+/* === Global anti-overflow safeguards (all viewports) === */
+*{max-width:100%;box-sizing:border-box}
+img,svg,video{max-width:100%;height:auto}
+pre,code{white-space:pre-wrap;word-break:break-word;overflow-wrap:break-word}
+p{overflow-wrap:break-word}span,div{overflow-wrap:anywhere}
+.domains-chip,.impl-chip,.td-plat,.eco-node,.sim-btn,.faq-q,.plnk,.tech,.biz-name,.contact-item{word-break:break-word;overflow-wrap:break-word}
+.company .row .v,.contact-item b{word-break:break-all}
+.ttp-detail .td-cell .val,.copilot-limits .lp,.copilot-verify .vp,.faq-a-inner,.sci-item .what p,.sci-item .why p,.cmod .cm-desc{word-break:break-word;overflow-wrap:break-word}
+.ttp-sim-controls,.ttp-sim-track,.copilot-modules,.domains-grid,.impl-chips,.td-platforms,.eco-nodes,.plinks,.techgrid,.contact-grid{max-width:100%}
+
+@media(max-width:960px){
+  .menu{display:none}.burger{display:flex}
+  .menu.open{display:flex;position:absolute;top:70px;left:0;right:0;flex-direction:column;background:var(--bg2);border-bottom:1px solid var(--line);padding:20px 26px;gap:8px;z-index:200;max-height:90vh;overflow-y:auto}.menu.open .menu-item-dropdown{position:static}.menu.open .menu-dropdown{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;padding:0 0 0 16px;background:transparent}.menu.open .menu-item-dropdown>a{padding:8px 0;font-weight:600;color:var(--text)}.menu.open .menu-dropdown a{padding:6px 0;font-size:13px}
+  .nav-cta{gap:6px}
+  .lang button{padding:5px 8px;font-size:10px}
+  .theme-toggle{width:42px;height:22px}
+  .company{grid-template-columns:1fr}
+  .frow{grid-template-columns:1fr;gap:8px}
+  .frow .arr{transform:rotate(90deg);justify-self:start}
+  .flow{flex-direction:column}
+  .fstep+.fstep{margin-left:0;margin-top:12px}
+  .fstep+.fstep::before{content:"â";left:50%;top:-20px;transform:translateX(-50%)}
+  .biz-band{grid-template-columns:1fr;gap:14px}
+  .products{grid-template-columns:1fr}
+  .nav-cta .btn{display:none}
+  .contact{padding:34px 22px}
+  .foot-meta{text-align:left}
+  .dom{padding:22px 20px}
+  /* Invariants: stack ID/ENFORCED on top, name below â prevents truncation on tablets/narrow desktops */
+  .inv-interactive .inv-head{flex-wrap:wrap;gap:8px}
+  .inv-interactive .inv-head .id{flex:0 0 auto;order:1}
+  .inv-interactive .inv-head .st{flex:0 0 auto;order:2;margin-right:28px}
+  .inv-interactive .inv-head .nm{flex:1 1 100%;min-width:0;order:3;overflow:visible;text-overflow:clip;white-space:normal;margin-top:4px}
+  .inv-interactive .inv-head .nm>span{white-space:normal;overflow:visible;text-overflow:clip;word-break:break-word;overflow-wrap:break-word}
+  .inv-interactive .inv-head .nm small{white-space:normal;overflow:visible;text-overflow:clip;word-break:break-word;overflow-wrap:break-word}
+}
+@media(max-width:768px){
+  /* === Typography scaling === */
+  h1{font-size:clamp(24px,7vw,32px);line-height:1.15}
+  h2{font-size:clamp(20px,5.5vw,26px)}
+  h3{font-size:clamp(16px,4vw,18px)}
+  .lead{font-size:14.5px;max-width:100%}
+  .sec-sub{font-size:var(--fs-mono);max-width:100%}
+
+  /* === Section padding === */
+  section{padding:48px 0}
+  .open-sec{padding:48px 0 40px}
+  .wrap{padding:0 18px}
+  .dom{padding:18px 16px;margin-bottom:16px;border-radius:0 12px 12px 0}
+  .dom h3{font-size:17px}
+
+  /* === Hero board === */
+  .board{padding:14px 12px}
+  .board-top{padding:9px 12px;font-size:10px;flex-wrap:wrap;gap:8px}
+  .board-top .t{font-size:10px}
+  .inv-interactive .inv-item{border-bottom:1px solid var(--line)}
+  .inv-interactive .inv-head{padding:10px 12px;gap:8px;flex-wrap:wrap}
+  .inv-interactive .inv-head .id{font-size:10px;width:auto;flex:0 0 auto;order:1}
+  .inv-interactive .inv-head .st{font-size:8px;padding:2px 6px;order:2;margin-right:28px;flex:0 0 auto}
+  .inv-interactive .inv-head .nm{font-size:11.5px;flex:1 1 100%;min-width:0;order:3;overflow:visible;text-overflow:clip;white-space:normal;margin-top:4px}
+  .inv-interactive .inv-head .nm>span{display:block;white-space:normal;overflow:visible;text-overflow:clip;word-break:break-word;overflow-wrap:break-word}
+  .inv-interactive .inv-head .nm small{display:block;font-size:8.5px;white-space:normal;overflow:visible;text-overflow:clip;word-break:break-word;overflow-wrap:break-word;margin-top:3px}
+  .inv-interactive .inv-head::after{right:12px;top:10px}
+  .inv-interactive .inv-body-inner{padding:12px 14px 14px;font-size:11px}
+  .readout{gap:0}
+  .readout>div{flex:1 1 45%;padding:14px 12px}
+  .readout b{font-size:clamp(15px,5vw,18px)}
+
+  /* === Why section + comparison === */
+  .why-grid{grid-template-columns:1fr;gap:16px}
+  .why-text{padding:18px 18px}
+  .why-text p{font-size:13px;line-height:1.6}
+  .why-text .lede{font-size:14px}
+  .trust-diagram{padding:18px 14px}
+  .td-band{padding:12px 10px}
+  .td-flow{gap:6px}
+  .td-node{min-width:70px;padding:8px 10px;font-size:10px}
+  .td-arrow{font-size:12px}
+  .td-platforms{gap:5px}
+  .td-plat{font-size:9px;padding:3px 8px}
+  .td-caption{font-size:10.5px;line-height:1.5}
+  .compare-table{margin-top:18px;border-radius:10px}
+  .compare-cell{padding:11px 14px;font-size:11.5px;gap:6px;line-height:1.4}
+  .compare-row.head .compare-cell{padding:10px 14px;font-size:9.5px}
+  .compare-cell::before{font-size:12px}
+
+  /* === Domains / products === */
+  .domains-grid{gap:5px}
+  .domains-chip{font-size:9.5px;padding:5px 9px;line-height:1.3}
+  .impl-chips{gap:5px}
+  .impl-chip{font-size:9.5px;padding:4px 8px;line-height:1.3}
+  .arch-note{padding:14px 14px;margin-bottom:14px}
+  .arch-note p{font-size:12.5px;line-height:1.55}
+  .arch-note .impl-note{font-size:11px}
+  .domains-note{margin-top:12px;padding-top:12px}
+  .domains-note .dlbl{font-size:9px}
+
+  /* === CTC section === */
+  .copilot-wrap{padding:20px 16px;border-radius:14px}
+  .copilot-head{gap:10px;margin-bottom:14px}
+  .copilot-tag{font-size:9px;padding:3px 8px}
+  .copilot-bridge{font-size:9px}
+  .copilot-status{padding:10px 12px;gap:8px}
+  .copilot-status .sk{font-size:8.5px}
+  .copilot-status .sv{font-size:10px}
+  .copilot-status .str{font-size:8.5px;padding:3px 7px}
+  .copilot-modules{grid-template-columns:1fr;gap:10px;margin-bottom:16px}
+  .cmod{padding:13px 13px 11px}
+  .cmod .cm-num{font-size:8.5px}
+  .cmod .cm-name{font-size:12px}
+  .cmod .cm-name .en{font-size:9px;display:block;margin-left:0;margin-top:2px}
+  .cmod .cm-desc{font-size:11px;line-height:1.5}
+  .copilot-limits{padding:14px 14px}
+  .copilot-limits .ll{font-size:9.5px}
+  .copilot-limits .lp{font-size:12px;line-height:1.55}
+  .copilot-limits .ttp{font-size:9px;padding:4px 8px;flex-wrap:wrap}
+  .copilot-verify{padding:14px 14px}
+  .copilot-verify .vl{font-size:9.5px}
+  .copilot-verify .vp{font-size:12px;line-height:1.55}
+
+  /* === Ecosystem map === */
+  .ecosystem-map{padding:22px 14px;border-radius:14px}
+  .eco-core{max-width:100%;padding:14px 16px;margin-bottom:20px}
+  .eco-core .eco-name{font-size:16px}
+  .eco-core .eco-sub{font-size:9px}
+  .eco-layer{margin-bottom:18px}
+  .eco-layer-lbl{font-size:8.5px;letter-spacing:.1em}
+  .eco-layer-lbl::before,.eco-layer-lbl::after{max-width:30px}
+  .eco-nodes{gap:7px}
+  .eco-node{min-width:100%;padding:10px 14px}
+  .eco-node .en-name{font-size:12px}
+  .eco-node .en-role{font-size:8.5px}
+  .eco-detail{padding:13px 14px;margin-top:14px}
+  .eco-detail .ed-name{font-size:13px;gap:8px;flex-wrap:wrap}
+  .eco-detail .ed-name .ed-chip{font-size:8.5px;padding:2px 7px}
+  .eco-detail .ed-desc{font-size:12px;line-height:1.55}
+
+  /* === TTP simulator === */
+  .ttp-sim{padding:18px 14px;border-radius:14px}
+  .ttp-sim-head{flex-direction:column;align-items:flex-start;gap:12px;margin-bottom:16px}
+  .ttp-sim-title{font-size:13px}
+  .ttp-sim-controls{gap:6px;width:100%}
+  .sim-btn{font-size:10px;padding:7px 11px;flex:1;min-width:0;text-align:center}
+  .sim-btn.primary{flex:2}
+  .ttp-sim-track{gap:8px;flex-direction:column}
+  .sim-step{min-width:100%;padding:11px 13px}
+  .sim-step .ss-num{font-size:8.5px}
+  .sim-step .ss-name{font-size:12px}
+  .sim-step .ss-status{font-size:9.5px}
+  .sim-step .ss-detail{font-size:10px}
+  .sim-result{padding:11px 13px;font-size:10.5px;gap:9px;flex-direction:row;align-items:flex-start}
+  .sim-result .sr-icon{font-size:12px}
+  .sim-result .sr-text{font-size:10.5px;line-height:1.5}
+
+  /* === TTP interactive flow detail (in AMAGI card) === */
+  .ttp-detail{padding:14px 14px;min-height:auto}
+  .ttp-detail .td-head{gap:8px;margin-bottom:8px}
+  .ttp-detail .td-num{font-size:9px;padding:2px 7px}
+  .ttp-detail .td-title{font-size:12px}
+  .ttp-detail .td-grid{grid-template-columns:1fr;gap:10px}
+  .ttp-detail .td-cell .lbl{font-size:8.5px}
+  .ttp-detail .td-cell .val{font-size:11px;line-height:1.5}
+
+  /* === Timeline === */
+  .timeline{padding:14px 0 4px}
+  .timeline::before{left:7px}
+  .tl-item{width:100%;left:0!important;text-align:left!important;padding:8px 0 8px 28px;margin-bottom:6px}
+  .tl-item::before{left:1px!important;right:auto!important;top:18px;width:12px;height:12px}
+  .tl-card{max-width:100%;padding:11px 14px}
+  .tl-year{font-size:15px}
+  .tl-title{font-size:12px}
+  .tl-desc{font-size:10.5px;line-height:1.45}
+
+  /* === FAQ === */
+  .faq-list{gap:8px}
+  .faq-item{border-radius:10px}
+  .faq-q{padding:13px 16px;font-size:13px;gap:10px;line-height:1.35}
+  .faq-q::after{font-size:16px}
+  .faq-a-inner{padding:0 16px 13px;font-size:12px;line-height:1.55}
+
+  /* === Business / company === */
+  .biz-band{padding:18px 16px;grid-template-columns:1fr;gap:12px;border-radius:0 12px 12px 0}
+  .biz-name{font-size:14px}
+  .company{grid-template-columns:1fr;gap:14px}
+  .company .info{padding:18px 16px}
+  .company .row{padding:9px 0;font-size:11.5px;flex-wrap:wrap;gap:6px}
+  .company .row .k{font-size:11px}
+  .company .row .v{font-size:11.5px;text-align:left;font-family:var(--mono);word-break:break-all}
+  .status{padding:11px 13px;gap:9px}
+  .status b{font-size:12px}
+  .status span{font-size:10.5px}
+
+  /* === IT activity list === */
+  .it-list{padding:0 4px}
+  .it-list li{padding:13px 14px;font-size:11.5px;line-height:1.5}
+  .it-list b{font-size:12px}
+  .it-list .okved{font-size:9px;padding:2px 6px}
+
+  /* === Products grid === */
+  .products{gap:14px}
+  .prod{padding:18px 16px;border-radius:12px}
+  .prod h3{font-size:16px}
+  .prod .purpose{font-size:12px}
+  .prod .pdesc{font-size:11.5px;line-height:1.55}
+
+  /* === Contacts === */
+  .contact{padding:30px 18px;border-radius:14px}
+  .contact-grid{gap:18px}
+  .contact-item .ci{font-size:8.5px}
+  .contact-item b{font-size:13px}
+  .contact-item span{font-size:11.5px}
+
+  /* === Science === */
+  .sci{padding-left:20px}
+  .sci-item{padding:16px 16px;border-radius:12px}
+  .sci-item::before{left:-20px;top:22px;width:10px;height:10px}
+  .sci-item h3{font-size:13.5px}
+  .sci-item .venue{font-size:9.5px}
+  .sci-item .what p,.sci-item .why p{font-size:11.5px;line-height:1.55}
+  .plinks{gap:7px}
+  .plnk{font-size:10.5px;padding:6px 11px}
+
+  /* === Tech grid === */
+  .techgrid{gap:6px}
+  .tech{font-size:10px;padding:7px 11px}
+
+  /* === Footer === */
+  .foot{padding:36px 18px 24px}
+  .foot-grid{gap:18px;grid-template-columns:1fr}
+  .foot-meta{text-align:left;font-size:11px}
+  .disclaimer{font-size:10.5px;line-height:1.6;max-width:100%}
+
+  /* === Header === */
+  .header-inner,.wrap.nav{padding:0 14px;height:54px;flex-wrap:nowrap}
+  .brand b{font-size:14px}
+  .brand span span{font-size:8.5px}
+  .brand .mark{width:26px;height:26px;font-size:13px}
+  .lang{font-size:10px}
+  .lang button{padding:4px 8px}
+
+  /* === Hero === */
+  .hero{padding:80px 0 40px}
+  .hero .lead{font-size:13.5px;margin:16px 0 22px}
+  .readout{margin-top:24px}
+}
+@media(max-width:480px){
+  /* Very small phones (iPhone SE, older Android) */
+  .wrap{padding:0 14px}
+  h1{font-size:22px}
+  h2{font-size:18px}
+  .hero{padding:70px 0 32px}
+  section{padding:40px 0}
+  .dom{padding:16px 14px;border-radius:0 10px 10px 0}
+  .readout>div{flex:1 1 100%;padding:12px;border-bottom:1px solid var(--line)}
+  .readout>div:last-child{border-bottom:0}
+  .impl-chip{font-size:9px;padding:4px 7px}
+  .domains-chip{font-size:9px;padding:4px 7px}
+  .sim-btn{font-size:9.5px;padding:6px 8px;letter-spacing:0}
+  .sim-btn.primary{font-size:10px}
+  .faq-q{font-size:12.5px;padding:12px 14px}
+  .contact-item b{font-size:12px;word-break:break-all}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important}
+  .reveal{opacity:1;transform:none}
+}
+
+
+
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;margin-bottom:32px}
+@media(max-width:960px){.foot-grid{grid-template-columns:1fr 1fr;gap:24px}}
+@media(max-width:600px){.foot-grid{grid-template-columns:1fr}}
+.foot-col h5{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:14px;font-weight:500}
+.foot-col a{display:block;font-size:13px;color:var(--muted);padding:4px 0;transition:.15s}
+.foot-col a:hover{color:var(--amagi)}
+.foot-brand .brand{margin-bottom:14px}
+.foot-brand p{font-size:12.5px;color:var(--muted);line-height:1.6;margin-bottom:14px}
+.foot-bottom{padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:11.5px;color:var(--faint)}
+.foot-legal{font-family:var(--mono);font-size:10px;letter-spacing:.06em}
+.foot-legal a{color:var(--scio)}
+.foot-legal a:hover{color:var(--amagi)}
+footer{background:var(--bg2);border-top:1px solid var(--line);padding:48px 0 24px}
+
+</style>
+<link rel="stylesheet" href="/assets/css/premium.css?v=85"><script type="application/ld+json" data-althea-schema="1">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://althea-tech.ru/#organization",
+  "name": "ÐÐÐ Â«ÐÐÐ¢ÐÐ¯Â»",
+  "alternateName": "Althea Tech",
+  "url": "https://althea-tech.ru/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://althea-tech.ru/apple-touch-icon.png",
+    "width": 180,
+    "height": 180
+  },
+  "description": "Deep-tech Ð¸ÑÑÐ»ÐµÐ´Ð¾Ð²Ð°ÑÐµÐ»ÑÑÐºÐ°Ñ ÐÐ¢-ÐºÐ¾Ð¼Ð¿Ð°Ð½Ð¸Ñ: Ð°Ð¿Ð¿Ð°ÑÐ°ÑÐ½Ð°Ñ Ð±ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ÑÑÑ ÐÐ (AMAGI), Ð±Ð¸Ð¾Ð¸Ð½Ð¶ÐµÐ½ÐµÑÐ¸Ñ (ALTHEA), Ð´ÐµÑÐµÐºÑÐ¸Ñ deepfake (Scio), ÐÐ-ÐºÐ¾Ð¾ÑÐ´Ð¸Ð½Ð°ÑÐ¸Ñ ÑÐµÑÐ°Ð¿Ð¸Ð¸ (CTC).",
+  "foundingDate": "2024",
+  "email": "info@althea-tech.ru",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "ÐÐ¾Ð²Ð¾ÐºÑÐ·Ð½ÐµÑÐº",
+    "addressRegion": "ÐÐµÐ¼ÐµÑÐ¾Ð²ÑÐºÐ°Ñ Ð¾Ð±Ð»Ð°ÑÑÑ",
+    "addressCountry": "RU"
+  },
+  "identifier": "ÐÐÐ 4217214140",
+  "knowsAbout": [
+    "Hardware AI security",
+    "Bioengineering",
+    "Deepfake detection",
+    "AI therapy coordination",
+    "Trusted AI",
+    "Formal verification"
+  ],
+  "sameAs": [
+    "https://zenodo.org/search?q=metadata.creators.person_or_org.name:%22Alexey%20Mikhailovich%20Burlai%22",
+    "https://t.me/altea_deeptech"
+  ]
+}
+</script>
+<script type="application/ld+json" data-althea-schema="1">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ÐÐ»Ð°Ð²Ð½Ð°Ñ",
+      "item": "https://althea-tech.ru/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Ð ÐºÐ¾Ð¼Ð¿Ð°Ð½Ð¸Ð¸"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Ð¤Ð¸Ð»Ð¾ÑÐ¾ÑÐ¸Ñ"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json" data-althea-schema="1">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "ÐÐ½Ð¶ÐµÐ½ÐµÑÐ¸Ñ Ð´Ð¾Ð²ÐµÑÐµÐ½Ð½Ð¾Ð³Ð¾ ÐÐ â ÑÐ¸Ð»Ð¾ÑÐ¾ÑÐ¸Ñ Althea",
+  "description": "ÐÐ¸ÑÐ¾Ð²Ð¾Ð·Ð·ÑÐµÐ½Ð¸Ðµ ÐºÐ¾Ð¼Ð¿Ð°Ð½Ð¸Ð¸: ÑÑÐ¾ ÑÐ°ÐºÐ¾Ðµ Ð´Ð¾Ð²ÐµÑÐµÐ½Ð½ÑÐ¹ ÐÐ Ð¸ ÐºÐ°Ðº Ð¼Ñ ÐµÐ³Ð¾ Ð¸Ð½Ð¶ÐµÐ½ÐµÑÐ¸ÑÑÐµÐ¼.",
+  "url": "https://althea-tech.ru/philosophy.html",
+  "author": {
+    "@type": "Organization",
+    "name": "Althea Tech",
+    "@id": "https://althea-tech.ru/#organization"
+  },
+  "publisher": {
+    "@id": "https://althea-tech.ru/#organization"
+  },
+  "inLanguage": "ru-RU",
+  "datePublished": "2024-09-01",
+  "dateModified": "2026-07-31"
+}
+</script>
+<!-- althea-meta-start -->
+<meta property="og:title" content="Ð¤Ð¸Ð»Ð¾ÑÐ¾ÑÐ¸Ñ â ÐÐ½Ð¶ÐµÐ½ÐµÑÐ¸Ñ Ð´Ð¾Ð²ÐµÑÐµÐ½Ð½Ð¾Ð³Ð¾ ÐÐ | Althea" />
+<meta property="og:description" content="ÐÐ¸ÑÐ¾Ð²Ð¾Ð·Ð·ÑÐµÐ½Ð¸Ðµ Althea: ÑÑÐ¾ ÑÐ°ÐºÐ¾Ðµ Ð´Ð¾Ð²ÐµÑÐµÐ½Ð½ÑÐ¹ ÐÐ, ÐºÐ°Ðº Ð¼Ñ ÐµÐ³Ð¾ Ð¸Ð½Ð¶ÐµÐ½ÐµÑÐ¸ÑÑÐµÐ¼, Ð½Ð°ÑÐ¸ Ð¿ÑÐ¸Ð½ÑÐ¸Ð¿Ñ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://althea-tech.ru/philosophy.html" />
+<meta property="og:site_name" content="Althea Tech" />
+<meta property="og:locale" content="ru_RU" />
+<meta property="og:locale:alternate" content="en_US" />
+<meta property="og:image" content="https://althea-tech.ru/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630"
+<meta property="og:image:alt" content="ALTHEA Tech â ÐºÐ¾ÑÐ¿Ð¾ÑÐ°ÑÐ¸Ð²Ð½ÑÐ¹ Ð»Ð¾Ð³Ð¾ÑÐ¸Ð¿, ÑÑÐ¼Ð½ÑÐ¹ ÑÐ¾Ð½ Ñ Ð·Ð¾Ð»Ð¾ÑÐ¾Ð¹ Ð±ÑÐºÐ²Ð¾Ð¹ Ð Ð¸ ÑÐµÑÑÑÑÐ¼Ñ ÑÐ²ÐµÑÐ¾Ð²ÑÐ¼Ð¸ ÑÐ¾ÑÐºÐ°Ð¼Ð¸ Ð¿ÑÐ¾Ð´ÑÐºÑÐ¾Ð² AMAGI/ALTHEA/Scio/CTC" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@altea_deeptech" />
+<meta name="twitter:title" content="Ð¤Ð¸Ð»Ð¾ÑÐ¾ÑÐ¸Ñ â ÐÐ½Ð¶ÐµÐ½ÐµÑÐ¸Ñ Ð´Ð¾Ð²ÐµÑÐµÐ½Ð½Ð¾Ð³Ð¾ ÐÐ | Althea" />
+<meta name="twitter:description" content="ÐÐ¸ÑÐ¾Ð²Ð¾Ð·Ð·ÑÐµÐ½Ð¸Ðµ Althea: ÑÑÐ¾ ÑÐ°ÐºÐ¾Ðµ Ð´Ð¾Ð²ÐµÑÐµÐ½Ð½ÑÐ¹ ÐÐ, ÐºÐ°Ðº Ð¼Ñ ÐµÐ³Ð¾ Ð¸Ð½Ð¶ÐµÐ½ÐµÑÐ¸ÑÑÐµÐ¼, Ð½Ð°ÑÐ¸ Ð¿ÑÐ¸Ð½ÑÐ¸Ð¿Ñ." />
+<meta name="twitter:image" content="https://althea-tech.ru/og-image.png"
+<meta name="twitter:image:alt" content="ALTHEA Tech â ÐºÐ¾ÑÐ¿Ð¾ÑÐ°ÑÐ¸Ð²Ð½ÑÐ¹ Ð»Ð¾Ð³Ð¾ÑÐ¸Ð¿" />
+<link rel="canonical" href="https://althea-tech.ru/philosophy.html" />
+<meta property="article:modified_time" content="2026-07-31T12:00:00+03:00" />
+<meta property="article:author" content="Althea Tech" />
+<meta property="article:publisher" content="https://althea-tech.ru/" />
+<!-- althea-meta-end -->
+
+<!-- ============================================================ -->
+<!-- ÐÐÐÐÐÐ¢ÐÐÐ: Ð·Ð°Ð¼ÐµÐ½Ð¸ÑÐµ YANDEX_METRIKA_ID Ð½Ð° ÑÐ²Ð¾Ð¹ Ð½Ð¾Ð¼ÐµÑ ÑÑÑÑÑÐ¸ÐºÐ° -->
+<!-- (ÑÐ¾Ð·Ð´Ð°ÑÑ: https://metrika.yandex.ru/list)                    -->
+<!-- Ð G-XXXXXXXXXX Ð½Ð° ÑÐ²Ð¾Ð¹ Google Analytics 4 ID                 -->
+<!-- (ÑÐ¾Ð·Ð´Ð°ÑÑ: https://analytics.google.com)                      -->
+<!-- ÐÐ¾ÑÐ»Ðµ Ð·Ð°Ð¼ÐµÐ½Ñ ÑÐ´Ð°Ð»Ð¸ÑÐµ ÑÑÐ¾Ñ ÐºÐ¾Ð¼Ð¼ÐµÐ½ÑÐ°ÑÐ¸Ð¹                        -->
+<!-- ============================================================ -->
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+m[i].l=1*new Date();
+for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
+
+ym(YANDEX_METRIKA_ID, "init", {
+    clickmap:true,
+    trackLinks:true,
+    accurateTrackBounce:true,
+    webvisor:true,
+    trackHash:true,
+    ecommerce:"dataLayer"
+});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/YANDEX_METRIKA_ID" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<!-- Google Analytics 4 (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XXXXXXXXXX', { anonymize_ip: true });
+</script>
+<!-- /Google Analytics 4 -->
+</head>
+<body>
+<div class="bg-glow"></div><div class="bg-grid"></div><div class="noise"></div>
+
+<div class="cookies" id="cookies">
+  <div class="wrap">
+    <p data-ru="ÐÑ Ð¸ÑÐ¿Ð¾Ð»ÑÐ·ÑÐµÐ¼ ÑÐ°Ð¹Ð»Ñ cookie Ð´Ð»Ñ ÐºÐ¾ÑÑÐµÐºÑÐ½Ð¾Ð¹ ÑÐ°Ð±Ð¾ÑÑ ÑÐ°Ð¹ÑÐ° Ð¸ ÑÐ±Ð¾ÑÐ° Ð°Ð½Ð¾Ð½Ð¸Ð¼Ð½Ð¾Ð¹ ÑÑÐ°ÑÐ¸ÑÑÐ¸ÐºÐ¸ Ð¿Ð¾ÑÐµÑÐ°ÐµÐ¼Ð¾ÑÑÐ¸ ÑÐµÑÐµÐ· ÑÐµÑÐ²Ð¸Ñ Top.Mail.Ru (ÑÑÑÑÑÐ¸Ðº â 3783624, ÑÐµÑÐ²ÐµÑÑ Ð² Ð Ð¤). ÐÑÐ¾Ð´Ð¾Ð»Ð¶Ð°Ñ Ð¸ÑÐ¿Ð¾Ð»ÑÐ·Ð¾Ð²Ð°Ð½Ð¸Ðµ ÑÐ°Ð¹ÑÐ°, Ð²Ñ Ð´Ð°ÑÑÐµ <a href=&quot;policy.html&quot;>ÑÐ¾Ð³Ð»Ð°ÑÐ¸Ðµ Ð½Ð° Ð¾Ð±ÑÐ°Ð±Ð¾ÑÐºÑ Ð¿ÐµÑÑÐ¾Ð½Ð°Ð»ÑÐ½ÑÑ Ð´Ð°Ð½Ð½ÑÑ</a> Ð² ÑÐ¾Ð¾ÑÐ²ÐµÑÑÑÐ²Ð¸Ð¸ Ñ 152-Ð¤Ð Ð¸ Ð¿ÑÐ¸Ð½Ð¸Ð¼Ð°ÐµÑÐµ <a href=&quot;terms.html&quot;>Ð¿Ð¾Ð»ÑÐ·Ð¾Ð²Ð°ÑÐµÐ»ÑÑÐºÐ¾Ðµ ÑÐ¾Ð³Ð»Ð°ÑÐµÐ½Ð¸Ðµ</a>." data-en="We use cookies for the site to work properly and to collect anonymous traffic statistics via the Top.Mail.Ru service (counter No. 3783624, servers in Russia). By continuing, you give <a href=&quot;policy.html&quot;>consent to personal-data processing</a> under FZ-152 and accept the <a href=&quot;terms.html&quot;>terms of use</a>.">ÐÑ Ð¸ÑÐ¿Ð¾Ð»ÑÐ·ÑÐµÐ¼ ÑÐ°Ð¹Ð»Ñ cookie Ð´Ð»Ñ ÐºÐ¾ÑÑÐµÐºÑÐ½Ð¾Ð¹ ÑÐ°Ð±Ð¾ÑÑ ÑÐ°Ð¹ÑÐ° Ð¸ ÑÐ±Ð¾ÑÐ° Ð°Ð½Ð¾Ð½Ð¸Ð¼Ð½Ð¾Ð¹ ÑÑÐ°ÑÐ¸ÑÑÐ¸ÐºÐ¸ Ð¿Ð¾ÑÐµÑÐ°ÐµÐ¼Ð¾ÑÑÐ¸ ÑÐµÑÐµÐ· ÑÐµÑÐ²Ð¸Ñ Top.Mail.Ru (ÑÑÑÑÑÐ¸Ðº â 3783624, ÑÐµÑÐ²ÐµÑÑ Ð² Ð Ð¤). ÐÑÐ¾Ð´Ð¾Ð»Ð¶Ð°Ñ Ð¸ÑÐ¿Ð¾Ð»ÑÐ·Ð¾Ð²Ð°Ð½Ð¸Ðµ ÑÐ°Ð¹ÑÐ°, Ð²Ñ Ð´Ð°ÑÑÐµ <a href="policy.html">ÑÐ¾Ð³Ð»Ð°ÑÐ¸Ðµ Ð½Ð° Ð¾Ð±ÑÐ°Ð±Ð¾ÑÐºÑ Ð¿ÐµÑÑÐ¾Ð½Ð°Ð»ÑÐ½ÑÑ Ð´Ð°Ð½Ð½ÑÑ</a> Ð² ÑÐ¾Ð¾ÑÐ²ÐµÑÑÑÐ²Ð¸Ð¸ Ñ 152-Ð¤Ð Ð¸ Ð¿ÑÐ¸Ð½Ð¸Ð¼Ð°ÐµÑÐµ <a href="terms.html">Ð¿Ð¾Ð»ÑÐ·Ð¾Ð²Ð°ÑÐµÐ»ÑÑÐºÐ¾Ðµ ÑÐ¾Ð³Ð»Ð°ÑÐµÐ½Ð¸Ðµ</a>.</p>
+    <div class="btns">
+      <button class="btn btn-a" onclick="acceptCookies()" data-ru="ÐÑÐ¸Ð½ÑÑÑ" data-en="Accept">ÐÑÐ¸Ð½ÑÑÑ</button>
+      <button class="btn btn-g" onclick="declineCookies()" data-ru="ÐÑÐºÐ»Ð¾Ð½Ð¸ÑÑ" data-en="Decline">ÐÑÐºÐ»Ð¾Ð½Ð¸ÑÑ</button>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="wrap nav">
+    <a href="index.html" class="brand"><span class="mark">Ð</span><span><b data-ru="ÐÐÐ¢ÐÐ¯" data-en="ALTHEA">ÐÐÐ¢ÐÐ¯</b></span></a>
+    <nav class="menu" id="menu">
+      <div class="menu-item-dropdown">
+        <a href="#products" data-ru="ÐÑÐ¾Ð´ÑÐºÑÑ" data-en="Products">ÐÑÐ¾Ð´ÑÐºÑÑ</a>
+        <div class="menu-dropdown">
+          <a href="architecture.html"><span class="dd-code">01</span>AMAGI</a>
+          <a href="althea.html"><span class="dd-code">02</span>ALTHEA / CRISPR-TTP</a>
+          <a href="scio.html"><span class="dd-code">03</span>Scio</a>
+          <a href="ctc.html"><span class="dd-code">04</span>CTC</a>
+        </div>
+      </div>
+      <div class="menu-item-dropdown">
+        <a href="ai-engineering.html" data-ru="ÐÐ°Ð¿ÑÐ°Ð²Ð»ÐµÐ½Ð¸Ñ" data-en="Directions">ÐÐ°Ð¿ÑÐ°Ð²Ð»ÐµÐ½Ð¸Ñ</a>
+        <div class="menu-dropdown">
+          <a href="ai-engineering.html"><span class="dd-code">01</span><span data-ru="ÐÐ-Ð¸Ð½Ð¶ÐµÐ½ÐµÑÐ¸Ñ" data-en="AI Engineering">ÐÐ-Ð¸Ð½Ð¶ÐµÐ½ÐµÑÐ¸Ñ</span></a>
+          <a href="philosophy.html"><span class="dd-code">02</span><span data-ru="Ð¤Ð¸Ð»Ð¾ÑÐ¾ÑÐ¸Ñ" data-en="Philosophy">Ð¤Ð¸Ð»Ð¾ÑÐ¾ÑÐ¸Ñ</span></a>
+          <a href="vision.html"><span class="dd-code">03</span><span data-ru="ÐÐ¸Ð´ÐµÐ½Ð¸Ðµ" data-en="Vision">ÐÐ¸Ð´ÐµÐ½Ð¸Ðµ</span></a>
+          <a href="science.html"><span class="dd-code">04</span><span data-ru="ÐÐ°ÑÐºÐ°" data-en="Research">ÐÐ°ÑÐºÐ°</span></a>
+        </div>
+      </div>
+      <div class="menu-item-dropdown">
+        <a href="services.html" data-ru="Ð£ÑÐ»ÑÐ³Ð¸" data-en="Services">Ð£ÑÐ»ÑÐ³Ð¸</a>
+        <div class="menu-dropdown">
+          <a href="services.html"><span class="dd-code">01</span><span data-ru="Ð£ÑÐ»ÑÐ³Ð¸" data-en="Services">Ð£ÑÐ»ÑÐ³Ð¸</span></a>
+          <a href="outstaffing.html"><span class="dd-code">02</span><span data-ru="ÐÑÑÑÐ¾ÑÑÐ¸Ð½Ð³" data-en="Outstaffing">ÐÑÑÑÐ¾ÑÑÐ¸Ð½Ð³</span></a>
+          <a href="careers.html"><span class="dd-code">03</span><span data-ru="ÐÐ°ÐºÐ°Ð½ÑÐ¸Ð¸" data-en="Careers">ÐÐ°ÐºÐ°Ð½ÑÐ¸Ð¸</span></a>
+        </div>
+      </div>
+      <div class="menu-item-dropdown">
+        <a href="team.html" data-ru="ÐÐ¾Ð¼Ð¿Ð°Ð½Ð¸Ñ" data-en="Company">ÐÐ¾Ð¼Ð¿Ð°Ð½Ð¸Ñ</a>
+        <div class="menu-dropdown">
+          <a href="team.html"><span class="dd-code">01</span><span data-ru="ÐÐ¾Ð¼Ð°Ð½Ð´Ð°" data-en="Team">ÐÐ¾Ð¼Ð°Ð½Ð´Ð°</span></a>
+          <a href="news.html"><span class="dd-code">02</span><span data-ru="ÐÐ¾Ð²Ð¾ÑÑÐ¸" data-en="News">ÐÐ¾Ð²Ð¾ÑÑÐ¸</span></a>
+          <a href="faq.html"><span class="dd-code">03</span><span data-ru="FAQ" data-en="FAQ">FAQ</span></a>
+        </div>
+      </div>
+      <div class="menu-item-dropdown">
+        <a href="regulations.html" data-ru="ÐÑÐ°Ð²Ð¾" data-en="Legal" style="color:var(--amagi)">ÐÑÐ°Ð²Ð¾</a>
+        <div class="menu-dropdown">
+          <a href="regulations.html"><span class="dd-code">01</span><span data-ru="Ð ÐµÐ³ÑÐ»ÑÑÐ¾ÑÑ Ð¸ Ð·Ð°ÐºÐ¾Ð½Ñ" data-en="Regulations & Laws">Ð ÐµÐ³ÑÐ»ÑÑÐ¾ÑÑ Ð¸ Ð·Ð°ÐºÐ¾Ð½Ñ</span></a>
+          <a href="bot.html"><span class="dd-code">02</span><span data-ru="Ð Ð°ÑÑÑÐ»ÐºÐ°" data-en="Brief">Ð Ð°ÑÑÑÐ»ÐºÐ°</span></a>
+          <a href="minzdrav-letter.html"><span class="dd-code">03</span><span data-ru="ÐÐ°ÐºÐ»ÑÑÐµÐ½Ð¸Ðµ ÐÐ¸Ð½Ð·Ð´ÑÐ°Ð²Ð°" data-en="Minzdrav conclusion">ÐÐ°ÐºÐ»ÑÑÐµÐ½Ð¸Ðµ ÐÐ¸Ð½Ð·Ð´ÑÐ°Ð²Ð°</span></a>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-cta">
+      <div class="lang"><button id="btn-ru" class="on" onclick="setLang('ru')">RU</button><button id="btn-en" onclick="setLang('en')">EN</button></div>
+      <button class="theme-toggle" id="themeToggle" aria-label="ÐÐµÑÐµÐºÐ»ÑÑÐ¸ÑÑ ÑÐµÐ¼Ñ" title="Ð¡Ð¼ÐµÐ½Ð¸ÑÑ ÑÐµÐ¼Ñ"><span class="ico ico-moon">ð</span><span class="ico ico-sun">â</span><span class="knob"></span></button>
+      <a class="btn btn-a" href="mailto:altea_ltd@mail.ru?subject=R%26D" data-ru="ÐÐ±ÑÑÐ´Ð¸ÑÑ Ð¿ÑÐ¾ÐµÐºÑ" data-en="Discuss a project">ÐÐ±ÑÑÐ´Ð¸ÑÑ Ð¿ÑÐ¾ÐµÐºÑ</a>
+      <button class="burger" id="burger" aria-label="menu"><i></i><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section style="padding:80px 0 50px">
+    <div class="wrap" style="max-width:780px">
+      <span class="eyebrow" data-ru="Telegram-Ð±Ð¾Ñ Â· Deep-tech Ð´Ð°Ð¹Ð´Ð¶ÐµÑÑ 6Ã/Ð´ÐµÐ½Ñ" data-en="Telegram bot Â· Deep-tech brief 6Ã/day">Telegram-Ð±Ð¾Ñ Â· Deep-tech Ð´Ð°Ð¹Ð´Ð¶ÐµÑÑ 6Ã/Ð´ÐµÐ½Ñ</span>
+      <h1 data-ru="ALTHEA Research Brief" data-en="ALTHEA Research Brief">ALTHEA Research Brief</h1>
+      <p class="lead" data-ru="Deep-tech Ð´Ð°Ð¹Ð´Ð¶ÐµÑÑ 6 ÑÐ°Ð· Ð² Ð´ÐµÐ½Ñ (ÐºÐ°Ð¶Ð´ÑÐµ 4 ÑÐ°ÑÐ°) Ð² Telegram. ÐÐ¾Ð±Ð°Ð²ÑÑÐµ Ð±Ð¾ÑÐ° Ð² ÑÐ²Ð¾Ñ Ð³ÑÑÐ¿Ð¿Ñ." data-en="Deep-tech brief 6 times a day (every 4 hours) in Telegram. Add the bot to your group.">Deep-tech Ð´Ð°Ð¹Ð´Ð¶ÐµÑÑ 6 ÑÐ°Ð· Ð² Ð´ÐµÐ½Ñ (ÐºÐ°Ð¶Ð´ÑÐµ 4 ÑÐ°ÑÐ°) Ð² Telegram. <b>ÐÐ¾Ð±Ð°Ð²ÑÑÐµ Ð±Ð¾ÑÐ° Ð² ÑÐ²Ð¾Ñ Ð³ÑÑÐ¿Ð¿Ñ</b>.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px">
+        <a href="https://t.me/ALTHEA_Research_Briefbot?startgroup=true" target="_blank" rel="noopener" class="btn btn-a" style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;font-size:14px;text-decoration:none;border-radius:8px">ÐÐ¾Ð±Ð°Ð²Ð¸ÑÑ Ð² Ð³ÑÑÐ¿Ð¿Ñ</a>
+        <a href="https://t.me/ALTHEA_Research_Briefbot" target="_blank" rel="noopener" class="btn btn-g" style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;font-size:14px;text-decoration:none;border-radius:8px">ÐÑÐºÑÑÑÑ Ð² Telegram</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:30px 0 50px">
+    <div class="wrap" style="max-width:900px">
+      <div class="sec-head reveal" style="--acc:var(--amagi)"><span class="sec-num">01 /</span><h2 data-ru="Ð§ÑÐ¾ Ð´ÐµÐ»Ð°ÐµÑ Ð±Ð¾Ñ Ð¸ Ð·Ð°ÑÐµÐ¼ ÐµÐ³Ð¾ ÑÑÐ°Ð²Ð¸ÑÑ" data-en="What the bot does and why install it">Ð§ÑÐ¾ Ð´ÐµÐ»Ð°ÐµÑ Ð±Ð¾Ñ Ð¸ Ð·Ð°ÑÐµÐ¼ ÐµÐ³Ð¾ ÑÑÐ°Ð²Ð¸ÑÑ</h2></div>
+
+      <p class="reveal" style="font-size:16px;line-height:1.75;color:var(--text);margin-bottom:24px" data-ru="<b>ALTHEA Research Brief</b> â ÑÑÐ¾ Telegram-Ð±Ð¾Ñ, ÐºÐ¾ÑÐ¾ÑÑÐ¹ Ð¾ÑÑÐ»ÐµÐ¶Ð¸Ð²Ð°ÐµÑ 25 Ð²ÐµÐ´ÑÑÐ¸Ñ deep-tech Ð¸ÑÑÐ¾ÑÐ½Ð¸ÐºÐ¾Ð² (The Hacker News, Krebs on Security, BleepingComputer, Dark Reading, arXiv, FierceBiotech, STAT News, Nature Biotechnology, GEN, NIST AI, The Verge, Ars Technica, Medical Xpress, NEJM AI, TechCrunch, MIT Tech Review, VentureBeat, Hacker News, OpenAI Blog, VC.ru) Ð¸ Ð¿ÑÐ¸ÑÑÐ»Ð°ÐµÑ Ð²Ð°Ð¼ Ð² Telegram Ð»ÐµÐ½ÑÑ ÑÐ°Ð¼ÑÑ ÑÐµÐ»ÐµÐ²Ð°Ð½ÑÐ½ÑÑ Ð½Ð¾Ð²Ð¾ÑÑÐµÐ¹ Ð¿Ð¾ ÑÐµÐ¼Ð°Ð¼: AI Safety, Ð±Ð¸Ð¾Ð¸Ð½Ð¶ÐµÐ½ÐµÑÐ¸Ñ (CRISPR), deepfake-Ð´ÐµÑÐµÐºÑÐ¸Ñ, ÐºÐ¸Ð±ÐµÑÐ±ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ÑÑÑ Ð¸ ÑÐµÐ³ÑÐ»ÑÑÐ¾ÑÐ¸ÐºÐ°. ÐÐ±Ð½Ð¾Ð²Ð»ÐµÐ½Ð¸Ðµ 6 ÑÐ°Ð· Ð² Ð´ÐµÐ½Ñ (ÐºÐ°Ð¶Ð´ÑÐµ 4 ÑÐ°ÑÐ°) â Ð²Ñ Ð¿Ð¾Ð»ÑÑÐ°ÐµÑÐµ ÑÐ²ÐµÐ¶Ð¸Ðµ Ð½Ð¾Ð²Ð¾ÑÑÐ¸ Ð±ÐµÐ· Ð·Ð°Ð´ÐµÑÐ¶ÐµÐº Ð² Ð¾Ð´Ð½Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ." data-en="<b>ALTHEA Research Brief</b> is a Telegram bot that monitors 25 leading deep-tech sources (The Hacker News, Krebs on Security, BleepingComputer, Dark Reading, arXiv, FierceBiotech, STAT News, Nature Biotechnology, GEN, NIST AI, The Verge, Ars Technica, Medical Xpress, NEJM AI, TechCrunch, MIT Tech Review, VentureBeat, Hacker News, OpenAI Blog, VC.ru) and sends you a feed of the most relevant news on AI Safety, bioengineering (CRISPR), deepfake detection, cybersecurity and regulation. Updated 6 times a day (every 4 hours) â you get fresh news without delays in one command."><b>ALTHEA Research Brief</b> â ÑÑÐ¾ Telegram-Ð±Ð¾Ñ, ÐºÐ¾ÑÐ¾ÑÑÐ¹ Ð¾ÑÑÐ»ÐµÐ¶Ð¸Ð²Ð°ÐµÑ 25 Ð²ÐµÐ´ÑÑÐ¸Ñ deep-tech Ð¸ÑÑÐ¾ÑÐ½Ð¸ÐºÐ¾Ð² (The Hacker News, Krebs on Security, BleepingComputer, Dark Reading, arXiv, FierceBiotech, STAT News, Nature Biotechnology, GEN, NIST AI, The Verge, Ars Technica, Medical Xpress, NEJM AI, TechCrunch, MIT Tech Review, VentureBeat, Hacker News, OpenAI Blog, VC.ru) Ð¸ Ð¿ÑÐ¸ÑÑÐ»Ð°ÐµÑ Ð²Ð°Ð¼ Ð² Telegram Ð»ÐµÐ½ÑÑ ÑÐ°Ð¼ÑÑ ÑÐµÐ»ÐµÐ²Ð°Ð½ÑÐ½ÑÑ Ð½Ð¾Ð²Ð¾ÑÑÐµÐ¹ Ð¿Ð¾ ÑÐµÐ¼Ð°Ð¼: AI Safety, Ð±Ð¸Ð¾Ð¸Ð½Ð¶ÐµÐ½ÐµÑÐ¸Ñ (CRISPR), deepfake-Ð´ÐµÑÐµÐºÑÐ¸Ñ, ÐºÐ¸Ð±ÐµÑÐ±ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ÑÑÑ Ð¸ ÑÐµÐ³ÑÐ»ÑÑÐ¾ÑÐ¸ÐºÐ°. ÐÐ±Ð½Ð¾Ð²Ð»ÐµÐ½Ð¸Ðµ 6 ÑÐ°Ð· Ð² Ð´ÐµÐ½Ñ (ÐºÐ°Ð¶Ð´ÑÐµ 4 ÑÐ°ÑÐ°) â Ð²Ñ Ð¿Ð¾Ð»ÑÑÐ°ÐµÑÐµ ÑÐ²ÐµÐ¶Ð¸Ðµ Ð½Ð¾Ð²Ð¾ÑÑÐ¸ Ð±ÐµÐ· Ð·Ð°Ð´ÐµÑÐ¶ÐµÐº Ð² Ð¾Ð´Ð½Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ.</p>
+
+      <h3 class="reveal" style="font-family:var(--disp);font-size:18px;font-weight:700;margin:32px 0 18px;color:var(--text)" data-ru="Ð§ÑÐ¾ Ð±Ð¾Ñ Ð´Ð°ÑÑ Ð²Ð°Ð¼ Ð¸ Ð²Ð°ÑÐµÐ¹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ðµ" data-en="What the bot will give you and your team">Ð§ÑÐ¾ Ð±Ð¾Ñ Ð´Ð°ÑÑ Ð²Ð°Ð¼ Ð¸ Ð²Ð°ÑÐµÐ¹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ðµ</h3>
+      <div class="reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">
+        <div style="background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:22px 24px">
+          <div style="width:40px;height:40px;margin-bottom:12px;color:var(--amagi);display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--amagi) 8%,transparent);border:1px solid color-mix(in srgb,var(--amagi) 22%,transparent);border-radius:10px;padding:7px;box-sizing:border-box;transition:.3s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:100%;height:100%;display:block"><path d="M4 12a8 8 0 0 1 16 0"/><path d="M8 12a4 4 0 0 1 8 0"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><path d="M2 8c2.5-3 5-4 6-4M22 8c-2.5-3-5-4-6-4"/></svg></div>
+          <h4 style="font-size:15px;font-weight:700;margin:0 0 8px;color:var(--amagi)" data-ru="ÐÑÐµÐ³Ð´Ð° Ð°ÐºÑÑÐ°Ð»ÑÐ½Ð°Ñ Ð¸Ð½ÑÐ¾ÑÐ¼Ð°ÑÐ¸Ñ" data-en="Always up-to-date information">ÐÑÐµÐ³Ð´Ð° Ð°ÐºÑÑÐ°Ð»ÑÐ½Ð°Ñ Ð¸Ð½ÑÐ¾ÑÐ¼Ð°ÑÐ¸Ñ</h4>
+          <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0" data-ru="ÐÐ¾Ñ Ð¾Ð±Ð½Ð¾Ð²Ð»ÑÐµÑ Ð±Ð°Ð·Ñ 6 ÑÐ°Ð· Ð² Ð´ÐµÐ½Ñ (ÐºÐ°Ð¶Ð´ÑÐµ 4 ÑÐ°ÑÐ°: 00:07, 04:07, 08:07, 12:07, 16:07, 20:07 ÐÐ¡Ð), Ð¿Ð°ÑÑÑ 25 Ð¸ÑÑÐ¾ÑÐ½Ð¸ÐºÐ¾Ð² ÑÐµÑÐµÐ· RSS Ð¸ API. ÐÑ Ð²Ð¸Ð´Ð¸ÑÐµ ÑÐ²ÐµÐ¶Ð¸Ðµ Ð½Ð¾Ð²Ð¾ÑÑÐ¸ Ð² ÑÐµÑÐµÐ½Ð¸Ðµ Ð¼Ð¸Ð½ÑÑ Ð¿Ð¾ÑÐ»Ðµ Ð¿ÑÐ±Ð»Ð¸ÐºÐ°ÑÐ¸Ð¸ â Ð±ÐµÐ· Ð·Ð°Ð´ÐµÑÐ¶ÐµÐº Ð¸ ÑÑÑÐ°ÑÐµÐ²ÑÐ¸Ñ Ð´Ð°Ð½Ð½ÑÑ." data-en="The bot updates its database 6 times a day (every 4 hours: 00:07, 04:07, 08:07, 12:07, 16:07, 20:07 MSK), parsing 25 sources via RSS and API. You see fresh news within minutes of publication â no delays or outdated data.">ÐÐ¾Ñ Ð¾Ð±Ð½Ð¾Ð²Ð»ÑÐµÑ Ð±Ð°Ð·Ñ 6 ÑÐ°Ð· Ð² Ð´ÐµÐ½Ñ (ÐºÐ°Ð¶Ð´ÑÐµ 4 ÑÐ°ÑÐ°: 00:07, 04:07, 08:07, 12:07, 16:07, 20:07 ÐÐ¡Ð), Ð¿Ð°ÑÑÑ 25 Ð¸ÑÑÐ¾ÑÐ½Ð¸ÐºÐ¾Ð² ÑÐµÑÐµÐ· RSS Ð¸ API. ÐÑ Ð²Ð¸Ð´Ð¸ÑÐµ ÑÐ²ÐµÐ¶Ð¸Ðµ Ð½Ð¾Ð²Ð¾ÑÑÐ¸ Ð² ÑÐµÑÐµÐ½Ð¸Ðµ Ð¼Ð¸Ð½ÑÑ Ð¿Ð¾ÑÐ»Ðµ Ð¿ÑÐ±Ð»Ð¸ÐºÐ°ÑÐ¸Ð¸ â Ð±ÐµÐ· Ð·Ð°Ð´ÐµÑÐ¶ÐµÐº Ð¸ ÑÑÑÐ°ÑÐµÐ²ÑÐ¸Ñ Ð´Ð°Ð½Ð½ÑÑ.</p>
+        </div>
+        <div style="background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:22px 24px">
+          <div style="width:40px;height:40px;margin-bottom:12px;color:var(--althea);display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--althea) 8%,transparent);border:1px solid color-mix(in srgb,var(--althea) 22%,transparent);border-radius:10px;padding:7px;box-sizing:border-box;transition:.3s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:100%;height:100%;display:block"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg></div>
+          <h4 style="font-size:15px;font-weight:700;margin:0 0 8px;color:var(--althea)" data-ru="Ð¢Ð¾Ð»ÑÐºÐ¾ ÑÐµÐ»ÐµÐ²Ð°Ð½ÑÐ½Ð¾Ðµ" data-en="Only relevant">Ð¢Ð¾Ð»ÑÐºÐ¾ ÑÐµÐ»ÐµÐ²Ð°Ð½ÑÐ½Ð¾Ðµ</h4>
+          <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0" data-ru="ÐÐ· 100+ Ð¿ÑÐ±Ð»Ð¸ÐºÐ°ÑÐ¸Ð¹ Ð² Ð´ÐµÐ½Ñ Ð±Ð¾Ñ Ð¾ÑÐ±Ð¸ÑÐ°ÐµÑ 5-10 Ð´ÐµÐ¹ÑÑÐ²Ð¸ÑÐµÐ»ÑÐ½Ð¾ Ð²Ð°Ð¶Ð½ÑÑ Ð´Ð»Ñ deep-tech. ÐÐµÐ· ÑÐ¿Ð°Ð¼Ð°, Ð¿Ð¾Ð²ÑÐ¾ÑÐ¾Ð² Ð¸ clickbait â ÑÐ¾Ð»ÑÐºÐ¾ ÑÑÑÐµÑÑÐ²ÐµÐ½Ð½Ð¾Ðµ: Ð¿ÑÐ¾ÑÑÐ²Ñ, ÑÑÐ·Ð²Ð¸Ð¼Ð¾ÑÑÐ¸, ÑÐµÐ³ÑÐ»ÑÑÐ¾ÑÐ¸ÐºÐ°, Ð½Ð°ÑÑÐ½ÑÐµ Ð¿ÑÐ±Ð»Ð¸ÐºÐ°ÑÐ¸Ð¸." data-en="Out of 100+ daily publications, the bot selects 5-10 that really matter for deep-tech. No spam, duplicates or clickbait â only essentials: breakthroughs, vulnerabilities, regulations, scientific publications.">ÐÐ· 100+ Ð¿ÑÐ±Ð»Ð¸ÐºÐ°ÑÐ¸Ð¹ Ð² Ð´ÐµÐ½Ñ Ð±Ð¾Ñ Ð¾ÑÐ±Ð¸ÑÐ°ÐµÑ 5-10 Ð´ÐµÐ¹ÑÑÐ²Ð¸ÑÐµÐ»ÑÐ½Ð¾ Ð²Ð°Ð¶Ð½ÑÑ Ð´Ð»Ñ deep-tech. ÐÐµÐ· ÑÐ¿Ð°Ð¼Ð°, Ð¿Ð¾Ð²ÑÐ¾ÑÐ¾Ð² Ð¸ clickbait â ÑÐ¾Ð»ÑÐºÐ¾ ÑÑÑÐµÑÑÐ²ÐµÐ½Ð½Ð¾Ðµ: Ð¿ÑÐ¾ÑÑÐ²Ñ, ÑÑÐ·Ð²Ð¸Ð¼Ð¾ÑÑÐ¸, ÑÐµÐ³ÑÐ»ÑÑÐ¾ÑÐ¸ÐºÐ°, Ð½Ð°ÑÑÐ½ÑÐµ Ð¿ÑÐ±Ð»Ð¸ÐºÐ°ÑÐ¸Ð¸.</p>
+        </div>
+        <div style="background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:22px 24px">
+          <div style="width:40px;height:40px;margin-bottom:12px;color:var(--scio);display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--scio) 8%,transparent);border:1px solid color-mix(in srgb,var(--scio) 22%,transparent);border-radius:10px;padding:7px;box-sizing:border-box;transition:.3s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:100%;height:100%;display:block"><path d="M3 7v5l9 9 7-7-9-9H3z"/><circle cx="7.5" cy="11.5" r="1.5" fill="currentColor"/></svg></div>
+          <h4 style="font-size:15px;font-weight:700;margin:0 0 8px;color:var(--scio)" data-ru="ÐÐ°ÑÐµÐ³Ð¾ÑÐ¸Ð·Ð°ÑÐ¸Ñ Ð¿Ð¾ 6 ÑÐµÐ¼Ð°Ð¼" data-en="Categorised into 6 topics">ÐÐ°ÑÐµÐ³Ð¾ÑÐ¸Ð·Ð°ÑÐ¸Ñ Ð¿Ð¾ 6 ÑÐµÐ¼Ð°Ð¼</h4>
+          <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0" data-ru="ÐÐ°Ð¶Ð´Ð°Ñ Ð½Ð¾Ð²Ð¾ÑÑÑ Ð¿Ð¾Ð¼ÐµÑÐ°ÐµÑÑÑ: <span style="display:inline-block;width:16px;height:16px;vertical-align:-3px;margin-right:6px;color:#F5A623"><svg width="16" height="16" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M24 4 L40 12 L40 28 C40 38 32 44 24 46 C16 44 8 38 8 28 L8 12 Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" fill="none"/> <rect x="16" y="18" width="16" height="16" rx="2" stroke="currentColor" stroke-width="2" fill="none"/> <line x1="20" y1="18" x2="20" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="24" y1="18" x2="24" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="28" y1="18" x2="28" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="20" y1="34" x2="20" y2="39" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="24" y1="34" x2="24" y2="39" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="28" y1="34" x2="28" y2="39" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="16" y1="22" x2="11" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="16" y1="26" x2="11" y2="26" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="16" y1="30" x2="11" y2="30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="32" y1="22" x2="37" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="32" y1="26" x2="37" y2="26" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="32" y1="30" x2="37" y2="30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <circle cx="24" cy="26" r="2.5" fill="currentColor"/> </svg></span>AMAGI (AI safety) Â· <span style="display:inline-block;width:16px;height:16px;vertical-align:-3px;margin-right:6px;color:#2DD4A7"><svg width="16" height="16" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M14 8 C 22 14, 26 14, 34 8 M14 16 C 22 22, 26 22, 34 16 M14 24 C 22 30, 26 30, 34 24 M14 32 C 22 38, 26 38, 34 32 M14 40 C 22 46, 26 46, 34 40" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/> <path d="M14 8 C 22 2, 26 2, 34 8 M14 16 C 22 10, 26 10, 34 16 M14 24 C 22 18, 26 18, 34 24 M14 32 C 22 26, 26 26, 34 32 M14 40 C 22 34, 26 34, 34 40" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.7"/> <line x1="16" y1="12" x2="32" y2="12" stroke="currentColor" stroke-width="1.2" opacity="0.5"/> <line x1="16" y1="20" x2="32" y2="20" stroke="currentColor" stroke-width="1.2" opacity="0.5"/> <line x1="16" y1="28" x2="32" y2="28" stroke="currentColor" stroke-width="1.2" opacity="0.5"/> <line x1="16" y1="36" x2="32" y2="36" stroke="currentColor" stroke-width="1.2" opacity="0.5"/> <circle cx="24" cy="24" r="3" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="2 1.5"/> <line x1="21" y1="21" x2="27" y2="27" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> </svg></span>ALTHEA (Ð±Ð¸Ð¾Ð¸Ð½Ð¶ÐµÐ½ÐµÑÐ¸Ñ) Â· <span style="display:inline-block;width:16px;height:16px;vertical-align:-3px;margin-right:6px;color:#4CC3E8"><svg width="16" height="16" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M4 24 C 12 14, 36 14, 44 24 C 36 34, 12 34, 4 24 Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" fill="none"/> <circle cx="24" cy="24" r="7" stroke="currentColor" stroke-width="2" fill="none"/> <circle cx="24" cy="24" r="3" fill="currentColor"/> <line x1="2" y1="24" x2="14" y2="24" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 1"/> <line x1="34" y1="24" x2="46" y2="24" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 1"/> <path d="M2 18 L2 14 L6 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/> <path d="M42 14 L46 14 L46 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/> <path d="M2 30 L2 34 L6 34" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/> <path d="M42 34 L46 34 L46 30" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/> </svg></span>Scio (deepfake) Â· <span style="display:inline-block;width:16px;height:16px;vertical-align:-3px;margin-right:6px;color:#C084FC"><svg width="16" height="16" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"> <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-dasharray="3 2" opacity="0.5"/> <circle cx="24" cy="24" r="6" stroke="currentColor" stroke-width="2.5" fill="none"/> <circle cx="24" cy="24" r="2" fill="currentColor"/> <line x1="24" y1="18" x2="24" y2="8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/> <line x1="29.7" y1="20.3" x2="37.5" y2="14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/> <line x1="30" y1="26" x2="40" y2="29" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/> <line x1="18" y1="26" x2="8" y2="29" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/> <line x1="18.3" y1="20.3" x2="10.5" y2="14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/> <circle cx="24" cy="6" r="3" stroke="currentColor" stroke-width="1.8" fill="none"/> <circle cx="39" cy="12" r="3" stroke="currentColor" stroke-width="1.8" fill="none"/> <circle cx="42" cy="30" r="3" stroke="currentColor" stroke-width="1.8" fill="none"/> <circle cx="6" cy="30" r="3" stroke="currentColor" stroke-width="1.8" fill="none"/> <circle cx="9" cy="12" r="3" stroke="currentColor" stroke-width="1.8" fill="none"/> </svg></span>CTC (ÐÐ-ÑÐµÑÐ°Ð¿Ð¸Ñ) Â· <svg width="12" height="12" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:6px"><circle cx="12" cy="12" r="11" fill="#8a9bb5"/></svg>Industry Â· <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="vertical-align:-2px;margin-right:6px"><path d="M6 3 H14 L18 7 V21 H6 V3 Z" fill="#a8b8d4"/><path d="M14 3 V7 H18" stroke="#0b1424" stroke-width="1.2" fill="none"/><path d="M9 12 H15 M9 15 H15 M9 18 H13" stroke="#0b1424" stroke-width="1.2" stroke-linecap="round"/></svg>Publication. ÐÑ ÑÑÐ°Ð·Ñ Ð²Ð¸Ð´Ð¸ÑÐµ, Ðº ÐºÐ°ÐºÐ¾Ð¹ Ð¾Ð±Ð»Ð°ÑÑÐ¸ Ð¾ÑÐ½Ð¾ÑÐ¸ÑÑÑ Ð¼Ð°ÑÐµÑÐ¸Ð°Ð»." data-en="Each news item is tagged: <span style="display:inline-block;width:16px;height:16px;vertical-align:-3px;margin-right:6px;color:#F5A623"><svg width="16" height="16" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M24 4 L40 12 L40 28 C40 38 32 44 24 46 C16 44 8 38 8 28 L8 12 Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" fill="none"/> <rect x="16" y="18" width="16" height="16" rx="2" stroke="currentColor" stroke-width="2" fill="none"/> <line x1="20" y1="18" x2="20" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="24" y1="18" x2="24" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="28" y1="18" x2="28" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="20" y1="34" x2="20" y2="39" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="24" y1="34" x2="24" y2="39" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="28" y1="34" x2="28" y2="39" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="16" y1="22" x2="11" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="16" y1="26" x2="11" y2="26" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="16" y1="30" x2="11" y2="30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="32" y1="22" x2="37" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="32" y1="26" x2="37" y2="26" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="32" y1="30" x2="37" y2="30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <circle cx="24" cy="26" r="2.5" fill="currentColor"/> </svg></span>AMAGI (AI safety) Â· <span style="display:inline-block;width:16px;height:16px;vertical-align:-3px;margin-right:6px;color:#2DD4A7"><svg width="16" height="16" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M14 8 C 22 14, 26 14, 34 8 M14 16 C 22 22, 26 22, 34 16 M14 24 C 22 30, 26 30, 34 24 M14 32 C 22 38, 26 38, 34 32 M14 40 C 22 46, 26 46, 34 40" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/> <path d="M14 8 C 22 2, 26 2, 34 8 M14 16 C 22 10, 26 10, 34 16 M14 24 C 22 18, 26 18, 34 24 M14 32 C 22 26, 26 26, 34 32 M14 40 C 22 34, 26 34, 34 40" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.7"/> <line x1="16" y1="12" x2="32" y2="12" stroke="currentColor" stroke-width="1.2" opacity="0.5"/> <line x1="16" y1="20" x2="32" y2="20" stroke="currentColor" stroke-width="1.2" opacity="0.5"/> <line x1="16" y1="28" x2="32" y2="28" stroke="currentColor" stroke-width="1.2" opacity="0.5"/> <line x1="16" y1="36" x2="32" y2="36" stroke="currentColor" stroke-width="1.2" opacity="0.5"/> <circle cx="24" cy="24" r="3" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="2 1.5"/> <line x1="21" y1="21" x2="27" y2="27" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> </svg></span>ALTHEA (bioengineering) Â· <span style="display:inline-block;width:16px;height:16px;vertical-align:-3px;margin-right:6px;color:#4CC3E8"><svg width="16" height="16" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M4 24 C 12 14, 36 14, 44 24 C 36 34, 12 34, 4 24 Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" fill="none"/> <circle cx="24" cy="24" r="7" stroke="currentColor" stroke-width="2" fill="none"/> <circle cx="24" cy="24" r="3" fill="currentColor"/> <line x1="2" y1="24" x2="14" y2="24" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 1"/> <line x1="34" y1="24" x2="46" y2="24" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 1"/> <path d="M2 18 L2 14 L6 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/> <path d="M42 14 L46 14 L46 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/> <path d="M2 30 L2 34 L6 34" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/> <path d="M42 34 L46 34 L46 30" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/> </svg></span>Scio (deepfake) Â· <span style="display:inline-block;width:16px;height:16px;vertical-align:-3px;margin-right:6px;color:#C084FC"><svg width="16" height="16" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"> <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-dasharray="3 2" opacity="0.5"/> <circle cx="24" cy="24" r="6" stroke="currentColor" stroke-width="2.5" fill="none"/> <circle cx="24" cy="24" r="2" fill="currentColor"/> <line x1="24" y1="18" x2="24" y2="8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/> <line x1="29.7" y1="20.3" x2="37.5" y2="14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/> <line x1="30" y1="26" x2="40" y2="29" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/> <line x1="18" y1="26" x2="8" y2="29" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/> <line x1="18.3" y1="20.3" x2="10.5" y2="14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/> <circle cx="24" cy="6" r="3" stroke="currentColor" stroke-width="1.8" fill="none"/> <circle cx="39" cy="12" r="3" stroke="currentColor" stroke-width="1.8" fill="none"/> <circle cx="42" cy="30" r="3" stroke="currentColor" stroke-width="1.8" fill="none"/> <circle cx="6" cy="30" r="3" stroke="currentColor" stroke-width="1.8" fill="none"/> <circle cx="9" cy="12" r="3" stroke="currentColor" stroke-width="1.8" fill="none"/> </svg></span>CTC (AI therapy) Â· <svg width="12" height="12" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:6px"><circle cx="12" cy="12" r="11" fill="#8a9bb5"/></svg>Industry Â· <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="vertical-align:-2px;margin-right:6px"><path d="M6 3 H14 L18 7 V21 H6 V3 Z" fill="#a8b8d4"/><path d="M14 3 V7 H18" stroke="#0b1424" stroke-width="1.2" fill="none"/><path d="M9 12 H15 M9 15 H15 M9 18 H13" stroke="#0b1424" stroke-width="1.2" stroke-linecap="round"/></svg>Publication. You immediately see which domain the material belongs to.">ÐÐ°Ð¶Ð´Ð°Ñ Ð½Ð¾Ð²Ð¾ÑÑÑ Ð¿Ð¾Ð¼ÐµÑÐ°ÐµÑÑÑ: <span style="display:inline-block;width:16px;height:16px;vertical-align:-3px;margin-right:6px;color:#F5A623"><svg width="16" height="16" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M24 4 L40 12 L40 28 C40 38 32 44 24 46 C16 44 8 38 8 28 L8 12 Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" fill="none"/> <rect x="16" y="18" width="16" height="16" rx="2" stroke="currentColor" stroke-width="2" fill="none"/> <line x1="20" y1="18" x2="20" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="24" y1="18" x2="24" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="28" y1="18" x2="28" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="20" y1="34" x2="20" y2="39" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="24" y1="34" x2="24" y2="39" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="28" y1="34" x2="28" y2="39" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="16" y1="22" x2="11" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="16" y1="26" x2="11" y2="26" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="16" y1="30" x2="11" y2="30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="32" y1="22" x2="37" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="32" y1="26" x2="37" y2="26" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="32" y1="30" x2="37" y2="30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <circle cx="24" cy="26" r="2.5" fill="currentColor"/> </svg></span>AMAGI (AI safety) Â· <span style="display:inline-block;width:16px;height:16px;vertical-align:-3px;margin-right:6px;color:#2DD4A7"><svg width="16" height="16" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M14 8 C 22 14, 26 14, 34 8 M14 16 C 22 22, 26 22, 34 16 M14 24 C 22 30, 26 30, 34 24 M14 32 C 22 38, 26 38, 34 32 M14 40 C 22 46, 26 46, 34 40" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/> <path d="M14 8 C 22 2, 26 2, 34 8 M14 16 C 22 10, 26 10, 34 16 M14 24 C 22 18, 26 18, 34 24 M14 32 C 22 26, 26 26, 34 32 M14 40 C 22 34, 26 34, 34 40" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.7"/> <line x1="16" y1="12" x2="32" y2="12" stroke="currentColor" stroke-width="1.2" opacity="0.5"/> <line x1="16" y1="20" x2="32" y2="20" stroke="currentColor" stroke-width="1.2" opacity="0.5"/> <line x1="16" y1="28" x2="32" y2="28" stroke="currentColor" stroke-width="1.2" opacity="0.5"/> <line x1="16" y1="36" x2="32" y2="36" stroke="currentColor" stroke-width="1.2" opacity="0.5"/> <circle cx="24" cy="24" r="3" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="2 1.5"/> <line x1="21" y1="21" x2="27" y2="27" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> </svg></span>ALTHEA (Ð±Ð¸Ð¾Ð¸Ð½Ð¶ÐµÐ½ÐµÑÐ¸Ñ) Â· <span style="display:inline-block;width:16px;height:16px;vertical-align:-3px;margin-right:6px;color:#4CC3E8"><svg width="16" height="16" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M4 24 C 12 14, 36 14, 44 24 C 36 34, 12 34, 4 24 Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" fill="none"/> <circle cx="24" cy="24" r="7" stroke="currentColor" stroke-width="2" fill="none"/> <circle cx="24" cy="24" r="3" fill="currentColor"/> <line x1="2" y1="24" x2="14" y2="24" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 1"/> <line x1="34" y1="24" x2="46" y2="24" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 1"/> <path d="M2 18 L2 14 L6 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/> <path d="M42 14 L46 14 L46 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/> <path d="M2 30 L2 34 L6 34" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/> <path d="M42 34 L46 34 L46 30" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/> </svg></span>Scio (deepfake) Â· <span style="display:inline-block;width:16px;height:16px;vertical-align:-3px;margin-right:6px;color:#C084FC"><svg width="16" height="16" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"> <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-dasharray="3 2" opacity="0.5"/> <circle cx="24" cy="24" r="6" stroke="currentColor" stroke-width="2.5" fill="none"/> <circle cx="24" cy="24" r="2" fill="currentColor"/> <line x1="24" y1="18" x2="24" y2="8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/> <line x1="29.7" y1="20.3" x2="37.5" y2="14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/> <line x1="30" y1="26" x2="40" y2="29" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/> <line x1="18" y1="26" x2="8" y2="29" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/> <line x1="18.3" y1="20.3" x2="10.5" y2="14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/> <circle cx="24" cy="6" r="3" stroke="currentColor" stroke-width="1.8" fill="none"/> <circle cx="39" cy="12" r="3" stroke="currentColor" stroke-width="1.8" fill="none"/> <circle cx="42" cy="30" r="3" stroke="currentColor" stroke-width="1.8" fill="none"/> <circle cx="6" cy="30" r="3" stroke="currentColor" stroke-width="1.8" fill="none"/> <circle cx="9" cy="12" r="3" stroke="currentColor" stroke-width="1.8" fill="none"/> </svg></span>CTC (ÐÐ-ÑÐµÑÐ°Ð¿Ð¸Ñ) Â· <svg width="12" height="12" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:6px"><circle cx="12" cy="12" r="11" fill="#8a9bb5"/></svg>Industry Â· <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="vertical-align:-2px;margin-right:6px"><path d="M6 3 H14 L18 7 V21 H6 V3 Z" fill="#a8b8d4"/><path d="M14 3 V7 H18" stroke="#0b1424" stroke-width="1.2" fill="none"/><path d="M9 12 H15 M9 15 H15 M9 18 H13" stroke="#0b1424" stroke-width="1.2" stroke-linecap="round"/></svg>Publication. ÐÑ ÑÑÐ°Ð·Ñ Ð²Ð¸Ð´Ð¸ÑÐµ, Ðº ÐºÐ°ÐºÐ¾Ð¹ Ð¾Ð±Ð»Ð°ÑÑÐ¸ Ð¾ÑÐ½Ð¾ÑÐ¸ÑÑÑ Ð¼Ð°ÑÐµÑÐ¸Ð°Ð».</p>
+        </div>
+        <div style="background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:22px 24px">
+          <div style="width:40px;height:40px;margin-bottom:12px;color:var(--ctc);display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--ctc) 8%,transparent);border:1px solid color-mix(in srgb,var(--ctc) 22%,transparent);border-radius:10px;padding:7px;box-sizing:border-box;transition:.3s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:100%;height:100%;display:block"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" fill="currentColor" fill-opacity="0.2"/></svg></div>
+          <h4 style="font-size:15px;font-weight:700;margin:0 0 8px;color:var(--ctc)" data-ru="Ð­ÐºÐ¾Ð½Ð¾Ð¼Ð¸Ñ 30-60 Ð¼Ð¸Ð½ÑÑ Ð² Ð´ÐµÐ½Ñ" data-en="Saves 30-60 minutes daily">Ð­ÐºÐ¾Ð½Ð¾Ð¼Ð¸Ñ 30-60 Ð¼Ð¸Ð½ÑÑ Ð² Ð´ÐµÐ½Ñ</h4>
+          <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0" data-ru="ÐÐµ Ð½ÑÐ¶Ð½Ð¾ Ð¾ÑÐºÑÑÐ²Ð°ÑÑ 13 Ð²ÐºÐ»Ð°Ð´Ð¾Ðº, ÑÐºÑÐ¾Ð»Ð»Ð¸ÑÑ Ð»ÐµÐ½ÑÑ, ÑÐ¸Ð»ÑÑÑÐ¾Ð²Ð°ÑÑ ÑÑÐ¼. ÐÐ´Ð½Ð° ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° /today â Ð¸ Ð²Ñ Ð² ÐºÑÑÑÐµ Ð³Ð»Ð°Ð²Ð½ÑÑ ÑÐ¾Ð±ÑÑÐ¸Ð¹ Ð´Ð½Ñ Ð·Ð° 2 Ð¼Ð¸Ð½ÑÑÑ ÑÑÐµÐ½Ð¸Ñ. ÐÐ¾Ð¼Ð°Ð½Ð´Ð° /news â Ð¿Ð¾ÑÐ»ÐµÐ´Ð½Ð¸Ðµ 5 Ð¿ÑÐ±Ð»Ð¸ÐºÐ°ÑÐ¸Ð¹." data-en="No need to open 13 tabs, scroll feeds, filter noise. One /today command â and you're up to date with the day's main events in 2 minutes of reading. /news command â last 5 publications.">ÐÐµ Ð½ÑÐ¶Ð½Ð¾ Ð¾ÑÐºÑÑÐ²Ð°ÑÑ 13 Ð²ÐºÐ»Ð°Ð´Ð¾Ðº, ÑÐºÑÐ¾Ð»Ð»Ð¸ÑÑ Ð»ÐµÐ½ÑÑ, ÑÐ¸Ð»ÑÑÑÐ¾Ð²Ð°ÑÑ ÑÑÐ¼. ÐÐ´Ð½Ð° ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° /today â Ð¸ Ð²Ñ Ð² ÐºÑÑÑÐµ Ð³Ð»Ð°Ð²Ð½ÑÑ ÑÐ¾Ð±ÑÑÐ¸Ð¹ Ð´Ð½Ñ Ð·Ð° 2 Ð¼Ð¸Ð½ÑÑÑ ÑÑÐµÐ½Ð¸Ñ. ÐÐ¾Ð¼Ð°Ð½Ð´Ð° /news â Ð¿Ð¾ÑÐ»ÐµÐ´Ð½Ð¸Ðµ 5 Ð¿ÑÐ±Ð»Ð¸ÐºÐ°ÑÐ¸Ð¹.</p>
+        </div>
+        <div style="background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:22px 24px">
+          <div style="width:40px;height:40px;margin-bottom:12px;color:var(--amagi);display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--amagi) 8%,transparent);border:1px solid color-mix(in srgb,var(--amagi) 22%,transparent);border-radius:10px;padding:7px;box-sizing:border-box;transition:.3s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:100%;height:100%;display:block"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg></div>
+          <h4 style="font-size:15px;font-weight:700;margin:0 0 8px;color:var(--amagi)" data-ru="ÐÑÑÐ¼ÑÐµ ÑÑÑÐ»ÐºÐ¸ Ð½Ð° Ð¾ÑÐ¸Ð³Ð¸Ð½Ð°Ð»" data-en="Direct links to the original">ÐÑÑÐ¼ÑÐµ ÑÑÑÐ»ÐºÐ¸ Ð½Ð° Ð¾ÑÐ¸Ð³Ð¸Ð½Ð°Ð»</h4>
+          <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0" data-ru="Ð ÐºÐ°Ð¶Ð´Ð¾Ð¹ Ð½Ð¾Ð²Ð¾ÑÑÐ¸ â ÐºÑÐ°ÑÐºÐ¸Ð¹ Ð¿ÐµÑÐµÑÐºÐ°Ð· (Ð´Ð¾ 200 ÑÐ¸Ð¼Ð²Ð¾Ð»Ð¾Ð²) Ð¸ ÑÑÑÐ»ÐºÐ° Ð½Ð° Ð¾ÑÐ¸Ð³Ð¸Ð½Ð°Ð»ÑÐ½ÑÑ ÑÑÐ°ÑÑÑ. Ð¦Ð¸ÑÐ¸ÑÐ¾Ð²Ð°Ð½Ð¸Ðµ Ð¿Ð¾ ÑÑ. 1274 ÐÐ Ð Ð¤, Ñ ÑÐºÐ°Ð·Ð°Ð½Ð¸ÐµÐ¼ Ð¸ÑÑÐ¾ÑÐ½Ð¸ÐºÐ°. ÐÑ ÑÑÐ°Ð·Ñ Ð¼Ð¾Ð¶ÐµÑÐµ Ð¿ÐµÑÐµÐ¹ÑÐ¸ Ð¸ Ð¿ÑÐ¾ÑÐ¸ÑÐ°ÑÑ Ð¿Ð¾Ð´ÑÐ¾Ð±Ð½ÐµÐµ." data-en="Each news item comes with a brief summary (up to 200 characters) and a link to the original article. Citation under Art. 1274 of the Civil Code of the Russian Federation, with the source indicated. You can immediately go and read more.">Ð ÐºÐ°Ð¶Ð´Ð¾Ð¹ Ð½Ð¾Ð²Ð¾ÑÑÐ¸ â ÐºÑÐ°ÑÐºÐ¸Ð¹ Ð¿ÐµÑÐµÑÐºÐ°Ð· (Ð´Ð¾ 200 ÑÐ¸Ð¼Ð²Ð¾Ð»Ð¾Ð²) Ð¸ ÑÑÑÐ»ÐºÐ° Ð½Ð° Ð¾ÑÐ¸Ð³Ð¸Ð½Ð°Ð»ÑÐ½ÑÑ ÑÑÐ°ÑÑÑ. Ð¦Ð¸ÑÐ¸ÑÐ¾Ð²Ð°Ð½Ð¸Ðµ Ð¿Ð¾ ÑÑ. 1274 ÐÐ Ð Ð¤, Ñ ÑÐºÐ°Ð·Ð°Ð½Ð¸ÐµÐ¼ Ð¸ÑÑÐ¾ÑÐ½Ð¸ÐºÐ°. ÐÑ ÑÑÐ°Ð·Ñ Ð¼Ð¾Ð¶ÐµÑÐµ Ð¿ÐµÑÐµÐ¹ÑÐ¸ Ð¸ Ð¿ÑÐ¾ÑÐ¸ÑÐ°ÑÑ Ð¿Ð¾Ð´ÑÐ¾Ð±Ð½ÐµÐµ.</p>
+        </div>
+        <div style="background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:22px 24px">
+          <div style="width:40px;height:40px;margin-bottom:12px;color:var(--althea);display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--althea) 8%,transparent);border:1px solid color-mix(in srgb,var(--althea) 22%,transparent);border-radius:10px;padding:7px;box-sizing:border-box;transition:.3s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:100%;height:100%;display:block"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><circle cx="17" cy="9" r="2.5" opacity="0.7"/><path d="M15 20c0-2 2-3.5 4-3.5s4 1.5 4 3.5" opacity="0.7"/></svg></div>
+          <h4 style="font-size:15px;font-weight:700;margin:0 0 8px;color:var(--althea)" data-ru="ÐÐ»Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ Ð¸ Ð³ÑÑÐ¿Ð¿Ñ" data-en="For team and group">ÐÐ»Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ Ð¸ Ð³ÑÑÐ¿Ð¿Ñ</h4>
+          <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0" data-ru="ÐÐ¾Ð±Ð°Ð²ÑÑÐµ Ð±Ð¾ÑÐ° Ð² Telegram-Ð³ÑÑÐ¿Ð¿Ñ Ð²Ð°ÑÐµÐ¹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ â ÑÐ°Ð·ÑÐ°Ð±Ð¾ÑÑÐ¸ÐºÐ¾Ð², Ð¸ÑÑÐ»ÐµÐ´Ð¾Ð²Ð°ÑÐµÐ»ÐµÐ¹, CTO, Ð°Ð½Ð°Ð»Ð¸ÑÐ¸ÐºÐ¾Ð². ÐÑÐ±Ð¾Ð¹ ÑÑÐ°ÑÑÐ½Ð¸Ðº ÑÐ¼Ð¾Ð¶ÐµÑ Ð²ÑÐ·Ð²Ð°ÑÑ /news Ð¸Ð»Ð¸ /today Ð¸ Ð¿Ð¾Ð»ÑÑÐ¸ÑÑ Ð´Ð°Ð¹Ð´Ð¶ÐµÑÑ. ÐÐ´ÐµÐ°Ð»ÑÐ½Ð¾ Ð´Ð»Ñ ÑÑÑÐµÐ½Ð½ÐµÐ³Ð¾ standup Ð¸Ð»Ð¸ Ð¿ÑÐ¾ÑÐµÑÑÐ¸Ð¾Ð½Ð°Ð»ÑÐ½Ð¾Ð³Ð¾ ÑÐ°ÑÐ°." data-en="Add the bot to your team's Telegram group â developers, researchers, CTO, analysts. Any participant can invoke /news or /today and get a digest. Ideal for morning standup or a professional chat.">ÐÐ¾Ð±Ð°Ð²ÑÑÐµ Ð±Ð¾ÑÐ° Ð² Telegram-Ð³ÑÑÐ¿Ð¿Ñ Ð²Ð°ÑÐµÐ¹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ â ÑÐ°Ð·ÑÐ°Ð±Ð¾ÑÑÐ¸ÐºÐ¾Ð², Ð¸ÑÑÐ»ÐµÐ´Ð¾Ð²Ð°ÑÐµÐ»ÐµÐ¹, CTO, Ð°Ð½Ð°Ð»Ð¸ÑÐ¸ÐºÐ¾Ð². ÐÑÐ±Ð¾Ð¹ ÑÑÐ°ÑÑÐ½Ð¸Ðº ÑÐ¼Ð¾Ð¶ÐµÑ Ð²ÑÐ·Ð²Ð°ÑÑ /news Ð¸Ð»Ð¸ /today Ð¸ Ð¿Ð¾Ð»ÑÑÐ¸ÑÑ Ð´Ð°Ð¹Ð´Ð¶ÐµÑÑ. ÐÐ´ÐµÐ°Ð»ÑÐ½Ð¾ Ð´Ð»Ñ ÑÑÑÐµÐ½Ð½ÐµÐ³Ð¾ standup Ð¸Ð»Ð¸ Ð¿ÑÐ¾ÑÐµÑÑÐ¸Ð¾Ð½Ð°Ð»ÑÐ½Ð¾Ð³Ð¾ ÑÐ°ÑÐ°.</p>
+        </div>
+      </div>
+
+      <h3 class="reveal" style="font-family:var(--disp);font-size:18px;font-weight:700;margin:36px 0 18px;color:var(--text)" data-ru="ÐÐ¾Ð¼Ñ Ð¿Ð¾Ð´ÑÐ¾Ð´Ð¸Ñ Ð±Ð¾Ñ" data-en="Who the bot is for">ÐÐ¾Ð¼Ñ Ð¿Ð¾Ð´ÑÐ¾Ð´Ð¸Ñ Ð±Ð¾Ñ</h3>
+      <div class="reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+        <div style="background:linear-gradient(135deg,rgba(245,166,35,.06),transparent);border-left:3px solid var(--amagi);padding:16px 20px;border-radius:0 10px 10px 0">
+          <div  data-ru="Ð Ð°Ð·ÑÐ°Ð±Ð¾ÑÑÐ¸ÐºÐ°Ð¼ ÐÐ/ML" data-en="AI/ML developers" style="font-size:14px;font-weight:700;color:var(--amagi);margin-bottom:6px;display:flex;align-items:center;gap:8px"><span style="width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--amagi)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:100%;height:100%;display:block"><polyline points="8 7 5 12 8 17"/><polyline points="16 7 19 12 16 17"/><line x1="13" y1="6" x2="11" y2="18"/></svg></span><span>Ð Ð°Ð·ÑÐ°Ð±Ð¾ÑÑÐ¸ÐºÐ°Ð¼ ÐÐ/ML</span></div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.55;margin:0" data-ru="Ð¡Ð²ÐµÐ¶Ð¸Ðµ ÑÑÐ·Ð²Ð¸Ð¼Ð¾ÑÑÐ¸, Ð½Ð¾Ð²ÑÐµ Ð°ÑÑÐ¸ÑÐµÐºÑÑÑÑ, ÑÐµÐ»Ð¸Ð·Ñ ÑÑÐµÐ¹Ð¼Ð²Ð¾ÑÐºÐ¾Ð², papers Ñ arXiv (cs.AI, cs.CR, cs.CV). ÐÑÐ´ÐµÑÐµ Ð² ÐºÑÑÑÐµ SOTA Ð±ÐµÐ· Twitter-ÑÐºÑÐ¾Ð»Ð»Ð¸Ð½Ð³Ð°." data-en="Fresh vulnerabilities, new architectures, framework releases, arXiv papers (cs.AI, cs.CR, cs.CV). Stay on top of SOTA without Twitter scrolling.">Ð¡Ð²ÐµÐ¶Ð¸Ðµ ÑÑÐ·Ð²Ð¸Ð¼Ð¾ÑÑÐ¸, Ð½Ð¾Ð²ÑÐµ Ð°ÑÑÐ¸ÑÐµÐºÑÑÑÑ, ÑÐµÐ»Ð¸Ð·Ñ ÑÑÐµÐ¹Ð¼Ð²Ð¾ÑÐºÐ¾Ð², papers Ñ arXiv (cs.AI, cs.CR, cs.CV). ÐÑÐ´ÐµÑÐµ Ð² ÐºÑÑÑÐµ SOTA Ð±ÐµÐ· Twitter-ÑÐºÑÐ¾Ð»Ð»Ð¸Ð½Ð³Ð°.</p>
+        </div>
+        <div style="background:linear-gradient(135deg,rgba(45,212,167,.06),transparent);border-left:3px solid var(--althea);padding:16px 20px;border-radius:0 10px 10px 0">
+          <div style="font-size:14px;font-weight:700;color:var(--althea);margin-bottom:6px;display:flex;align-items:center;gap:8px" data-ru="ÐÐ¸Ð¾Ð¸Ð½Ð¶ÐµÐ½ÐµÑÐ°Ð¼ Ð¸ Ð³ÐµÐ½ÐµÑÐ¸ÐºÐ°Ð¼" data-en="ð§¬ Bioengineers and geneticists"><span style="width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4c0 4 12 6 12 12M6 4c0 4 12 4 12 8M18 4c0 4-12 6-12 12M18 4c0 4-12 4-12 8M6 20c0-4 12-6 12-12M6 20c0-4 12-4 12-8"/><line x1="8" y1="8" x2="16" y2="8" opacity="0.5"/><line x1="8" y1="12" x2="16" y2="12" opacity="0.5"/><line x1="8" y1="16" x2="16" y2="16" opacity="0.5"/></svg></span><span data-ru="ÐÐ¸Ð¾Ð¸Ð½Ð¶ÐµÐ½ÐµÑÐ°Ð¼ Ð¸ Ð³ÐµÐ½ÐµÑÐ¸ÐºÐ°Ð¼" data-en="ð§¬ Bioengineers and geneticists">ÐÐ¸Ð¾Ð¸Ð½Ð¶ÐµÐ½ÐµÑÐ°Ð¼ Ð¸ Ð³ÐµÐ½ÐµÑÐ¸ÐºÐ°Ð¼</span></div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.55;margin:0" data-ru="ÐÐ¾Ð²Ð¾ÑÑÐ¸ CRISPR, Ð³ÐµÐ½Ð½Ð¾Ð¹ ÑÐµÑÐ°Ð¿Ð¸Ð¸, synthetic biology, q-bio.GN Ñ arXiv, ÑÐµÐ³ÑÐ»ÑÑÐ¾ÑÐ¸ÐºÐ° ÐÐ¸Ð½Ð·Ð´ÑÐ°Ð²Ð° Ð¸ FDA. ÐÐ¾Ð´ÑÐ¾Ð´Ð¸Ñ Ð´Ð»Ñ R&D-ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð¸ ÐÐÐ." data-en="CRISPR news, gene therapy, synthetic biology, q-bio.GN from arXiv, Minzdrav and FDA regulation. Suitable for R&D teams and research institutes.">ÐÐ¾Ð²Ð¾ÑÑÐ¸ CRISPR, Ð³ÐµÐ½Ð½Ð¾Ð¹ ÑÐµÑÐ°Ð¿Ð¸Ð¸, synthetic biology, q-bio.GN Ñ arXiv, ÑÐµÐ³ÑÐ»ÑÑÐ¾ÑÐ¸ÐºÐ° ÐÐ¸Ð½Ð·Ð´ÑÐ°Ð²Ð° Ð¸ FDA. ÐÐ¾Ð´ÑÐ¾Ð´Ð¸Ñ Ð´Ð»Ñ R&D-ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð¸ ÐÐÐ.</p>
+        </div>
+        <div style="background:linear-gradient(135deg,rgba(76,195,232,.06),transparent);border-left:3px solid var(--scio);padding:16px 20px;border-radius:0 10px 10px 0">
+          <div style="font-size:14px;font-weight:700;color:var(--scio);margin-bottom:6px;display:flex;align-items:center;gap:8px" data-ru="Ð¡Ð¿ÐµÑÐ¸Ð°Ð»Ð¸ÑÑÐ°Ð¼ Ð¿Ð¾ Ð±ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ÑÑÐ¸" data-en="ð Security specialists"><span style="width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="16" y1="16" x2="21" y2="21"/><line x1="8" y1="11" x2="14" y2="11" opacity="0.6"/><line x1="11" y1="8" x2="11" y2="14" opacity="0.6"/></svg></span><span data-ru="Ð¡Ð¿ÐµÑÐ¸Ð°Ð»Ð¸ÑÑÐ°Ð¼ Ð¿Ð¾ Ð±ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ÑÑÐ¸" data-en="ð Security specialists">Ð¡Ð¿ÐµÑÐ¸Ð°Ð»Ð¸ÑÑÐ°Ð¼ Ð¿Ð¾ Ð±ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ÑÑÐ¸</span></div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.55;margin:0" data-ru="Deepfake-Ð´ÐµÑÐµÐºÑÐ¸Ñ, Ð¼ÐµÐ´Ð¸Ð°-ÑÐ¾ÑÐµÐ½Ð·Ð¸ÐºÐ°, 0-day ÑÑÐ·Ð²Ð¸Ð¼Ð¾ÑÑÐ¸, ÑÐµÐ³ÑÐ»ÑÑÐ¾ÑÐ¸ÐºÐ° (EU AI Act, NIST AI RMF, 152-Ð¤Ð). ÐÐ»Ñ CISO, ÑÐ¾ÑÐµÐ½Ð·Ð¸ÐºÐ¾Ð² Ð¸ audit-ÐºÐ¾Ð¼Ð°Ð½Ð´." data-en="Deepfake detection, media forensics, 0-day vulnerabilities, regulation (EU AI Act, NIST AI RMF, FZ-152). For CISO, forensics and audit teams.">Deepfake-Ð´ÐµÑÐµÐºÑÐ¸Ñ, Ð¼ÐµÐ´Ð¸Ð°-ÑÐ¾ÑÐµÐ½Ð·Ð¸ÐºÐ°, 0-day ÑÑÐ·Ð²Ð¸Ð¼Ð¾ÑÑÐ¸, ÑÐµÐ³ÑÐ»ÑÑÐ¾ÑÐ¸ÐºÐ° (EU AI Act, NIST AI RMF, 152-Ð¤Ð). ÐÐ»Ñ CISO, ÑÐ¾ÑÐµÐ½Ð·Ð¸ÐºÐ¾Ð² Ð¸ audit-ÐºÐ¾Ð¼Ð°Ð½Ð´.</p>
+        </div>
+        <div style="background:linear-gradient(135deg,rgba(192,132,252,.06),transparent);border-left:3px solid var(--ctc);padding:16px 20px;border-radius:0 10px 10px 0">
+          <div style="font-size:14px;font-weight:700;color:var(--ctc);margin-bottom:6px;display:flex;align-items:center;gap:8px" data-ru="CTO Ð¸ Ð¿ÑÐ¾Ð´Ð°ÐºÑ-Ð¼ÐµÐ½ÐµÐ´Ð¶ÐµÑÐ°Ð¼" data-en="ð CTO and product managers"><span style="width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="12" width="4" height="9"/><rect x="10" y="7" width="4" height="14"/><rect x="17" y="3" width="4" height="18"/></svg></span><span data-ru="CTO Ð¸ Ð¿ÑÐ¾Ð´Ð°ÐºÑ-Ð¼ÐµÐ½ÐµÐ´Ð¶ÐµÑÐ°Ð¼" data-en="ð CTO and product managers">CTO Ð¸ Ð¿ÑÐ¾Ð´Ð°ÐºÑ-Ð¼ÐµÐ½ÐµÐ´Ð¶ÐµÑÐ°Ð¼</span></div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.55;margin:0" data-ru="Ð ÐµÐ³ÑÐ»ÑÑÐ¾ÑÐ½ÑÐµ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ (EU AI Act, 152-Ð¤Ð, 255-Ð¤Ð), ÑÑÐµÐ½Ð´Ñ ÑÑÐ½ÐºÐ°, ÑÑÐ´ÐµÐ±Ð½Ð°Ñ Ð¿ÑÐ°ÐºÑÐ¸ÐºÐ°, Ð¸Ð½Ð²ÐµÑÑÐ¸ÑÐ¸Ð¸ Ð² deep-tech. ÐÐ»Ñ ÑÑÑÐ°ÑÐµÐ³Ð¸ÑÐµÑÐºÐ¸Ñ ÑÐµÑÐµÐ½Ð¸Ð¹ Ð¸ roadmap-Ð¿Ð»Ð°Ð½Ð¸ÑÐ¾Ð²Ð°Ð½Ð¸Ñ." data-en="Regulatory changes (EU AI Act, FZ-152, FZ-255), market trends, court practice, deep-tech investments. For strategic decisions and roadmap planning.">Ð ÐµÐ³ÑÐ»ÑÑÐ¾ÑÐ½ÑÐµ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ (EU AI Act, 152-Ð¤Ð, 255-Ð¤Ð), ÑÑÐµÐ½Ð´Ñ ÑÑÐ½ÐºÐ°, ÑÑÐ´ÐµÐ±Ð½Ð°Ñ Ð¿ÑÐ°ÐºÑÐ¸ÐºÐ°, Ð¸Ð½Ð²ÐµÑÑÐ¸ÑÐ¸Ð¸ Ð² deep-tech. ÐÐ»Ñ ÑÑÑÐ°ÑÐµÐ³Ð¸ÑÐµÑÐºÐ¸Ñ ÑÐµÑÐµÐ½Ð¸Ð¹ Ð¸ roadmap-Ð¿Ð»Ð°Ð½Ð¸ÑÐ¾Ð²Ð°Ð½Ð¸Ñ.</p>
+        </div>
+        <div style="background:linear-gradient(135deg,rgba(245,166,35,.06),transparent);border-left:3px solid var(--amagi);padding:16px 20px;border-radius:0 10px 10px 0">
+          <div style="font-size:14px;font-weight:700;color:var(--amagi);margin-bottom:6px;display:flex;align-items:center;gap:8px" data-ru="Ð¡ÑÑÐ´ÐµÐ½ÑÐ°Ð¼ Ð¸ Ð°ÑÐ¿Ð¸ÑÐ°Ð½ÑÐ°Ð¼" data-en="ð Students and PhDs"><span style="width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c0 1 3 3 6 3s6-2 6-3v-5"/><line x1="22" y1="9" x2="22" y2="14"/></svg></span><span data-ru="Ð¡ÑÑÐ´ÐµÐ½ÑÐ°Ð¼ Ð¸ Ð°ÑÐ¿Ð¸ÑÐ°Ð½ÑÐ°Ð¼" data-en="ð Students and PhDs">Ð¡ÑÑÐ´ÐµÐ½ÑÐ°Ð¼ Ð¸ Ð°ÑÐ¿Ð¸ÑÐ°Ð½ÑÐ°Ð¼</span></div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.55;margin:0" data-ru="Ð¡Ð²ÐµÐ¶Ð¸Ðµ Ð½Ð°ÑÑÐ½ÑÐµ Ð¿ÑÐ±Ð»Ð¸ÐºÐ°ÑÐ¸Ð¸ Ñ arXiv, MIT Tech Review, Naked Science â Ð´Ð»Ñ Ð»Ð¸ÑÐ¾Ð±Ð·Ð¾ÑÐ°, ÑÐµÑÐµÑÐ°ÑÐ¾Ð² Ð¸ dissertations. Ð­ÐºÐ¾Ð½Ð¾Ð¼Ð¸Ñ ÑÐ°ÑÐ¾Ð² Ð½Ð° Ð¿Ð¾Ð¸ÑÐº Ð¸ÑÑÐ¾ÑÐ½Ð¸ÐºÐ¾Ð²." data-en="Fresh scientific publications from arXiv, MIT Tech Review, Naked Science â for literature review, essays and dissertations. Saves hours on source search.">Ð¡Ð²ÐµÐ¶Ð¸Ðµ Ð½Ð°ÑÑÐ½ÑÐµ Ð¿ÑÐ±Ð»Ð¸ÐºÐ°ÑÐ¸Ð¸ Ñ arXiv, MIT Tech Review, Naked Science â Ð´Ð»Ñ Ð»Ð¸ÑÐ¾Ð±Ð·Ð¾ÑÐ°, ÑÐµÑÐµÑÐ°ÑÐ¾Ð² Ð¸ dissertations. Ð­ÐºÐ¾Ð½Ð¾Ð¼Ð¸Ñ ÑÐ°ÑÐ¾Ð² Ð½Ð° Ð¿Ð¾Ð¸ÑÐº Ð¸ÑÑÐ¾ÑÐ½Ð¸ÐºÐ¾Ð².</p>
+        </div>
+        <div style="background:linear-gradient(135deg,rgba(45,212,167,.06),transparent);border-left:3px solid var(--althea);padding:16px 20px;border-radius:0 10px 10px 0">
+          <div style="font-size:14px;font-weight:700;color:var(--althea);margin-bottom:6px;display:flex;align-items:center;gap:8px" data-ru="ÐÐ½Ð²ÐµÑÑÐ¾ÑÐ°Ð¼ Ð¸ Ð°Ð½Ð°Ð»Ð¸ÑÐ¸ÐºÐ°Ð¼" data-en="ð¼ Investors and analysts"><span style="width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="3" y1="13" x2="21" y2="13"/></svg></span><span data-ru="ÐÐ½Ð²ÐµÑÑÐ¾ÑÐ°Ð¼ Ð¸ Ð°Ð½Ð°Ð»Ð¸ÑÐ¸ÐºÐ°Ð¼" data-en="ð¼ Investors and analysts">ÐÐ½Ð²ÐµÑÑÐ¾ÑÐ°Ð¼ Ð¸ Ð°Ð½Ð°Ð»Ð¸ÑÐ¸ÐºÐ°Ð¼</span></div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.55;margin:0" data-ru="Ð ÐµÐ»Ð¸Ð·Ñ Ð¿ÑÐ¾Ð´ÑÐºÑÐ¾Ð², ÑÐ»Ð¸ÑÐ½Ð¸Ñ, Ð¸Ð½Ð²ÐµÑÑÐ¸ÑÐ¸Ð¾Ð½Ð½ÑÐµ ÑÐ°ÑÐ½Ð´Ñ, ÑÐµÐ³ÑÐ»ÑÑÐ¾ÑÐ½ÑÐµ ÑÐµÑÐµÐ½Ð¸Ñ, Ð²Ð»Ð¸ÑÑÑÐ¸Ðµ Ð½Ð° deep-tech-ÑÑÐ°ÑÑÐ°Ð¿Ñ. ÐÐ»Ñ due diligence Ð¸ spotting ÑÑÐµÐ½Ð´Ð¾Ð² ÑÐ°Ð½ÑÑÐµ ÑÑÐ½ÐºÐ°." data-en="Product releases, mergers, investment rounds, regulatory decisions affecting deep-tech startups. For due diligence and spotting trends before the market.">Ð ÐµÐ»Ð¸Ð·Ñ Ð¿ÑÐ¾Ð´ÑÐºÑÐ¾Ð², ÑÐ»Ð¸ÑÐ½Ð¸Ñ, Ð¸Ð½Ð²ÐµÑÑÐ¸ÑÐ¸Ð¾Ð½Ð½ÑÐµ ÑÐ°ÑÐ½Ð´Ñ, ÑÐµÐ³ÑÐ»ÑÑÐ¾ÑÐ½ÑÐµ ÑÐµÑÐµÐ½Ð¸Ñ, Ð²Ð»Ð¸ÑÑÑÐ¸Ðµ Ð½Ð° deep-tech-ÑÑÐ°ÑÑÐ°Ð¿Ñ. ÐÐ»Ñ due diligence Ð¸ spotting ÑÑÐµÐ½Ð´Ð¾Ð² ÑÐ°Ð½ÑÑÐµ ÑÑÐ½ÐºÐ°.</p>
+        </div>
+      </div>
+
+      <h3 class="reveal" style="font-family:var(--disp);font-size:18px;font-weight:700;margin:36px 0 18px;color:var(--text)" data-ru="ÐÐ¾Ð¼Ð°Ð½Ð´Ñ Ð±Ð¾ÑÐ°" data-en="Bot commands">ÐÐ¾Ð¼Ð°Ð½Ð´Ñ Ð±Ð¾ÑÐ°</h3>
+      <div class="reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:0">
+        <div style="background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:16px 18px"><div style="font-size:14px;font-weight:600;color:var(--amagi)" data-ru="/news" data-en="/news">/news</div><div style="font-size:12px;color:var(--faint)" data-ru="ÐÐ¾ÑÐ»ÐµÐ´Ð½Ð¸Ðµ 5 Ð½Ð¾Ð²Ð¾ÑÑÐµÐ¹" data-en="Latest 5 news">ÐÐ¾ÑÐ»ÐµÐ´Ð½Ð¸Ðµ 5 Ð½Ð¾Ð²Ð¾ÑÑÐµÐ¹</div></div>
+        <div style="background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:16px 18px"><div style="font-size:14px;font-weight:600;color:var(--althea)" data-ru="/today" data-en="/today">/today</div><div style="font-size:12px;color:var(--faint)" data-ru="Ð¢Ð¾Ð¿-3 Ð·Ð° ÑÐµÐ³Ð¾Ð´Ð½Ñ" data-en="Top-3 today">Ð¢Ð¾Ð¿-3 Ð·Ð° ÑÐµÐ³Ð¾Ð´Ð½Ñ</div></div>
+        <div style="background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:16px 18px"><div style="font-size:14px;font-weight:600;color:var(--scio)" data-ru="/sources" data-en="/sources">/sources</div><div style="font-size:12px;color:var(--faint)" data-ru="25 Ð¸ÑÑÐ¾ÑÐ½Ð¸ÐºÐ¾Ð²" data-en="25 sources">25 Ð¸ÑÑÐ¾ÑÐ½Ð¸ÐºÐ¾Ð²</div></div>
+        <div style="background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:16px 18px"><div style="font-size:14px;font-weight:600;color:var(--ctc)" data-ru="/about" data-en="/about">/about</div><div style="font-size:12px;color:var(--faint)" data-ru="Ð Ð±Ð¾ÑÐµ + Ð¿ÑÐ°Ð²Ð¾Ð²Ð¾Ð¹ ÑÑÐ°ÑÑÑ" data-en="About + legal status">Ð Ð±Ð¾ÑÐµ + Ð¿ÑÐ°Ð²Ð¾Ð²Ð¾Ð¹ ÑÑÐ°ÑÑÑ</div></div>
+        <div style="background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:16px 18px"><div style="font-size:14px;font-weight:600;color:var(--faint)" data-ru="/help" data-en="/help">/help</div><div style="font-size:12px;color:var(--faint)" data-ru="Ð¡Ð¿ÑÐ°Ð²ÐºÐ° Ð¿Ð¾ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°Ð¼" data-en="Commands help">Ð¡Ð¿ÑÐ°Ð²ÐºÐ° Ð¿Ð¾ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°Ð¼</div></div>
+        <div style="background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:16px 18px"><div style="font-size:14px;font-weight:600;color:var(--amagi)" data-ru="/start" data-en="/start">/start</div><div style="font-size:12px;color:var(--faint)" data-ru="ÐÑÐ¸Ð²ÐµÑÑÑÐ²Ð¸Ðµ + ÑÐ¾Ð³Ð»Ð°ÑÐ¸Ðµ ÐÐÐ½" data-en="Welcome + PDn consent">ÐÑÐ¸Ð²ÐµÑÑÑÐ²Ð¸Ðµ + ÑÐ¾Ð³Ð»Ð°ÑÐ¸Ðµ ÐÐÐ½</div></div>
+      </div>
+
+      <h3 class="reveal" style="font-family:var(--disp);font-size:18px;font-weight:700;margin:36px 0 18px;color:var(--text)" data-ru="ÐÑÐ¸Ð¼ÐµÑ Ð´Ð°Ð¹Ð´Ð¶ÐµÑÑÐ°" data-en="Example digest">ÐÑÐ¸Ð¼ÐµÑ Ð´Ð°Ð¹Ð´Ð¶ÐµÑÑÐ°</h3>
+      <div class="reveal" style="background:var(--s2);border:1px solid var(--line2);border-radius:14px;padding:24px 26px;font-family:var(--mono);font-size:13px;line-height:1.7;color:var(--muted);overflow-x:auto">
+        <div style="color:var(--text);font-weight:600;margin-bottom:14px;font-size:15px;display:flex;align-items:center;gap:8px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:1em;height:1em;vertical-align:-2px"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg> Ð¢Ð¾Ð¿-3 Ð·Ð° ÑÐµÐ³Ð¾Ð´Ð½Ñ</div>
+        <div style="margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--line)">
+          <div style="margin-bottom:4px"><span style="display:inline-block;width:16px;height:16px;vertical-align:-3px;margin-right:6px;color:#F5A623"><svg width="16" height="16" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M24 4 L40 12 L40 28 C40 38 32 44 24 46 C16 44 8 38 8 28 L8 12 Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" fill="none"/> <rect x="16" y="18" width="16" height="16" rx="2" stroke="currentColor" stroke-width="2" fill="none"/> <line x1="20" y1="18" x2="20" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="24" y1="18" x2="24" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="28" y1="18" x2="28" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="20" y1="34" x2="20" y2="39" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="24" y1="34" x2="24" y2="39" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="28" y1="34" x2="28" y2="39" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="16" y1="22" x2="11" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="16" y1="26" x2="11" y2="26" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="16" y1="30" x2="11" y2="30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="32" y1="22" x2="37" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="32" y1="26" x2="37" y2="26" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <line x1="32" y1="30" x2="37" y2="30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> <circle cx="24" cy="26" r="2.5" fill="currentColor"/> </svg></span><b>AMAGI</b></div>
+          <div style="color:var(--text);font-weight:600;margin-bottom:4px">NIST Ð²ÑÐ¿ÑÑÑÐ¸Ð» AI RMF 1.1 Profile Ð´Ð»Ñ hardware security</div>
+          <div style="margin-bottom:6px">ÐÐ±Ð½Ð¾Ð²Ð»ÑÐ½Ð½ÑÐ¹ Ð¿ÑÐ¾ÑÐ¸Ð»Ñ ÑÐ°ÑÑÐ¸ÑÑÐµÑ ÑÑÐµÐ±Ð¾Ð²Ð°Ð½Ð¸Ñ Ðº Ð°Ð¿Ð¿Ð°ÑÐ°ÑÐ½ÑÐ¼ Ð¼Ð¾Ð´ÑÐ»ÑÐ¼ ÐÐ: TTP-Ð°ÑÐ°ÐºÐ¸, Ð¸Ð½Ð²Ð°ÑÐ¸Ð°Ð½ÑÑ determinism, memory partitioning.</div>
+          <div style="font-size:12px;color:var(--faint)">ÐÑÑÐ¾ÑÐ½Ð¸Ðº: MIT Tech Review Â· <a href="#" style="color:var(--scio)">Ð§Ð¸ÑÐ°ÑÑ â</a></div>
+        </div>
+        <div style="margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--line)">
+          <div style="margin-bottom:4px"><span style="display:inline-block;width:16px;height:16px;vertical-align:-3px;margin-right:6px;color:#2DD4A7"><svg width="16" height="16" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M14 8 C 22 14, 26 14, 34 8 M14 16 C 22 22, 26 22, 34 16 M14 24 C 22 30, 26 30, 34 24 M14 32 C 22 38, 26 38, 34 32 M14 40 C 22 46, 26 46, 34 40" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/> <path d="M14 8 C 22 2, 26 2, 34 8 M14 16 C 22 10, 26 10, 34 16 M14 24 C 22 18, 26 18, 34 24 M14 32 C 22 26, 26 26, 34 32 M14 40 C 22 34, 26 34, 34 40" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.7"/> <line x1="16" y1="12" x2="32" y2="12" stroke="currentColor" stroke-width="1.2" opacity="0.5"/> <line x1="16" y1="20" x2="32" y2="20" stroke="currentColor" stroke-width="1.2" opacity="0.5"/> <line x1="16" y1="28" x2="32" y2="28" stroke="currentColor" stroke-width="1.2" opacity="0.5"/> <line x1="16" y1="36" x2="32" y2="36" stroke="currentColor" stroke-width="1.2" opacity="0.5"/> <circle cx="24" cy="24" r="3" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="2 1.5"/> <line x1="21" y1="21" x2="27" y2="27" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/> </svg></span><b>ALTHEA</b></div>
+          <div style="color:var(--text);font-weight:600;margin-bottom:4px">CRISPR-Cas13 Ð´Ð¾ÑÑÐ°Ð²ÐºÐ° ÑÐµÑÐµÐ· lipid nanoparticles â Phase 2 Ð·Ð°Ð²ÐµÑÑÐµÐ½Ð°</div>
+          <div style="margin-bottom:6px">ÐÐ¾Ð¼Ð°Ð½Ð´Ð° Broad Institute ÑÐ¾Ð¾Ð±ÑÐ¸Ð»Ð° Ð¾ 78% ÑÑÑÐµÐºÑÐ¸Ð²Ð½Ð¾ÑÑÐ¸ in vivo Ð´Ð»Ñ liver-targeting. Ð¡Ð»ÐµÐ´ÑÑÑÐ¸Ð¹ ÑÑÐ°Ð¿ â ÐºÐ»Ð¸Ð½Ð¸ÑÐµÑÐºÐ¸Ðµ Ð¸ÑÐ¿ÑÑÐ°Ð½Ð¸Ñ 2026.</div>
+          <div style="font-size:12px;color:var(--faint)">ÐÑÑÐ¾ÑÐ½Ð¸Ðº: arXiv (q-bio.GN) Â· <a href="#" style="color:var(--scio)">Ð§Ð¸ÑÐ°ÑÑ â</a></div>
+        </div>
+        <div>
+          <div style="margin-bottom:4px"><span style="display:inline-block;width:16px;height:16px;vertical-align:-3px;margin-right:6px;color:#4CC3E8"><svg width="16" height="16" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M4 24 C 12 14, 36 14, 44 24 C 36 34, 12 34, 4 24 Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" fill="none"/> <circle cx="24" cy="24" r="7" stroke="currentColor" stroke-width="2" fill="none"/> <circle cx="24" cy="24" r="3" fill="currentColor"/> <line x1="2" y1="24" x2="14" y2="24" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 1"/> <line x1="34" y1="24" x2="46" y2="24" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 1"/> <path d="M2 18 L2 14 L6 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/> <path d="M42 14 L46 14 L46 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/> <path d="M2 30 L2 34 L6 34" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/> <path d="M42 34 L46 34 L46 30" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/> </svg></span><b>Scio</b></div>
+          <div style="color:var(--text);font-weight:600;margin-bottom:4px">Deepfake-Ð´ÐµÑÐµÐºÑÐ¾Ñ Scio v2 â ÑÐ¾ÑÐ½Ð¾ÑÑÑ 99.2% Ð½Ð° FaceForensics++</div>
+          <div style="margin-bottom:6px">ÐÐ¾Ð²Ð°Ñ Ð¼Ð¾Ð´ÐµÐ»Ñ Ð¾Ñ ALTHEA detectÐ¸Ñ face-swap Ð² ÑÐµÐ°Ð»ÑÐ½Ð¾Ð¼ Ð²ÑÐµÐ¼ÐµÐ½Ð¸ Ð½Ð° CPU. ÐÑÐºÑÑÑÐ°Ñ ÑÐ¿ÐµÑÐ¸ÑÐ¸ÐºÐ°ÑÐ¸Ñ Ð¾Ð¿ÑÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ð½Ð° Ð² Zenodo.</div>
+          <div style="font-size:12px;color:var(--faint)">ÐÑÑÐ¾ÑÐ½Ð¸Ðº: VC.ru Ð¢ÐµÑÐ½Ð¾Ð»Ð¾Ð³Ð¸Ð¸ Â· <a href="#" style="color:var(--scio)">Ð§Ð¸ÑÐ°ÑÑ â</a></div>
+        </div>
+        <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:12px;color:var(--faint)">ð ÐÐ¾Ð»ÑÑÐµ Ð½Ð¾Ð²Ð¾ÑÑÐµÐ¹: https://althea-tech.ru/news.html</div>
+      </div>
+      <p class="reveal" style="font-size:13px;color:var(--faint);margin-top:14px;line-height:1.6" data-ru="* ÐÑÐ¸Ð¼ÐµÑ Ð¸Ð»Ð»ÑÑÑÑÐ°ÑÐ¸Ð²Ð½ÑÐ¹ â ÑÐ°ÐºÑÐ¸ÑÐµÑÐºÐ¸Ð¹ ÐºÐ¾Ð½ÑÐµÐ½Ñ Ð·Ð°Ð²Ð¸ÑÐ¸Ñ Ð¾Ñ ÑÐµÐºÑÑÐ¸Ñ Ð¿ÑÐ±Ð»Ð¸ÐºÐ°ÑÐ¸Ð¹ Ð¸ÑÑÐ¾ÑÐ½Ð¸ÐºÐ¾Ð². Ð¤Ð¾ÑÐ¼Ð°Ñ: ÑÐ¼Ð¾Ð´Ð·Ð¸ ÐºÐ°ÑÐµÐ³Ð¾ÑÐ¸Ð¸ â Ð·Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº â Ð¿ÐµÑÐµÑÐºÐ°Ð· (Ð´Ð¾ 200 ÑÐ¸Ð¼Ð²Ð¾Ð»Ð¾Ð²) â Ð¸ÑÑÐ¾ÑÐ½Ð¸Ðº â ÑÑÑÐ»ÐºÐ° Ð½Ð° Ð¾ÑÐ¸Ð³Ð¸Ð½Ð°Ð»." data-en="* The example is illustrative â actual content depends on the current publications of the sources. Format: category emoji â title â summary (up to 200 characters) â source â link to the original.">* ÐÑÐ¸Ð¼ÐµÑ Ð¸Ð»Ð»ÑÑÑÑÐ°ÑÐ¸Ð²Ð½ÑÐ¹ â ÑÐ°ÐºÑÐ¸ÑÐµÑÐºÐ¸Ð¹ ÐºÐ¾Ð½ÑÐµÐ½Ñ Ð·Ð°Ð²Ð¸ÑÐ¸Ñ Ð¾Ñ ÑÐµÐºÑÑÐ¸Ñ Ð¿ÑÐ±Ð»Ð¸ÐºÐ°ÑÐ¸Ð¹ Ð¸ÑÑÐ¾ÑÐ½Ð¸ÐºÐ¾Ð². Ð¤Ð¾ÑÐ¼Ð°Ñ: ÑÐ¼Ð¾Ð´Ð·Ð¸ ÐºÐ°ÑÐµÐ³Ð¾ÑÐ¸Ð¸ â Ð·Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº â Ð¿ÐµÑÐµÑÐºÐ°Ð· (Ð´Ð¾ 200 ÑÐ¸Ð¼Ð²Ð¾Ð»Ð¾Ð²) â Ð¸ÑÑÐ¾ÑÐ½Ð¸Ðº â ÑÑÑÐ»ÐºÐ° Ð½Ð° Ð¾ÑÐ¸Ð³Ð¸Ð½Ð°Ð».</p>
+    </div>
+  </section>
+
+  <section style="padding:30px 0 50px">
+    <div class="wrap" style="max-width:780px">
+      <div class="sec-head reveal" style="--acc:var(--althea)"><span class="sec-num">02 /</span><h2 data-ru="ÐÐ°Ðº Ð´Ð¾Ð±Ð°Ð²Ð¸ÑÑ" data-en="How to add">ÐÐ°Ðº Ð´Ð¾Ð±Ð°Ð²Ð¸ÑÑ</h2></div>
+      <div class="reveal" style="display:grid;gap:14px">
+        <div style="display:flex;gap:14px;align-items:start;background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:18px 22px">
+          <div style="font-family:var(--mono);font-size:18px;color:var(--althea);font-weight:700;min-width:32px">1</div>
+          <div><div style="font-size:15px;font-weight:600;color:var(--text)" data-ru="ÐÑÐºÑÐ¾Ð¹ÑÐµ Ð±Ð¾ÑÐ°" data-en="Open the bot">ÐÑÐºÑÐ¾Ð¹ÑÐµ Ð±Ð¾ÑÐ°</div><div style="font-size:13px;color:var(--muted)" data-ru="ÐÐµÑÐµÐ¹Ð´Ð¸ÑÐµ Ð¿Ð¾ ÑÑÑÐ»ÐºÐµ @ALTHEA_Research_Briefbot" data-en="Follow @ALTHEA_Research_Briefbot">ÐÐµÑÐµÐ¹Ð´Ð¸ÑÐµ Ð¿Ð¾ ÑÑÑÐ»ÐºÐµ <a href="https://t.me/ALTHEA_Research_Briefbot" target="_blank" rel="noopener" style="color:var(--scio)">@ALTHEA_Research_Briefbot</a></div></div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:start;background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:18px 22px">
+          <div style="font-family:var(--mono);font-size:18px;color:var(--althea);font-weight:700;min-width:32px">2</div>
+          <div><div style="font-size:15px;font-weight:600;color:var(--text)" data-ru="ÐÐ¾Ð±Ð°Ð²ÑÑÐµ Ð² Ð³ÑÑÐ¿Ð¿Ñ" data-en="Add to group">ÐÐ¾Ð±Ð°Ð²ÑÑÐµ Ð² Ð³ÑÑÐ¿Ð¿Ñ</div><div style="font-size:13px;color:var(--muted)" data-ru="ÐÐ°Ð¶Ð¼Ð¸ÑÐµ Â«ÐÐ¾Ð±Ð°Ð²Ð¸ÑÑ Ð² Ð³ÑÑÐ¿Ð¿ÑÂ»" data-en="Click Add to group">ÐÐ°Ð¶Ð¼Ð¸ÑÐµ ÐºÐ½Ð¾Ð¿ÐºÑ Â«ÐÐ¾Ð±Ð°Ð²Ð¸ÑÑ Ð² Ð³ÑÑÐ¿Ð¿ÑÂ»</div></div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:start;background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:18px 22px">
+          <div style="font-family:var(--mono);font-size:18px;color:var(--althea);font-weight:700;min-width:32px">3</div>
+          <div><div style="font-size:15px;font-weight:600;color:var(--text)" data-ru="ÐÐ¾ÑÐ¾Ð²Ð¾" data-en="Done">ÐÐ¾ÑÐ¾Ð²Ð¾</div><div style="font-size:13px;color:var(--muted)" data-ru="ÐÐ¾Ð¼Ð°Ð½Ð´Ñ /news Ð¸ /today ÑÐ°Ð±Ð¾ÑÐ°ÑÑ" data-en="Commands /news and /today work">ÐÐ¾Ð¼Ð°Ð½Ð´Ñ /news Ð¸ /today ÑÐ°Ð±Ð¾ÑÐ°ÑÑ</div></div>
+        </div>
+      </div>
+      <div style="margin-top:24px;text-align:center">
+        <a href="https://t.me/ALTHEA_Research_Briefbot?startgroup=true" target="_blank" rel="noopener" class="btn btn-a" style="display:inline-flex;align-items:center;gap:8px;padding:16px 36px;font-size:15px;text-decoration:none;border-radius:8px">ÐÐ¾Ð±Ð°Ð²Ð¸ÑÑ Ð±Ð¾ÑÐ° Ð² Ð³ÑÑÐ¿Ð¿Ñ</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:30px 0 80px">
+    <div class="wrap" style="max-width:780px">
+      <div class="reveal" style="background:linear-gradient(135deg,rgba(245,166,35,.08),rgba(76,195,232,.08));border:1px solid var(--line2);border-radius:16px;padding:36px 32px;text-align:center">
+        <h2 style="font-family:var(--disp);font-size:clamp(20px,3vw,26px);font-weight:700;margin:0 0 12px;color:var(--text)" data-ru="ÐÐ¾ÑÐ¾Ð²Ñ Ð¿Ð¾Ð»ÑÑÐ°ÑÑ daily brief?" data-en="Ready to get daily brief?">ÐÐ¾ÑÐ¾Ð²Ñ Ð¿Ð¾Ð»ÑÑÐ°ÑÑ daily brief?</h2>
+        <p style="font-size:15px;color:var(--muted);line-height:1.6;max-width:60ch;margin:0 auto 20px" data-ru="ÐÐ¾Ð±Ð°Ð²ÑÑÐµ ALTHEA Research Brief Ð² ÑÐ²Ð¾Ñ Ð³ÑÑÐ¿Ð¿Ñ." data-en="Add ALTHEA Research Brief to your group.">ÐÐ¾Ð±Ð°Ð²ÑÑÐµ ALTHEA Research Brief Ð² ÑÐ²Ð¾Ñ Ð³ÑÑÐ¿Ð¿Ñ.</p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a href="https://t.me/ALTHEA_Research_Briefbot?startgroup=true" target="_blank" rel="noopener" class="btn btn-a" style="display:inline-flex;align-items:center;gap:8px;padding:14px 32px;font-size:14px;text-decoration:none;border-radius:8px" data-ru="ÐÐ¾Ð±Ð°Ð²Ð¸ÑÑ Ð² Ð³ÑÑÐ¿Ð¿Ñ" data-en="Add to group">ÐÐ¾Ð±Ð°Ð²Ð¸ÑÑ Ð² Ð³ÑÑÐ¿Ð¿Ñ</a>
+          <a href="https://t.me/ALTHEA_Research_Briefbot" target="_blank" rel="noopener" class="btn btn-g" style="display:inline-flex;align-items:center;gap:8px;padding:14px 32px;font-size:14px;text-decoration:none;border-radius:8px" data-ru="ÐÑÐºÑÑÑÑ Ð² Telegram" data-en="Open in Telegram">ÐÑÐºÑÑÑÑ Ð² Telegram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Legal & Compliance -->
+  <section style="padding:40px 0 80px;background:var(--bg2);border-top:1px solid var(--line)">
+    <div class="wrap" style="max-width:900px">
+      <div class="sec-head reveal" style="--acc:var(--ctc)"><span class="sec-num">03 /</span><h2 data-ru="ÐÑÐ°Ð²Ð¾Ð²Ð¾Ð¹ ÑÑÐ°ÑÑÑ Ð¸ ÑÐ¾Ð¾ÑÐ²ÐµÑÑÑÐ²Ð¸Ðµ Ð·Ð°ÐºÐ¾Ð½Ð°Ð¼" data-en="Legal status and compliance">ÐÑÐ°Ð²Ð¾Ð²Ð¾Ð¹ ÑÑÐ°ÑÑÑ Ð¸ ÑÐ¾Ð¾ÑÐ²ÐµÑÑÑÐ²Ð¸Ðµ Ð·Ð°ÐºÐ¾Ð½Ð°Ð¼</h2></div>
+
+      <div class="reveal" style="background:var(--s2);border:1px solid var(--line2);border-radius:12px;padding:28px 32px;margin-bottom:20px">
+        <h3 style="font-family:var(--disp);font-size:18px;font-weight:700;margin:0 0 14px;color:var(--text)" data-ru="ÐÐ¾Ð·ÑÐ°ÑÑÐ½Ð°Ñ Ð¼Ð°ÑÐºÐ¸ÑÐ¾Ð²ÐºÐ°: 0+" data-en="Age rating: 0+">ÐÐ¾Ð·ÑÐ°ÑÑÐ½Ð°Ñ Ð¼Ð°ÑÐºÐ¸ÑÐ¾Ð²ÐºÐ°: 0+</h3>
+        <p style="font-size:14px;color:var(--muted);line-height:1.6;margin:0" data-ru="ÐÐ¾Ñ ÑÐ°ÑÐ¿ÑÐ¾ÑÑÑÐ°Ð½ÑÐµÑ Ð¸Ð½ÑÐ¾ÑÐ¼Ð°ÑÐ¸Ð¾Ð½Ð½ÑÑ Ð¿ÑÐ¾Ð´ÑÐºÑÐ¸Ñ ÐºÐ°ÑÐµÐ³Ð¾ÑÐ¸Ð¸ Â«0+Â» Ð² ÑÐ¾Ð¾ÑÐ²ÐµÑÑÑÐ²Ð¸Ð¸ Ñ Ð¤ÐµÐ´ÐµÑÐ°Ð»ÑÐ½ÑÐ¼ Ð·Ð°ÐºÐ¾Ð½Ð¾Ð¼ Ð¾Ñ 29.12.2010 â 436-Ð¤Ð Â«Ð Ð·Ð°ÑÐ¸ÑÐµ Ð´ÐµÑÐµÐ¹ Ð¾Ñ Ð¸Ð½ÑÐ¾ÑÐ¼Ð°ÑÐ¸Ð¸, Ð¿ÑÐ¸ÑÐ¸Ð½ÑÑÑÐµÐ¹ Ð²ÑÐµÐ´ Ð¸Ñ Ð·Ð´Ð¾ÑÐ¾Ð²ÑÑ Ð¸ ÑÐ°Ð·Ð²Ð¸ÑÐ¸ÑÂ». ÐÐ¾Ð½ÑÐµÐ½Ñ Ð½Ðµ ÑÐ¾Ð´ÐµÑÐ¶Ð¸Ñ Ð¼Ð°ÑÐµÑÐ¸Ð°Ð»Ð¾Ð², Ð¿Ð¾Ð´Ð¿Ð°Ð´Ð°ÑÑÐ¸Ñ Ð¿Ð¾Ð´ ÐºÐ°ÑÐµÐ³Ð¾ÑÐ¸Ð¸ 6+, 12+, 16+, 18+." data-en="The Bot distributes information products of the â0+â category in accordance with Federal Law No. 436-FZ of 29 December 2010. The content does not contain materials falling under categories 6+, 12+, 16+, 18+.">ÐÐ¾Ñ ÑÐ°ÑÐ¿ÑÐ¾ÑÑÑÐ°Ð½ÑÐµÑ Ð¸Ð½ÑÐ¾ÑÐ¼Ð°ÑÐ¸Ð¾Ð½Ð½ÑÑ Ð¿ÑÐ¾Ð´ÑÐºÑÐ¸Ñ ÐºÐ°ÑÐµÐ³Ð¾ÑÐ¸Ð¸ Â«0+Â» Ð² ÑÐ¾Ð¾ÑÐ²ÐµÑÑÑÐ²Ð¸Ð¸ Ñ Ð¤ÐµÐ´ÐµÑÐ°Ð»ÑÐ½ÑÐ¼ Ð·Ð°ÐºÐ¾Ð½Ð¾Ð¼ Ð¾Ñ 29.12.2010 â 436-Ð¤Ð Â«Ð Ð·Ð°ÑÐ¸ÑÐµ Ð´ÐµÑÐµÐ¹ Ð¾Ñ Ð¸Ð½ÑÐ¾ÑÐ¼Ð°ÑÐ¸Ð¸, Ð¿ÑÐ¸ÑÐ¸Ð½ÑÑÑÐµÐ¹ Ð²ÑÐµÐ´ Ð¸Ñ Ð·Ð´Ð¾ÑÐ¾Ð²ÑÑ Ð¸ ÑÐ°Ð·Ð²Ð¸ÑÐ¸ÑÂ». ÐÐ¾Ð½ÑÐµÐ½Ñ Ð½Ðµ ÑÐ¾Ð´ÐµÑÐ¶Ð¸Ñ Ð¼Ð°ÑÐµÑÐ¸Ð°Ð»Ð¾Ð², Ð¿Ð¾Ð´Ð¿Ð°Ð´Ð°ÑÑÐ¸Ñ Ð¿Ð¾Ð´ ÐºÐ°ÑÐµÐ³Ð¾ÑÐ¸Ð¸ 6+, 12+, 16+, 18+.</p>
+      </div>
+
+      <div class="reveal" style="background:var(--s2);border:1px solid var(--line2);border-radius:12px;padding:28px 32px;margin-bottom:20px">
+        <h3 style="font-family:var(--disp);font-size:18px;font-weight:700;margin:0 0 14px;color:var(--text)" data-ru="Ð¡Ð¾Ð³Ð»Ð°ÑÐ¸Ðµ Ð½Ð° Ð¾Ð±ÑÐ°Ð±Ð¾ÑÐºÑ ÐÐÐ½ (152-Ð¤Ð)" data-en="Consent to PDn processing (FZ-152)">Ð¡Ð¾Ð³Ð»Ð°ÑÐ¸Ðµ Ð½Ð° Ð¾Ð±ÑÐ°Ð±Ð¾ÑÐºÑ ÐÐÐ½ (152-Ð¤Ð)</h3>
+        <p style="font-size:14px;color:var(--muted);line-height:1.6;margin:0 0 12px" data-ru="ÐÑÐ¿ÑÐ°Ð²Ð»ÑÑ Ð¿ÐµÑÐ²ÑÑ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ (/start Ð¸Ð»Ð¸ Ð¸Ð½ÑÑ) Ð±Ð¾ÑÑ @ALTHEA_Research_Briefbot, Ð¿Ð¾Ð»ÑÐ·Ð¾Ð²Ð°ÑÐµÐ»Ñ Ð´Ð°ÑÑ ÑÐ¾Ð³Ð»Ð°ÑÐ¸Ðµ Ð½Ð° Ð¾Ð±ÑÐ°Ð±Ð¾ÑÐºÑ Ð¿ÐµÑÑÐ¾Ð½Ð°Ð»ÑÐ½ÑÑ Ð´Ð°Ð½Ð½ÑÑ (Telegram user_id, first_name, chat_id, ÑÐµÐºÑÑ ÐºÐ¾Ð¼Ð°Ð½Ð´) Ð² ÑÐµÐ»ÑÑ, ÑÐ°ÑÐºÑÑÑÑÑ Ð² <a href='policy.html' style='color:var(--scio)'>ÐÐ¾Ð»Ð¸ÑÐ¸ÐºÐµ Ð¾Ð±ÑÐ°Ð±Ð¾ÑÐºÐ¸ ÐÐÐ½</a> (ÑÐ°Ð·Ð´ÐµÐ» 15). Ð¡Ð¾Ð³Ð»Ð°ÑÐ¸Ðµ ÑÐ²Ð»ÑÐµÑÑÑ ÐºÐ¾Ð½ÐºÑÐµÑÐ½ÑÐ¼, Ð¸Ð½ÑÐ¾ÑÐ¼Ð¸ÑÐ¾Ð²Ð°Ð½Ð½ÑÐ¼ Ð¸ ÑÐ¾Ð·Ð½Ð°ÑÐµÐ»ÑÐ½ÑÐ¼ (ÑÑ. 9 152-Ð¤Ð)." data-en="By sending the first command (/start or otherwise) to @ALTHEA_Research_Briefbot, the user consents to the processing of personal data (Telegram user_id, first_name, chat_id, command text) for the purposes disclosed in the <a href='policy.html' style='color:var(--scio)'>PDn Policy</a> (section 15). The consent is specific, informed and conscious (Art. 9 of FZ-152).">ÐÑÐ¿ÑÐ°Ð²Ð»ÑÑ Ð¿ÐµÑÐ²ÑÑ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ (/start Ð¸Ð»Ð¸ Ð¸Ð½ÑÑ) Ð±Ð¾ÑÑ @ALTHEA_Research_Briefbot, Ð¿Ð¾Ð»ÑÐ·Ð¾Ð²Ð°ÑÐµÐ»Ñ Ð´Ð°ÑÑ ÑÐ¾Ð³Ð»Ð°ÑÐ¸Ðµ Ð½Ð° Ð¾Ð±ÑÐ°Ð±Ð¾ÑÐºÑ Ð¿ÐµÑÑÐ¾Ð½Ð°Ð»ÑÐ½ÑÑ Ð´Ð°Ð½Ð½ÑÑ (Telegram user_id, first_name, chat_id, ÑÐµÐºÑÑ ÐºÐ¾Ð¼Ð°Ð½Ð´) Ð² ÑÐµÐ»ÑÑ, ÑÐ°ÑÐºÑÑÑÑÑ Ð² <a href='policy.html' style='color:var(--scio)'>ÐÐ¾Ð»Ð¸ÑÐ¸ÐºÐµ Ð¾Ð±ÑÐ°Ð±Ð¾ÑÐºÐ¸ ÐÐÐ½</a> (ÑÐ°Ð·Ð´ÐµÐ» 15). Ð¡Ð¾Ð³Ð»Ð°ÑÐ¸Ðµ ÑÐ²Ð»ÑÐµÑÑÑ ÐºÐ¾Ð½ÐºÑÐµÑÐ½ÑÐ¼, Ð¸Ð½ÑÐ¾ÑÐ¼Ð¸ÑÐ¾Ð²Ð°Ð½Ð½ÑÐ¼ Ð¸ ÑÐ¾Ð·Ð½Ð°ÑÐµÐ»ÑÐ½ÑÐ¼ (ÑÑ. 9 152-Ð¤Ð).</p>
+        <p style="font-size:14px;color:var(--muted);line-height:1.6;margin:0" data-ru="ÐÐÐ Â«ÐÐÐ¢ÐÐ¯Â» â Ð¾Ð¿ÐµÑÐ°ÑÐ¾Ñ Ð¿ÐµÑÑÐ¾Ð½Ð°Ð»ÑÐ½ÑÑ Ð´Ð°Ð½Ð½ÑÑ â 100364324 (ÑÐµÐµÑÑÑ Ð Ð¾ÑÐºÐ¾Ð¼Ð½Ð°Ð´Ð·Ð¾ÑÐ°). ÐÐ°Ð½Ð½ÑÐµ ÑÑÐ°Ð½ÑÑÑÑ Ð½Ð° ÑÐµÑÐ²ÐµÑÐ°Ñ Ð² Ð Ð¤ (ÑÐ¾ÑÑÐ¸Ð½Ð³ Reg.ru). ÐÐ¾Ð»ÑÐ·Ð¾Ð²Ð°ÑÐµÐ»Ñ Ð²Ð¿ÑÐ°Ð²Ðµ Ð¾ÑÐ¾Ð·Ð²Ð°ÑÑ ÑÐ¾Ð³Ð»Ð°ÑÐ¸Ðµ Ð² Ð»ÑÐ±Ð¾Ð¹ Ð¼Ð¾Ð¼ÐµÐ½Ñ, ÑÐ´Ð°Ð»Ð¸Ð² Ð±Ð¾ÑÐ° Ð¸Ð· ÑÐ°ÑÐ°." data-en="Althea LLC is a personal-data operator No. 100364324 (Roskomnadzor registry). Data is stored on servers in the Russian Federation (Reg.ru hosting). The user may withdraw consent at any time by removing the bot from the chat.">ÐÐÐ Â«ÐÐÐ¢ÐÐ¯Â» â Ð¾Ð¿ÐµÑÐ°ÑÐ¾Ñ Ð¿ÐµÑÑÐ¾Ð½Ð°Ð»ÑÐ½ÑÑ Ð´Ð°Ð½Ð½ÑÑ â 100364324 (ÑÐµÐµÑÑÑ Ð Ð¾ÑÐºÐ¾Ð¼Ð½Ð°Ð´Ð·Ð¾ÑÐ°). ÐÐ°Ð½Ð½ÑÐµ ÑÑÐ°Ð½ÑÑÑÑ Ð½Ð° ÑÐµÑÐ²ÐµÑÐ°Ñ Ð² Ð Ð¤ (ÑÐ¾ÑÑÐ¸Ð½Ð³ Reg.ru). ÐÐ¾Ð»ÑÐ·Ð¾Ð²Ð°ÑÐµÐ»Ñ Ð²Ð¿ÑÐ°Ð²Ðµ Ð¾ÑÐ¾Ð·Ð²Ð°ÑÑ ÑÐ¾Ð³Ð»Ð°ÑÐ¸Ðµ Ð² Ð»ÑÐ±Ð¾Ð¹ Ð¼Ð¾Ð¼ÐµÐ½Ñ, ÑÐ´Ð°Ð»Ð¸Ð² Ð±Ð¾ÑÐ° Ð¸Ð· ÑÐ°ÑÐ°.</p>
+      </div>
+
+      <div class="reveal" style="background:var(--s2);border:1px solid var(--line2);border-radius:12px;padding:28px 32px;margin-bottom:20px">
+        <h3 style="font-family:var(--disp);font-size:18px;font-weight:700;margin:0 0 14px;color:var(--text)" data-ru="Ð¦Ð¸ÑÐ¸ÑÐ¾Ð²Ð°Ð½Ð¸Ðµ Ð¸ÑÑÐ¾ÑÐ½Ð¸ÐºÐ¾Ð² (ÑÑ. 1274 ÐÐ Ð Ð¤)" data-en="Citation of sources (Art. 1274 of the Civil Code)">Ð¦Ð¸ÑÐ¸ÑÐ¾Ð²Ð°Ð½Ð¸Ðµ Ð¸ÑÑÐ¾ÑÐ½Ð¸ÐºÐ¾Ð² (ÑÑ. 1274 ÐÐ Ð Ð¤)</h3>
+        <p style="font-size:14px;color:var(--muted);line-height:1.6;margin:0 0 12px" data-ru="ÐÐ¾Ñ ÑÐ¸ÑÐ¸ÑÑÐµÑ Ð¼Ð°ÑÐµÑÐ¸Ð°Ð»Ñ 25 Ð¸ÑÑÐ¾ÑÐ½Ð¸ÐºÐ¾Ð² Ð² Ð¸Ð½ÑÐ¾ÑÐ¼Ð°ÑÐ¸Ð¾Ð½Ð½ÑÑ ÑÐµÐ»ÑÑ Ð½Ð° Ð¾ÑÐ½Ð¾Ð²Ð°Ð½Ð¸Ð¸ ÑÑ. 1274 ÐÐ Ð Ð¤: ÑÐºÐ°Ð·ÑÐ²Ð°ÐµÑÑÑ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð¸ÑÑÐ¾ÑÐ½Ð¸ÐºÐ°, ÐºÑÐ°ÑÐºÐ¸Ð¹ Ð¿ÐµÑÐµÑÐºÐ°Ð· (summary) Ð¾Ð±ÑÑÐ¼Ð¾Ð¼ Ð´Ð¾ 200 ÑÐ¸Ð¼Ð²Ð¾Ð»Ð¾Ð² Ð¸ ÑÑÑÐ»ÐºÐ° Ð½Ð° Ð¾ÑÐ¸Ð³Ð¸Ð½Ð°Ð». ÐÐ¾Ð»Ð½Ð¾Ðµ Ð²Ð¾ÑÐ¿ÑÐ¾Ð¸Ð·Ð²ÐµÐ´ÐµÐ½Ð¸Ðµ Ð¼Ð°ÑÐµÑÐ¸Ð°Ð»Ð¾Ð² Ð½Ðµ Ð¾ÑÑÑÐµÑÑÐ²Ð»ÑÐµÑÑÑ." data-en="The Bot quotes materials from 25 sources for informational purposes on the basis of Art. 1274 of the Civil Code: the source name, a brief summary of up to 200 characters and a link to the original are indicated. Full reproduction of materials is not carried out.">ÐÐ¾Ñ ÑÐ¸ÑÐ¸ÑÑÐµÑ Ð¼Ð°ÑÐµÑÐ¸Ð°Ð»Ñ 25 Ð¸ÑÑÐ¾ÑÐ½Ð¸ÐºÐ¾Ð² Ð² Ð¸Ð½ÑÐ¾ÑÐ¼Ð°ÑÐ¸Ð¾Ð½Ð½ÑÑ ÑÐµÐ»ÑÑ Ð½Ð° Ð¾ÑÐ½Ð¾Ð²Ð°Ð½Ð¸Ð¸ ÑÑ. 1274 ÐÐ Ð Ð¤: ÑÐºÐ°Ð·ÑÐ²Ð°ÐµÑÑÑ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð¸ÑÑÐ¾ÑÐ½Ð¸ÐºÐ°, ÐºÑÐ°ÑÐºÐ¸Ð¹ Ð¿ÐµÑÐµÑÐºÐ°Ð· (summary) Ð¾Ð±ÑÑÐ¼Ð¾Ð¼ Ð´Ð¾ 200 ÑÐ¸Ð¼Ð²Ð¾Ð»Ð¾Ð² Ð¸ ÑÑÑÐ»ÐºÐ° Ð½Ð° Ð¾ÑÐ¸Ð³Ð¸Ð½Ð°Ð». ÐÐ¾Ð»Ð½Ð¾Ðµ Ð²Ð¾ÑÐ¿ÑÐ¾Ð¸Ð·Ð²ÐµÐ´ÐµÐ½Ð¸Ðµ Ð¼Ð°ÑÐµÑÐ¸Ð°Ð»Ð¾Ð² Ð½Ðµ Ð¾ÑÑÑÐµÑÑÐ²Ð»ÑÐµÑÑÑ.</p>
+        <p style="font-size:14px;color:var(--muted);line-height:1.6;margin:0" data-ru="ÐÐ¾ ÑÐ¾ÑÑÐ¾ÑÐ½Ð¸Ñ Ð½Ð° Ð°Ð²Ð³ÑÑÑ 2026 Ð³. Ð½Ð¸ Ð¾Ð´Ð¸Ð½ Ð¸Ð· 25 Ð¸ÑÑÐ¾ÑÐ½Ð¸ÐºÐ¾Ð² Ð½Ðµ Ð²ÐºÐ»ÑÑÑÐ½ ÐÐ¸Ð½ÑÑÑÐ¾Ð¼ Ð Ð¤ Ð² ÑÐµÐµÑÑÑ Ð¸Ð½Ð¾ÑÑÑÐ°Ð½Ð½ÑÑ Ð°Ð³ÐµÐ½ÑÐ¾Ð². ÐÑÐ¸ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ð¸ ÑÑÐ°ÑÑÑÐ° Ð¸ÑÑÐ¾ÑÐ½Ð¸ÐºÐ° Ðº Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ñ Ð°Ð²ÑÐ¾Ð¼Ð°ÑÐ¸ÑÐµÑÐºÐ¸ Ð´Ð¾Ð±Ð°Ð²Ð»ÑÐµÑÑÑ Ð¿Ð¾Ð¼ÐµÑÐºÐ° Â«(Ð¸Ð½Ð¾ÑÑÑÐ°Ð½Ð½ÑÐ¹ Ð°Ð³ÐµÐ½Ñ)Â» (255-Ð¤Ð). ÐÐ¿ÐµÑÐ°ÑÐ¾Ñ Ð¿ÑÐ¾Ð²ÐµÑÑÐµÑ ÑÐµÐµÑÑÑ ÐµÐ¶ÐµÐºÐ²Ð°ÑÑÐ°Ð»ÑÐ½Ð¾." data-en="As of August 2026, none of the 25 sources is included by the Ministry of Justice in the registry of foreign agents. If the status of a source changes, the label â(foreign agent)â is automatically added to its name (FZ-255). The Operator checks the registry quarterly.">ÐÐ¾ ÑÐ¾ÑÑÐ¾ÑÐ½Ð¸Ñ Ð½Ð° Ð°Ð²Ð³ÑÑÑ 2026 Ð³. Ð½Ð¸ Ð¾Ð´Ð¸Ð½ Ð¸Ð· 25 Ð¸ÑÑÐ¾ÑÐ½Ð¸ÐºÐ¾Ð² Ð½Ðµ Ð²ÐºÐ»ÑÑÑÐ½ ÐÐ¸Ð½ÑÑÑÐ¾Ð¼ Ð Ð¤ Ð² ÑÐµÐµÑÑÑ Ð¸Ð½Ð¾ÑÑÑÐ°Ð½Ð½ÑÑ Ð°Ð³ÐµÐ½ÑÐ¾Ð². ÐÑÐ¸ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ð¸ ÑÑÐ°ÑÑÑÐ° Ð¸ÑÑÐ¾ÑÐ½Ð¸ÐºÐ° Ðº Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ñ Ð°Ð²ÑÐ¾Ð¼Ð°ÑÐ¸ÑÐµÑÐºÐ¸ Ð´Ð¾Ð±Ð°Ð²Ð»ÑÐµÑÑÑ Ð¿Ð¾Ð¼ÐµÑÐºÐ° Â«(Ð¸Ð½Ð¾ÑÑÑÐ°Ð½Ð½ÑÐ¹ Ð°Ð³ÐµÐ½Ñ)Â» (255-Ð¤Ð). ÐÐ¿ÐµÑÐ°ÑÐ¾Ñ Ð¿ÑÐ¾Ð²ÐµÑÑÐµÑ ÑÐµÐµÑÑÑ ÐµÐ¶ÐµÐºÐ²Ð°ÑÑÐ°Ð»ÑÐ½Ð¾.</p>
+      </div>
+
+      <div class="reveal" style="background:var(--s2);border:1px solid var(--line2);border-radius:12px;padding:28px 32px;margin-bottom:20px">
+        <h3 style="font-family:var(--disp);font-size:18px;font-weight:700;margin:0 0 14px;color:var(--text)" data-ru="Ð ÐµÐºÐ¾Ð¼ÐµÐ½Ð´Ð°ÑÐµÐ»ÑÐ½ÑÐµ ÑÐµÑÐ½Ð¾Ð»Ð¾Ð³Ð¸Ð¸ (408-Ð¤Ð / ÑÑ. 10.2-2 149-Ð¤Ð)" data-en="Recommender systems (FZ-408 / Art. 10.2-2 of FZ-149)">Ð ÐµÐºÐ¾Ð¼ÐµÐ½Ð´Ð°ÑÐµÐ»ÑÐ½ÑÐµ ÑÐµÑÐ½Ð¾Ð»Ð¾Ð³Ð¸Ð¸ (408-Ð¤Ð / ÑÑ. 10.2-2 149-Ð¤Ð)</h3>
+        <p style="font-size:14px;color:var(--muted);line-height:1.6;margin:0" data-ru="ÐÐ¾Ñ Ð¿ÑÐ¸Ð¼ÐµÐ½ÑÐµÑ <b>Ð½ÐµÐ¿ÐµÑÑÐ¾Ð½Ð°Ð»Ð¸Ð·Ð¸ÑÐ¾Ð²Ð°Ð½Ð½ÑÑ</b> ÑÐ¸Ð»ÑÑÑÐ°ÑÐ¸Ñ Ð¸ÑÑÐ¾ÑÐ½Ð¸ÐºÐ¾Ð² Ð¿Ð¾ ÑÐµÐ¼Ð°ÑÐ¸ÐºÐµ deep-tech: AI safety, Ð±Ð¸Ð¾Ð¸Ð½Ð¶ÐµÐ½ÐµÑÐ¸Ñ (CRISPR), deepfake-Ð´ÐµÑÐµÐºÑÐ¸Ñ, ÐºÐ¸Ð±ÐµÑÐ±ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ÑÑÑ, ÑÐµÐ³ÑÐ»ÑÑÐ¾ÑÐ¸ÐºÐ°. Ð¤Ð¸Ð»ÑÑÑÐ°ÑÐ¸Ñ Ð¾Ð´Ð¸Ð½Ð°ÐºÐ¾Ð²Ð° Ð´Ð»Ñ Ð²ÑÐµÑ Ð¿Ð¾Ð»ÑÐ·Ð¾Ð²Ð°ÑÐµÐ»ÐµÐ¹ Ð¸ Ð½Ðµ Ð¾ÑÐ½Ð¾Ð²Ð°Ð½Ð° Ð½Ð° Ð¸Ñ Ð¿ÐµÑÑÐ¾Ð½Ð°Ð»ÑÐ½ÑÑ Ð´Ð°Ð½Ð½ÑÑ. Ð ÑÐ¾Ð¾ÑÐ²ÐµÑÑÑÐ²Ð¸Ð¸ Ñ Ñ. 1 ÑÑ. 10.2-2 Ð¤ÐµÐ´ÐµÑÐ°Ð»ÑÐ½Ð¾Ð³Ð¾ Ð·Ð°ÐºÐ¾Ð½Ð° â 149-Ð¤Ð ÐÐ°ÐºÐ¾Ð½ Ð¾ ÑÐµÐºÐ¾Ð¼ÐµÐ½Ð´Ð°ÑÐµÐ»ÑÐ½ÑÑ ÑÐµÑÐ½Ð¾Ð»Ð¾Ð³Ð¸ÑÑ Ðº Ð±Ð¾ÑÑ Ð½Ðµ Ð¿ÑÐ¸Ð¼ÐµÐ½ÑÐµÑÑÑ." data-en="The Bot applies <b>non-personalised</b> filtering of sources by deep-tech topics: AI safety, bioengineering (CRISPR), deepfake detection, cybersecurity, regulation. The filtering is identical for all users and is not based on their personal data. In accordance with Part 1 of Art. 10.2-2 of Federal Law No. 149-FZ, the Law on Recommender Systems does not apply to the bot.">ÐÐ¾Ñ Ð¿ÑÐ¸Ð¼ÐµÐ½ÑÐµÑ <b>Ð½ÐµÐ¿ÐµÑÑÐ¾Ð½Ð°Ð»Ð¸Ð·Ð¸ÑÐ¾Ð²Ð°Ð½Ð½ÑÑ</b> ÑÐ¸Ð»ÑÑÑÐ°ÑÐ¸Ñ Ð¸ÑÑÐ¾ÑÐ½Ð¸ÐºÐ¾Ð² Ð¿Ð¾ ÑÐµÐ¼Ð°ÑÐ¸ÐºÐµ deep-tech: AI safety, Ð±Ð¸Ð¾Ð¸Ð½Ð¶ÐµÐ½ÐµÑÐ¸Ñ (CRISPR), deepfake-Ð´ÐµÑÐµÐºÑÐ¸Ñ, ÐºÐ¸Ð±ÐµÑÐ±ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ÑÑÑ, ÑÐµÐ³ÑÐ»ÑÑÐ¾ÑÐ¸ÐºÐ°. Ð¤Ð¸Ð»ÑÑÑÐ°ÑÐ¸Ñ Ð¾Ð´Ð¸Ð½Ð°ÐºÐ¾Ð²Ð° Ð´Ð»Ñ Ð²ÑÐµÑ Ð¿Ð¾Ð»ÑÐ·Ð¾Ð²Ð°ÑÐµÐ»ÐµÐ¹ Ð¸ Ð½Ðµ Ð¾ÑÐ½Ð¾Ð²Ð°Ð½Ð° Ð½Ð° Ð¸Ñ Ð¿ÐµÑÑÐ¾Ð½Ð°Ð»ÑÐ½ÑÑ Ð´Ð°Ð½Ð½ÑÑ. Ð ÑÐ¾Ð¾ÑÐ²ÐµÑÑÑÐ²Ð¸Ð¸ Ñ Ñ. 1 ÑÑ. 10.2-2 Ð¤ÐµÐ´ÐµÑÐ°Ð»ÑÐ½Ð¾Ð³Ð¾ Ð·Ð°ÐºÐ¾Ð½Ð° â 149-Ð¤Ð ÐÐ°ÐºÐ¾Ð½ Ð¾ ÑÐµÐºÐ¾Ð¼ÐµÐ½Ð´Ð°ÑÐµÐ»ÑÐ½ÑÑ ÑÐµÑÐ½Ð¾Ð»Ð¾Ð³Ð¸ÑÑ Ðº Ð±Ð¾ÑÑ Ð½Ðµ Ð¿ÑÐ¸Ð¼ÐµÐ½ÑÐµÑÑÑ.</p>
+      </div>
+
+      <div class="reveal" style="background:var(--s2);border:1px solid var(--line2);border-radius:12px;padding:28px 32px;margin-bottom:20px">
+        <h3 style="font-family:var(--disp);font-size:18px;font-weight:700;margin:0 0 14px;color:var(--text)" data-ru="Ð ÐµÐºÐ»Ð°Ð¼Ð° (38-Ð¤Ð)" data-en="Advertising (FZ-38)">Ð ÐµÐºÐ»Ð°Ð¼Ð° (38-Ð¤Ð)</h3>
+        <p style="font-size:14px;color:var(--muted);line-height:1.6;margin:0" data-ru="ÐÐ¾Ñ Ð½Ðµ ÑÐ°Ð·Ð¼ÐµÑÐ°ÐµÑ ÑÐµÐºÐ»Ð°Ð¼Ð½ÑÐµ Ð¼Ð°ÑÐµÑÐ¸Ð°Ð»Ñ. ÐÐ»Ð°ÑÐ½ÑÐµ Ð¸ ÑÐ¿Ð¾Ð½ÑÐ¾ÑÑÐºÐ¸Ðµ Ð¿ÑÐ±Ð»Ð¸ÐºÐ°ÑÐ¸Ð¸ (ÐµÑÐ»Ð¸ Ð¿Ð¾ÑÐ²ÑÑÑÑ) Ð±ÑÐ´ÑÑ Ð¿ÑÐ¾Ð¼Ð°ÑÐºÐ¸ÑÐ¾Ð²Ð°Ð½Ñ Ð² ÑÐ¾Ð¾ÑÐ²ÐµÑÑÑÐ²Ð¸Ð¸ Ñ 38-Ð¤Ð: Ð¿Ð¾Ð¼ÐµÑÐºÐ° Â«Ð ÐµÐºÐ»Ð°Ð¼Ð°Â», ÑÐµÐºÐ»Ð°Ð¼Ð¾Ð´Ð°ÑÐµÐ»Ñ, erid-ÑÐ¾ÐºÐµÐ½, Ð¾ÑÑÑÑÐ½Ð¾ÑÑÑ ÑÐµÑÐµÐ· ÐÐ Ð Ð² ÐÐ ÐÐ ." data-en="The bot does not place advertising materials. Paid and sponsored publications (if any) will be labelled in accordance with FZ-38: âAdvertisingâ mark, advertiser, erid token, reporting through an ORD to the ERIR.">ÐÐ¾Ñ Ð½Ðµ ÑÐ°Ð·Ð¼ÐµÑÐ°ÐµÑ ÑÐµÐºÐ»Ð°Ð¼Ð½ÑÐµ Ð¼Ð°ÑÐµÑÐ¸Ð°Ð»Ñ. ÐÐ»Ð°ÑÐ½ÑÐµ Ð¸ ÑÐ¿Ð¾Ð½ÑÐ¾ÑÑÐºÐ¸Ðµ Ð¿ÑÐ±Ð»Ð¸ÐºÐ°ÑÐ¸Ð¸ (ÐµÑÐ»Ð¸ Ð¿Ð¾ÑÐ²ÑÑÑÑ) Ð±ÑÐ´ÑÑ Ð¿ÑÐ¾Ð¼Ð°ÑÐºÐ¸ÑÐ¾Ð²Ð°Ð½Ñ Ð² ÑÐ¾Ð¾ÑÐ²ÐµÑÑÑÐ²Ð¸Ð¸ Ñ 38-Ð¤Ð: Ð¿Ð¾Ð¼ÐµÑÐºÐ° Â«Ð ÐµÐºÐ»Ð°Ð¼Ð°Â», ÑÐµÐºÐ»Ð°Ð¼Ð¾Ð´Ð°ÑÐµÐ»Ñ, erid-ÑÐ¾ÐºÐµÐ½, Ð¾ÑÑÑÑÐ½Ð¾ÑÑÑ ÑÐµÑÐµÐ· ÐÐ Ð Ð² ÐÐ ÐÐ .</p>
+      </div>
+
+      <div class="reveal" style="background:var(--s2);border:1px solid var(--line2);border-radius:12px;padding:28px 32px;margin-bottom:20px">
+        <h3 style="font-family:var(--disp);font-size:18px;font-weight:700;margin:0 0 14px;color:var(--text)" data-ru="ÐÐ¾Ð´ÐµÑÐ°ÑÐ¸Ñ ÐºÐ¾Ð½ÑÐµÐ½ÑÐ° (ÑÑ. 15.1 149-Ð¤Ð)" data-en="Content moderation (Art. 15.1 of FZ-149)">ÐÐ¾Ð´ÐµÑÐ°ÑÐ¸Ñ ÐºÐ¾Ð½ÑÐµÐ½ÑÐ° (ÑÑ. 15.1 149-Ð¤Ð)</h3>
+        <p style="font-size:14px;color:var(--muted);line-height:1.6;margin:0" data-ru="ÐÐ¾Ñ Ð½Ðµ ÑÐ°ÑÐ¿ÑÐ¾ÑÑÑÐ°Ð½ÑÐµÑ Ð¼Ð°ÑÐµÑÐ¸Ð°Ð»Ñ, Ð¿Ð¾Ð´Ð¿Ð°Ð´Ð°ÑÑÐ¸Ðµ Ð¿Ð¾Ð´ ÑÑ. 15.1 149-Ð¤Ð (ÑÐºÑÑÑÐµÐ¼Ð¸Ð·Ð¼, Ð¿ÑÐ¾Ð¿Ð°Ð³Ð°Ð½Ð´Ð° Ð½Ð°ÑÐºÐ¾ÑÐ¸ÐºÐ¾Ð²,_suicide-ÐºÐ¾Ð½ÑÐµÐ½Ñ, Ð´ÐµÑÑÐºÐ°Ñ Ð¿Ð¾ÑÐ½Ð¾Ð³ÑÐ°ÑÐ¸Ñ, Ð·Ð°Ð¿ÑÐµÑÑÐ½Ð½Ð°Ñ Ð¸Ð½ÑÐ¾ÑÐ¼Ð°ÑÐ¸Ñ). ÐÑÐ¸ Ð¿Ð¾ÑÑÑÐ¿Ð»ÐµÐ½Ð¸Ð¸ ÑÑÐµÐ±Ð¾Ð²Ð°Ð½Ð¸Ñ Ð¾Ñ ÑÐ¿Ð¾Ð»Ð½Ð¾Ð¼Ð¾ÑÐµÐ½Ð½ÑÑ Ð¾ÑÐ³Ð°Ð½Ð¾Ð² Ð¼Ð°ÑÐµÑÐ¸Ð°Ð»Ñ ÑÐ´Ð°Ð»ÑÑÑÑÑ Ð¸Ð· ÐÐ Ð² ÑÐµÑÐµÐ½Ð¸Ðµ 24 ÑÐ°ÑÐ¾Ð². ÐÑÐµ Ð¿ÑÐ±Ð»Ð¸ÐºÐ°ÑÐ¸Ð¸ Ð»Ð¾Ð³Ð¸ÑÑÑÑÑÑ (post_log) Ð´Ð»Ñ Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ÑÑÐ¸ Ð¿Ð¾ÑÐ»ÐµÐ´ÑÑÑÐµÐ³Ð¾ Ð°ÑÐ´Ð¸ÑÐ°." data-en="The bot does not distribute materials falling under Art. 15.1 of FZ-149 (extremism, drug propaganda, suicide content, child pornography, prohibited information). Upon receipt of a request from authorised bodies, materials are deleted from the database within 24 hours. All publications are logged (post_log) for subsequent audit capability.">ÐÐ¾Ñ Ð½Ðµ ÑÐ°ÑÐ¿ÑÐ¾ÑÑÑÐ°Ð½ÑÐµÑ Ð¼Ð°ÑÐµÑÐ¸Ð°Ð»Ñ, Ð¿Ð¾Ð´Ð¿Ð°Ð´Ð°ÑÑÐ¸Ðµ Ð¿Ð¾Ð´ ÑÑ. 15.1 149-Ð¤Ð (ÑÐºÑÑÑÐµÐ¼Ð¸Ð·Ð¼, Ð¿ÑÐ¾Ð¿Ð°Ð³Ð°Ð½Ð´Ð° Ð½Ð°ÑÐºÐ¾ÑÐ¸ÐºÐ¾Ð², suicide-ÐºÐ¾Ð½ÑÐµÐ½Ñ, Ð´ÐµÑÑÐºÐ°Ñ Ð¿Ð¾ÑÐ½Ð¾Ð³ÑÐ°ÑÐ¸Ñ, Ð·Ð°Ð¿ÑÐµÑÑÐ½Ð½Ð°Ñ Ð¸Ð½ÑÐ¾ÑÐ¼Ð°ÑÐ¸Ñ). ÐÑÐ¸ Ð¿Ð¾ÑÑÑÐ¿Ð»ÐµÐ½Ð¸Ð¸ ÑÑÐµÐ±Ð¾Ð²Ð°Ð½Ð¸Ñ Ð¾Ñ ÑÐ¿Ð¾Ð»Ð½Ð¾Ð¼Ð¾ÑÐµÐ½Ð½ÑÑ Ð¾ÑÐ³Ð°Ð½Ð¾Ð² Ð¼Ð°ÑÐµÑÐ¸Ð°Ð»Ñ ÑÐ´Ð°Ð»ÑÑÑÑÑ Ð¸Ð· ÐÐ Ð² ÑÐµÑÐµÐ½Ð¸Ðµ 24 ÑÐ°ÑÐ¾Ð². ÐÑÐµ Ð¿ÑÐ±Ð»Ð¸ÐºÐ°ÑÐ¸Ð¸ Ð»Ð¾Ð³Ð¸ÑÑÑÑÑÑ (post_log) Ð´Ð»Ñ Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ÑÑÐ¸ Ð¿Ð¾ÑÐ»ÐµÐ´ÑÑÑÐµÐ³Ð¾ Ð°ÑÐ´Ð¸ÑÐ°.</p>
+      </div>
+
+      <div class="reveal" style="background:var(--s2);border:1px solid var(--line2);border-radius:12px;padding:28px 32px">
+        <h3 style="font-family:var(--disp);font-size:18px;font-weight:700;margin:0 0 14px;color:var(--text)" data-ru="ÐÐ¾ÐºÑÐ¼ÐµÐ½ÑÑ Ð¸ ÐºÐ¾Ð½ÑÐ°ÐºÑÑ" data-en="Documents and contacts">ÐÐ¾ÐºÑÐ¼ÐµÐ½ÑÑ Ð¸ ÐºÐ¾Ð½ÑÐ°ÐºÑÑ</h3>
+        <ul style="font-size:14px;color:var(--muted);line-height:1.8;margin:0;padding-left:18px">
+          <li><a href="policy.html" style="color:var(--scio)" data-ru="ÐÐ¾Ð»Ð¸ÑÐ¸ÐºÐ° Ð¾Ð±ÑÐ°Ð±Ð¾ÑÐºÐ¸ ÐÐÐ½ (ÑÐ°Ð·Ð´ÐµÐ» 15 â Telegram-Ð±Ð¾Ñ)" data-en="PDn Policy (section 15 â Telegram bot)">ÐÐ¾Ð»Ð¸ÑÐ¸ÐºÐ° Ð¾Ð±ÑÐ°Ð±Ð¾ÑÐºÐ¸ ÐÐÐ½ (ÑÐ°Ð·Ð´ÐµÐ» 15 â Telegram-Ð±Ð¾Ñ)</a></li>
+          <li><a href="terms.html" style="color:var(--scio)" data-ru="ÐÐ¾Ð»ÑÐ·Ð¾Ð²Ð°ÑÐµÐ»ÑÑÐºÐ¾Ðµ ÑÐ¾Ð³Ð»Ð°ÑÐµÐ½Ð¸Ðµ (ÑÐ°Ð·Ð´ÐµÐ» 13 â Telegram-Ð±Ð¾Ñ)" data-en="Terms of use (section 13 â Telegram bot)">ÐÐ¾Ð»ÑÐ·Ð¾Ð²Ð°ÑÐµÐ»ÑÑÐºÐ¾Ðµ ÑÐ¾Ð³Ð»Ð°ÑÐµÐ½Ð¸Ðµ (ÑÐ°Ð·Ð´ÐµÐ» 13 â Telegram-Ð±Ð¾Ñ)</a></li>
+          <li><a href="legal.html" style="color:var(--scio)" data-ru="ÐÑÐ°Ð²Ð¾Ð²Ð°Ñ Ð¾Ð³Ð¾Ð²Ð¾ÑÐºÐ°" data-en="Legal disclaimer">ÐÑÐ°Ð²Ð¾Ð²Ð°Ñ Ð¾Ð³Ð¾Ð²Ð¾ÑÐºÐ°</a></li>
+          <li data-ru="ÐÐ¿ÐµÑÐ°ÑÐ¾Ñ ÐÐÐ½ â 100364324 Â· ÑÐµÐµÑÑÑ Ð Ð¾ÑÐºÐ¾Ð¼Ð½Ð°Ð´Ð·Ð¾ÑÐ° Â· 152-Ð¤Ð" data-en="PDn operator No. 100364324 Â· Roskomnadzor registry Â· FZ-152">ÐÐ¿ÐµÑÐ°ÑÐ¾Ñ ÐÐÐ½ â 100364324 Â· ÑÐµÐµÑÑÑ Ð Ð¾ÑÐºÐ¾Ð¼Ð½Ð°Ð´Ð·Ð¾ÑÐ° Â· 152-Ð¤Ð</li>
+          <li data-ru="ÐÐ¾Ð·ÑÐ°ÑÑÐ½Ð°Ñ Ð¼Ð°ÑÐºÐ¸ÑÐ¾Ð²ÐºÐ°: 0+ Â· 436-Ð¤Ð" data-en="Age rating: 0+ Â· FZ-436">ÐÐ¾Ð·ÑÐ°ÑÑÐ½Ð°Ñ Ð¼Ð°ÑÐºÐ¸ÑÐ¾Ð²ÐºÐ°: 0+ Â· 436-Ð¤Ð</li>
+          <li data-ru="ÐÐ°Ð¿ÑÐ¾ÑÑ ÐÐÐ½: altea_ltd@mail.ru (ÑÐµÐ¼Ð° Â«ÐÐ°Ð¿ÑÐ¾Ñ ÐÐÐ½ â ÐÐ¾ÑÂ»)" data-en="PDn requests: altea_ltd@mail.ru (subject âPDn request â Botâ)">ÐÐ°Ð¿ÑÐ¾ÑÑ ÐÐÐ½: altea_ltd@mail.ru (ÑÐµÐ¼Ð° Â«ÐÐ°Ð¿ÑÐ¾Ñ ÐÐÐ½ â ÐÐ¾ÑÂ»)</li>
+          <li data-ru="ÐÐ°Ð»Ð¾Ð±Ñ: Ð Ð¾ÑÐºÐ¾Ð¼Ð½Ð°Ð´Ð·Ð¾Ñ (rkn.gov.ru) â Ð¿Ð¾ÑÑÐ´Ð¾Ðº Ð¾Ð±Ð¶Ð°Ð»Ð¾Ð²Ð°Ð½Ð¸Ñ Ð´ÐµÐ¹ÑÑÐ²Ð¸Ð¹ Ð¾Ð¿ÐµÑÐ°ÑÐ¾ÑÐ°" data-en="Complaints: Roskomnadzor (rkn.gov.ru) â procedure for appealing the operator's actions">ÐÐ°Ð»Ð¾Ð±Ñ: Ð Ð¾ÑÐºÐ¾Ð¼Ð½Ð°Ð´Ð·Ð¾Ñ (rkn.gov.ru) â Ð¿Ð¾ÑÑÐ´Ð¾Ðº Ð¾Ð±Ð¶Ð°Ð»Ð¾Ð²Ð°Ð½Ð¸Ñ Ð´ÐµÐ¹ÑÑÐ²Ð¸Ð¹ Ð¾Ð¿ÐµÑÐ°ÑÐ¾ÑÐ°</li>
+        </ul>
+      </div>
+
+      <p class="reveal" style="font-size:12px;color:var(--faint);line-height:1.6;text-align:center;max-width:70ch;margin:24px auto 0" data-ru="ÐÐ¾Ñ ÑÐ°Ð·ÑÐ°Ð±Ð¾ÑÐ°Ð½ Ð¸ ÑÐºÑÐ¿Ð»ÑÐ°ÑÐ¸ÑÑÐµÑÑÑ ÐÐÐ Â«ÐÐÐ¢ÐÐ¯Â» (ÐÐÐ 4217214140, ÐÐÐ Ð 1264200000900). Ð¢ÐµÑÐ½Ð¸ÑÐµÑÐºÐ°Ñ Ð¾Ð±ÑÐ°Ð±Ð¾ÑÐºÐ° ÑÐ¾Ð¾Ð±ÑÐµÐ½Ð¸Ð¹ Ð¾ÑÑÑÐµÑÑÐ²Ð»ÑÐµÑÑÑ Ð¸Ð½ÑÑÐ°ÑÑÑÑÐºÑÑÑÐ¾Ð¹ Telegram Messenger Inc. (telegram.org/privacy). ÐÐ¾ Ð²Ð¾Ð¿ÑÐ¾ÑÐ°Ð¼ ÑÐ°Ð±Ð¾ÑÑ Ð±Ð¾ÑÐ°: altea_ltd@mail.ru." data-en="The bot is developed and operated by Althea LLC (INN 4217214140, OGRN 1264200000900). Technical message processing is performed by the Telegram Messenger Inc. infrastructure (telegram.org/privacy). For bot-related questions: altea_ltd@mail.ru.">ÐÐ¾Ñ ÑÐ°Ð·ÑÐ°Ð±Ð¾ÑÐ°Ð½ Ð¸ ÑÐºÑÐ¿Ð»ÑÐ°ÑÐ¸ÑÑÐµÑÑÑ ÐÐÐ Â«ÐÐÐ¢ÐÐ¯Â» (ÐÐÐ 4217214140, ÐÐÐ Ð 1264200000900). Ð¢ÐµÑÐ½Ð¸ÑÐµÑÐºÐ°Ñ Ð¾Ð±ÑÐ°Ð±Ð¾ÑÐºÐ° ÑÐ¾Ð¾Ð±ÑÐµÐ½Ð¸Ð¹ Ð¾ÑÑÑÐµÑÑÐ²Ð»ÑÐµÑÑÑ Ð¸Ð½ÑÑÐ°ÑÑÑÑÐºÑÑÑÐ¾Ð¹ Telegram Messenger Inc. (telegram.org/privacy). ÐÐ¾ Ð²Ð¾Ð¿ÑÐ¾ÑÐ°Ð¼ ÑÐ°Ð±Ð¾ÑÑ Ð±Ð¾ÑÐ°: altea_ltd@mail.ru.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col foot-brand">
+        <a href="index.html" class="brand"><span class="mark">Ð</span><span><b data-ru="ÐÐÐ¢ÐÐ¯" data-en="ALTHEA">ÐÐÐ¢ÐÐ¯</b></span></a>
+        <p data-ru="ÐÑÑÐ»ÐµÐ´Ð¾Ð²Ð°ÑÐµÐ»ÑÑÐºÐ°Ñ ÐÐ¢-ÐºÐ¾Ð¼Ð¿Ð°Ð½Ð¸Ñ. ÐÐ¿Ð¿Ð°ÑÐ°ÑÐ½Ð°Ñ Ð±ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ÑÑÑ ÐÐ, Ð¿ÑÐµÑÐ¸Ð·Ð¸Ð¾Ð½Ð½Ð°Ñ Ð±Ð¸Ð¾Ð¸Ð½Ð¶ÐµÐ½ÐµÑÐ¸Ñ, ÑÐ¾ÑÐµÐ½Ð·Ð¸ÐºÐ° Ð¼ÐµÐ´Ð¸Ð°." data-en="Research IT company. Hardware AI safety, precision bioengineering, media forensics.">ÐÑÑÐ»ÐµÐ´Ð¾Ð²Ð°ÑÐµÐ»ÑÑÐºÐ°Ñ ÐÐ¢-ÐºÐ¾Ð¼Ð¿Ð°Ð½Ð¸Ñ. ÐÐ¿Ð¿Ð°ÑÐ°ÑÐ½Ð°Ñ Ð±ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ÑÑÑ ÐÐ, Ð¿ÑÐµÑÐ¸Ð·Ð¸Ð¾Ð½Ð½Ð°Ñ Ð±Ð¸Ð¾Ð¸Ð½Ð¶ÐµÐ½ÐµÑÐ¸Ñ, ÑÐ¾ÑÐµÐ½Ð·Ð¸ÐºÐ° Ð¼ÐµÐ´Ð¸Ð°.</p>
+        <div style="margin-bottom:14px"><a href="https://t.me/ALTHEA_Research_Briefbot" target="_blank" rel="noopener"><img src="/assets/qr_bot.png" width="80" height="80" alt="QR: Telegram Ð±Ð¾Ñ" style="border-radius:8px;border:1px solid var(--line2)" loading="lazy"></a><div style="font-family:var(--mono);font-size:9px;color:var(--faint);margin-top:4px" data-ru="ÐÐ°Ð²ÐµÐ´Ð¸ÑÐµ ÐºÐ°Ð¼ÐµÑÑ" data-en="Scan to chat">ÐÐ°Ð²ÐµÐ´Ð¸ÑÐµ ÐºÐ°Ð¼ÐµÑÑ</div></div>
+        <div class="socials">
+          <a class="plnk" href="https://orcid.org/0009-0001-4679-5967" target="_blank" rel="noopener">ORCID</a>
+          <a class="plnk" href="https://github.com/AGIAMTech/Amagi-framework" target="_blank" rel="noopener">GitHub</a>
+          <a class="plnk" href="https://zenodo.org/search?q=metadata.creators.person_or_org.name:%22Alexey%20Mikhailovich%20Burlai%22" target="_blank" rel="noopener">Zenodo</a>
+          <a class="plnk" href="https://scholar.google.com/citations?user=6Tsd3-wAAAAJ" target="_blank" rel="noopener">Scholar</a>
+          <a class="plnk" href="https://t.me/+RxBThUTB0rQzNGQy" target="_blank" rel="noopener" style="background:rgba(76,195,232,.12);color:var(--scio);border-color:rgba(76,195,232,.3)">Telegram</a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5 data-ru="ÐÑÐ¾Ð´ÑÐºÑÑ" data-en="Products">ÐÑÐ¾Ð´ÑÐºÑÑ</h5>
+        <a href="architecture.html">AMAGI</a>
+        <a href="althea.html">ALTHEA / CRISPR-TTP</a>
+        <a href="scio.html">Scio</a>
+        <a href="ctc.html">CTC</a>
+        <a href="bot.html" data-ru="Research Brief" data-en="Research Brief">Research Brief</a>
+      </div>
+      <div class="foot-col">
+        <h5 data-ru="ÐÐ¾Ð¼Ð¿Ð°Ð½Ð¸Ñ" data-en="Company">ÐÐ¾Ð¼Ð¿Ð°Ð½Ð¸Ñ</h5>
+        <a href="ai-engineering.html" data-ru="ÐÐ-Ð¸Ð½Ð¶ÐµÐ½ÐµÑÐ¸Ñ" data-en="AI Engineering">ÐÐ-Ð¸Ð½Ð¶ÐµÐ½ÐµÑÐ¸Ñ</a>
+        <a href="philosophy.html" data-ru="Ð¤Ð¸Ð»Ð¾ÑÐ¾ÑÐ¸Ñ" data-en="Philosophy">Ð¤Ð¸Ð»Ð¾ÑÐ¾ÑÐ¸Ñ</a>
+        <a href="vision.html" data-ru="ÐÐ¸Ð´ÐµÐ½Ð¸Ðµ" data-en="Vision">ÐÐ¸Ð´ÐµÐ½Ð¸Ðµ</a>
+        <a href="science.html" data-ru="ÐÐ°ÑÐºÐ°" data-en="Research">ÐÐ°ÑÐºÐ°</a>
+        <a href="team.html" data-ru="ÐÐ¾Ð¼Ð°Ð½Ð´Ð°" data-en="Team">ÐÐ¾Ð¼Ð°Ð½Ð´Ð°</a>
+        <a href="news.html" data-ru="ÐÐ¾Ð²Ð¾ÑÑÐ¸" data-en="News">ÐÐ¾Ð²Ð¾ÑÑÐ¸</a>
+        <a href="faq.html" data-ru="FAQ" data-en="FAQ">FAQ</a>
+        <a href="regulations.html" data-ru="Ð ÐµÐ³ÑÐ»ÑÑÐ¾ÑÑ Ð¸ Ð·Ð°ÐºÐ¾Ð½Ñ" data-en="Regulations & Laws">Ð ÐµÐ³ÑÐ»ÑÑÐ¾ÑÑ Ð¸ Ð·Ð°ÐºÐ¾Ð½Ñ</a>
+        <a href="minzdrav-letter.html" data-ru="ÐÐ°ÐºÐ»ÑÑÐµÐ½Ð¸Ðµ ÐÐ¸Ð½Ð·Ð´ÑÐ°Ð²Ð°" data-en="Minzdrav conclusion">ÐÐ°ÐºÐ»ÑÑÐµÐ½Ð¸Ðµ ÐÐ¸Ð½Ð·Ð´ÑÐ°Ð²Ð°</a>
+        <a href="services.html" data-ru="Ð£ÑÐ»ÑÐ³Ð¸" data-en="Services">Ð£ÑÐ»ÑÐ³Ð¸</a>
+        <a href="outstaffing.html" data-ru="ÐÑÑÑÐ¾ÑÑÐ¸Ð½Ð³" data-en="Outstaffing">ÐÑÑÑÐ¾ÑÑÐ¸Ð½Ð³</a>
+        <a href="careers.html" data-ru="ÐÐ°ÐºÐ°Ð½ÑÐ¸Ð¸" data-en="Careers">ÐÐ°ÐºÐ°Ð½ÑÐ¸Ð¸</a>
+        <a href="index.html#contact-section" data-ru="ÐÐ¾Ð½ÑÐ°ÐºÑÑ" data-en="Contacts">ÐÐ¾Ð½ÑÐ°ÐºÑÑ</a>
+      </div>
+      <div class="foot-col">
+        <h5 data-ru="ÐÑÐ°Ð²Ð¾Ð²Ð¾Ðµ" data-en="Legal">ÐÑÐ°Ð²Ð¾Ð²Ð¾Ðµ</h5>
+        <a href="policy.html" data-ru="ÐÐ¾Ð»Ð¸ÑÐ¸ÐºÐ° ÐÐÐ½" data-en="Privacy Policy">ÐÐ¾Ð»Ð¸ÑÐ¸ÐºÐ° ÐÐÐ½</a>
+        <a href="terms.html" data-ru="Ð¡Ð¾Ð³Ð»Ð°ÑÐµÐ½Ð¸Ðµ" data-en="Terms of Use">Ð¡Ð¾Ð³Ð»Ð°ÑÐµÐ½Ð¸Ðµ</a>
+        <a href="legal.html" data-ru="ÐÑÐ°Ð²Ð¾Ð²Ð°Ñ Ð¾Ð³Ð¾Ð²Ð¾ÑÐºÐ°" data-en="Legal disclaimer">ÐÑÐ°Ð²Ð¾Ð²Ð°Ñ Ð¾Ð³Ð¾Ð²Ð¾ÑÐºÐ°</a>
+        <a href="oferta.html" data-ru="ÐÑÐµÑÑÐ°" data-en="Offer">ÐÑÐµÑÑÐ°</a>
+        <a href="consent.html" data-ru="Ð¡Ð¾Ð³Ð»Ð°ÑÐ¸Ðµ Ð½Ð° ÑÐµÐ·ÑÐ¼Ðµ" data-en="CV Consent">Ð¡Ð¾Ð³Ð»Ð°ÑÐ¸Ðµ Ð½Ð° ÑÐµÐ·ÑÐ¼Ðµ</a>
+        <a href="mailto:altea_ltd@mail.ru">altea_ltd@mail.ru</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div class="foot-legal">
+        <span data-ru="Â© 2026 ÐÐÐ Â«ÐÐÐ¢ÐÐ¯Â» Â· ÐÐÐ 4217214140 Â· ÐÐÐ Ð 1264200000900" data-en="Â© 2026 Althea LLC Â· INN 4217214140 Â· OGRN 1264200000900">Â© 2026 ÐÐÐ Â«ÐÐÐ¢ÐÐ¯Â» Â· ÐÐÐ 4217214140 Â· ÐÐÐ Ð 1264200000900</span>
+        <br>
+        <span data-ru="654027, ÐÐµÐ¼ÐµÑÐ¾Ð²ÑÐºÐ°Ñ Ð¾Ð±Ð». â ÐÑÐ·Ð±Ð°ÑÑ, Ð³. ÐÐ¾Ð²Ð¾ÐºÑÐ·Ð½ÐµÑÐº, ÑÐ». ÐÐ¸ÑÐ¾Ð²Ð°, 6Ð, ÐºÐ². 8" data-en="654027, Kemerovo Region â Kuzbass, Novokuznetsk, Kirova St., 6A, apt. 8, Russia">654027, ÐÐµÐ¼ÐµÑÐ¾Ð²ÑÐºÐ°Ñ Ð¾Ð±Ð». â ÐÑÐ·Ð±Ð°ÑÑ, Ð³. ÐÐ¾Ð²Ð¾ÐºÑÐ·Ð½ÐµÑÐº, ÑÐ». ÐÐ¸ÑÐ¾Ð²Ð°, 6Ð, ÐºÐ². 8</span>
+      </div>
+      <div class="foot-legal" style="text-align:right">
+        <span data-ru="ÐÐ¾Ð·ÑÐ°ÑÑÐ½Ð°Ñ Ð¼Ð°ÑÐºÐ¸ÑÐ¾Ð²ÐºÐ°: 0+ Â· 436-Ð¤Ð" data-en="Age rating: 0+ Â· FZ-436">ÐÐ¾Ð·ÑÐ°ÑÑÐ½Ð°Ñ Ð¼Ð°ÑÐºÐ¸ÑÐ¾Ð²ÐºÐ°: 0+ Â· 436-Ð¤Ð</span><br>
+        <span data-ru="ÐÐ¿ÐµÑÐ°ÑÐ¾Ñ ÐÐÐ½ â 100364324 Â· 152-Ð¤Ð" data-en="PDn operator No. 100364324 Â· FZ-152">ÐÐ¿ÐµÑÐ°ÑÐ¾Ñ ÐÐÐ½ â 100364324 Â· 152-Ð¤Ð</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function setLang(l){
+  document.documentElement.lang=l==='ru'?'ru':'en';
+  document.body.classList.add('fade-lang');
+  const other=l==='ru'?'en':'ru';
+  document.querySelectorAll('[data-ru]').forEach(el=>{
+    const v=el.getAttribute('data-'+l);
+    if(v===null)return;
+    const hasOwnDataChildren=Array.from(el.children).some(c=>c.hasAttribute('data-ru')||c.querySelector('[data-ru]'));
+    if(hasOwnDataChildren){el.innerHTML=v;}else{el.innerHTML=v;}
+  });
+  document.getElementById('btn-ru').classList.toggle('on',l==='ru');
+  document.getElementById('btn-en').classList.toggle('on',l==='en');
+  try{localStorage.setItem('lang',l);}catch(e){}
+  setTimeout(()=>document.body.classList.remove('fade-lang'),180);
+  if(typeof window._onLangChange==='function'){try{window._onLangChange(l);}catch(e){}}
+}
+(function(){try{let l='ru';try{l=localStorage.getItem('lang')||'ru';}catch(e){}setLang(l);}catch(err){console.error('[setLang] error:',err);document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});}})();
+function acceptCookies(){try{localStorage.setItem('cookies','accepted');}catch(e){}document.getElementById('cookies').classList.remove('show');}
+function declineCookies(){try{localStorage.setItem('cookies','declined');}catch(e){}document.getElementById('cookies').classList.remove('show');}
+(function(){var c=null;try{c=localStorage.getItem('cookies');}catch(e){}if(!c){setTimeout(function(){document.getElementById('cookies').classList.add('show');},800);}})();
+const burger=document.getElementById('burger');
+const menu=document.getElementById('menu');
+if(burger)burger.addEventListener('click',function(){menu.classList.toggle('open');burger.classList.toggle('open');});
+const io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+</script>
+
+<script>
+(function(){
+  var toggle=document.getElementById('themeToggle');
+  if(!toggle)return;
+  var meta=document.querySelector('meta[name="theme-color"]');
+  function syncMeta(t){if(meta){meta.setAttribute('content',t==='light'?'#f5f7fb':'#0b1424');}}
+  syncMeta(document.documentElement.getAttribute('data-theme')||'dark');
+  toggle.addEventListener('click',function(){
+    var cur=document.documentElement.getAttribute('data-theme')||'dark';
+    var next=cur==='dark'?'light':'dark';
+    document.documentElement.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next);}catch(e){}
+    syncMeta(next);
+  });
+})();
+</script>
+<script src="/assets/js/premium-v7.js" defer></script>
+<script>
+(function(){
+  try{
+    var data={path:location.pathname,lang:document.documentElement.lang||'ru',theme:document.documentElement.getAttribute('data-theme')||'dark'};
+    if(navigator.sendBeacon){
+      navigator.sendBeacon('/assets/api/visit.php',JSON.stringify(data));
+    }else{
+      var f=new XMLHttpRequest();f.open('POST','/assets/api/visit.php',true);f.setRequestHeader('Content-Type','application/json');f.send(JSON.stringify(data));
+    }
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
