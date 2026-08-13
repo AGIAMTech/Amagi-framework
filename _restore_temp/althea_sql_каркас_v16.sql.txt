@@ -1,0 +1,242 @@
+-- ============================================================
+-- ALTHEA SQL КАРКАС v16 — добавление v7.0 (Remotion + GitHub Actions)
+-- Дата: 2026-08-13
+-- Изменения: переход с PIL/v4_visual.py на Remotion v7.0 + GitHub Actions CI/CD
+-- ============================================================
+
+-- ============================================================
+-- 1. Remotion v7.0 scenes (новая архитектура рендера)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS remotion_scenes_v7 (
+    id INTEGER PRIMARY KEY,
+    scene_type TEXT NOT NULL,        -- hook, context, fact, quote, cta
+    file_path TEXT NOT NULL,         -- src/scenes/HookScene.tsx
+    description TEXT,
+    has_image_url BOOLEAN DEFAULT 0, -- поддерживает imageUrl
+    has_outro BOOLEAN DEFAULT 0,     -- поддерживает outro (CTA only)
+    position_strategy TEXT,          -- top-half / center / bottom
+    uses_kinetic_typography BOOLEAN DEFAULT 0,
+    uses_cat_color BOOLEAN DEFAULT 1 -- подсветка под категорию
+);
+
+INSERT INTO remotion_scenes_v7 (id, scene_type, file_path, description, has_image_url, has_outro, position_strategy, uses_kinetic_typography, uses_cat_color) VALUES
+(1, 'hook',    'src/scenes/HookScene.tsx',    'Micro-hook flash + Ken Burns image + kinetic typography title', 1, 0, 'top-half', 1, 1),
+(2, 'context', 'src/scenes/ContextScene.tsx', 'Split layout: text card + news image (top half)',                 1, 0, 'top-half', 1, 1),
+(3, 'fact',    'src/scenes/FactScene.tsx',    'Centered fact with kinetic typography + highlight center word',   0, 0, 'top-half', 1, 1),
+(4, 'quote',   'src/scenes/QuoteScene.tsx',   'Centered quote + decorative quote mark + category badge',         0, 0, 'top-half', 0, 1),
+(5, 'cta',     'src/scenes/CTAScene.tsx',     'Logo + 4 product icons + 3 large text blocks (site/bot/channel)', 0, 1, 'bottom',   0, 1);
+
+-- ============================================================
+-- 2. Tier 1+2+3 features (внедрённые улучшения)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS remotion_features_v7 (
+    id INTEGER PRIMARY KEY,
+    tier TEXT NOT NULL,              -- tier1 (bugs) / tier2 (trends) / tier3 (premium)
+    feature_name TEXT NOT NULL,
+    component TEXT,                  -- где реализовано
+    description TEXT,
+    status TEXT DEFAULT 'active'
+);
+
+INSERT INTO remotion_features_v7 (id, tier, feature_name, component, description) VALUES
+-- Tier 1: critical bug fixes
+(1,  'tier1', 'PALETTE.accent fix',         'src/schema.ts',                 'Добавлен accent: #f5a623 (отсутствовал, крашил ProgressBar/Subtitles)'),
+(2,  'tier1', 'Subtitles connected',        'src/ShortVideo.tsx',            'Subtitles подключён к композиции (был отключён)'),
+(3,  'tier1', 'wordBoundaries from TTS',    'scripts/make_full_props.py',    'edge-TTS генерирует MP3 + wordBoundaries через WordBoundary event'),
+-- Tier 2: trend compliance
+(4,  'tier2', 'Safe zones',                 'src/schema.ts',                 'SAFE_ZONE: top=380, bottom=380, left=80, right=80 (симметрично)'),
+(5,  'tier2', 'Micro-hook flash',           'src/scenes/HookScene.tsx',      'Белая вспышка 0.85→0 + zoom 1.2→1.0 в первые 5 кадров'),
+(6,  'tier2', 'Kinetic typography',         'HookScene/ContextScene/FactScene', 'Заголовки появляются слово-за-словом со stagger 100ms'),
+(7,  'tier2', 'Rewatch loop',               'src/ShortVideo.tsx',            'Intro fade-in (8 frames) + outro fade-out (10 frames)'),
+(8,  'tier2', 'No text overlap',            'All scenes + Subtitles',        'Контент вверху, субтитры внизу (top: 1440 = 75%)'),
+(9,  'tier2', 'TTS transliteration hidden', 'src/components/Subtitles.tsx',  'Слова АЛТЕЯ/ТЕХ/РУ скрыты из субтитров (только для диктора)'),
+-- Tier 3: premium polish
+(10, 'tier3', '3D parallax background',     'src/components/Background.tsx', '4 слоя с разной скоростью (far/mid/near/foreground)'),
+(11, 'tier3', 'Scene transitions',          'src/components/SceneTransition.tsx', 'zoom-blur + flash + vignette на стыках 4 сцен'),
+(12, 'tier3', 'Bold captions',              'src/components/Subtitles.tsx',  'Активное слово: scale 1.18 + cat.color background + glow'),
+-- v7.0 additions
+(13, 'tier2', 'CTA text blocks',            'src/scenes/CTAScene.tsx',       '3 крупных блока: САЙТ/БОТ/КАНАЛ (без QR, крупные emoji + URL)'),
+(14, 'tier2', 'Category color everywhere',  'ProgressBar + all scenes',      'Подсветка под категорию (AMAGI/ALTHEA/Scio/CTC/Industry)'),
+(15, 'tier2', 'News image integration',     'src/components/NewsImage.tsx',  'Только оригинал image_url (без AI fallback) + Ken Burns');
+
+-- ============================================================
+-- 3. Narration templates (10 intro × 8 date × 4 sig × 5 outro)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS narration_templates_v7 (
+    id INTEGER PRIMARY KEY,
+    template_type TEXT NOT NULL,     -- intro / date / significance / outro / source
+    category TEXT,                   -- amagi/althea/scio/ctc/industry (NULL = universal)
+    variant_number INTEGER,
+    text TEXT NOT NULL,
+    style TEXT                       -- question/urgency/drama/neutral/etc
+);
+
+-- 10 intro variants × 5 categories = 50 entries
+INSERT INTO narration_templates_v7 (template_type, category, variant_number, text, style) VALUES
+('intro', 'amagi', 1,  'Что нового в безопасности ИИ? Расскажу.', 'question'),
+('intro', 'amagi', 2,  'Только что стало известно об аппаратной защите.', 'urgency'),
+('intro', 'amagi', 3,  'Свежая новость из мира безопасности.', 'relevance'),
+('intro', 'amagi', 4,  'День, когда безопасность ИИ стала надёжнее.', 'drama'),
+('intro', 'amagi', 5,  'Сегодня в фокусе — аппаратная безопасность.', 'neutral'),
+('intro', 'amagi', 6,  'Расскажу вам о новом подходе к защите.', 'personal'),
+('intro', 'amagi', 7,  'Прорыв в области аппаратной безопасности.', 'bold'),
+('intro', 'amagi', 8,  'Актуальная разработка для критических систем.', 'relevance'),
+('intro', 'amagi', 9,  'Новая глава в инженерии доверия.', 'drama'),
+('intro', 'amagi', 10, 'Что если безопасность можно доказать математически?', 'question');
+-- (остальные 4 категории аналогично — см. scripts/narration_templates.py)
+
+-- 8 date variants (universal)
+INSERT INTO narration_templates_v7 (template_type, category, variant_number, text, style) VALUES
+('date', NULL, 1, 'сегодня, {date}', 'neutral'),
+('date', NULL, 2, 'от {date}', 'urgency'),
+('date', NULL, 3, '{date}. свежая разработка', 'relevance'),
+('date', NULL, 4, 'день {date} запомнится', 'drama'),
+('date', NULL, 5, 'в этот день, {date}', 'narrative'),
+('date', NULL, 6, '{date}', 'bare'),
+('date', NULL, 7, 'совсем недавно, {date}', 'casual'),
+('date', NULL, 8, 'буквально только что, {date}', 'very fresh');
+
+-- 5 outro variants (universal)
+INSERT INTO narration_templates_v7 (template_type, category, variant_number, text, style) VALUES
+('outro', NULL, 1, 'Подробнее на АЛТЕЯ ТЕХ РУ.', 'standard'),
+('outro', NULL, 2, 'Читайте подробности на АЛТЕЯ ТЕХ РУ.', 'detailed'),
+('outro', NULL, 3, 'Полный разбор — на АЛТЕЯ ТЕХ РУ.', 'analytical'),
+('outro', NULL, 4, 'Следите за развитием на АЛТЕЯ ТЕХ РУ.', 'ongoing'),
+('outro', NULL, 5, 'Подписывайтесь. Подробнее на АЛТЕЯ ТЕХ РУ.', 'subscribe');
+
+-- ============================================================
+-- 4. News quality filter (pre-filter перед LLM-скорингом)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS news_filter_rules_v7 (
+    id INTEGER PRIMARY KEY,
+    rule_type TEXT NOT NULL,          -- prefix_blacklist / domain_blacklist / domain_soft_block / keyword_blacklist / deeptech_strong
+    value TEXT NOT NULL,
+    description TEXT,
+    action TEXT                       -- reject / require_strong_deeptech
+);
+
+INSERT INTO news_filter_rules_v7 (rule_type, value, description, action) VALUES
+-- Prefix blacklist
+('prefix_blacklist', '[Публикация]',    'Zenodo academic publications',     'reject'),
+('prefix_blacklist', '[Publication]',   'English publication prefix',       'reject'),
+-- Domain blacklist
+('domain_blacklist', 'zenodo.org',      'Our own publications',             'reject'),
+('domain_blacklist', 'github.com',      'Code repositories (not news)',     'reject'),
+('domain_blacklist', 'okmij.org',       'Philosophical articles',           'reject'),
+('domain_blacklist', 'reddit.com',      'Discussions',                      'reject'),
+-- Domain soft block (требует STRONG DeepTech signal)
+('domain_soft_block', 'medicalxpress.com', 'Medical news — many low-quality items', 'require_strong_deeptech'),
+-- Strong DeepTech keywords (для soft-blocked доменов)
+('deeptech_strong', 'crispr',          'Gene editing — strong bio signal',  'pass'),
+('deeptech_strong', 'ai',              'AI/ML strong signal',               'pass'),
+('deeptech_strong', 'quantum',         'Quantum computing',                 'pass'),
+('deeptech_strong', 'car-t',           'CAR-T immunotherapy',               'pass'),
+('deeptech_strong', 'openai',          'OpenAI company news',               'pass'),
+('deeptech_strong', 'deepmind',        'DeepMind company news',             'pass');
+
+-- ============================================================
+-- 5. GitHub Actions workflow
+-- ============================================================
+CREATE TABLE IF NOT EXISTS github_actions_workflows_v7 (
+    id INTEGER PRIMARY KEY,
+    workflow_name TEXT NOT NULL,
+    file_path TEXT NOT NULL,
+    trigger_type TEXT NOT NULL,       -- push / workflow_dispatch / schedule
+    trigger_config TEXT,              -- JSON с конфигом триггера
+    description TEXT,
+    status TEXT DEFAULT 'active'
+);
+
+INSERT INTO github_actions_workflows_v7 (workflow_name, file_path, trigger_type, trigger_config, description) VALUES
+('Render YouTube Short', '.github/workflows/render-short.yml', 'push',
+ '{"paths": ["output/props_*.json"], "branches": ["main"]}',
+ 'Auto-render on new props.json'),
+('Render YouTube Short', '.github/workflows/render-short.yml', 'workflow_dispatch',
+ '{"inputs": {"props_file": "optional"}}',
+ 'Manual render trigger'),
+('Render YouTube Short', '.github/workflows/render-short.yml', 'schedule',
+ '{"cron": "0 */4 * * *"}',
+ 'Every 4 hours auto-render');
+
+-- ============================================================
+-- 6. YouTube description template (v7.1 — компактное + правовая оговорка)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS youtube_description_template_v7 (
+    id INTEGER PRIMARY KEY,
+    section_name TEXT NOT NULL,
+    section_order INTEGER,
+    content_template TEXT,
+    is_required BOOLEAN DEFAULT 1
+);
+
+INSERT INTO youtube_description_template_v7 (section_name, section_order, content_template, is_required) VALUES
+('title',           1,  '🔬 {title}',                                            1),
+('summary',         2,  '{summary[:200]}',                                       1),
+('source_url',      3,  'Источник: {url}',                                       1),
+('category',        4,  '📁 Категория: {cat_label_ru}',                          1),
+('date',            5,  '📅 Дата: {pub_date}',                                    1),
+('source_name',     6,  '📰 Способ: {source}',                                    0),
+('bot_description', 7,  '🤖 TELEGRAM-БОТ ALTHEA Research Brief: ...',             1),
+('company_info',    8,  '🏢 ООО «АЛТЕЯ» (LLC "ALTHEA") — deep-tech ...',          1),
+('subscribe_links', 9,  '📡 YouTube / Telegram / Сайт / Новости',                1),
+('legal_disclaimer',10, '⚖️ Ст. 1274 ГК РФ + 0+ (436-ФЗ) + 152-ФЗ ПДн',          1),
+('hashtags',        11, '#ALTHEA #DeepTech #Shorts #News #АЛТЕЯ',                 1);
+
+-- ============================================================
+-- 7. Pipeline scripts v7.0
+-- ============================================================
+CREATE TABLE IF NOT EXISTS pipeline_scripts_v7 (
+    id INTEGER PRIMARY KEY,
+    script_name TEXT NOT NULL,
+    file_path TEXT NOT NULL,
+    purpose TEXT,
+    lines_of_code INTEGER
+);
+
+INSERT INTO pipeline_scripts_v7 (script_name, file_path, purpose, lines_of_code) VALUES
+(1, 'generate_tts',           'scripts/generate_tts.py',            'edge-TTS MP3 + wordBoundaries (WordBoundary event)', 99),
+(2, 'make_full_props',        'scripts/make_full_props.py',         'Сборка props.json из news + TTS + image',           235),
+(3, 'narration_templates',    'scripts/narration_templates.py',     '50 intro + 8 date + 22 sig + 5 outro = 1600+ комб', 290),
+(4, 'news_quality_filter',    'scripts/news_quality_filter.py',     'Pre-filter БЕЗ LLM (отсекает 41% мусора)',          362),
+(5, 'generate_real_news_props','scripts/generate_real_news_props.py','End-to-end: RSS→filter→TTS→props→push→trigger',     290),
+(6, 'trigger_render',         'scripts/trigger_render.py',          'Python: push props → wait workflow → download MP4', 230),
+(7, 'render_remotion',        'scripts/render_remotion.sh',         'Local render helper (npx remotion render)',         14),
+(8, 'render_all_categories',  'scripts/render_all_categories.sh',   'Render all 4 categories (test)',                    22);
+
+-- ============================================================
+-- 8. Company info (из выписки ЕГРЮЛ 27.03.2026)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS company_info_v7 (
+    field_name TEXT PRIMARY KEY,
+    value TEXT
+);
+
+INSERT INTO company_info_v7 (field_name, value) VALUES
+('full_name_ru',       'ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "АЛТЕЯ"'),
+('short_name_ru',      'ООО "АЛТЕЯ"'),
+('full_name_en',       'LIMITED LIABILITY COMPANY "ALTHEA"'),
+('short_name_en',      'LLC "ALTHEA"'),
+('ogrn',               '1264200000900'),
+('inn',                '4217214140'),
+('pdn_operator_number','100364324'),
+('pdn_registry',       'Роскомнадзор (152-ФЗ)'),
+('age_rating',         '0+ (436-ФЗ от 29.12.2010)'),
+('server_location',    'РФ (Reg.ru)'),
+('contact_email',      'altea_ltd@mail.ru'),
+('site_url',           'https://althea-tech.ru'),
+('news_url',           'https://althea-tech.ru/news.html'),
+('bot_url',            'https://t.me/ALTHEA_Research_Briefbot'),
+('youtube_url',        'https://www.youtube.com/@ALTHEAResearchBrief');
+
+-- ============================================================
+-- END OF v16 ADDITIONS
+-- Total new tables: 8
+-- remotion_scenes_v7:        5 rows
+-- remotion_features_v7:      15 rows
+-- narration_templates_v7:    23 rows (10 intro + 8 date + 5 outro)
+-- news_filter_rules_v7:      12 rows
+-- github_actions_workflows_v7: 3 rows
+-- youtube_description_template_v7: 11 rows
+-- pipeline_scripts_v7:       8 rows
+-- company_info_v7:           15 rows
+-- ============================================================
