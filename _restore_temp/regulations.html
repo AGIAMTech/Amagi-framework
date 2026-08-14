@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+  <meta name="google-site-verification" content="C9md1xJRK3-1YIUtjpKgLX-uK6NXKFoj6Rc0kefJXvo" data-althea-google-verify="1" /><script>
+(function(){try{var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();
+</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-ru="Законодательство и стандарты — ООО «АЛТЕЯ»" data-en="AI Regulations — Althea LLC">Законодательство и стандарты — ООО «АЛТЕЯ»</title>
+<meta name="description" content="Законодательство и стандарты: EU AI Act, IEC 61508, NIST AI RMF, 152-ФЗ, 323-ФЗ. Соответствие AMAGI/ALTHEA/Scio/CTC международным стандартам безопасности и доверия ИИ.">
+<meta name="theme-color" content="#0b1424">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0b1424">
+<!-- Top.Mail.Ru counter -->
+<script type="text/javascript">
+var _tmr = window._tmr || (window._tmr = []);
+_tmr.push({id: "3783624", type: "pageView", start: (new Date()).getTime()});
+(function (d, w, id) {
+  if (d.getElementById(id)) return;
+  var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+  ts.src = "https://top-fwz1.mail.ru/js/code.js";
+  var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+  if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+})(document, window, "tmr-code");
+</script>
+<noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3783624;js=na" style="position:absolute;left:-9999px;" alt="Top.Mail.Ru" /></div></noscript>
+<!-- /Top.Mail.Ru counter -->
+<style>
+
+:root{
+  --disp:'Unbounded',system-ui,sans-serif;--body:'Golos Text',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;
+  --maxw:1200px;
+  --amagi:#f5a623;--althea:#2dd4a7;--scio:#4cc3e8;--ctc:#c084fc;
+  /* === Typography scale (rem-based, adaptive) === */
+  --fs-display:clamp(2.25rem,5vw,3rem);
+  --fs-h1:clamp(1.75rem,4vw,2.5rem);
+  --fs-h2:clamp(1.5rem,3vw,2rem);
+  --fs-h3:clamp(1.125rem,2vw,1.375rem);
+  --fs-h4:1rem;
+  --fs-lead:clamp(1rem,1.5vw,1.125rem);
+  --fs-body:1rem;
+  --fs-body-sm:0.875rem;
+  --fs-meta:0.8125rem;
+  --fs-mono:0.8125rem;
+  --fs-mono-sm:0.6875rem;
+  --fs-mono-xs:0.625rem;
+  --lh-tight:1.1;--lh-snug:1.25;--lh-normal:1.55;--lh-relaxed:1.7;
+  --ls-tight:-0.02em;--ls-normal:0;--ls-wide:0.08em;--ls-xwide:0.18em;
+}
+:root[data-theme="dark"]{
+  --bg:#0b1424;--bg2:#0d1830;--s1:#101c33;--s2:#15233f;--s3:#1a2b4c;
+  --line:rgba(130,160,210,.15);--line2:rgba(130,160,210,.34);
+  --text:#e9eef8;--muted:#a8b8d4;--faint:#8a9bb5;
+  --header-bg:rgba(11,20,36,.92);
+  --glow-1:rgba(245,166,35,.10);
+  --glow-2:rgba(76,195,232,.09);
+  --glow-3:rgba(45,212,167,.07);
+  --inv-body-bg:rgba(0,0,0,.18);
+  --code-bg:#0d1830;--code-fg:#c7d4ea;
+  --selection-fg:#1a1206;
+}
+:root[data-theme="light"]{
+  --bg:#f5f7fb;--bg2:#eef1f6;--s1:#ffffff;--s2:#f0f3f8;--s3:#e6ebf2;
+  --line:rgba(30,60,100,.12);--line2:rgba(30,60,100,.22);
+  --text:#0d1830;--muted:#4a5870;--faint:#6c7a92;
+  --header-bg:rgba(245,247,251,.92);
+  --glow-1:rgba(245,166,35,.06);
+  --glow-2:rgba(76,195,232,.05);
+  --glow-3:rgba(45,212,167,.04);
+  --inv-body-bg:rgba(30,60,100,.05);
+  --code-bg:#1a2438;--code-fg:#e0e6f0;
+  --selection-fg:#1a1206;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%;font-size:16px}
+@media(min-width:768px){html{font-size:17px}}
+@media(min-width:1024px){html{font-size:18px}}
+body{font-family:var(--body);background:var(--bg);color:var(--text);font-size:var(--fs-body);line-height:var(--lh-normal);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;text-rendering:optimizeLegibility}
+button,a{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+input,textarea,button,select{font:inherit}
+::selection{background:var(--amagi);color:#1a1206}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
+.bg-grid{position:fixed;inset:0;z-index:-3;pointer-events:none;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:56px 56px;opacity:.4;
+  -webkit-mask-image:radial-gradient(1300px 800px at 60% -5%,#000,transparent 78%);mask-image:radial-gradient(1300px 800px at 60% -5%,#000,transparent 78%)}
+.bg-glow{position:fixed;inset:0;z-index:-4;pointer-events:none;background:
+  radial-gradient(880px 620px at 86% -8%,var(--glow-1),transparent 62%),
+  radial-gradient(760px 560px at 2% 24%,var(--glow-2),transparent 60%),
+  radial-gradient(820px 640px at 94% 66%,var(--glow-3),transparent 60%),
+  linear-gradient(180deg,var(--bg),var(--bg2))}
+.noise{position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:.04;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.cookies{position:fixed;left:0;right:0;bottom:0;z-index:100;background:var(--s2);border-top:1px solid var(--line2);padding:16px 0;display:none}
+.cookies.show{display:block}
+.cookies .wrap{display:flex;align-items:center;gap:16px}
+.cookies p{font-size:13px;color:var(--muted);flex:1;min-width:260px}
+.cookies p a{color:var(--scio);text-decoration:underline}
+.cookies .btns{display:flex;gap:10px}
+header{position:sticky;top:0;z-index:60;background:var(--header-bg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px}
+.brand{display:flex;align-items:center;gap:11px;flex-shrink:0;white-space:nowrap}
+.brand .mark{width:36px;height:36px;border:1.5px solid var(--amagi);border-radius:8px;display:grid;place-items:center;font-family:var(--disp);font-weight:900;font-size:15px;color:var(--amagi);background:rgba(245,166,35,.12);flex-shrink:0}
+.brand b{font-family:var(--disp);font-weight:900;font-size:16px;letter-spacing:.04em;display:block;line-height:1.1}
+.brand span{font-family:var(--mono);font-size:8.5px;letter-spacing:.26em;color:var(--scio);text-transform:uppercase}
+.menu{display:flex;gap:24px;align-items:center;flex-shrink:1;min-width:0}
+.menu > a,.menu-item-dropdown > a{font-size:14px;color:var(--muted);font-weight:500;position:relative;transition:color .2s;padding:6px 0;letter-spacing:.01em;white-space:nowrap}
+.menu-item-dropdown > a{display:inline-flex;align-items:center;gap:4px}
+.menu > a::after,.menu-item-dropdown > a::after{content:"";position:absolute;left:50%;bottom:0;height:2px;width:0;background:var(--scio);transition:width .25s ease,left .25s ease}
+.menu > a:hover,.menu-item-dropdown > a:hover{color:var(--text)}
+.menu > a:hover::after,.menu-item-dropdown > a:hover::after{width:100%;left:0}
+.menu > a.active{color:var(--scio)}
+.menu > a.active::after{width:100%;left:0}
+.menu-item-dropdown > a .dd-arrow{font-size:9px;margin-left:2px;color:var(--faint);transition:transform .2s}
+.menu-item-dropdown:hover > a .dd-arrow{transform:rotate(180deg);color:var(--scio)}
+.menu-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(-8px);min-width:220px;background:var(--s1);border:1px solid var(--line2);border-radius:10px;padding:6px;opacity:0;visibility:hidden;transition:opacity .2s,transform .2s;z-index:100;box-shadow:0 16px 40px -12px rgba(0,0,0,.4)}
+.menu-item-dropdown:hover .menu-dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.menu-dropdown a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:6px;font-size:13px;color:var(--text);position:relative}
+.menu-dropdown a:hover{background:var(--s2);color:var(--amagi)}
+.menu-dropdown a .dd-code{font-family:var(--mono);font-size:10px;color:var(--faint);letter-spacing:.06em}
+.nav-cta{display:flex;align-items:center;gap:10px;flex-shrink:0;white-space:nowrap}
+.nav-cta{display:flex;align-items:center;gap:10px;flex-shrink:0;white-space:nowrap}
+.lang{font-family:var(--mono);font-size:11.5px;border:1px solid var(--line2);border-radius:8px;overflow:hidden;display:flex}
+.lang button{background:transparent;border:0;color:var(--faint);padding:7px 10px;cursor:pointer;font-family:var(--mono);font-size:11.5px;transition:.2s}
+.lang button.on{background:rgba(76,195,232,.14);color:var(--scio)}.theme-toggle{position:relative;width:50px;height:26px;border:1px solid var(--line2);border-radius:13px;background:var(--s2);cursor:pointer;flex-shrink:0;transition:background .25s,border-color .25s;padding:0}
+.theme-toggle .knob{position:absolute;top:1px;left:1px;width:22px;height:22px;border-radius:50%;background:var(--text);transition:transform .3s cubic-bezier(.4,0,.2,1),background .25s;display:grid;place-items:center;font-size:10px;line-height:1;z-index:2}
+:root[data-theme="light"] .theme-toggle .knob{transform:translateX(24px);background:var(--amagi);color:#1a1206}
+.theme-toggle .ico{position:absolute;top:50%;transform:translateY(-50%);font-size:9px;pointer-events:none;opacity:.6;transition:opacity .25s}
+.theme-toggle .ico-moon{left:6px;color:var(--scio)}
+.theme-toggle .ico-sun{right:6px;color:var(--amagi)}
+:root[data-theme="dark"] .theme-toggle .ico-sun{opacity:.35}
+:root[data-theme="light"] .theme-toggle .ico-moon{opacity:.35}
+.theme-toggle:hover{border-color:var(--line2)}
+.theme-toggle:active .knob{transform:scale(.92)}
+:root[data-theme="light"] .theme-toggle:active .knob{transform:translateX(24px) scale(.92)}
+@media(max-width:760px){.theme-toggle{width:46px;height:24px}.theme-toggle .knob{width:20px;height:20px}:root[data-theme="light"] .theme-toggle .knob{transform:translateX(22px)}}
+
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:13.5px;padding:10px 18px;border-radius:9px;cursor:pointer;transition:.22s;border:1px solid transparent;white-space:nowrap}
+.btn-a{background:var(--amagi);color:#1a1206;box-shadow:0 8px 26px -10px var(--amagi)}
+.btn-a:hover{transform:translateY(-2px);box-shadow:0 14px 36px -10px var(--amagi)}
+.btn-g{background:transparent;border-color:var(--line2);color:var(--text)}
+.btn-g:hover{border-color:var(--scio);color:var(--scio)}
+.burger{display:none;width:40px;height:40px;border:1px solid var(--line2);border-radius:9px;background:var(--s1);cursor:pointer;flex-direction:column;gap:5px;align-items:center;justify-content:center}
+.burger i{width:17px;height:2px;background:var(--text);display:block}
+.open-sec{position:relative;padding:64px 0 50px;overflow:hidden}
+.scan{position:absolute;left:0;right:0;height:2px;top:0;background:linear-gradient(90deg,transparent,var(--amagi),transparent);opacity:.4;animation:scan 9s linear infinite}
+@keyframes scan{0%{transform:translateY(0)}100%{transform:translateY(600px)}}
+.open-grid{display:flex;flex-direction:column;align-items:center;text-align:center;gap:0}
+.eyebrow{font-family:var(--mono);font-size:var(--fs-mono-sm);letter-spacing:.14em;color:var(--scio);text-transform:uppercase;display:inline-flex;align-items:center;gap:10px;margin-bottom:22px;text-align:center}
+.eyebrow::before{content:"";width:30px;height:1px;background:var(--scio)}
+h1{font-family:var(--disp);font-weight:900;font-size:var(--fs-display);line-height:var(--lh-tight);letter-spacing:var(--ls-tight)}
+h1 em{font-style:normal;color:var(--amagi)}
+.lead{color:var(--muted);font-size:var(--fs-lead);max-width:60ch;margin:20px 0 26px;text-align:center}
+.lead b{color:var(--text)}
+.open-cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.readout{display:flex;flex-wrap:wrap;gap:0;margin-top:36px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--s1)}
+.readout div{flex:1;min-width:120px;padding:15px 17px;border-right:1px solid var(--line);transition:.2s}
+.readout div:last-child{border-right:0}
+.readout div:hover{background:var(--s2)}
+.readout b{font-family:var(--disp);font-weight:700;font-size:clamp(16px,1.9vw,22px);display:block}
+.readout b .u{color:var(--scio);font-size:.68em}
+.readout span{font-family:var(--mono);font-size:8.5px;letter-spacing:.07em;color:var(--faint);text-transform:uppercase;display:block;margin-top:5px}
+.board{background:var(--s1);border:1px solid rgba(245,166,35,.35);border-radius:14px;overflow:hidden;box-shadow:0 30px 70px -30px rgba(0,0,0,.6)}
+.board-top{display:flex;align-items:center;gap:8px;padding:12px 17px;background:var(--s2);border-bottom:1px solid var(--line)}
+.dot{width:10px;height:10px;border-radius:50%}
+.board-top .t{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted);margin-left:5px}
+.board-top .live{margin-left:auto;font-family:var(--mono);font-size:9.5px;color:var(--althea);display:flex;align-items:center;gap:6px}
+.pulse{width:7px;height:7px;border-radius:50%;background:var(--althea);animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(45,212,167,.5)}50%{opacity:.5;box-shadow:0 0 0 6px rgba(45,212,167,0)}}
+.inv{list-style:none}
+.inv li{display:flex;align-items:center;gap:13px;padding:11px 17px;border-bottom:1px solid var(--line);transition:.2s}
+.inv li:last-child{border-bottom:0}
+.inv li:hover{background:rgba(245,166,35,.08);transform:translateX(4px)}
+.inv .id{font-family:var(--mono);font-size:10.5px;color:var(--amagi);flex-shrink:0;width:56px}
+.inv .nm{font-size:12.5px;font-weight:500;flex:1}
+.inv .nm small{display:block;font-family:var(--mono);font-size:9px;color:var(--faint);font-weight:400;margin-top:2px}
+.inv .st{font-family:var(--mono);font-size:8.5px;color:var(--althea);border:1px solid rgba(45,212,167,.4);background:rgba(45,212,167,.12);padding:3px 7px;border-radius:6px;flex-shrink:0}
+.board-foot{padding:11px 17px;background:var(--s2);border-top:1px solid var(--line);font-family:var(--mono);font-size:9.5px;color:var(--faint);display:flex;justify-content:center;gap:18px;flex-wrap:wrap;align-items:center}
+.board-foot .ok{color:var(--althea)}
+section{padding:74px 0;position:relative}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:10px;flex-wrap:wrap}
+.sec-num{font-family:var(--mono);font-size:12px;color:var(--acc,var(--amagi));letter-spacing:.12em}
+h2{font-family:var(--disp);font-weight:700;font-size:var(--fs-h2);line-height:var(--lh-snug);letter-spacing:var(--ls-tight)}
+.sec-sub{color:var(--muted);max-width:72ch;margin-bottom:34px;font-size:var(--fs-body-sm);line-height:var(--lh-relaxed)}
+.formula{border-top:1px solid var(--line2)}
+.frow{display:grid;grid-template-columns:1.1fr 1.4fr auto 1.4fr;gap:18px;align-items:center;padding:20px 12px;border-bottom:1px solid var(--line);transition:.22s}
+.frow:hover{background:var(--s1);padding-left:22px}
+.frow .dir{display:flex;align-items:center;gap:12px}
+.frow .dir .chip{width:10px;height:34px;border-radius:3px;background:var(--acc);flex-shrink:0}
+.frow .dir b{font-family:var(--disp);font-weight:700;font-size:14.5px;display:block}
+.frow .dir span{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc)}
+.frow .prob{color:var(--faint);font-size:13px}
+.frow .arr{font-family:var(--mono);font-size:20px;color:var(--acc)}
+.frow .goal{color:var(--text);font-size:13.5px;font-weight:500}
+.frow .goal b{color:var(--acc)}
+.mission{margin-top:28px;background:linear-gradient(115deg,var(--s1),transparent 75%);border-left:3px solid var(--amagi);border-radius:0 14px 14px 0;padding:24px 28px;position:relative;overflow:hidden}
+.mission::before{content:"";position:absolute;inset:0;background:radial-gradient(500px 260px at 96% -8%,rgba(245,166,35,.10),transparent 62%);pointer-events:none}
+.mission .lbl{color:var(--amagi)}
+.mission p{color:var(--text);font-size:15px;max-width:82ch;position:relative}
+.mission p b{color:var(--amagi)}
+.lbl{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;margin-bottom:8px}
+.lbl::before{content:"";width:22px;height:1px;background:currentColor}
+.dom{border-left:3px solid var(--acc);background:linear-gradient(115deg,var(--s1),transparent 72%);border-radius:0 16px 16px 0;padding:30px 30px 26px;margin-bottom:24px;position:relative;overflow:hidden}
+.dom::before{content:"";position:absolute;inset:0;background:radial-gradient(560px 300px at 96% -8%,color-mix(in srgb,var(--acc) 12%,transparent),transparent 62%);pointer-events:none}
+.dom h3{font-family:var(--disp);font-weight:700;font-size:20px;margin-bottom:6px;position:relative}
+.dom .dtag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);display:block;margin-bottom:14px;position:relative}
+.statusline{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;color:var(--acc);border:1px solid color-mix(in srgb,var(--acc) 45%,transparent);background:color-mix(in srgb,var(--acc) 10%,transparent);padding:5px 11px;border-radius:8px;margin-bottom:14px;position:relative}
+.prob,.sol,.how{margin-bottom:16px;position:relative}
+.prob .lbl{color:var(--scio)}.sol .lbl{color:var(--althea)}.how .lbl{color:var(--scio)}
+.prob p,.sol p,.how>p{color:var(--muted);font-size:13.5px;max-width:84ch}
+.prob p b,.sol p b{color:var(--text)}
+.flow{display:flex;flex-wrap:wrap;margin-top:12px;position:relative}
+.fstep{flex:1;min-width:165px;background:var(--s1);border:1px solid var(--line);border-top:3px solid var(--acc);border-radius:10px;padding:14px 14px 12px;position:relative;transition:.22s}
+.fstep:hover{transform:translateY(-4px);border-color:var(--line2)}
+.fstep+.fstep{margin-left:26px}
+.fstep+.fstep::before{content:"→";position:absolute;left:-22px;top:50%;transform:translateY(-50%);color:var(--acc);font-family:var(--mono)}
+.fstep .fn{font-family:var(--mono);font-size:9px;color:var(--acc);display:block;margin-bottom:5px}
+.fstep b{font-size:12.5px;display:block;margin-bottom:4px}
+.fstep span{font-size:11px;color:var(--muted);display:block}
+.chan{display:grid;gap:9px;margin-top:12px;position:relative}
+.chan-row{display:flex;gap:15px;align-items:flex-start;background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:10px;padding:12px 15px;transition:.22s}
+.chan-row:hover{transform:translateX(5px);border-color:var(--line2)}
+.chan-row .ci{font-family:var(--mono);font-size:10px;color:var(--acc);width:80px;flex-shrink:0;padding-top:2px}
+.chan-row b{font-size:12.5px;display:block;margin-bottom:2px}
+.chan-row span{font-size:11px;color:var(--muted)}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;position:relative}
+.fact{font-family:var(--mono);font-size:10px;border:1px solid var(--line2);background:var(--s1);padding:6px 11px;border-radius:8px;color:var(--muted);transition:.2s}
+.fact:hover{border-color:var(--acc);color:var(--acc)}
+.fact b{color:var(--text)}
+.plinks{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;position:relative}
+.plnk{font-family:var(--mono);font-size:10px;color:var(--text);border:1px solid var(--line2);padding:7px 12px;border-radius:9px;transition:.2s;display:inline-flex;align-items:center;gap:7px}
+.plnk:hover{border-color:var(--acc);color:var(--acc);transform:translateY(-2px)}
+.plnk .ar{color:var(--acc)}
+.dcta{margin-top:16px;position:relative}
+.dcta .btn{border-color:color-mix(in srgb,var(--acc) 50%,transparent);color:var(--acc);background:color-mix(in srgb,var(--acc) 10%,transparent)}
+.dcta .btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px -12px var(--acc)}
+.sci{border-left:2px solid var(--line2);margin-left:8px;padding-left:32px;display:grid;gap:22px;position:relative}
+.sci-item{position:relative;background:var(--s1);border:1px solid var(--line);border-radius:14px;padding:20px 22px;transition:.25s}
+.sci-item:hover{border-color:var(--line2);transform:translateX(6px)}
+.sci-item::before{content:"";position:absolute;left:-41px;top:26px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2.5px solid var(--scio)}
+.sci-item.pub::before{border-color:var(--althea);background:var(--althea)}
+.sci-item.rev::before{border-color:var(--amagi)}
+.sci-item .st{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;display:inline-block;padding:3px 9px;border-radius:6px;margin-bottom:10px}
+.st.pub{color:var(--althea);background:rgba(45,212,167,.12);border:1px solid rgba(45,212,167,.4)}
+.st.rev{color:var(--amagi);background:rgba(245,166,35,.12);border:1px solid rgba(245,166,35,.4)}
+.st.pre{color:var(--scio);background:rgba(76,195,232,.12);border:1px solid rgba(76,195,232,.4)}
+.sci-item h3{font-family:var(--disp);font-weight:700;font-size:15px;margin-bottom:4px}
+.sci-item .venue{font-family:var(--mono);font-size:10px;color:var(--faint);margin-bottom:12px}
+.sci-item .what,.sci-item .why{margin-bottom:10px}
+.sci-item .what .lbl{color:var(--scio)}
+.sci-item .why .lbl{color:var(--althea)}
+.sci-item .what p,.sci-item .why p{color:var(--muted);font-size:12.5px}
+.sci-item .what p b,.sci-item .why p b{color:var(--text)}
+.sci-item .doi{font-family:var(--mono);font-size:10px;color:var(--scio);display:inline-block;margin-top:6px}
+.sci-item .doi:hover{text-decoration:underline}
+.copilot-wrap{background:linear-gradient(180deg,var(--s1) 0%,var(--s2) 100%);border:1px solid var(--line2);border-radius:18px;padding:32px 36px;margin-top:14px;position:relative;overflow:hidden}
+.copilot-wrap::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--amagi) 0%,var(--althea) 100%)}
+.copilot-head{display:flex;align-items:center;gap:14px;margin-bottom:18px;flex-wrap:wrap}
+.copilot-tag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--amagi);background:rgba(245,166,35,.12);border:1px solid rgba(245,166,35,.4);padding:4px 10px;border-radius:6px}
+.copilot-bridge{font-family:var(--mono);font-size:10px;color:var(--faint);letter-spacing:.05em}
+.copilot-bridge b{color:var(--althea)}
+.copilot-bridge .sep{color:var(--amagi);margin:0 6px}
+.copilot-modules{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:22px}
+.cmod{background:var(--bg2);border:1px solid var(--line);border-top:3px solid var(--althea);border-radius:10px;padding:16px 16px 14px;transition:.22s}
+.cmod:hover{transform:translateY(-3px);border-color:var(--line2)}
+.cmod .cm-num{font-family:var(--mono);font-size:9px;color:var(--althea);letter-spacing:.08em;display:block;margin-bottom:6px}
+.cmod .cm-name{font-family:var(--disp);font-weight:700;font-size:13px;margin-bottom:6px}
+.cmod .cm-name .en{font-family:var(--mono);font-size:10px;color:var(--faint);font-weight:400;margin-left:4px}
+.cmod .cm-desc{font-size:11.5px;color:var(--muted);line-height:1.55}
+.copilot-limits{background:rgba(245,166,35,.06);border:1px solid rgba(245,166,35,.32);border-left:4px solid var(--amagi);border-radius:0 12px 12px 0;padding:18px 22px;margin-top:6px}
+.copilot-limits .ll{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--amagi);display:block;margin-bottom:8px}
+.copilot-limits .lp{font-size:13px;color:var(--text);line-height:1.6}
+.copilot-limits .lp b{color:var(--amagi)}
+.copilot-limits .ttp{display:inline-flex;gap:6px;align-items:center;margin-top:10px;font-family:var(--mono);font-size:10px;color:var(--faint);background:rgba(0,0,0,.25);padding:5px 10px;border-radius:6px;border:1px solid var(--line)}
+.copilot-limits .ttp b{color:var(--amagi)}
+.copilot-limits .ttp .arr{color:var(--amagi);margin:0 2px}
+.copilot-status{display:flex;align-items:center;gap:14px;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:12px 18px;margin-bottom:18px;flex-wrap:wrap}
+.copilot-status .sk{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.copilot-status .sv{font-family:var(--mono);font-size:11px;color:var(--text);line-height:1.4}
+.copilot-status .sv b{color:var(--althea)}
+.copilot-status .str{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--althea);background:rgba(45,212,167,.10);border:1px solid rgba(45,212,167,.32);padding:4px 10px;border-radius:6px;white-space:nowrap}
+.copilot-verify{background:linear-gradient(135deg,rgba(45,212,167,.05) 0%,rgba(245,166,35,.05) 100%);border:1px solid var(--line2);border-radius:12px;padding:18px 22px;margin-top:14px;position:relative}
+.copilot-verify::before{content:"";position:absolute;left:0;top:18px;bottom:18px;width:3px;background:linear-gradient(180deg,var(--althea) 0%,var(--amagi) 100%);border-radius:0 2px 2px 0}
+.copilot-verify .vl{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);display:block;margin-bottom:8px;padding-left:8px}
+.copilot-verify .vp{font-size:13px;color:var(--muted);line-height:1.6;padding-left:8px}
+.copilot-verify .vp b{color:var(--text)}
+.arch-note{border:1px solid color-mix(in srgb,var(--amagi) 40%,transparent);border-left:3px solid var(--amagi);background:color-mix(in srgb,var(--amagi) 7%,transparent);border-radius:0 10px 10px 0;padding:16px 18px;margin:0 0 18px}
+.arch-note .lbl{color:var(--amagi);font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;margin-bottom:9px}
+.arch-note .lbl::before{content:"";width:22px;height:1px;background:var(--amagi)}
+.arch-note p{color:var(--muted);font-size:13.5px}
+.arch-note b{color:var(--text)}
+.impl-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.impl-chip{font-family:var(--mono);font-size:10.5px;color:var(--amagi);border:1px solid color-mix(in srgb,var(--amagi) 40%,transparent);background:color-mix(in srgb,var(--amagi) 8%,transparent);padding:5px 10px;border-radius:7px}
+.arch-note .impl-note{font-size:12px;margin-top:10px;color:var(--faint)}
+.domains-note{margin-top:14px;padding-top:14px;border-top:1px solid color-mix(in srgb,var(--amagi) 18%,transparent)}
+.domains-note .dlbl{color:var(--amagi);font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;margin-bottom:9px}
+.domains-note .dlbl::before{content:"";width:22px;height:1px;background:var(--amagi)}
+.domains-grid{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
+.domains-chip{font-family:var(--mono);font-size:10px;color:var(--muted);background:color-mix(in srgb,var(--amagi) 5%,transparent);border:1px solid color-mix(in srgb,var(--amagi) 25%,transparent);padding:5px 10px;border-radius:6px}
+.domains-chip b{color:var(--text);font-weight:500}
+.domains-note .dnote{font-size:11.5px;color:var(--faint);margin-top:10px;line-height:1.5}
+
+/* === INTERACTIVE 1: Invariants accordion === */
+.inv-interactive{width:100%;max-width:100%}
+.inv-interactive .inv-item{border-bottom:1px solid var(--line);transition:.2s}
+.inv-interactive .inv-item:last-child{border-bottom:0}
+.inv-interactive .inv-head{display:flex;align-items:center;gap:13px;padding:11px 17px;cursor:pointer;user-select:none;transition:.2s;position:relative}
+.inv-interactive .inv-head:hover{background:rgba(245,166,35,.08);transform:translateX(4px)}
+.inv-interactive .inv-head::after{content:"+";position:absolute;right:17px;color:var(--amagi);font-family:var(--mono);font-size:14px;transition:transform .25s}
+.inv-interactive .inv-item.open .inv-head::after{content:"–"}
+.inv-interactive .inv-head .id{font-family:var(--mono);font-size:10.5px;color:var(--amagi);flex-shrink:0;width:56px}
+.inv-interactive .inv-head .nm{font-size:12.5px;font-weight:500;flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.inv-interactive .inv-head .nm>span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.inv-interactive .inv-head .nm small{display:block;font-family:var(--mono);font-size:9px;color:var(--faint);font-weight:400;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.inv-interactive .inv-head .st{font-family:var(--mono);font-size:8.5px;color:var(--althea);border:1px solid rgba(45,212,167,.4);background:rgba(45,212,167,.12);padding:3px 7px;border-radius:6px;flex-shrink:0;margin-right:28px}
+.inv-interactive .inv-body{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1);background:var(--inv-body-bg)}
+.inv-interactive .inv-item.open .inv-body{max-height:520px}
+.inv-interactive .inv-body-inner{padding:14px 17px 16px 86px;font-size:11.5px;color:var(--muted);line-height:1.6}
+.inv-interactive .inv-body-inner .row{margin-bottom:9px}
+.inv-interactive .inv-body-inner .row:last-child{margin-bottom:0}
+.inv-interactive .inv-body-inner .rlbl{font-family:var(--mono);font-size:9px;color:var(--amagi);letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:3px}
+.inv-interactive .inv-body-inner . rval{color:var(--text)}
+.inv-interactive .inv-body-inner b{color:var(--text)}
+
+/* === INTERACTIVE 2: TTP flow with detail card === */
+.flow.flow-interactive .fstep{cursor:pointer}
+.flow.flow-interactive .fstep:hover{border-color:var(--amagi);box-shadow:0 4px 14px -6px rgba(245,166,35,.4)}
+.flow.flow-interactive .fstep.active{border-color:var(--amagi);background:color-mix(in srgb,var(--amagi) 7%,var(--s1))}
+.flow.flow-interactive .fstep.active::after{content:"●";position:absolute;top:8px;right:10px;color:var(--amagi);font-size:8px}
+.ttp-detail{margin-top:18px;background:linear-gradient(135deg,rgba(245,166,35,.05) 0%,rgba(45,212,167,.04) 100%);border:1px solid var(--line2);border-radius:12px;padding:18px 22px;min-height:130px;transition:.25s}
+.ttp-detail .td-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.ttp-detail .td-num{font-family:var(--mono);font-size:9.5px;color:var(--amagi);letter-spacing:.12em;background:rgba(245,166,35,.12);border:1px solid rgba(245,166,35,.4);padding:3px 9px;border-radius:6px}
+.ttp-detail .td-title{font-family:var(--disp);font-weight:700;font-size:14px;color:var(--text)}
+.ttp-detail .td-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:6px}
+.ttp-detail .td-cell .lbl{font-family:var(--mono);font-size:9px;color:var(--amagi);letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:4px}
+.ttp-detail .td-cell .val{font-size:11.5px;color:var(--muted);line-height:1.55}
+.ttp-detail .td-cell .val b{color:var(--text)}
+.ttp-detail .td-cell.violation .lbl{color:#ff6b6b}
+.ttp-detail .td-cell.violation .val b{color:#ff8585}
+
+/* === INTERACTIVE 3: Ecosystem map === */
+.ecosystem-map{position:relative;background:linear-gradient(180deg,var(--s1) 0%,var(--s2) 100%);border:1px solid var(--line2);border-radius:18px;padding:32px 28px;margin-top:14px}
+.eco-core{margin:0 auto 28px;max-width:280px;background:rgba(245,166,35,.08);border:1.5px solid var(--amagi);border-radius:14px;padding:18px 22px;text-align:center;cursor:pointer;transition:.25s;position:relative}
+.eco-core:hover{transform:translateY(-2px);box-shadow:0 8px 26px -10px rgba(245,166,35,.5)}
+.eco-core .eco-tag{font-family:var(--mono);font-size:9px;color:var(--amagi);letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:5px}
+.eco-core .eco-name{font-family:var(--disp);font-weight:700;font-size:18px;color:var(--text)}
+.eco-core .eco-sub{font-family:var(--mono);font-size:9.5px;color:var(--faint);margin-top:5px}
+.eco-layer{margin-bottom:22px}
+.eco-layer:last-child{margin-bottom:0}
+.eco-layer-lbl{font-family:var(--mono);font-size:9px;color:var(--faint);letter-spacing:.14em;text-transform:uppercase;text-align:center;margin-bottom:12px;display:flex;align-items:center;justify-content:center;gap:10px}
+.eco-layer-lbl::before,.eco-layer-lbl::after{content:"";flex:1;max-width:80px;height:1px;background:var(--line2)}
+.eco-nodes{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.eco-node{background:var(--bg2);border:1px solid var(--line);border-top:3px solid var(--acc,var(--amagi));border-radius:9px;padding:11px 16px;min-width:140px;cursor:pointer;transition:.22s;text-align:center}
+.eco-node:hover{transform:translateY(-3px);border-color:var(--line2);box-shadow:0 6px 18px -8px rgba(0,0,0,.4)}
+.eco-node.active{background:color-mix(in srgb,var(--acc,var(--amagi)) 8%,var(--bg2));border-color:var(--acc,var(--amagi))}
+.eco-node .en-name{font-family:var(--disp);font-weight:600;font-size:13px;color:var(--text);margin-bottom:3px}
+.eco-node .en-role{font-family:var(--mono);font-size:9px;color:var(--faint);letter-spacing:.06em}
+.eco-detail{margin-top:20px;background:rgba(0,0,0,.20);border:1px solid var(--line);border-radius:11px;padding:16px 20px;min-height:90px;transition:.25s}
+.eco-detail .ed-name{font-family:var(--disp);font-weight:700;font-size:14px;color:var(--text);margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.eco-detail .ed-name .ed-chip{font-family:var(--mono);font-size:9px;color:var(--amagi);background:rgba(245,166,35,.12);border:1px solid rgba(245,166,35,.4);padding:2px 8px;border-radius:5px;font-weight:400}
+.eco-detail .ed-desc{font-size:12.5px;color:var(--muted);line-height:1.6}
+.eco-detail .ed-desc b{color:var(--text)}
+
+/* === WHY ARCHITECTURE SECTION === */
+.why-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;margin-top:14px}
+@media(max-width:900px){.why-grid{grid-template-columns:1fr}}
+
+/* === VALIDATED BY BLOCK === */
+.validated{padding:28px 0 4px}
+.validated-head{text-align:center;margin-bottom:16px}
+.validated-head .vlbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+.validated-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:760px;margin:0 auto}
+@media(max-width:768px){.validated-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.validated-grid{grid-template-columns:1fr}}
+.vchip{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;background:var(--s1);border:1px solid var(--line);border-top:3px solid var(--acc,var(--althea));border-radius:0 0 9px 9px;padding:14px 12px 12px;color:var(--text);transition:.22s;cursor:default}
+.vchip:hover{transform:translateY(-2px);border-color:var(--line2);box-shadow:0 6px 18px -8px rgba(0,0,0,.4)}
+.vchip .vchk{color:var(--acc,var(--althea));font-weight:700;font-size:16px;flex-shrink:0}
+.vchip .vtxt{font-weight:600;font-size:12.5px;line-height:1.3}
+.vchip .vsub{font-family:var(--mono);font-size:9.5px;color:var(--faint);margin-top:2px}
+.why-text{background:var(--s1);border:1px solid var(--line);border-left:4px solid var(--amagi);border-radius:0 14px 14px 0;padding:24px 26px}
+.why-text p{font-size:13.5px;color:var(--muted);line-height:1.7;margin-bottom:14px}
+.why-text p:last-child{margin-bottom:0}
+.why-text b{color:var(--text)}
+.why-text .lede{font-size:15px;color:var(--text);font-weight:500;margin-bottom:16px;line-height:1.55}
+
+/* Trust boundary diagram */
+.trust-diagram{background:linear-gradient(180deg,var(--s1) 0%,var(--s2) 100%);border:1px solid var(--line2);border-radius:14px;padding:24px 22px;display:flex;flex-direction:column;gap:0}
+.td-band{padding:14px 16px;border-radius:10px;text-align:center;position:relative;transition:.25s}
+.td-band.untrusted{background:rgba(255,107,107,.06);border:1px solid rgba(255,107,107,.22)}
+.td-band.trusted{background:rgba(245,166,35,.06);border:1px solid rgba(245,166,35,.30)}
+.td-band .td-label{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;display:block;margin-bottom:10px}
+.td-band.untrusted .td-label{color:#ff8585}
+.td-band.trusted .td-label{color:var(--amagi)}
+.td-flow{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
+.td-node{background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:9px 14px;min-width:88px;text-align:center;font-family:var(--mono);font-size:11px;color:var(--text);transition:.22s}
+.td-node.ctc{border-top:3px solid var(--althea);color:var(--althea)}
+.td-node.amagi{border-top:3px solid var(--amagi);color:var(--amagi);font-weight:600}
+.td-node.llm{color:var(--muted)}
+.td-node.hw{border-top:3px solid var(--amagi);font-weight:600}
+.td-arrow{color:var(--faint);font-family:var(--mono);font-size:14px}
+.td-arrow.down{display:block;text-align:center;margin:6px 0;color:var(--amagi)}
+.td-platforms{display:flex;justify-content:center;gap:8px;margin-top:8px;flex-wrap:wrap}
+.td-plat{font-family:var(--mono);font-size:9.5px;color:var(--amagi);background:rgba(245,166,35,.08);border:1px solid rgba(245,166,35,.25);padding:4px 10px;border-radius:6px}
+.td-caption{font-size:11px;color:var(--faint);text-align:center;margin-top:12px;line-height:1.5;font-style:italic}
+.td-caption b{color:var(--amagi);font-style:normal}
+
+/* Comparison table */
+.compare-table{margin-top:24px;background:var(--s1);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.compare-row{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+.compare-row:last-child{border-bottom:0}
+.compare-row.head{background:var(--bg2);font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.compare-row.head .compare-cell{padding:14px 22px;color:var(--faint);font-weight:600}
+.compare-row.head .compare-cell.bad{color:#ff8585}
+.compare-row.head .compare-cell.good{color:var(--amagi)}
+.compare-cell{padding:14px 22px;font-size:13px;color:var(--muted);line-height:1.5;border-right:1px solid var(--line);display:flex;align-items:center;gap:10px}
+.compare-cell:last-child{border-right:0}
+.compare-cell.bad{color:var(--muted)}
+.compare-cell.bad::before{content:"✕";color:#ff6b6b;font-family:var(--mono);font-weight:700;flex-shrink:0}
+.compare-cell.good{color:var(--text);font-weight:500}
+.compare-cell.good::before{content:"✓";color:var(--althea);font-family:var(--mono);font-weight:700;flex-shrink:0}
+
+/* === TTP SIMULATOR === */
+.ttp-sim{background:linear-gradient(180deg,var(--s1) 0%,var(--s2) 100%);border:1px solid var(--line2);border-radius:18px;padding:28px 30px;margin-top:14px}
+.ttp-sim-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:22px}
+.ttp-sim-title{font-family:var(--disp);font-weight:700;font-size:15px;color:var(--text);display:flex;align-items:center;gap:10px}
+.ttp-sim-title .pulse-led{width:8px;height:8px;border-radius:50%;background:var(--althea);box-shadow:0 0 8px var(--althea);animation:pulse 2s infinite}
+.ttp-sim-controls{display:flex;gap:8px;flex-wrap:wrap}
+.sim-btn{font-family:var(--mono);font-size:11px;color:var(--text);background:var(--bg2);border:1px solid var(--line2);padding:8px 14px;border-radius:7px;cursor:pointer;transition:.22s;letter-spacing:.04em}
+.sim-btn:hover{border-color:var(--amagi);background:color-mix(in srgb,var(--amagi) 8%,var(--bg2))}
+.sim-btn.primary{background:var(--amagi);color:#0a0f1a;border-color:var(--amagi);font-weight:600}
+.sim-btn.primary:hover{background:#ffb945}
+.sim-btn.danger{color:#ff8585;border-color:rgba(255,107,107,.35)}
+.sim-btn.danger:hover{background:rgba(255,107,107,.1);border-color:#ff6b6b}
+.sim-btn.danger.active{background:rgba(255,107,107,.18);border-color:#ff6b6b;color:#ff8585}
+.ttp-sim-track{display:flex;gap:14px;margin-bottom:18px;flex-wrap:wrap}
+.sim-step{flex:1;min-width:140px;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:14px 16px;text-align:center;transition:.3s;position:relative;overflow:hidden}
+.sim-step::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--line);transition:.3s}
+.sim-step.pending{opacity:.5}
+.sim-step.ok{border-color:rgba(45,212,167,.4);background:color-mix(in srgb,var(--althea) 6%,var(--bg2))}
+.sim-step.ok::before{background:var(--althea)}
+.sim-step.fail{border-color:rgba(255,107,107,.5);background:color-mix(in srgb,#ff6b6b 8%,var(--bg2))}
+.sim-step.fail::before{background:#ff6b6b}
+.sim-step .ss-num{font-family:var(--mono);font-size:9px;color:var(--faint);letter-spacing:.12em;display:block;margin-bottom:6px}
+.sim-step .ss-name{font-family:var(--disp);font-weight:700;font-size:13px;color:var(--text);margin-bottom:6px}
+.sim-step .ss-status{font-family:var(--mono);font-size:10px;letter-spacing:.08em;display:flex;align-items:center;justify-content:center;gap:5px;min-height:14px}
+.sim-step.ok .ss-status{color:var(--althea)}
+.sim-step.fail .ss-status{color:#ff8585}
+.sim-step.pending .ss-status{color:var(--faint)}
+.sim-step .ss-detail{font-size:10.5px;color:var(--muted);margin-top:6px;min-height:14px;line-height:1.4}
+.sim-result{background:var(--bg);border:1px solid var(--line2);border-radius:10px;padding:14px 18px;font-family:var(--mono);font-size:11.5px;display:flex;align-items:center;gap:12px;transition:.3s}
+.sim-result.ok{border-left:3px solid var(--althea)}
+.sim_result.fail{border-left:3px solid #ff6b6b}
+.sim-result.cut{border-left:3px solid #ff6b6b;background:rgba(255,107,107,.06)}
+.sim-result .sr-icon{font-size:14px;font-weight:700}
+.sim-result.ok .sr-icon{color:var(--althea)}
+.sim-result.cut .sr-icon{color:#ff6b6b}
+.sim-result .sr-text{flex:1;color:var(--text);line-height:1.5}
+.sim-result .sr-text b{color:var(--amagi)}
+.sim-result.cut .sr-text b{color:#ff8585}
+
+/* === TIMELINE === */
+.timeline{position:relative;padding:20px 0 8px;margin-top:14px}
+.timeline::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--amagi) 0%,var(--althea) 100%);transform:translateX(-50%)}
+.tl-item{position:relative;width:50%;padding:14px 32px;margin-bottom:8px;transition:.25s}
+.tl-item:nth-child(odd){left:0;text-align:right}
+.tl-item:nth-child(even){left:50%;text-align:left}
+.tl-item::before{content:"";position:absolute;top:22px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:2.5px solid var(--amagi);transition:.25s;z-index:2}
+.tl-item:nth-child(odd)::before{right:-7px}
+.tl-item:nth-child(even)::before{left:-7px}
+.tl-item:hover::before{background:var(--amagi);transform:scale(1.2)}
+.tl-card{display:inline-block;background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:12px 18px;max-width:340px;transition:.22s}
+.tl-item:hover .tl-card{border-color:var(--line2);transform:translateY(-2px);box-shadow:0 6px 18px -8px rgba(0,0,0,.4)}
+.tl-year{font-family:var(--disp);font-weight:700;font-size:18px;color:var(--amagi);letter-spacing:-.3px;display:block;margin-bottom:4px}
+.tl-title{font-size:13px;color:var(--text);font-weight:500;display:block;margin-bottom:3px}
+.tl-desc{font-size:11px;color:var(--faint);line-height:1.5}
+@media(max-width:768px){
+  .timeline::before{left:7px}
+  .tl-item{width:100%;left:0!important;text-align:left!important;padding:10px 0 10px 32px}
+  .tl-item::before{left:0!important;right:auto!important}
+  .tl-card{max-width:100%}
+}
+
+/* === FAQ === */
+.faq-list{margin-top:14px;display:flex;flex-direction:column;gap:10px}
+.faq-item{background:var(--s1);border:1px solid var(--line);border-radius:11px;overflow:hidden;transition:.25s}
+.faq-item:hover{border-color:var(--line2)}
+.faq-q{padding:16px 22px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;font-family:var(--disp);font-weight:600;font-size:14px;color:var(--text);user-select:none;transition:.2s}
+.faq-q:hover{color:var(--amagi)}
+.faq-q::after{content:"+";font-family:var(--mono);font-size:18px;color:var(--amagi);transition:transform .25s;flex-shrink:0}
+.faq-item.open .faq-q::after{content:"–"}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1);background:rgba(0,0,0,.18)}
+.faq-item.open .faq-a{max-height:400px}
+.faq-a-inner{padding:0 22px 16px;font-size:12.5px;color:var(--muted);line-height:1.65}
+.faq-a-inner b{color:var(--text)}
+.faq-a-inner code{font-family:var(--mono);font-size:11px;background:rgba(245,166,35,.10);color:var(--amagi);padding:1px 6px;border-radius:4px}
+
+/* === Eco map enhancement: connection lines via CSS === */
+.eco-node.dimmed{opacity:.35;transition:.25s}
+.eco-node.connected{box-shadow:0 0 0 2px var(--acc,var(--amagi)),0 6px 18px -8px rgba(0,0,0,.5)}
+.eco-core.dimmed{opacity:.35;transition:.25s}
+.eco-core.connected{box-shadow:0 0 0 3px var(--amagi),0 10px 30px -10px rgba(245,166,35,.5)}
+.biz{display:grid;gap:14px}
+.biz-band{display:grid;grid-template-columns:210px 1fr auto;gap:26px;align-items:center;background:var(--s1);border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:0 14px 14px 0;padding:24px 28px;transition:.25s;position:relative;overflow:hidden}
+.biz-band:hover{transform:translateX(6px);border-color:var(--line2);box-shadow:0 14px 44px -20px rgba(0,0,0,.55)}
+.biz-band::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:.3s;background:radial-gradient(420px 220px at 100% 0%,color-mix(in srgb,var(--acc) 9%,transparent),transparent 62%)}
+.biz-band:hover::before{opacity:1}
+.biz-name{font-family:var(--disp);font-weight:700;font-size:19px;color:var(--acc)}
+.biz-for{font-family:var(--mono);font-size:10.5px;color:var(--faint);margin-top:7px;line-height:1.5}
+.biz-mid{display:flex;flex-direction:column;gap:10px;position:relative}
+.biz-label{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:11.5px;border:1px solid var(--line2);background:var(--s2);padding:6px 12px;border-radius:8px;color:var(--muted);transition:.2s}
+.chip:hover{border-color:var(--acc);color:var(--acc)}
+.biz-cta{font-family:var(--mono);font-size:11.5px;color:var(--acc);border:1px solid color-mix(in srgb,var(--acc) 45%,transparent);background:color-mix(in srgb,var(--acc) 10%,transparent);padding:10px 16px;border-radius:9px;white-space:nowrap;transition:.2s;position:relative}
+.biz-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px -12px var(--acc)}
+.company{display:grid;grid-template-columns:1.08fr .92fr;gap:18px}
+.req{background:var(--s1);border:1px solid var(--line);border-radius:14px;padding:8px 0}
+.req .row{display:flex;justify-content:space-between;gap:20px;padding:12px 24px;border-bottom:1px solid var(--line)}
+.req .row:last-child{border-bottom:0}
+.req .k{font-family:var(--mono);font-size:10.5px;color:var(--faint);text-transform:uppercase;letter-spacing:.05em}
+.req .v{font-family:var(--mono);font-size:11.5px;color:var(--text);text-align:right}
+.statuses{display:grid;gap:10px}
+.status{display:flex;gap:13px;align-items:flex-start;background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:14px 16px;transition:.2s}
+.status:hover{border-color:rgba(45,212,167,.4)}
+.status .chk{width:22px;height:22px;border-radius:7px;background:rgba(45,212,167,.12);border:1px solid rgba(45,212,167,.4);color:var(--althea);display:grid;place-items:center;flex-shrink:0;font-size:11px}
+.status .chk:empty{background:rgba(245,166,35,.08);border:1px dashed rgba(245,166,35,.45);color:transparent;position:relative}
+.status .chk:empty::after{content:"…";position:absolute;color:var(--amagi);font-size:14px;font-weight:700;line-height:1}
+.status b{font-size:13px;display:block}
+.status span{color:var(--muted);font-size:11.5px}
+.it-list{list-style:none;display:grid;gap:10px;margin:18px 0}
+.it-list li{background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--scio);border-radius:0 10px 10px 0;padding:14px 18px;font-size:13.5px;color:var(--muted);transition:.22s}
+.it-list li:hover{border-left-color:var(--amagi);transform:translateX(5px);border-color:var(--line2)}
+.it-list li b{color:var(--text)}
+.it-list .okved{font-family:var(--mono);font-size:11px;color:var(--scio)}
+.it-contact{font-family:var(--mono);font-size:12px;color:var(--faint);margin-top:14px}
+.it-contact a{color:var(--scio)}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:38px}
+.prod{background:var(--s1);border:1px solid var(--line);border-top:3px solid var(--acc);border-radius:12px;padding:22px 22px 20px;transition:.25s;position:relative;overflow:hidden}
+.prod:hover{transform:translateY(-5px);border-color:var(--line2);box-shadow:0 16px 44px -22px rgba(0,0,0,.6)}
+.prod::before{content:"";position:absolute;inset:0;background:radial-gradient(360px 200px at 100% -10%,color-mix(in srgb,var(--acc) 10%,transparent),transparent 60%);pointer-events:none;opacity:0;transition:.3s}
+.prod:hover::before{opacity:1}
+.prod .stage{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);border:1px solid color-mix(in srgb,var(--acc) 45%,transparent);background:color-mix(in srgb,var(--acc) 10%,transparent);padding:4px 9px;border-radius:6px;display:inline-block;margin-bottom:14px;position:relative}
+.prod h3{font-family:var(--disp);font-weight:700;font-size:18px;margin-bottom:6px;position:relative}
+.prod .purpose{font-size:13px;color:var(--text);font-weight:500;margin-bottom:9px;position:relative}
+.prod .pdesc{font-size:12px;color:var(--muted);line-height:1.6;position:relative}
+.techlbl{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:14px;display:inline-flex;align-items:center;gap:8px}
+.techlbl::before{content:"";width:22px;height:1px;background:var(--scio)}
+.techgrid{display:flex;flex-wrap:wrap;gap:10px}
+.tech{font-family:var(--mono);font-size:11.5px;color:var(--muted);border:1px solid var(--line2);background:var(--s1);padding:9px 14px;border-radius:9px;transition:.2s;display:inline-flex;align-items:center;gap:8px}
+.tech:hover{border-color:var(--scio);color:var(--scio);transform:translateY(-2px)}
+.tech .tdot{width:6px;height:6px;border-radius:50%;background:var(--scio);flex-shrink:0}
+.contact{background:var(--s1);border:1px solid var(--line2);border-radius:18px;padding:46px 40px;text-align:center;position:relative;overflow:hidden}
+.contact::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 340px at 50% -10%,rgba(76,195,232,.12),transparent 60%);pointer-events:none}
+.contact h2{position:relative}
+.contact>p{color:var(--muted);max-width:56ch;margin:14px auto 24px;position:relative}
+.contact .chips{justify-content:center;max-width:720px;margin:0 auto 26px;position:relative}
+.contact .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative}
+.contact .addr{font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:24px;position:relative}
+footer{border-top:1px solid var(--line2);padding:42px 0 34px;margin-top:26px}
+.foot{display:flex;justify-content:space-between;gap:26px;flex-wrap:wrap;align-items:flex-start}
+.foot-meta{font-family:var(--mono);font-size:10.5px;color:var(--faint);line-height:2;text-align:right}
+.foot-meta a{color:var(--scio)}.foot-meta a:hover{text-decoration:underline}
+.foot .socials{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.disclaimer{margin-top:24px;padding-top:20px;border-top:1px solid var(--line);font-size:11px;color:var(--faint);max-width:90ch;line-height:1.7}
+.disclaimer b{color:var(--muted)}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.fade-lang{transition:opacity .18s}
+
+/* === Global anti-overflow safeguards (all viewports) === */
+*{max-width:100%;box-sizing:border-box}
+img,svg,video{max-width:100%;height:auto}
+pre,code{white-space:pre-wrap;word-break:break-word;overflow-wrap:break-word}
+p{overflow-wrap:break-word}span,div{overflow-wrap:anywhere}
+.domains-chip,.impl-chip,.td-plat,.eco-node,.sim-btn,.faq-q,.plnk,.tech,.biz-name,.contact-item{word-break:break-word;overflow-wrap:break-word}
+.company .row .v,.contact-item b{word-break:break-all}
+.ttp-detail .td-cell .val,.copilot-limits .lp,.copilot-verify .vp,.faq-a-inner,.sci-item .what p,.sci-item .why p,.cmod .cm-desc{word-break:break-word;overflow-wrap:break-word}
+.ttp-sim-controls,.ttp-sim-track,.copilot-modules,.domains-grid,.impl-chips,.td-platforms,.eco-nodes,.plinks,.techgrid,.contact-grid{max-width:100%}
+
+@media(max-width:960px){
+  .menu{display:none}.burger{display:flex}
+  .menu.open{display:flex;position:absolute;top:70px;left:0;right:0;flex-direction:column;background:var(--bg2);border-bottom:1px solid var(--line);padding:20px 26px;gap:8px;z-index:200;max-height:90vh;overflow-y:auto}.menu.open .menu-item-dropdown{position:static}.menu.open .menu-dropdown{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;padding:0 0 0 16px;background:transparent}.menu.open .menu-item-dropdown>a{padding:8px 0;font-weight:600;color:var(--text)}.menu.open .menu-dropdown a{padding:6px 0;font-size:13px}
+  .nav-cta{gap:6px}
+  .lang button{padding:5px 8px;font-size:10px}
+  .theme-toggle{width:42px;height:22px}
+  .company{grid-template-columns:1fr}
+  .frow{grid-template-columns:1fr;gap:8px}
+  .frow .arr{transform:rotate(90deg);justify-self:start}
+  .flow{flex-direction:column}
+  .fstep+.fstep{margin-left:0;margin-top:12px}
+  .fstep+.fstep::before{content:"↓";left:50%;top:-20px;transform:translateX(-50%)}
+  .biz-band{grid-template-columns:1fr;gap:14px}
+  .products{grid-template-columns:1fr}
+  .nav-cta .btn{display:none}
+  .contact{padding:34px 22px}
+  .foot-meta{text-align:left}
+  .dom{padding:22px 20px}
+  /* Invariants: stack ID/ENFORCED on top, name below — prevents truncation on tablets/narrow desktops */
+  .inv-interactive .inv-head{flex-wrap:wrap;gap:8px}
+  .inv-interactive .inv-head .id{flex:0 0 auto;order:1}
+  .inv-interactive .inv-head .st{flex:0 0 auto;order:2;margin-right:28px}
+  .inv-interactive .inv-head .nm{flex:1 1 100%;min-width:0;order:3;overflow:visible;text-overflow:clip;white-space:normal;margin-top:4px}
+  .inv-interactive .inv-head .nm>span{white-space:normal;overflow:visible;text-overflow:clip;word-break:break-word;overflow-wrap:break-word}
+  .inv-interactive .inv-head .nm small{white-space:normal;overflow:visible;text-overflow:clip;word-break:break-word;overflow-wrap:break-word}
+}
+@media(max-width:768px){
+  /* === Typography scaling === */
+  h1{font-size:clamp(24px,7vw,32px);line-height:1.15}
+  h2{font-size:clamp(20px,5.5vw,26px)}
+  h3{font-size:clamp(16px,4vw,18px)}
+  .lead{font-size:14.5px;max-width:100%}
+  .sec-sub{font-size:var(--fs-mono);max-width:100%}
+
+  /* === Section padding === */
+  section{padding:48px 0}
+  .open-sec{padding:48px 0 40px}
+  .wrap{padding:0 18px}
+  .dom{padding:18px 16px;margin-bottom:16px;border-radius:0 12px 12px 0}
+  .dom h3{font-size:17px}
+
+  /* === Hero board === */
+  .board{padding:14px 12px}
+  .board-top{padding:9px 12px;font-size:10px;flex-wrap:wrap;gap:8px}
+  .board-top .t{font-size:10px}
+  .inv-interactive .inv-item{border-bottom:1px solid var(--line)}
+  .inv-interactive .inv-head{padding:10px 12px;gap:8px;flex-wrap:wrap}
+  .inv-interactive .inv-head .id{font-size:10px;width:auto;flex:0 0 auto;order:1}
+  .inv-interactive .inv-head .st{font-size:8px;padding:2px 6px;order:2;margin-right:28px;flex:0 0 auto}
+  .inv-interactive .inv-head .nm{font-size:11.5px;flex:1 1 100%;min-width:0;order:3;overflow:visible;text-overflow:clip;white-space:normal;margin-top:4px}
+  .inv-interactive .inv-head .nm>span{display:block;white-space:normal;overflow:visible;text-overflow:clip;word-break:break-word;overflow-wrap:break-word}
+  .inv-interactive .inv-head .nm small{display:block;font-size:8.5px;white-space:normal;overflow:visible;text-overflow:clip;word-break:break-word;overflow-wrap:break-word;margin-top:3px}
+  .inv-interactive .inv-head::after{right:12px;top:10px}
+  .inv-interactive .inv-body-inner{padding:12px 14px 14px;font-size:11px}
+  .readout{gap:0}
+  .readout>div{flex:1 1 45%;padding:14px 12px}
+  .readout b{font-size:clamp(15px,5vw,18px)}
+
+  /* === Why section + comparison === */
+  .why-grid{grid-template-columns:1fr;gap:16px}
+  .why-text{padding:18px 18px}
+  .why-text p{font-size:13px;line-height:1.6}
+  .why-text .lede{font-size:14px}
+  .trust-diagram{padding:18px 14px}
+  .td-band{padding:12px 10px}
+  .td-flow{gap:6px}
+  .td-node{min-width:70px;padding:8px 10px;font-size:10px}
+  .td-arrow{font-size:12px}
+  .td-platforms{gap:5px}
+  .td-plat{font-size:9px;padding:3px 8px}
+  .td-caption{font-size:10.5px;line-height:1.5}
+  .compare-table{margin-top:18px;border-radius:10px}
+  .compare-cell{padding:11px 14px;font-size:11.5px;gap:6px;line-height:1.4}
+  .compare-row.head .compare-cell{padding:10px 14px;font-size:9.5px}
+  .compare-cell::before{font-size:12px}
+
+  /* === Domains / products === */
+  .domains-grid{gap:5px}
+  .domains-chip{font-size:9.5px;padding:5px 9px;line-height:1.3}
+  .impl-chips{gap:5px}
+  .impl-chip{font-size:9.5px;padding:4px 8px;line-height:1.3}
+  .arch-note{padding:14px 14px;margin-bottom:14px}
+  .arch-note p{font-size:12.5px;line-height:1.55}
+  .arch-note .impl-note{font-size:11px}
+  .domains-note{margin-top:12px;padding-top:12px}
+  .domains-note .dlbl{font-size:9px}
+
+  /* === CTC section === */
+  .copilot-wrap{padding:20px 16px;border-radius:14px}
+  .copilot-head{gap:10px;margin-bottom:14px}
+  .copilot-tag{font-size:9px;padding:3px 8px}
+  .copilot-bridge{font-size:9px}
+  .copilot-status{padding:10px 12px;gap:8px}
+  .copilot-status .sk{font-size:8.5px}
+  .copilot-status .sv{font-size:10px}
+  .copilot-status .str{font-size:8.5px;padding:3px 7px}
+  .copilot-modules{grid-template-columns:1fr;gap:10px;margin-bottom:16px}
+  .cmod{padding:13px 13px 11px}
+  .cmod .cm-num{font-size:8.5px}
+  .cmod .cm-name{font-size:12px}
+  .cmod .cm-name .en{font-size:9px;display:block;margin-left:0;margin-top:2px}
+  .cmod .cm-desc{font-size:11px;line-height:1.5}
+  .copilot-limits{padding:14px 14px}
+  .copilot-limits .ll{font-size:9.5px}
+  .copilot-limits .lp{font-size:12px;line-height:1.55}
+  .copilot-limits .ttp{font-size:9px;padding:4px 8px;flex-wrap:wrap}
+  .copilot-verify{padding:14px 14px}
+  .copilot-verify .vl{font-size:9.5px}
+  .copilot-verify .vp{font-size:12px;line-height:1.55}
+
+  /* === Ecosystem map === */
+  .ecosystem-map{padding:22px 14px;border-radius:14px}
+  .eco-core{max-width:100%;padding:14px 16px;margin-bottom:20px}
+  .eco-core .eco-name{font-size:16px}
+  .eco-core .eco-sub{font-size:9px}
+  .eco-layer{margin-bottom:18px}
+  .eco-layer-lbl{font-size:8.5px;letter-spacing:.1em}
+  .eco-layer-lbl::before,.eco-layer-lbl::after{max-width:30px}
+  .eco-nodes{gap:7px}
+  .eco-node{min-width:100%;padding:10px 14px}
+  .eco-node .en-name{font-size:12px}
+  .eco-node .en-role{font-size:8.5px}
+  .eco-detail{padding:13px 14px;margin-top:14px}
+  .eco-detail .ed-name{font-size:13px;gap:8px;flex-wrap:wrap}
+  .eco-detail .ed-name .ed-chip{font-size:8.5px;padding:2px 7px}
+  .eco-detail .ed-desc{font-size:12px;line-height:1.55}
+
+  /* === TTP simulator === */
+  .ttp-sim{padding:18px 14px;border-radius:14px}
+  .ttp-sim-head{flex-direction:column;align-items:flex-start;gap:12px;margin-bottom:16px}
+  .ttp-sim-title{font-size:13px}
+  .ttp-sim-controls{gap:6px;width:100%}
+  .sim-btn{font-size:10px;padding:7px 11px;flex:1;min-width:0;text-align:center}
+  .sim-btn.primary{flex:2}
+  .ttp-sim-track{gap:8px;flex-direction:column}
+  .sim-step{min-width:100%;padding:11px 13px}
+  .sim-step .ss-num{font-size:8.5px}
+  .sim-step .ss-name{font-size:12px}
+  .sim-step .ss-status{font-size:9.5px}
+  .sim-step .ss-detail{font-size:10px}
+  .sim-result{padding:11px 13px;font-size:10.5px;gap:9px;flex-direction:row;align-items:flex-start}
+  .sim-result .sr-icon{font-size:12px}
+  .sim-result .sr-text{font-size:10.5px;line-height:1.5}
+
+  /* === TTP interactive flow detail (in AMAGI card) === */
+  .ttp-detail{padding:14px 14px;min-height:auto}
+  .ttp-detail .td-head{gap:8px;margin-bottom:8px}
+  .ttp-detail .td-num{font-size:9px;padding:2px 7px}
+  .ttp-detail .td-title{font-size:12px}
+  .ttp-detail .td-grid{grid-template-columns:1fr;gap:10px}
+  .ttp-detail .td-cell .lbl{font-size:8.5px}
+  .ttp-detail .td-cell .val{font-size:11px;line-height:1.5}
+
+  /* === Timeline === */
+  .timeline{padding:14px 0 4px}
+  .timeline::before{left:7px}
+  .tl-item{width:100%;left:0!important;text-align:left!important;padding:8px 0 8px 28px;margin-bottom:6px}
+  .tl-item::before{left:1px!important;right:auto!important;top:18px;width:12px;height:12px}
+  .tl-card{max-width:100%;padding:11px 14px}
+  .tl-year{font-size:15px}
+  .tl-title{font-size:12px}
+  .tl-desc{font-size:10.5px;line-height:1.45}
+
+  /* === FAQ === */
+  .faq-list{gap:8px}
+  .faq-item{border-radius:10px}
+  .faq-q{padding:13px 16px;font-size:13px;gap:10px;line-height:1.35}
+  .faq-q::after{font-size:16px}
+  .faq-a-inner{padding:0 16px 13px;font-size:12px;line-height:1.55}
+
+  /* === Business / company === */
+  .biz-band{padding:18px 16px;grid-template-columns:1fr;gap:12px;border-radius:0 12px 12px 0}
+  .biz-name{font-size:14px}
+  .company{grid-template-columns:1fr;gap:14px}
+  .company .info{padding:18px 16px}
+  .company .row{padding:9px 0;font-size:11.5px;flex-wrap:wrap;gap:6px}
+  .company .row .k{font-size:11px}
+  .company .row .v{font-size:11.5px;text-align:left;font-family:var(--mono);word-break:break-all}
+  .status{padding:11px 13px;gap:9px}
+  .status b{font-size:12px}
+  .status span{font-size:10.5px}
+
+  /* === IT activity list === */
+  .it-list{padding:0 4px}
+  .it-list li{padding:13px 14px;font-size:11.5px;line-height:1.5}
+  .it-list b{font-size:12px}
+  .it-list .okved{font-size:9px;padding:2px 6px}
+
+  /* === Products grid === */
+  .products{gap:14px}
+  .prod{padding:18px 16px;border-radius:12px}
+  .prod h3{font-size:16px}
+  .prod .purpose{font-size:12px}
+  .prod .pdesc{font-size:11.5px;line-height:1.55}
+
+  /* === Contacts === */
+  .contact{padding:30px 18px;border-radius:14px}
+  .contact-grid{gap:18px}
+  .contact-item .ci{font-size:8.5px}
+  .contact-item b{font-size:13px}
+  .contact-item span{font-size:11.5px}
+
+  /* === Science === */
+  .sci{padding-left:20px}
+  .sci-item{padding:16px 16px;border-radius:12px}
+  .sci-item::before{left:-20px;top:22px;width:10px;height:10px}
+  .sci-item h3{font-size:13.5px}
+  .sci-item .venue{font-size:9.5px}
+  .sci-item .what p,.sci-item .why p{font-size:11.5px;line-height:1.55}
+  .plinks{gap:7px}
+  .plnk{font-size:10.5px;padding:6px 11px}
+
+  /* === Tech grid === */
+  .techgrid{gap:6px}
+  .tech{font-size:10px;padding:7px 11px}
+
+  /* === Footer === */
+  .foot{padding:36px 18px 24px}
+  .foot-grid{gap:18px;grid-template-columns:1fr}
+  .foot-meta{text-align:left;font-size:11px}
+  .disclaimer{font-size:10.5px;line-height:1.6;max-width:100%}
+
+  /* === Header === */
+  .header-inner,.wrap.nav{padding:0 14px;height:54px;flex-wrap:nowrap}
+  .brand b{font-size:14px}
+  .brand span span{font-size:8.5px}
+  .brand .mark{width:26px;height:26px;font-size:13px}
+  .lang{font-size:10px}
+  .lang button{padding:4px 8px}
+
+  /* === Hero === */
+  .hero{padding:80px 0 40px}
+  .hero .lead{font-size:13.5px;margin:16px 0 22px}
+  .readout{margin-top:24px}
+}
+@media(max-width:480px){
+  /* Very small phones (iPhone SE, older Android) */
+  .wrap{padding:0 14px}
+  h1{font-size:22px}
+  h2{font-size:18px}
+  .hero{padding:70px 0 32px}
+  section{padding:40px 0}
+  .dom{padding:16px 14px;border-radius:0 10px 10px 0}
+  .readout>div{flex:1 1 100%;padding:12px;border-bottom:1px solid var(--line)}
+  .readout>div:last-child{border-bottom:0}
+  .impl-chip{font-size:9px;padding:4px 7px}
+  .domains-chip{font-size:9px;padding:4px 7px}
+  .sim-btn{font-size:9.5px;padding:6px 8px;letter-spacing:0}
+  .sim-btn.primary{font-size:10px}
+  .faq-q{font-size:12.5px;padding:12px 14px}
+  .contact-item b{font-size:12px;word-break:break-all}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important}
+  .reveal{opacity:1;transform:none}
+}
+
+
+
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;margin-bottom:32px}
+@media(max-width:960px){.foot-grid{grid-template-columns:1fr 1fr;gap:24px}}
+@media(max-width:600px){.foot-grid{grid-template-columns:1fr}}
+.foot-col h5{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:14px;font-weight:500}
+.foot-col a{display:block;font-size:13px;color:var(--muted);padding:4px 0;transition:.15s}
+.foot-col a:hover{color:var(--amagi)}
+.foot-brand .brand{margin-bottom:14px}
+.foot-brand p{font-size:12.5px;color:var(--muted);line-height:1.6;margin-bottom:14px}
+.foot-bottom{padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:11.5px;color:var(--faint)}
+.foot-legal{font-family:var(--mono);font-size:10px;letter-spacing:.06em}
+.foot-legal a{color:var(--scio)}
+.foot-legal a:hover{color:var(--amagi)}
+footer{background:var(--bg2);border-top:1px solid var(--line);padding:48px 0 24px}
+
+</style>
+<link rel="stylesheet" href="/assets/css/premium.css?v=85"><script type="application/ld+json" data-althea-schema="1">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://althea-tech.ru/#organization",
+  "name": "ООО «АЛТЕЯ»",
+  "alternateName": "Althea Tech",
+  "url": "https://althea-tech.ru/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://althea-tech.ru/apple-touch-icon.png",
+    "width": 180,
+    "height": 180
+  },
+  "description": "Deep-tech исследовательская ИТ-компания: аппаратная безопасность ИИ (AMAGI), биоинженерия (ALTHEA), детекция deepfake (Scio), ИИ-координация терапии (CTC).",
+  "foundingDate": "2024",
+  "email": "info@althea-tech.ru",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Новокузнецк",
+    "addressRegion": "Кемеровская область",
+    "addressCountry": "RU"
+  },
+  "identifier": "ИНН 4217214140",
+  "knowsAbout": [
+    "Hardware AI security",
+    "Bioengineering",
+    "Deepfake detection",
+    "AI therapy coordination",
+    "Trusted AI",
+    "Formal verification"
+  ],
+  "sameAs": [
+    "https://zenodo.org/search?q=metadata.creators.person_or_org.name:%22Alexey%20Mikhailovich%20Burlai%22",
+    "https://t.me/altea_deeptech"
+  ]
+}
+</script>
+<script type="application/ld+json" data-althea-schema="1">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Главная",
+      "item": "https://althea-tech.ru/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "О компании"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Философия"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json" data-althea-schema="1">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Инженерия доверенного ИИ — философия Althea",
+  "description": "Мировоззрение компании: что такое доверенный ИИ и как мы его инженерируем.",
+  "url": "https://althea-tech.ru/philosophy.html",
+  "author": {
+    "@type": "Organization",
+    "name": "Althea Tech",
+    "@id": "https://althea-tech.ru/#organization"
+  },
+  "publisher": {
+    "@id": "https://althea-tech.ru/#organization"
+  },
+  "inLanguage": "ru-RU",
+  "datePublished": "2024-09-01",
+  "dateModified": "2026-07-31"
+}
+</script>
+<!-- althea-meta-start -->
+<meta property="og:title" content="Законодательство и стандарты — ООО «АЛТЕЯ»" />
+<meta property="og:description" content="Мировоззрение Althea: что такое доверенный ИИ, как мы его инженерируем, наши принципы." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://althea-tech.ru/philosophy.html" />
+<meta property="og:site_name" content="Althea Tech" />
+<meta property="og:locale" content="ru_RU" />
+<meta property="og:locale:alternate" content="en_US" />
+<meta property="og:image" content="https://althea-tech.ru/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630"
+<meta property="og:image:alt" content="ALTHEA Tech — корпоративный логотип, тёмный фон с золотой буквой А и четырьмя цветовыми точками продуктов AMAGI/ALTHEA/Scio/CTC"><meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@altea_deeptech" />
+<meta name="twitter:title" content="Законодательство и стандарты — ООО «АЛТЕЯ»" />
+<meta name="twitter:description" content="Мировоззрение Althea: что такое доверенный ИИ, как мы его инженерируем, наши принципы." />
+<meta name="twitter:image" content="https://althea-tech.ru/og-image.png"
+<meta name="twitter:image:alt" content="ALTHEA Tech — корпоративный логотип"><link rel="canonical" href="https://althea-tech.ru/regulations.html" />
+<meta property="article:modified_time" content="2026-07-31T12:00:00+03:00" />
+<meta property="article:author" content="Althea Tech" />
+<meta property="article:publisher" content="https://althea-tech.ru/" />
+<!-- althea-meta-end -->
+
+<!-- ============================================================ -->
+<!-- АНАЛИТИКА: замените YANDEX_METRIKA_ID на свой номер счётчика -->
+<!-- (создать: https://metrika.yandex.ru/list)                    -->
+<!-- И G-XXXXXXXXXX на свой Google Analytics 4 ID                 -->
+<!-- (создать: https://analytics.google.com)                      -->
+<!-- После замены удалите этот комментарий                        -->
+<!-- ============================================================ -->
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+m[i].l=1*new Date();
+for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
+
+ym(YANDEX_METRIKA_ID, "init", {
+    clickmap:true,
+    trackLinks:true,
+    accurateTrackBounce:true,
+    webvisor:true,
+    trackHash:true,
+    ecommerce:"dataLayer"
+});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/YANDEX_METRIKA_ID" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<!-- Google Analytics 4 (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XXXXXXXXXX', { anonymize_ip: true });
+</script>
+<!-- /Google Analytics 4 -->
+</head>
+<body>
+<div class="bg-glow"></div><div class="bg-grid"></div><div class="noise"></div>
+
+<div class="cookies" id="cookies">
+  <div class="wrap">
+    <p data-ru="Мы используем файлы cookie для корректной работы сайта и сбора анонимной статистики посещаемости через сервис Top.Mail.Ru (счётчик № 3783624, серверы в РФ). Продолжая использование сайта, вы даёте <a href=&quot;policy.html&quot;>согласие на обработку персональных данных</a> в соответствии с 152-ФЗ и принимаете <a href=&quot;terms.html&quot;>пользовательское соглашение</a>." data-en="We use cookies for the site to work properly and to collect anonymous traffic statistics via the Top.Mail.Ru service (counter No. 3783624, servers in Russia). By continuing, you give <a href=&quot;policy.html&quot;>consent to personal-data processing</a> under FZ-152 and accept the <a href=&quot;terms.html&quot;>terms of use</a>.">Мы используем файлы cookie для корректной работы сайта и сбора анонимной статистики посещаемости через сервис Top.Mail.Ru (счётчик № 3783624, серверы в РФ). Продолжая использование сайта, вы даёте <a href="policy.html">согласие на обработку персональных данных</a> в соответствии с 152-ФЗ и принимаете <a href="terms.html">пользовательское соглашение</a>.</p>
+    <div class="btns">
+      <button class="btn btn-a" onclick="acceptCookies()" data-ru="Принять" data-en="Accept">Принять</button>
+      <button class="btn btn-g" onclick="declineCookies()" data-ru="Отклонить" data-en="Decline">Отклонить</button>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="wrap nav">
+    <a href="index.html" class="brand"><span class="mark">А</span><span><b data-ru="АЛТЕЯ" data-en="ALTHEA">АЛТЕЯ</b></span></a>
+    <nav class="menu" id="menu">
+      <div class="menu-item-dropdown">
+        <a href="#products" data-ru="Продукты" data-en="Products">Продукты</a>
+        <div class="menu-dropdown">
+          <a href="architecture.html"><span class="dd-code">01</span>AMAGI</a>
+          <a href="althea.html"><span class="dd-code">02</span>ALTHEA / CRISPR-TTP</a>
+          <a href="scio.html"><span class="dd-code">03</span>Scio</a>
+          <a href="ctc.html"><span class="dd-code">04</span>CTC</a>
+        </div>
+      </div>
+      <div class="menu-item-dropdown">
+        <a href="ai-engineering.html" data-ru="Направления" data-en="Directions">Направления</a>
+        <div class="menu-dropdown">
+          <a href="ai-engineering.html"><span class="dd-code">01</span><span data-ru="ИИ-инженерия" data-en="AI Engineering">ИИ-инженерия</span></a>
+          <a href="philosophy.html"><span class="dd-code">02</span><span data-ru="Философия" data-en="Philosophy">Философия</span></a>
+          <a href="vision.html"><span class="dd-code">03</span><span data-ru="Видение" data-en="Vision">Видение</span></a>
+          <a href="science.html"><span class="dd-code">04</span><span data-ru="Наука" data-en="Research">Наука</span></a>
+        </div>
+      </div>
+      <div class="menu-item-dropdown">
+        <a href="services.html" data-ru="Услуги" data-en="Services">Услуги</a>
+        <div class="menu-dropdown">
+          <a href="services.html"><span class="dd-code">01</span><span data-ru="Услуги" data-en="Services">Услуги</span></a>
+          <a href="outstaffing.html"><span class="dd-code">02</span><span data-ru="Аутсорсинг" data-en="Outstaffing">Аутсорсинг</span></a>
+          <a href="careers.html"><span class="dd-code">03</span><span data-ru="Вакансии" data-en="Careers">Вакансии</span></a>
+        </div>
+      </div>
+      <div class="menu-item-dropdown">
+        <a href="team.html" data-ru="Компания" data-en="Company">Компания</a>
+        <div class="menu-dropdown">
+          <a href="team.html"><span class="dd-code">01</span><span data-ru="Команда" data-en="Team">Команда</span></a>
+          <a href="news.html"><span class="dd-code">02</span><span data-ru="Новости" data-en="News">Новости</span></a>
+          <a href="faq.html"><span class="dd-code">03</span><span data-ru="FAQ" data-en="FAQ">FAQ</span></a>
+        </div>
+      </div>
+      <div class="menu-item-dropdown">
+        <a href="regulations.html" data-ru="Право" data-en="Legal" style="color:var(--amagi)">Право</a>
+        <div class="menu-dropdown">
+          <a href="regulations.html"><span class="dd-code">01</span><span data-ru="Регуляторы и законы" data-en="Regulations & Laws">Регуляторы и законы</span></a>
+          <a href="bot.html"><span class="dd-code">02</span><span data-ru="Рассылка" data-en="Brief">Рассылка</span></a>
+          <a href="minzdrav-letter.html"><span class="dd-code">03</span><span data-ru="Заключение Минздрава" data-en="Minzdrav conclusion">Заключение Минздрава</span></a>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-cta">
+      <div class="lang"><button id="btn-ru" class="on" onclick="setLang('ru')">RU</button><button id="btn-en" onclick="setLang('en')">EN</button></div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему" title="Сменить тему"><span class="ico ico-moon">🌙</span><span class="ico ico-sun">☀</span><span class="knob"></span></button>
+      <a class="btn btn-a" href="mailto:altea_ltd@mail.ru?subject=R%26D" data-ru="Обсудить проект" data-en="Discuss a project">Обсудить проект</a>
+      <button class="burger" id="burger" aria-label="menu"><i></i><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section style="padding:80px 0 50px">
+    <div class="wrap" style="max-width:780px">
+      <span class="eyebrow" data-ru="Законы · Стандарты · Требования · Будущее" data-en="Laws · Standards · Requirements · Future">Законы · Стандарты · Требования · Будущее</span>
+      <h1 data-ru="Законодательство и стандарты" data-en="AI Legislation">Законодательство и стандарты</h1>
+      <p class="lead" data-ru="ИИ регулируют законы, стандарты и директивы. AMAGI спроектирован так, чтобы соответствовать им на уровне архитектуры — не патчами, не обещаниями, а формально верифицируемыми инвариантами. Эта страница — карта требований и того, как AMAGI их закрывает." data-en="AI is governed by laws, standards, and directives. AMAGI is designed to comply at the architectural level — not through patches or promises, but through formally verifiable invariants. This page maps requirements and how AMAGI addresses them.">ИИ регулируют законы, стандарты и директивы. <b>AMAGI спроектирован так, чтобы соответствовать им на уровне архитектуры</b> — не патчами, не обещаниями, а формально верифицируемыми инвариантами. Эта страница — карта требований и того, как AMAGI их закрывает.</p>
+    </div>
+  </section>
+
+  <!-- WHAT IS AMAGI -->
+  <section style="padding:20px 0 40px">
+    <div class="wrap" style="max-width:780px">
+      <div class="reveal" style="background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:20px 24px;display:grid;grid-template-columns:1fr 1fr;gap:24px">
+        <div>
+          <div style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--althea);text-transform:uppercase;margin-bottom:10px" data-ru="AMAGI — это" data-en="AMAGI is">AMAGI — это</div>
+          <ul style="list-style:none;padding:0;margin:0;font-size:13px;color:var(--text);line-height:2">
+            <li>✓ Reference Architecture</li>
+            <li>✓ Architectural Class</li>
+            <li>✓ Engineering Specification</li>
+            <li>✓ Hardware Safety Model</li>
+          </ul>
+        </div>
+        <div>
+          <div style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--amagi);text-transform:uppercase;margin-bottom:10px" data-ru="AMAGI — не это" data-en="AMAGI is not">AMAGI — не это</div>
+          <ul style="list-style:none;padding:0;margin:0;font-size:13px;color:var(--muted);line-height:2">
+            <li>• Certified product</li>
+            <li>• Medical device</li>
+            <li>• Commercial FPGA board</li>
+            <li>• Finished hardware platform</li>
+          </ul>
+        </div>
+      </div>
+      <div class="reveal" style="background:rgba(245,166,35,.06);border:1px solid rgba(245,166,35,.2);border-radius:8px;padding:14px 18px;margin-top:12px">
+        <p style="font-size:12px;color:var(--muted);line-height:1.6;margin:0"><b style="color:var(--amagi)" data-ru="Дисклеймер:" data-en="Disclaimer:">Дисклеймер:</b> <span data-ru="AMAGI — это reference architecture, а не сертифицированный коммерческий продукт. Эта страница описывает соответствие архитектурных инвариантов AMAGI регуляторным требованиям. Сертификация относится к конкретным реализациям, а не к архитектуре как таковой." data-en="AMAGI is a reference architecture, not a certified commercial product. This page maps AMAGI architectural invariants to regulatory requirements. Certification applies to specific implementations, not to the architecture itself.">AMAGI — это reference architecture, а не сертифицированный коммерческий продукт. Эта страница описывает соответствие архитектурных инвариантов AMAGI регуляторным требованиям. Сертификация относится к конкретным реализациям, а не к архитектуре как таковой.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01: ДЕЙСТВУЮЩИЕ ЗАКОНЫ И ТРЕБОВАНИЯ -->
+  <section style="padding:30px 0 50px">
+    <div class="wrap" style="max-width:780px">
+      <div class="sec-head reveal" style="--acc:var(--amagi)"><span class="sec-num">01 /</span><h2 data-ru="Действующие законы и требования" data-en="Current laws and requirements">Действующие законы и требования</h2></div>
+      <p class="reveal" style="font-size:14px;color:var(--faint);margin-bottom:20px;font-family:var(--mono)" data-ru="По состоянию на 2026" data-en="As of 2026">По состоянию на 2026</p>
+
+      <!-- EU -->
+      <div class="reveal" style="margin-bottom:24px">
+        <div style="font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--amagi);text-transform:uppercase;margin-bottom:10px"><span data-ru="🇪🇺 Европейский Союз" data-en="🇪🇺 European Union">🇪🇺 Европейский Союз</span></div>
+        <div style="display:grid;gap:10px">
+          <div style="background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--amagi);border-radius:0 10px 10px 0;padding:16px 20px">
+            <div style="display:flex;justify-content:space-between;align-items:start;gap:12px;flex-wrap:wrap">
+              <div style="flex:1;min-width:200px">
+                <div style="font-size:15px;font-weight:700;color:var(--text)"><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-decoration-color:var(--scio);text-underline-offset:3px">EU AI Act</a></div>
+                <div style="font-size:12px;color:var(--faint);margin-top:2px"><span data-ru="Regulation (EU) 2024/1689 · вступил в силу 2024 · полностью применим 2026" data-en="Regulation (EU) 2024/1689 · in force 2024 · fully applicable 2026">Regulation (EU) 2024/1689 · вступил в силу 2024 · полностью применим 2026</span></div>
+              </div>
+              <div style="font-family:var(--mono);font-size:11px;color:var(--althea);font-weight:700;white-space:nowrap">Architectural mapping to Annex IV</div>
+            </div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:8px" data-ru="High-risk AI systems должны иметь: risk management, data governance, transparency, human oversight, robustness. Запрет social scoring, real-time biometric ID в публичных местах." data-en="High-risk AI systems must have: risk management, data governance, transparency, human oversight, robustness. Ban on social scoring, real-time biometric ID in public.">High-risk AI systems должны иметь: risk management, data governance, transparency, human oversight, robustness. Запрет social scoring, real-time biometric ID в публичных местах.</div>
+            <div style="font-size:12px;color:var(--amagi);margin-top:6px;font-family:var(--mono)"><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" target="_blank" rel="noopener" style="color:var(--amagi);text-decoration:none">→ Official source: Regulation (EU) 2024/1689</a></div>
+            <div style="font-size:12px;color:var(--scio);margin-top:6px;font-family:var(--mono)" data-ru="Соответствие архитектуры: <a href=&quot;https://zenodo.org/records/20753400&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; style=&quot;color:var(--scio);text-decoration:underline&quot;>Framework v2.0</a> — техническая документация Annex IV (high-risk AI system)" data-en="Architecture mapping: <a href=&quot;https://zenodo.org/records/20753400&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; style=&quot;color:var(--scio);text-decoration:underline&quot;>Framework v2.0</a> — Annex IV technical documentation mapping">Architecture mapping: <a href="https://zenodo.org/records/20753400" target="_blank" rel="noopener" style="color:var(--scio);text-decoration:underline">Framework v2.0</a> — Annex IV technical documentation mapping</div>
+          </div>
+
+          <div style="background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--amagi);border-radius:0 10px 10px 0;padding:16px 20px">
+            <div style="display:flex;justify-content:space-between;align-items:start;gap:12px;flex-wrap:wrap">
+              <div style="flex:1;min-width:200px">
+                <div style="font-size:15px;font-weight:700;color:var(--text)"><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-decoration-color:var(--scio);text-underline-offset:3px">GDPR</a></div>
+                <div style="font-size:12px;color:var(--faint);margin-top:2px"><span data-ru="Regulation (EU) 2016/679 · действует с 2018" data-en="Regulation (EU) 2016/679 · in effect since 2018">Regulation (EU) 2016/679 · действует с 2018</span></div>
+              </div>
+              <div style="font-family:var(--mono);font-size:11px;color:var(--althea);font-weight:700;white-space:nowrap">Architecturally aligned — INV-004</div>
+            </div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:8px" data-ru="Ст. 22: право на explanation of automated decisions. DPIA для high-risk processing. Право на human intervention." data-en="Art. 22: right to explanation of automated decisions. DPIA for high-risk processing. Right to human intervention.">Ст. 22: право на explanation of automated decisions. DPIA для high-risk processing. Право на human intervention.</div>
+            <div style="font-size:12px;color:var(--amagi);margin-top:6px;font-family:var(--mono)"><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj" target="_blank" rel="noopener" style="color:var(--amagi);text-decoration:none">→ Official source: Regulation (EU) 2016/679</a></div>
+            <div style="font-size:12px;color:var(--scio);margin-top:6px;font-family:var(--mono)">Architecture mapping: INV-004 — data governance through MAG/SHMF/Audit Log</div>
+          </div>
+
+          <div style="background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--amagi);border-radius:0 10px 10px 0;padding:16px 20px">
+            <div style="display:flex;justify-content:space-between;align-items:start;gap:12px;flex-wrap:wrap">
+              <div style="flex:1;min-width:200px">
+                <div style="font-size:15px;font-weight:700;color:var(--text)"><a href="https://eur-lex.europa.eu/eli/reg/2024/2847/oj" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-decoration-color:var(--scio);text-underline-offset:3px">Cyber Resilience Act</a></div>
+                <div style="font-size:12px;color:var(--faint);margin-top:2px">Regulation (EU) 2024/2847 · 2024</div>
+              </div>
+              <div style="font-family:var(--mono);font-size:11px;color:var(--althea);font-weight:700;white-space:nowrap">Architecturally aligned — by design</div>
+            </div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:8px" data-ru="Требования безопасности к продуктам с цифровыми элементами. Обязанности по уведомлению об уязвимостях и инцидентах." data-en="Security requirements for products with digital elements. Vulnerability and incident reporting obligations.">Требования безопасности к продуктам с цифровыми элементами. Обязанности по уведомлению об уязвимостях и инцидентах.</div>
+            <div style="font-size:12px;color:var(--amagi);margin-top:6px;font-family:var(--mono)"><a href="https://eur-lex.europa.eu/eli/reg/2024/2847/oj" target="_blank" rel="noopener" style="color:var(--amagi);text-decoration:none">→ Official source: Regulation (EU) 2024/2847</a></div>
+            <div style="font-size:12px;color:var(--scio);margin-top:6px;font-family:var(--mono)">Architecture mapping: INV-002 + INV-006 — hardware security by design</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- US -->
+      <div class="reveal" style="margin-bottom:24px">
+        <div style="font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--scio);text-transform:uppercase;margin-bottom:10px"><span data-ru="🇺🇸 США" data-en="🇺🇸 United States">🇺🇸 США</span></div>
+        <div style="display:grid;gap:10px">
+          <div style="background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--scio);border-radius:0 10px 10px 0;padding:16px 20px">
+            <div style="display:flex;justify-content:space-between;align-items:start;gap:12px;flex-wrap:wrap">
+              <div style="flex:1;min-width:200px">
+                <div style="font-size:15px;font-weight:700;color:var(--text)"><a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-decoration-color:var(--scio);text-underline-offset:3px">NIST AI RMF 1.0</a></div>
+                <div style="font-size:12px;color:var(--faint);margin-top:2px">NIST AI 100-1 · 2023 · voluntary, de facto standard</div>
+              </div>
+              <div style="font-family:var(--mono);font-size:11px;color:var(--althea);font-weight:700;white-space:nowrap">NIST AI RMF Profile v1.1 mapping available</div>
+            </div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:8px">Govern, Map, Measure, Manage — 4 функции. Voluntary framework, но de facto стандарт для federal contractors.</div>
+            <div style="font-size:12px;color:var(--amagi);margin-top:6px;font-family:var(--mono)"><a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener" style="color:var(--amagi);text-decoration:none">→ Official source: NIST AI 100-1</a></div>
+            <div style="font-size:12px;color:var(--scio);margin-top:6px;font-family:var(--mono)">Соответствие архитектуры: NIST AI RMF Profile v1.1 — доступно на Zenodo</div>
+          </div>
+
+          <div style="background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--scio);border-radius:0 10px 10px 0;padding:16px 20px">
+            <div style="display:flex;justify-content:space-between;align-items:start;gap:12px;flex-wrap:wrap">
+              <div style="flex:1;min-width:200px">
+                <div style="font-size:15px;font-weight:700;color:var(--text)"><a href="https://csrc.nist.gov/pubs/sp/800/218/final" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-decoration-color:var(--scio);text-underline-offset:3px">NIST SP 800-218</a></div>
+                <div style="font-size:12px;color:var(--faint);margin-top:2px">Secure Software Development Framework · 2022</div>
+              </div>
+              <div style="font-family:var(--mono);font-size:11px;color:var(--althea);font-weight:700;white-space:nowrap">Architecturally aligned</div>
+            </div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:8px">Secure software development practices для federal agencies и contractors.</div>
+            <div style="font-size:12px;color:var(--amagi);margin-top:6px;font-family:var(--mono)"><a href="https://csrc.nist.gov/pubs/sp/800/218/final" target="_blank" rel="noopener" style="color:var(--amagi);text-decoration:none">→ Official source: NIST SSDF</a></div>
+            <div style="font-size:12px;color:var(--scio);margin-top:6px;font-family:var(--mono)">Architecture mapping: <a href="https://zenodo.org/records/20753400" target="_blank" rel="noopener" style="color:var(--scio);text-decoration:underline">Framework v2.0</a> — NIST SP 800-218 alignment</div>
+          </div>
+
+          <div style="background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--scio);border-radius:0 10px 10px 0;padding:16px 20px">
+            <div style="display:flex;justify-content:space-between;align-items:start;gap:12px;flex-wrap:wrap">
+              <div style="flex:1;min-width:200px">
+                <div style="font-size:15px;font-weight:700;color:var(--text)"><a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-decoration-color:var(--scio);text-underline-offset:3px">FTC AI Enforcement</a></div>
+                <div style="font-size:12px;color:var(--faint);margin-top:2px">Federal Trade Commission · 2024-2026</div>
+              </div>
+              <div style="font-family:var(--mono);font-size:11px;color:var(--althea);font-weight:700;white-space:nowrap">Architecturally aligned — audit trail</div>
+            </div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:8px">Запрет вводящих в заблуждение заявлений об ИИ. Прозрачность автоматических решений. Применение ст. 5 FTC.</div>
+            <div style="font-size:12px;color:var(--amagi);margin-top:6px;font-family:var(--mono)"><a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener" style="color:var(--amagi);text-decoration:none">→ Official source: FTC.gov</a></div>
+            <div style="font-size:12px;color:var(--scio);margin-top:6px;font-family:var(--mono)">Architecture mapping: INV-002 + INV-004 — audit trail and append-only log</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Russia -->
+      <div class="reveal" style="margin-bottom:24px">
+        <div style="font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--althea);text-transform:uppercase;margin-bottom:10px"><span data-ru="🇷🇺 Россия" data-en="🇷🇺 Russia">🇷🇺 Россия</span></div>
+        <div style="display:grid;gap:10px">
+          <div style="background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--althea);border-radius:0 10px 10px 0;padding:16px 20px">
+            <div style="display:flex;justify-content:space-between;align-items:start;gap:12px;flex-wrap:wrap">
+              <div style="flex:1;min-width:200px">
+                <div style="font-size:15px;font-weight:700;color:var(--text)"><a href="https://www.consultant.ru/document/cons_doc_LAW_61801/" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-decoration-color:var(--scio);text-underline-offset:3px">152-ФЗ «О персональных данных»</a></div>
+                <div style="font-size:12px;color:var(--faint);margin-top:2px"><span data-ru="Действует с 2006, поправки 2024-2025" data-en="In effect since 2006, amendments 2024-2025">Действует с 2006, поправки 2024-2025</span></div>
+              </div>
+              <div style="font-family:var(--mono);font-size:11px;color:var(--althea);font-weight:700;white-space:nowrap">Architecturally aligned — INV-004</div>
+            </div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:8px"><span data-ru="Обработка ПДн, consent, storage limits. Оператор ПДн № 100364324 (АЛТЕЯ). Уведомление об утечках в течение 24 часов." data-en="Personal data processing, consent, storage limits. PDn operator No. 100364324 (ALTHEA). Breach notification within 24 hours.">Обработка ПДн, consent, storage limits. Оператор ПДн № 100364324 (АЛТЕЯ). Уведомление об утечках в течение 24 часов.</span></div>
+            <div style="font-size:12px;color:var(--amagi);margin-top:6px;font-family:var(--mono)"><a href="https://www.consultant.ru/document/cons_doc_LAW_61801/" target="_blank" rel="noopener" style="color:var(--amagi);text-decoration:none">→ Official source: 152-ФЗ</a></div>
+            <div style="font-size:12px;color:var(--scio);margin-top:6px;font-family:var(--mono)">Architecture mapping: INV-004 — ПДн isolation in protected regions</div>
+          </div>
+
+          <div style="background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--althea);border-radius:0 10px 10px 0;padding:16px 20px">
+            <div style="display:flex;justify-content:space-between;align-items:start;gap:12px;flex-wrap:wrap">
+              <div style="flex:1;min-width:200px">
+                <div style="font-size:15px;font-weight:700;color:var(--text)"><a href="https://www.consultant.ru/document/cons_doc_LAW_121895/" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-decoration-color:var(--scio);text-underline-offset:3px">323-ФЗ «Об охране здоровья»</a></div>
+                <div style="font-size:12px;color:var(--faint);margin-top:2px"><span data-ru="Действует с 2011, регулирует ИИ в медицине" data-en="In effect since 2011, regulates AI in medicine">Действует с 2011, регулирует ИИ в медицине</span></div>
+              </div>
+              <div style="font-family:var(--mono);font-size:11px;color:var(--amagi);font-weight:700;white-space:nowrap">ALTHEA: certification pending</div>
+            </div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:8px"><span data-ru="Медицинская деятельность требует лицензии. ИИ в диагностике — сертификация Минздрава. ALTHEA/CRISPR-TTP — исследовательский проект." data-en="Medical activities require a license. AI in diagnostics requires Minzdrav certification. ALTHEA/CRISPR-TTP is a research project.">Медицинская деятельность требует лицензии. ИИ в диагностике — сертификация Минздрава. ALTHEA/CRISPR-TTP — исследовательский проект.</span></div>
+            <div style="font-size:12px;color:var(--scio);margin-top:6px;font-family:var(--mono)"><span data-ru="ALTHEA: заключение Минздрава получено, сертификация как медицинская услуга — pending" data-en="ALTHEA: Minzdrav approval received, certification as medical service — pending">ALTHEA: заключение Минздрава получено, сертификация как медицинская услуга — pending</span></div>
+          </div>
+
+          <div style="background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--althea);border-radius:0 10px 10px 0;padding:16px 20px">
+            <div style="display:flex;justify-content:space-between;align-items:start;gap:12px;flex-wrap:wrap">
+              <div style="flex:1;min-width:200px">
+                <div style="font-size:15px;font-weight:700;color:var(--text)"><a href="https://www.consultant.ru/document/cons_doc_LAW_61765/" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-decoration-color:var(--scio);text-underline-offset:3px">149-ФЗ «Об информации»</a></div>
+                <div style="font-size:12px;color:var(--faint);margin-top:2px"><span data-ru="Действует с 2014" data-en="In effect since 2014">Действует с 2014</span></div>
+              </div>
+              <div style="font-family:var(--mono);font-size:11px;color:var(--althea);font-weight:700;white-space:nowrap">Architecturally aligned — TCB ≤500 HDL</div>
+            </div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:8px"><span data-ru="Защита информации, ИТ-системы, требования к информационной безопасности." data-en="Information protection, IT systems, information security requirements.">Защита информации, ИТ-системы, требования к информационной безопасности.</span></div>
+            <div style="font-size:12px;color:var(--amagi);margin-top:6px;font-family:var(--mono)"><a href="https://www.consultant.ru/document/cons_doc_LAW_121895/" target="_blank" rel="noopener" style="color:var(--amagi);text-decoration:none">→ Official source: 149-ФЗ</a></div>
+            <div style="font-size:12px;color:var(--scio);margin-top:6px;font-family:var(--mono)">Architecture mapping: TCB ≤ 500 HDL — auditable system</div>
+          </div>
+
+          <div style="background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--althea);border-radius:0 10px 10px 0;padding:16px 20px">
+            <div style="display:flex;justify-content:space-between;align-items:start;gap:12px;flex-wrap:wrap">
+              <div style="flex:1;min-width:200px">
+                <div style="font-size:15px;font-weight:700;color:var(--text)"><a href="https://www.consultant.ru/document/cons_doc_LAW_53749/" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-decoration-color:var(--scio);text-underline-offset:3px">53-ФЗ «О государственном языке РФ»</a></div>
+                <div style="font-size:12px;color:var(--faint);margin-top:2px"><span data-ru="Действует с 2005, актуален для сайтов и ИИ-систем" data-en="In effect since 2005, relevant for websites and AI systems">Действует с 2005, актуален для сайтов и ИИ-систем</span></div>
+              </div>
+              <div style="font-family:var(--mono);font-size:11px;color:var(--althea);font-weight:700;white-space:nowrap">Architecturally aligned</div>
+            </div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:8px"><span data-ru="Государственный язык РФ — русский. Сайты и пользовательские интерфейсы должны использовать русский язык как основной. Английский — дополнительный перевод по переключателю." data-en="The state language of the Russian Federation is Russian. Websites and user interfaces must use Russian as the primary language. English is an optional translation via toggle.">Государственный язык РФ — русский. Сайты и пользовательские интерфейсы должны использовать русский язык как основной. Английский — дополнительный перевод по переключателю.</span></div>
+            <div style="font-size:12px;color:var(--amagi);margin-top:6px;font-family:var(--mono)"><a href="https://www.consultant.ru/document/cons_doc_LAW_53749/" target="_blank" rel="noopener" style="color:var(--amagi);text-decoration:none">→ Official source: 53-ФЗ</a></div>
+            <div style="font-size:12px;color:var(--scio);margin-top:6px;font-family:var(--mono)"><span data-ru="Сайт althea-tech.ru: русский — основной, EN — перевод по кнопке RU/EN" data-en="Website althea-tech.ru: Russian is primary, EN is translation via RU/EN toggle">Сайт althea-tech.ru: русский — основной, EN — перевод по кнопке RU/EN</span></div>
+          </div>
+
+          <div style="background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--althea);border-radius:0 10px 10px 0;padding:16px 20px">
+            <div style="display:flex;justify-content:space-between;align-items:start;gap:12px;flex-wrap:wrap">
+              <div style="flex:1;min-width:200px">
+                <div style="font-size:15px;font-weight:700;color:var(--text)"><a href="https://ethics.a-ai.ru/" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-decoration-color:var(--scio);text-underline-offset:3px">Национальный кодекс этики ИИ</a></div>
+                <div style="font-size:12px;color:var(--faint);margin-top:2px"><span data-ru="АИР · 2022 · добровольный" data-en="AIR · 2022 · voluntary">АИР · 2022 · добровольный</span></div>
+              </div>
+              <div style="font-family:var(--mono);font-size:11px;color:var(--althea);font-weight:700;white-space:nowrap">Architecturally aligned</div>
+            </div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:8px"><span data-ru="Добровольный кодекс этики в сфере ИИ. Принципы: прозрачность, безопасность, ответственность." data-en="Voluntary code of ethics in AI. Principles: transparency, safety, accountability.">Добровольный кодекс этики в сфере ИИ. Принципы: прозрачность, безопасность, ответственность.</span></div>
+            <div style="font-size:12px;color:var(--amagi);margin-top:6px;font-family:var(--mono)"><a href="https://ethics.a-ai.ru/" target="_blank" rel="noopener" style="color:var(--amagi);text-decoration:none">→ Official source: АИР</a></div>
+            <div style="font-size:12px;color:var(--scio);margin-top:6px;font-family:var(--mono)">Architecture mapping: transparency through formal verification</div>
+          </div>
+
+          <div style="background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--althea);border-radius:0 10px 10px 0;padding:16px 20px">
+            <div style="display:flex;justify-content:space-between;align-items:start;gap:12px;flex-wrap:wrap">
+              <div style="flex:1;min-width:200px">
+                <div style="font-size:15px;font-weight:700;color:var(--text)"><a href="https://www.consultant.ru/document/cons_doc_LAW_421415/" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-decoration-color:var(--scio);text-underline-offset:3px">255-ФЗ «О контроле за иноагентами»</a></div>
+                <div style="font-size:12px;color:var(--faint);margin-top:2px"><span data-ru="Действует с 14.07.2022 · актуально для новостной ленты и Telegram-бота" data-en="In effect since 14 July 2022 · relevant for news feed and Telegram bot">Действует с 14.07.2022 · актуально для новостной ленты и Telegram-бота</span></div>
+              </div>
+              <div style="font-family:var(--mono);font-size:11px;color:var(--althea);font-weight:700;white-space:nowrap">Compliant — 25 sources checked</div>
+            </div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:8px"><span data-ru="При цитировании материалов лиц, включённых Минюстом РФ в реестр иностранных агентов, обязательна пометка «(иностранный агент)». Все 25 RSS-источников новостной ленты и Telegram-бота ALTHEA Research Brief проверены по реестру СМИ-иноагентов Минюста РФ — ни один не включён на 11.08.2026. Оператор проверяет реестр ежеквартально (следующая проверка — 11.11.2026)." data-en="When citing materials from persons included by the Russian Ministry of Justice in the registry of foreign agents, the label “(foreign agent)” is mandatory. All 25 RSS sources of the news feed and ALTHEA Research Brief Telegram bot are verified against the Ministry of Justice registry of foreign-agent media — none is listed as of 11.08.2026. The Operator checks the registry quarterly (next check — 11.11.2026).">При цитировании материалов лиц, включённых Минюстом РФ в реестр иностранных агентов, обязательна пометка «(иностранный агент)». Все 25 RSS-источников новостной ленты и Telegram-бота ALTHEA Research Brief проверены по реестру СМИ-иноагентов Минюста РФ — ни один не включён на 11.08.2026. Оператор проверяет реестр ежеквартально (следующая проверка — 11.11.2026).</span></div>
+            <div style="font-size:12px;color:var(--amagi);margin-top:6px;font-family:var(--mono)"><a href="https://www.consultant.ru/document/cons_doc_LAW_421415/" target="_blank" rel="noopener" style="color:var(--amagi);text-decoration:none">→ Official source: 255-ФЗ</a> · <a href="https://minjust.gov.ru/ru/activity/government-regulation/list-inoagentov/" target="_blank" rel="noopener" style="color:var(--amagi);text-decoration:none">Реестр Минюста</a></div>
+            <div style="font-size:12px;color:var(--scio);margin-top:6px;font-family:var(--mono)"><span data-ru="Implementation: assets/api/foreign_agents.php + tg_rss_bot.py — авто-пометка при парсинге и постинге" data-en="Implementation: assets/api/foreign_agents.php + tg_rss_bot.py — auto-labelling at parse and post time">Implementation: assets/api/foreign_agents.php + tg_rss_bot.py — авто-пометка при парсинге и постинге</span></div>
+          </div>
+
+          <div style="background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--althea);border-radius:0 10px 10px 0;padding:16px 20px">
+            <div style="display:flex;justify-content:space-between;align-items:start;gap:12px;flex-wrap:wrap">
+              <div style="flex:1;min-width:200px">
+                <div style="font-size:15px;font-weight:700;color:var(--text)"><a href="https://www.consultant.ru/document/cons_doc_LAW_428516/" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-decoration-color:var(--scio);text-underline-offset:3px">38-ФЗ «О рекламе»</a></div>
+                <div style="font-size:12px;color:var(--faint);margin-top:2px"><span data-ru="Действует с 2006, поправки 2022-2025 (реклама ИИ-продуктов)" data-en="In effect since 2006, amendments 2022-2025 (AI product advertising)">Действует с 2006, поправки 2022-2025 (реклама ИИ-продуктов)</span></div>
+              </div>
+              <div style="font-family:var(--mono);font-size:11px;color:var(--althea);font-weight:700;white-space:nowrap">Compliant — no advertising</div>
+            </div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:8px"><span data-ru="Сайт и Telegram-бот не размещают рекламные материалы. Платные и спонсорские публикации (если появятся) будут промаркированы в соответствии с 38-ФЗ: пометка «Реклама», рекламодатель, erid-токен, отчётность через ОРД в ЕРИР. Новостная лента — исключительно информационная, без коммерческой составляющей." data-en="The website and Telegram bot do not host advertising materials. Paid and sponsored posts (if any) will be labelled in accordance with FZ-38: “Advertising” mark, advertiser, erid token, reporting via ORD to ERIR. The news feed is purely informational, without commercial content.">Сайт и Telegram-бот не размещают рекламные материалы. Платные и спонсорские публикации (если появятся) будут промаркированы в соответствии с 38-ФЗ: пометка «Реклама», рекламодатель, erid-токен, отчётность через ОРД в ЕРИР. Новостная лента — исключительно информационная, без коммерческой составляющей.</span></div>
+            <div style="font-size:12px;color:var(--amagi);margin-top:6px;font-family:var(--mono)"><a href="https://www.consultant.ru/document/cons_doc_LAW_58968/" target="_blank" rel="noopener" style="color:var(--amagi);text-decoration:none">→ Official source: 38-ФЗ</a></div>
+            <div style="font-size:12px;color:var(--scio);margin-top:6px;font-family:var(--mono)">News feed: no advertising integration — информационная цель по ст. 1274 ГК РФ</div>
+          </div>
+
+          <div style="background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--althea);border-radius:0 10px 10px 0;padding:16px 20px">
+            <div style="display:flex;justify-content:space-between;align-items:start;gap:12px;flex-wrap:wrap">
+              <div style="flex:1;min-width:200px">
+                <div style="font-size:15px;font-weight:700;color:var(--text)"><a href="https://www.consultant.ru/document/cons_doc_LAW_53622/" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-decoration-color:var(--scio);text-underline-offset:3px">149-ФЗ ст. 10.2-2 «Рекомендательные технологии»</a></div>
+                <div style="font-size:12px;color:var(--faint);margin-top:2px"><span data-ru="Действует с 2022 · для новостных агрегаторов" data-en="In effect since 2022 · for news aggregators">Действует с 2022 · для новостных агрегаторов</span></div>
+              </div>
+              <div style="font-family:var(--mono);font-size:11px;color:var(--althea);font-weight:700;white-space:nowrap">Not applicable — non-personalised</div>
+            </div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:8px"><span data-ru="Требования к рекомендательным системам (персонализация выдачи на основе ПДн). К новостной ленте и Telegram-боту ALTHEA НЕ применяется: фильтрация источников неперсонализированная — одинакова для всех пользователей, не основана на их персональных данных. Критерии отбора: тематика deep-tech (AMAGI, ALTHEA, Scio, CTC, Industry), раскрыты в команде /about и на странице bot.html." data-en="Requirements for recommender systems (personalisation based on PDn). Does NOT apply to the ALTHEA news feed and Telegram bot: source filtering is non-personalised — identical for all users, not based on their personal data. Selection criteria: deep-tech topics (AMAGI, ALTHEA, Scio, CTC, Industry), disclosed in the /about command and on the bot.html page.">Требования к рекомендательным системам (персонализация выдачи на основе ПДн). К новостной ленте и Telegram-боту ALTHEA НЕ применяется: фильтрация источников неперсонализированная — одинакова для всех пользователей, не основана на их персональных данных. Критерии отбора: тематика deep-tech (AMAGI, ALTHEA, Scio, CTC, Industry), раскрыты в команде /about и на странице bot.html.</span></div>
+            <div style="font-size:12px;color:var(--amagi);margin-top:6px;font-family:var(--mono)"><a href="https://www.consultant.ru/document/cons_doc_LAW_61765/" target="_blank" rel="noopener" style="color:var(--amagi);text-decoration:none">→ Official source: 149-ФЗ</a></div>
+            <div style="font-size:12px;color:var(--scio);margin-top:6px;font-family:var(--mono)"><span data-ru="Disclosed: /about command + bot.html — критерии фильтрации" data-en="Disclosed: /about command + bot.html — filtering criteria">Disclosed: /about command + bot.html — критерии фильтрации</span></div>
+          </div>
+
+          <div style="background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--althea);border-radius:0 10px 10px 0;padding:16px 20px">
+            <div style="display:flex;justify-content:space-between;align-items:start;gap:12px;flex-wrap:wrap">
+              <div style="flex:1;min-width:200px">
+                <div style="font-size:15px;font-weight:700;color:var(--text)"><a href="https://www.consultant.ru/document/cons_doc_LAW_61765/" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-decoration-color:var(--scio);text-underline-offset:3px">149-ФЗ ст. 15.1 «Модерация контента»</a></div>
+                <div style="font-size:12px;color:var(--faint);margin-top:2px"><span data-ru="Действует с 2012 · блокировка запрещённой информации" data-en="In effect since 2012 · blocking of prohibited information">Действует с 2012 · блокировка запрещённой информации</span></div>
+              </div>
+              <div style="font-family:var(--mono);font-size:11px;color:var(--althea);font-weight:700;white-space:nowrap">Compliant — 24h removal SLA</div>
+            </div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:8px"><span data-ru="Запрещённая информация: экстремистские материалы, пропаганда наркотиков, suicide-контент, детская порнография. Автоматическая проверка публикуемых материалов. При поступлении требования от уполномоченных органов материалы удаляются из БД в течение 24 часов. Все публикации логируются (post_log) для возможности последующего аудита." data-en="Prohibited information: extremist materials, drug propaganda, suicide content, child pornography. Automatic verification of published materials. Upon receiving a request from authorised bodies, materials are removed from the DB within 24 hours. All publications are logged (post_log) for subsequent audit.">Запрещённая информация: экстремистские материалы, пропаганда наркотиков, suicide-контент, детская порнография. Автоматическая проверка публикуемых материалов. При поступлении требования от уполномоченных органов материалы удаляются из БД в течение 24 часов. Все публикации логируются (post_log) для возможности последующего аудита.</span></div>
+            <div style="font-size:12px;color:var(--amagi);margin-top:6px;font-family:var(--mono)"><a href="https://www.consultant.ru/document/cons_doc_LAW_61765/" target="_blank" rel="noopener" style="color:var(--amagi);text-decoration:none">→ Official source: 149-ФЗ ст. 15.1</a></div>
+            <div style="font-size:12px;color:var(--scio);margin-top:6px;font-family:var(--mono)">Implementation: keyword filter in fetch_news.php + post_log table in DB</div>
+          </div>
+
+          <div style="background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--althea);border-radius:0 10px 10px 0;padding:16px 20px">
+            <div style="display:flex;justify-content:space-between;align-items:start;gap:12px;flex-wrap:wrap">
+              <div style="flex:1;min-width:200px">
+                <div style="font-size:15px;font-weight:700;color:var(--text)"><a href="https://www.consultant.ru/document/cons_doc_LAW_428516/" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-decoration-color:var(--scio);text-underline-offset:3px">ГК РФ ст. 1274 «Свободное использование произведения»</a></div>
+                <div style="font-size:12px;color:var(--faint);margin-top:2px"><span data-ru="Гражданский кодекс · цитирование в информационных целях" data-en="Civil Code · citation for informational purposes">Гражданский кодекс · цитирование в информационных целях</span></div>
+              </div>
+              <div style="font-family:var(--mono);font-size:11px;color:var(--althea);font-weight:700;white-space:nowrap">Compliant — summary ≤200 chars + link</div>
+            </div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:8px"><span data-ru="Допускается без согласия автора и без выплаты вознаграждения цитирование в информационных целях с обязательным указанием имени автора и источника заимствования. Новостная лента сайта и Telegram-бот цитируют материалы 25 RSS-источников в виде краткого пересказа объёмом до 200 символов со ссылкой на оригинал. Полное воспроизведение материалов не осуществляется." data-en="Citation for informational purposes is permitted without the author's consent and without remuneration, provided the author's name and the source are indicated. The website news feed and Telegram bot cite materials from 25 RSS sources in the form of a brief summary of up to 200 characters with a link to the original. Full reproduction of materials is not carried out.">Допускается без согласия автора и без выплаты вознаграждения цитирование в информационных целях с обязательным указанием имени автора и источника заимствования. Новостная лента сайта и Telegram-бот цитируют материалы 25 RSS-источников в виде краткого пересказа объёмом до 200 символов со ссылкой на оригинал. Полное воспроизведение материалов не осуществляется.</span></div>
+            <div style="font-size:12px;color:var(--amagi);margin-top:6px;font-family:var(--mono)"><a href="https://www.consultant.ru/document/cons_doc_LAW_64627/" target="_blank" rel="noopener" style="color:var(--amagi);text-decoration:none">→ Official source: ст. 1274 ГК РФ</a></div>
+            <div style="font-size:12px;color:var(--scio);margin-top:6px;font-family:var(--mono)">Implementation: summary field in news table (max 200 chars) + url field (link to original)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- International -->
+      <div class="reveal" style="margin-bottom:24px">
+        <div style="font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--ctc);text-transform:uppercase;margin-bottom:10px"><span data-ru="🌐 Международные" data-en="🌐 International">🌐 Международные</span></div>
+        <div style="display:grid;gap:10px">
+          <div style="background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--ctc);border-radius:0 10px 10px 0;padding:16px 20px">
+            <div style="display:flex;justify-content:space-between;align-items:start;gap:12px;flex-wrap:wrap">
+              <div style="flex:1;min-width:200px">
+                <div style="font-size:15px;font-weight:700;color:var(--text)"><a href="https://www.iso.org/standard/42001" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-decoration-color:var(--scio);text-underline-offset:3px">ISO/IEC 42001:2023</a></div>
+                <div style="font-size:12px;color:var(--faint);margin-top:2px">AI Management System Standard · 2023</div>
+              </div>
+              <div style="font-family:var(--mono);font-size:11px;color:var(--althea);font-weight:700;white-space:nowrap">Architecturally aligned</div>
+            </div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:8px"><span data-ru="AI management system standard. Требования к организации для разработки и эксплуатации ИИ-систем." data-en="AI management system standard. Requirements for organizations developing and operating AI systems.">AI management system standard. Требования к организации для разработки и эксплуатации ИИ-систем.</span></div>
+            <div style="font-size:12px;color:var(--amagi);margin-top:6px;font-family:var(--mono)"><a href="https://www.iso.org/standard/42001" target="_blank" rel="noopener" style="color:var(--amagi);text-decoration:none">→ Official source: ISO/IEC 42001</a></div>
+            <div style="font-size:12px;color:var(--scio);margin-top:6px;font-family:var(--mono)">Architecture mapping: 6 invariants as management controls</div>
+          </div>
+
+          <div style="background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--ctc);border-radius:0 10px 10px 0;padding:16px 20px">
+            <div style="display:flex;justify-content:space-between;align-items:start;gap:12px;flex-wrap:wrap">
+              <div style="flex:1;min-width:200px">
+                <div style="font-size:15px;font-weight:700;color:var(--text)"><a href="https://en.wikipedia.org/wiki/Framework_Convention_on_Artificial_Intelligence" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-decoration-color:var(--scio);text-underline-offset:3px">Council of Europe AI Convention</a></div>
+                <div style="font-size:12px;color:var(--faint);margin-top:2px">First international AI treaty · 2024</div>
+              </div>
+              <div style="font-family:var(--mono);font-size:11px;color:var(--althea);font-weight:700;white-space:nowrap">Architecturally aligned</div>
+            </div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:8px"><span data-ru="Первый международный договор по ИИ. Прозрачность, подотчётность, защита прав человека." data-en="First international AI treaty. Transparency, accountability, human rights protection.">Первый международный договор по ИИ. Прозрачность, подотчётность, защита прав человека.</span></div>
+            <div style="font-size:12px;color:var(--amagi);margin-top:6px;font-family:var(--mono)"><a href="https://en.wikipedia.org/wiki/Framework_Convention_on_Artificial_Intelligence" target="_blank" rel="noopener" style="color:var(--amagi);text-decoration:none">→ Official source: CoE Convention</a></div>
+            <div style="font-size:12px;color:var(--scio);margin-top:6px;font-family:var(--mono)">Architecture mapping: INV-002 + INV-006</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02: БУДУЩИЕ ИЗМЕНЕНИЯ -->
+  <section style="padding:30px 0 50px">
+    <div class="wrap" style="max-width:780px">
+      <div class="sec-head reveal" style="--acc:var(--ctc)"><span class="sec-num">02 /</span><h2 data-ru="Будущие изменения" data-en="Upcoming changes">Будущие изменения</h2></div>
+      <p class="reveal" style="font-size:14px;color:var(--faint);margin-bottom:20px;font-family:var(--mono)" data-ru="Что готовится. Даты — ориентировочные." data-en="What is coming. Dates are approximate.">Что готовится. Даты — ориентировочные.</p>
+
+      <div class="reveal" style="display:grid;gap:12px">
+        <div style="background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:16px 20px;display:flex;gap:14px;align-items:start">
+          <div style="font-family:var(--mono);font-size:12px;color:var(--amagi);font-weight:700;min-width:60px">2026</div>
+          <div style="flex:1">
+            <div style="font-size:14px;font-weight:600;color:var(--text)" data-ru="EU AI Act — полное применение" data-en="EU AI Act — full application">EU AI Act — полное применение</div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:4px" data-ru="Все требования к high-risk AI systems становятся обязательными. Штрафы до 7% глобального оборота." data-en="All requirements for high-risk AI systems become mandatory. Fines up to 7% of global turnover.">Все требования к high-risk AI systems становятся обязательными. Штрафы до 7% глобального оборота.</div>
+            <div style="font-size:12px;color:var(--althea);margin-top:6px;font-family:var(--mono)">Architecture mapping: <a href="https://zenodo.org/records/20753400" target="_blank" rel="noopener" style="color:var(--scio);text-decoration:underline">Framework v2.0</a> maps to Annex IV</div>
+          </div>
+        </div>
+
+        <div style="background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:16px 20px;display:flex;gap:14px;align-items:start">
+          <div style="font-family:var(--mono);font-size:12px;color:var(--amagi);font-weight:700;min-width:60px">2025-26</div>
+          <div style="flex:1">
+            <div style="font-size:14px;font-weight:600;color:var(--text)" data-ru="EU AI Liability Directive" data-en="EU AI Liability Directive">EU AI Liability Directive</div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:4px" data-ru="Presumption of causation for AI-related harm. Обратное бремя доказательства для поставщиков ИИ." data-en="Presumption of causation for AI-related harm. Reversed burden of proof for AI providers.">Presumption of causation for AI-related harm. Обратное бремя доказательства для поставщиков ИИ.</div>
+            <div style="font-size:12px;color:var(--althea);margin-top:6px;font-family:var(--mono)">Architecture mapping: INV-002 — deterministic audit trail</div>
+          </div>
+        </div>
+
+        <div style="background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:16px 20px;display:flex;gap:14px;align-items:start">
+          <div style="font-family:var(--mono);font-size:12px;color:var(--scio);font-weight:700;min-width:60px">2026-27</div>
+          <div style="flex:1">
+            <div style="font-size:14px;font-weight:600;color:var(--text)" data-ru="Регулирование генеративного ИИ в РФ" data-en="Generative AI regulation in Russia">Регулирование генеративного ИИ в РФ</div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:4px" data-ru="Ожидается законопроект о маркировке контента, созданного ИИ. Требования к deepfake-детекции." data-en="Expected bill on labeling AI-generated content. Requirements for deepfake detection.">Ожидается законопроект о маркировке контента, созданного ИИ. Требования к deepfake-детекции.</div>
+            <div style="font-size:12px;color:var(--althea);margin-top:6px;font-family:var(--mono)">Scio: 4 инварианта SCIO-APL — готовность к mandatory deepfake detection</div>
+          </div>
+        </div>
+
+        <div style="background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:16px 20px;display:flex;gap:14px;align-items:start">
+          <div style="font-family:var(--mono);font-size:12px;color:var(--ctc);font-weight:700;min-width:60px">2027+</div>
+          <div style="flex:1">
+            <div style="font-size:14px;font-weight:600;color:var(--text)" data-ru="ISO/IEC 42001 — сертификация становится стандартом" data-en="ISO/IEC 42001 — certification becomes standard">ISO/IEC 42001 — сертификация становится стандартом</div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:4px" data-ru="Как ISO 27001 для информбезопасности, ISO 42001 станет ожидаемым для ИИ-компаний." data-en="Like ISO 27001 for infosec, ISO 42001 will become expected for AI companies.">Как ISO 27001 для информбезопасности, ISO 42001 станет ожидаемым для ИИ-компаний.</div>
+            <div style="font-size:12px;color:var(--althea);margin-top:6px;font-family:var(--mono)">AMAGI: architectural invariants = management controls mapping complete</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03: КАК AMAGI ЗАКРЫВАЕТ ТРЕБОВАНИЯ -->
+  <section style="padding:30px 0 50px">
+    <div class="wrap" style="max-width:780px">
+      <div class="sec-head reveal" style="--acc:var(--amagi)"><span class="sec-num">03 /</span><h2 data-ru="Как AMAGI отображает требования" data-en="How AMAGI Maps Regulatory Requirements">Как AMAGI отображает требования</h2></div>
+
+      <div class="reveal" style="background:var(--s2);border:1px solid var(--line2);border-radius:10px;padding:16px 20px;margin-bottom:16px">
+          <div style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--faint);text-transform:uppercase;margin-bottom:10px" data-ru="Статусы соответствия" data-en="Compliance status legend">Статусы соответствия</div>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:12px;color:var(--muted);line-height:1.6">
+            <div style="display:flex;gap:10px;align-items:start"><span style="color:var(--scio);font-family:var(--mono);font-weight:700;white-space:nowrap;min-width:110px;flex-shrink:0;word-break:break-word">Arch Mapping</span><span data-ru="Требования отражены в архитектуре AMAGI. Не означает сертификацию." data-en="Requirements are mapped to AMAGI architecture. Does not imply certification.">Требования отражены в архитектуре AMAGI. <b>Не означает сертификацию.</b></span></div>
+            <div style="display:flex;gap:10px;align-items:start"><span style="color:var(--althea);font-family:var(--mono);font-weight:700;white-space:nowrap;min-width:110px;flex-shrink:0;word-break:break-word">Architecturally aligned</span><span data-ru="Архитектура реализует механизмы, соответствующие требованиям. Не означает сертификацию." data-en="Architecture implements mechanisms aligned with requirements. Does not imply certification.">Архитектура реализует механизмы, соответствующие требованиям. <b>Не означает сертификацию.</b></span></div>
+            <div style="display:flex;gap:10px;align-items:start"><span style="color:var(--amagi);font-family:var(--mono);font-weight:700;white-space:nowrap;min-width:110px;flex-shrink:0;word-break:break-word">Certification pending</span><span data-ru="Сертификация конкретной реализации находится в процессе." data-en="Certification of a specific implementation is in progress.">Сертификация конкретной реализации находится в процессе.</span></div>
+          </div>
+        </div>
+        <div class="reveal" style="background:var(--s1);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:20px">
+        <div style="display:grid;gap:10px;margin-bottom:20px">
+          <div style="display:grid;grid-template-columns:1fr;gap:8px">
+            <div style="background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--amagi);border-radius:0 10px 10px 0;padding:12px 16px">
+              <div style="display:flex;justify-content:space-between;align-items:start;gap:8px;flex-wrap:wrap">
+                <div style="font-size:12px;color:var(--muted);flex:1;min-width:140px" data-ru="Система управления рисками" data-en="Risk management system">Risk management system</div>
+                <div style="font-size:11px;color:var(--amagi);font-family:var(--mono);font-weight:600"><a href="architecture.html" style="color:var(--amagi);text-decoration:underline">INV-001</a> Single-Core Determinism</div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px">
+                <a href="https://zenodo.org/records/20753400" target="_blank" rel="noopener" style="font-size:11px;color:var(--text);text-decoration:underline;font-family:var(--mono)">Framework v2.0</a>
+                <span style="font-size:10px;color:var(--althea);font-family:var(--mono);font-weight:700">Arch Mapping</span>
+              </div>
+            </div>
+
+            <div style="background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--amagi);border-radius:0 10px 10px 0;padding:12px 16px">
+              <div style="display:flex;justify-content:space-between;align-items:start;gap:8px;flex-wrap:wrap">
+                <div style="font-size:12px;color:var(--muted);flex:1;min-width:140px" data-ru="Data governance" data-en="Data governance">Data governance</div>
+                <div style="font-size:11px;color:var(--amagi);font-family:var(--mono);font-weight:600"><a href="architecture.html" style="color:var(--amagi);text-decoration:underline">INV-004</a> Memory Partitioning</div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px">
+                <a href="https://zenodo.org/records/20753402" target="_blank" rel="noopener" style="font-size:11px;color:var(--text);text-decoration:underline;font-family:var(--mono)">MEM v1.1</a>
+                <span style="font-size:10px;color:var(--althea);font-family:var(--mono);font-weight:700">Arch Mapping</span>
+              </div>
+            </div>
+
+            <div style="background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--amagi);border-radius:0 10px 10px 0;padding:12px 16px">
+              <div style="display:flex;justify-content:space-between;align-items:start;gap:8px;flex-wrap:wrap">
+                <div style="font-size:12px;color:var(--muted);flex:1;min-width:140px" data-ru="Transparency / audit log" data-en="Transparency / audit log">Transparency / audit log</div>
+                <div style="font-size:11px;color:var(--amagi);font-family:var(--mono);font-weight:600"><a href="architecture.html" style="color:var(--amagi);text-decoration:underline">INV-002</a> Hardware-Enforced TTP</div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px">
+                <a href="https://zenodo.org/records/20753400" target="_blank" rel="noopener" style="font-size:11px;color:var(--text);text-decoration:underline;font-family:var(--mono)">Framework v2.0</a>
+                <span style="font-size:10px;color:var(--althea);font-family:var(--mono);font-weight:700">Arch Mapping</span>
+              </div>
+            </div>
+
+            <div style="background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--amagi);border-radius:0 10px 10px 0;padding:12px 16px">
+              <div style="display:flex;justify-content:space-between;align-items:start;gap:8px;flex-wrap:wrap">
+                <div style="font-size:12px;color:var(--muted);flex:1;min-width:140px" data-ru="Human oversight" data-en="Human oversight">Human oversight</div>
+                <div style="font-size:11px;color:var(--amagi);font-family:var(--mono);font-weight:600"><a href="architecture.html" style="color:var(--amagi);text-decoration:underline">INV-003</a> Dual-Tier Trust Model</div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px">
+                <a href="https://zenodo.org/records/20753401" target="_blank" rel="noopener" style="font-size:11px;color:var(--text);text-decoration:underline;font-family:var(--mono)">NIPU v1.1</a>
+                <span style="font-size:10px;color:var(--althea);font-family:var(--mono);font-weight:700">Arch Mapping</span>
+              </div>
+            </div>
+
+            <div style="background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--amagi);border-radius:0 10px 10px 0;padding:12px 16px">
+              <div style="display:flex;justify-content:space-between;align-items:start;gap:8px;flex-wrap:wrap">
+                <div style="font-size:12px;color:var(--muted);flex:1;min-width:140px" data-ru="Robustness / security" data-en="Robustness / security">Robustness / security</div>
+                <div style="font-size:11px;color:var(--amagi);font-family:var(--mono);font-weight:600"><a href="architecture.html" style="color:var(--amagi);text-decoration:underline">INV-005</a> Crypto Determinism</div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px">
+                <a href="https://zenodo.org/records/20753400" target="_blank" rel="noopener" style="font-size:11px;color:var(--text);text-decoration:underline;font-family:var(--mono)">Framework v2.0</a>
+                <span style="font-size:10px;color:var(--althea);font-family:var(--mono);font-weight:700">Arch Mapping</span>
+              </div>
+            </div>
+
+            <div style="background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--amagi);border-radius:0 10px 10px 0;padding:12px 16px">
+              <div style="display:flex;justify-content:space-between;align-items:start;gap:8px;flex-wrap:wrap">
+                <div style="font-size:12px;color:var(--muted);flex:1;min-width:140px" data-ru="Безопасное отключение при отказе" data-en="Safe shutdown on failure">Safe shutdown on failure</div>
+                <div style="font-size:11px;color:var(--amagi);font-family:var(--mono);font-weight:600"><a href="architecture.html" style="color:var(--amagi);text-decoration:underline">INV-006</a> Provable Shutdown</div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px">
+                <a href="https://zenodo.org/records/20753402" target="_blank" rel="noopener" style="font-size:11px;color:var(--text);text-decoration:underline;font-family:var(--mono)">MEM v1.1</a>
+                <span style="font-size:10px;color:var(--althea);font-family:var(--mono);font-weight:700">Arch Mapping</span>
+              </div>
+            </div>
+
+            <div style="background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--amagi);border-radius:0 10px 10px 0;padding:12px 16px">
+              <div style="display:flex;justify-content:space-between;align-items:start;gap:8px;flex-wrap:wrap">
+                <div style="font-size:12px;color:var(--muted);flex:1;min-width:140px" data-ru="Formal verification" data-en="Formal verification">Formal verification</div>
+                <div style="font-size:11px;color:var(--amagi);font-family:var(--mono);font-weight:600">TCB &le; 500 строк HDL</div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px">
+                <a href="https://zenodo.org/records/20753403" target="_blank" rel="noopener" style="font-size:11px;color:var(--text);text-decoration:underline;font-family:var(--mono)">Open Spec v1.1</a>
+                <span style="font-size:10px;color:var(--althea);font-family:var(--mono);font-weight:700">Arch Mapping</span>
+              </div>
+            </div>
+
+            <div style="background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--amagi);border-radius:0 10px 10px 0;padding:12px 16px">
+              <div style="display:flex;justify-content:space-between;align-items:start;gap:8px;flex-wrap:wrap">
+                <div style="font-size:12px;color:var(--muted);flex:1;min-width:140px" data-ru="Functional safety (SIL2/SIL3)" data-en="Functional safety (SIL2/SIL3)">Functional safety (SIL2/SIL3)</div>
+                <div style="font-size:11px;color:var(--amagi);font-family:var(--mono);font-weight:600">PFD=6.9&times;10&#8315;&#8309; / 6.9&times;10&#8315;&#8310;</div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px">
+                <a href="https://zenodo.org/records/20753410" target="_blank" rel="noopener" style="font-size:11px;color:var(--text);text-decoration:underline;font-family:var(--mono)">FMEDA v1.0</a>
+                <span style="font-size:10px;color:var(--althea);font-family:var(--mono);font-weight:700">Arch Mapping</span>
+              </div>
+            </div>
+
+            <div style="background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--amagi);border-radius:0 10px 10px 0;padding:12px 16px">
+              <div style="display:flex;justify-content:space-between;align-items:start;gap:8px;flex-wrap:wrap">
+                <div style="font-size:12px;color:var(--muted);flex:1;min-width:140px" data-ru="Hazard analysis" data-en="Hazard analysis">Hazard analysis</div>
+                <div style="font-size:11px;color:var(--amagi);font-family:var(--mono);font-weight:600">HARA: H-01 &ndash; H-08</div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px">
+                <a href="https://zenodo.org/records/20753408" target="_blank" rel="noopener" style="font-size:11px;color:var(--text);text-decoration:underline;font-family:var(--mono)">HARA v1.0</a>
+                <span style="font-size:10px;color:var(--althea);font-family:var(--mono);font-weight:700">Arch Mapping</span>
+              </div>
+            </div>
+
+            <div style="background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--amagi);border-radius:0 10px 10px 0;padding:12px 16px">
+              <div style="display:flex;justify-content:space-between;align-items:start;gap:8px;flex-wrap:wrap">
+                <div style="font-size:12px;color:var(--muted);flex:1;min-width:140px" data-ru="Export control" data-en="Export control">Export control</div>
+                <div style="font-size:11px;color:var(--amagi);font-family:var(--mono);font-weight:600">Wassenaar Arrangement</div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px">
+                <a href="https://zenodo.org/records/20753406" target="_blank" rel="noopener" style="font-size:11px;color:var(--text);text-decoration:underline;font-family:var(--mono)">S-APL v2.0</a>
+                <span style="font-size:10px;color:var(--althea);font-family:var(--mono);font-weight:700">Arch Mapping</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="reveal" style="font-size:12px;color:var(--faint);font-style:italic;margin-top:12px" data-ru="Все соответствия подтверждены в AMAGI документах на Zenodo. Каждая ссылка DOI ведёт на оригинальный документ." data-en="All mappings are documented in AMAGI Zenodo publications. Each DOI link leads to the original document."><span data-ru="Все соответствия подтверждены в AMAGI документах на Zenodo. Каждая ссылка DOI ведёт на оригинальный документ." data-en="All mappings are documented in AMAGI Zenodo publications. Each DOI link leads to the original document.">Все соответствия подтверждены в AMAGI документах на Zenodo. Каждая ссылка DOI ведёт на оригинальный документ.</span></p>
+    </div>
+  </section>
+
+  <!-- 04: СТАНДАРТЫ И СЕРТИФИКАЦИЯ -->
+  <section style="padding:30px 0 50px">
+    <div class="wrap" style="max-width:780px">
+      <div class="sec-head reveal" style="--acc:var(--althea)"><span class="sec-num">04 /</span><h2 data-ru="Стандарты и сертификация" data-en="Standards and certification">Стандарты и сертификация</h2></div>
+
+      <div>
+        <div style="font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--amagi);text-transform:uppercase;margin-bottom:10px" data-ru="Архитектурные цели" data-en="Architectural Targets">Архитектурные цели</div>
+        <div class="reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+          <div style="background:var(--s1);border:1px solid var(--line);border-top:3px solid var(--amagi);border-radius:0 0 10px 10px;padding:16px 18px"><div style="font-size:13px;font-weight:700;color:var(--amagi);margin-bottom:6px"><a href="https://www.iso.org/standard/50341.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px">ISO/IEC 15408</a></div><div style="font-size:12px;color:var(--muted);line-height:1.5">Common Criteria · EAL4+ baseline</div><div style="font-size:10px;color:var(--scio);margin-top:6px;font-family:var(--mono)"><a href="https://zenodo.org/records/20753400" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline">Framework v2.0</a></div></div>
+          <div style="background:var(--s1);border:1px solid var(--line);border-top:3px solid var(--althea);border-radius:0 0 10px 10px;padding:16px 18px"><div style="font-size:13px;font-weight:700;color:var(--althea);margin-bottom:6px"><a href="https://webstore.iec.ch/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px">IEC 61508</a></div><div style="font-size:12px;color:var(--muted);line-height:1.5">SIL2/SIL3 · PFD=6.9×10⁻⁵ / 6.9×10⁻⁶</div><div style="font-size:10px;color:var(--scio);margin-top:6px;font-family:var(--mono)"><a href="https://zenodo.org/records/20753410" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline">FMEDA v1.0</a></div></div>
+          <div style="background:var(--s1);border:1px solid var(--line);border-top:3px solid var(--scio);border-radius:0 0 10px 10px;padding:16px 18px"><div style="font-size:13px;font-weight:700;color:var(--scio);margin-bottom:6px"><a href="https://www.iso.org/standard/70918.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px">ISO/SAE 21434</a></div><div style="font-size:12px;color:var(--muted);line-height:1.5">Automotive CPS cybersecurity</div><div style="font-size:10px;color:var(--scio);margin-top:6px;font-family:var(--mono)"><a href="https://zenodo.org/records/20753400" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline">Framework v2.0</a></div></div>
+          <div style="background:var(--s1);border:1px solid var(--line);border-top:3px solid var(--amagi);border-radius:0 0 10px 10px;padding:16px 18px"><div style="font-size:13px;font-weight:700;color:var(--amagi);margin-bottom:6px"><a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px">NIST AI RMF</a></div><div style="font-size:12px;color:var(--muted);line-height:1.5">Govern, Map, Measure, Manage</div><div style="font-size:10px;color:var(--scio);margin-top:6px;font-family:var(--mono)">Profile v1.1</div></div>
+          <div style="background:var(--s1);border:1px solid var(--line);border-top:3px solid var(--althea);border-radius:0 0 10px 10px;padding:16px 18px"><div style="font-size:13px;font-weight:700;color:var(--althea);margin-bottom:6px"><a href="https://www.fda.gov/medical-devices/premarket-submissions/premarket-approval-pma" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px">FDA PCCP</a></div><div style="font-size:12px;color:var(--muted);line-height:1.5">Pre-market Certifiable Change Package</div><div style="font-size:10px;color:var(--scio);margin-top:6px;font-family:var(--mono)"><a href="https://zenodo.org/records/20753402" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline">MEM v1.1</a></div></div>
+          <div style="background:var(--s1);border:1px solid var(--line);border-top:3px solid var(--ctc);border-radius:0 0 10px 10px;padding:16px 18px"><div style="font-size:13px;font-weight:700;color:var(--ctc);margin-bottom:6px"><a href="https://www.wassenaar.org/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px">Wassenaar</a></div><div style="font-size:12px;color:var(--muted);line-height:1.5">Dual-use export control</div><div style="font-size:10px;color:var(--scio);margin-top:6px;font-family:var(--mono)"><a href="https://zenodo.org/records/20753406" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline">S-APL v2.0</a></div></div>
+        </div>
+      </div>
+
+      <div class="reveal" style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.2);border-radius:12px;padding:20px 24px;margin-top:16px">
+        <div style="font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--ctc);text-transform:uppercase;margin-bottom:10px" data-ru="Сертификация реализаций" data-en="Implementation Certification">Сертификация реализаций</div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.7;margin:0"><span data-ru="Сертификация относится к индивидуальным AMAGI-реализациям и проводится для целевой платформы и конкретного применения." data-en="Certification applies to individual AMAGI implementations and is performed for the target platform and intended application.">Сертификация относится к индивидуальным AMAGI-реализациям и проводится для целевой платформы и конкретного применения.</span> <b data-ru="Reference architecture сама по себе не сертифицируется" data-en="The reference architecture itself is not certified">Reference architecture сама по себе не сертифицируется</b> <span data-ru="— сертифицируется продукт, построенный по этой архитектуре." data-en="— the product built according to this architecture is certified.">— сертифицируется продукт, построенный по этой архитектуре.</span></p>
+      </div>>
+
+      <div class="reveal" style="background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:20px 24px">
+        <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:12px" data-ru="Сертификационные уровни S-APL v2.0" data-en="S-APL v2.0 certification tiers" data-ru="Сертификационные уровни S-APL v2.0" data-en="S-APL v2.0 certification tiers">Сертификационные уровни S-APL v2.0</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px">
+          <div style="background:var(--s2);border:1px solid var(--line2);border-radius:8px;padding:12px 14px"><div style="font-family:var(--mono);font-size:11px;color:var(--amagi);font-weight:700;margin-bottom:4px">TIER 1</div><div style="font-size:12px;color:var(--muted)">Reference Implementation</div></div>
+          <div style="background:var(--s2);border:1px solid var(--line2);border-radius:8px;padding:12px 14px"><div style="font-family:var(--mono);font-size:11px;color:var(--amagi);font-weight:700;margin-bottom:4px">TIER 2-4</div><div style="font-size:12px;color:var(--muted)" data-ru="Промежуточные" data-en="Intermediate">Промежуточные</div></div>
+          <div style="background:var(--s2);border:1px solid var(--line2);border-radius:8px;padding:12px 14px"><div style="font-family:var(--mono);font-size:11px;color:var(--amagi);font-weight:700;margin-bottom:4px">TIER 5</div><div style="font-size:12px;color:var(--muted)">DALA derivative</div></div>
+          <div style="background:var(--s2);border:1px solid var(--line2);border-radius:8px;padding:12px 14px"><div style="font-family:var(--mono);font-size:11px;color:var(--amagi);font-weight:700;margin-bottom:4px">TIER 6</div><div style="font-size:12px;color:var(--muted)">Third-party licensed</div></div>
+        </div>
+        <div style="font-size:12px;color:var(--faint);margin-top:12px;font-style:italic" data-ru="Все Tiers требуют сохранения 6 инвариантов. Reduced Assurance Mode (5/6 invariants) — under explicit waiver." data-en="All tiers require preservation of 6 invariants. Reduced Assurance Mode (5/6 invariants) — under explicit waiver."><span data-ru="Все Tiers требуют сохранения 6 инвариантов. Reduced Assurance Mode (5/6 invariants) — under explicit waiver." data-en="All tiers require preservation of 6 invariants. Reduced Assurance Mode (5/6 invariants) — under explicit waiver.">Все Tiers требуют сохранения 6 инвариантов. Reduced Assurance Mode (5/6 invariants) — under explicit waiver.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05: ИСТОЧНИКИ -->
+  <section style="padding:30px 0 80px">
+    <div class="wrap" style="max-width:780px">
+      <div class="sec-head reveal" style="--acc:var(--scio)"><span class="sec-num">05 /</span><h2 data-ru="Источники" data-en="Sources">Источники</h2></div>
+      <div class="reveal" style="background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:20px 24px">
+        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:12px" data-ru="Документы AMAGI на Zenodo (все с DOI)" data-en="AMAGI documents on Zenodo (all with DOI)">Документы AMAGI на Zenodo (все с DOI)</div>
+        <div style="display:grid;gap:8px">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:6px 0;border-bottom:1px solid var(--line)"><a href="https://zenodo.org/records/20753400" target="_blank" rel="noopener" style="font-size:12px;color:var(--text);text-decoration:none;font-family:var(--mono)">Framework v2.0</a><a href="https://doi.org/10.5281/zenodo.20753400" target="_blank" rel="noopener" style="font-size:11px;color:var(--scio);text-decoration:none">DOI: 10.5281/zenodo.20753400 →</a></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:6px 0;border-bottom:1px solid var(--line)"><a href="https://zenodo.org/records/20753401" target="_blank" rel="noopener" style="font-size:12px;color:var(--text);text-decoration:none;font-family:var(--mono)">NIPU v1.1</a><a href="https://doi.org/10.5281/zenodo.20753401" target="_blank" rel="noopener" style="font-size:11px;color:var(--scio);text-decoration:none">DOI: 10.5281/zenodo.20753401 →</a></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:6px 0;border-bottom:1px solid var(--line)"><a href="https://zenodo.org/records/20753402" target="_blank" rel="noopener" style="font-size:12px;color:var(--text);text-decoration:none;font-family:var(--mono)">MEM v1.1</a><a href="https://doi.org/10.5281/zenodo.20753402" target="_blank" rel="noopener" style="font-size:11px;color:var(--scio);text-decoration:none">DOI: 10.5281/zenodo.20753402 →</a></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:6px 0;border-bottom:1px solid var(--line)"><a href="https://zenodo.org/records/20753403" target="_blank" rel="noopener" style="font-size:12px;color:var(--text);text-decoration:none;font-family:var(--mono)">Open Specification v1.1</a><a href="https://doi.org/10.5281/zenodo.20753403" target="_blank" rel="noopener" style="font-size:11px;color:var(--scio);text-decoration:none">DOI: 10.5281/zenodo.20753403 →</a></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:6px 0;border-bottom:1px solid var(--line)"><a href="https://zenodo.org/records/20145198" target="_blank" rel="noopener" style="font-size:12px;color:var(--text);text-decoration:none;font-family:var(--mono)">Architectural Class Definition v1.1</a><a href="https://doi.org/10.5281/zenodo.20145198" target="_blank" rel="noopener" style="font-size:11px;color:var(--scio);text-decoration:none">DOI: 10.5281/zenodo.20145198 →</a></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:6px 0;border-bottom:1px solid var(--line)"><a href="https://zenodo.org/records/20753406" target="_blank" rel="noopener" style="font-size:12px;color:var(--text);text-decoration:none;font-family:var(--mono)">S-APL v2.0</a><a href="https://doi.org/10.5281/zenodo.20753406" target="_blank" rel="noopener" style="font-size:11px;color:var(--scio);text-decoration:none">DOI: 10.5281/zenodo.20753406 →</a></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:6px 0;border-bottom:1px solid var(--line)"><a href="https://zenodo.org/records/20753408" target="_blank" rel="noopener" style="font-size:12px;color:var(--text);text-decoration:none;font-family:var(--mono)">HARA v1.0</a><a href="https://doi.org/10.5281/zenodo.20753408" target="_blank" rel="noopener" style="font-size:11px;color:var(--scio);text-decoration:none">DOI: 10.5281/zenodo.20753408 →</a></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:6px 0;border-bottom:1px solid var(--line)"><a href="https://zenodo.org/records/20753410" target="_blank" rel="noopener" style="font-size:12px;color:var(--text);text-decoration:none;font-family:var(--mono)">FMEDA v1.0</a><a href="https://doi.org/10.5281/zenodo.20753410" target="_blank" rel="noopener" style="font-size:11px;color:var(--scio);text-decoration:none">DOI: 10.5281/zenodo.20753410 →</a></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:6px 0"><a href="https://zenodo.org/records/20753872" target="_blank" rel="noopener" style="font-size:12px;color:var(--text);text-decoration:none;font-family:var(--mono)">AGIAM Charter v1.2</a><a href="https://doi.org/10.5281/zenodo.20753872" target="_blank" rel="noopener" style="font-size:11px;color:var(--scio);text-decoration:none">DOI: 10.5281/zenodo.20753872 →</a></div>
+        </div></div>
+        <div style="margin-top:18px;padding-top:14px;border-top:1px solid var(--line)">
+          <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:10px" data-ru="Оригиналы стандартов и законов" data-en="Original standards" data-ru="Оригиналы стандартов и законов" data-en="Original standards and laws">Оригиналы стандартов и законов</div>
+          <div style="display:grid;gap:6px">
+            <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" target="_blank" rel="noopener" style="font-size:12px;color:var(--scio);text-decoration:none;font-family:var(--mono);padding:4px 0">→ EUR-Lex · EU AI Act (Regulation 2024/1689)</a>
+            <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener" style="font-size:12px;color:var(--scio);text-decoration:none;font-family:var(--mono);padding:4px 0">→ NIST · AI RMF 1.0</a>
+            <a href="https://www.iec.ch/homepage" target="_blank" rel="noopener" style="font-size:12px;color:var(--scio);text-decoration:none;font-family:var(--mono);padding:4px 0">→ IEC · 61508 Functional Safety</a>
+            <a href="https://www.iso.org/standard/42001" target="_blank" rel="noopener" style="font-size:12px;color:var(--scio);text-decoration:none;font-family:var(--mono);padding:4px 0">→ ISO/IEC · 42001 AI Management</a>
+            <a href="https://www.wassenaar.org/" target="_blank" rel="noopener" style="font-size:12px;color:var(--scio);text-decoration:none;font-family:var(--mono);padding:4px 0">→ Wassenaar Arrangement</a>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:11px;color:var(--faint);line-height:1.6;text-align:center;max-width:70ch;margin:16px auto 0" data-ru="Информация на этой странице не является юридической консультацией. Соответствие стандартам подтверждено в AMAGI документах на Zenodo. Сертификация относится к будущим AMAGI-реализациям, а не к reference architecture как таковой." data-en="Information on this page is not legal advice. Compliance with standards is documented in AMAGI Zenodo publications. Certification applies to future AMAGI implementations, not to the reference architecture itself.">Информация на этой странице не является юридической консультацией. Соответствие стандартам подтверждено в AMAGI документах на Zenodo. Сертификация относится к будущим AMAGI-реализациям, а не к reference architecture как таковой.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col foot-brand">
+        <a href="index.html" class="brand"><span class="mark">А</span><span><b data-ru="АЛТЕЯ" data-en="ALTHEA">АЛТЕЯ</b></span></a>
+        <p data-ru="Исследовательская ИТ-компания. Аппаратная безопасность ИИ, прецизионная биоинженерия, форензика медиа." data-en="Research IT company. Hardware AI safety, precision bioengineering, media forensics.">Исследовательская ИТ-компания. Аппаратная безопасность ИИ, прецизионная биоинженерия, форензика медиа.</p>
+        <div style="margin-bottom:14px"><a href="https://t.me/ALTHEA_Research_Briefbot" target="_blank" rel="noopener"><img src="/assets/qr_bot.png" width="80" height="80" alt="QR: Telegram бот" style="border-radius:8px;border:1px solid var(--line2)" loading="lazy"></a><div style="font-family:var(--mono);font-size:9px;color:var(--faint);margin-top:4px" data-ru="Наведите камеру" data-en="Scan to chat">Наведите камеру</div></div>
+        <div class="socials">
+          <a class="plnk" href="https://orcid.org/0009-0001-4679-5967" target="_blank" rel="noopener">ORCID</a>
+          <a class="plnk" href="https://github.com/AGIAMTech/Amagi-framework" target="_blank" rel="noopener">GitHub</a>
+          <a class="plnk" href="https://zenodo.org/search?q=metadata.creators.person_or_org.name:%22Alexey%20Mikhailovich%20Burlai%22" target="_blank" rel="noopener">Zenodo</a>
+          <a class="plnk" href="https://scholar.google.com/citations?user=6Tsd3-wAAAAJ" target="_blank" rel="noopener">Scholar</a>
+          <a class="plnk" href="https://t.me/+RxBThUTB0rQzNGQy" target="_blank" rel="noopener" style="background:rgba(76,195,232,.12);color:var(--scio);border-color:rgba(76,195,232,.3)">Telegram</a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5 data-ru="Продукты" data-en="Products">Продукты</h5>
+        <a href="architecture.html">AMAGI</a>
+        <a href="althea.html">ALTHEA / CRISPR-TTP</a>
+        <a href="scio.html">Scio</a>
+        <a href="ctc.html">CTC</a>
+        <a href="bot.html" data-ru="Research Brief" data-en="Research Brief">Research Brief</a>
+      </div>
+      <div class="foot-col">
+        <h5 data-ru="Компания" data-en="Company">Компания</h5>
+        <a href="ai-engineering.html" data-ru="ИИ-инженерия" data-en="AI Engineering">ИИ-инженерия</a>
+        <a href="philosophy.html" data-ru="Философия" data-en="Philosophy">Философия</a>
+        <a href="vision.html" data-ru="Видение" data-en="Vision">Видение</a>
+        <a href="science.html" data-ru="Наука" data-en="Research">Наука</a>
+        <a href="team.html" data-ru="Команда" data-en="Team">Команда</a>
+        <a href="news.html" data-ru="Новости" data-en="News">Новости</a>
+        <a href="faq.html" data-ru="FAQ" data-en="FAQ">FAQ</a>
+        <a href="regulations.html" data-ru="Регуляторы и законы" data-en="Regulations & Laws">Регуляторы и законы</a>
+        <a href="minzdrav-letter.html" data-ru="Заключение Минздрава" data-en="Minzdrav conclusion">Заключение Минздрава</a>
+        <a href="services.html" data-ru="Услуги" data-en="Services">Услуги</a>
+        <a href="outstaffing.html" data-ru="Аутсорсинг" data-en="Outstaffing">Аутсорсинг</a>
+        <a href="careers.html" data-ru="Вакансии" data-en="Careers">Вакансии</a>
+        <a href="index.html#contact-section" data-ru="Контакты" data-en="Contacts">Контакты</a>
+      </div>
+      <div class="foot-col">
+        <h5 data-ru="Правовое" data-en="Legal">Правовое</h5>
+        <a href="policy.html" data-ru="Политика ПДн" data-en="Privacy Policy">Политика ПДн</a>
+        <a href="terms.html" data-ru="Соглашение" data-en="Terms of Use">Соглашение</a>
+        <a href="legal.html" data-ru="Правовая оговорка" data-en="Legal disclaimer">Правовая оговорка</a>
+        <a href="oferta.html" data-ru="Оферта" data-en="Offer">Оферта</a>
+        <a href="consent.html" data-ru="Согласие на резюме" data-en="CV Consent">Согласие на резюме</a>
+        <a href="mailto:altea_ltd@mail.ru">altea_ltd@mail.ru</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div class="foot-legal">
+        <span data-ru="© 2026 ООО «АЛТЕЯ» · ИНН 4217214140 · ОГРН 1264200000900" data-en="© 2026 Althea LLC · INN 4217214140 · OGRN 1264200000900">© 2026 ООО «АЛТЕЯ» · ИНН 4217214140 · ОГРН 1264200000900</span>
+        <br>
+        <span data-ru="654027, Кемеровская обл. — Кузбасс, г. Новокузнецк, ул. Кирова, 6А, кв. 8" data-en="654027, Kemerovo Region — Kuzbass, Novokuznetsk, Kirova St., 6A, apt. 8, Russia">654027, Кемеровская обл. — Кузбасс, г. Новокузнецк, ул. Кирова, 6А, кв. 8</span>
+      </div>
+      <div class="foot-legal" style="text-align:right">
+        <span data-ru="Возрастная маркировка: 0+ · 436-ФЗ" data-en="Age rating: 0+ · FZ-436">Возрастная маркировка: 0+ · 436-ФЗ</span><br>
+        <span data-ru="Оператор ПДн № 100364324 · 152-ФЗ" data-en="PDn operator No. 100364324 · FZ-152">Оператор ПДн № 100364324 · 152-ФЗ</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function setLang(l){
+  document.documentElement.lang=l==='ru'?'ru':'en';
+  document.body.classList.add('fade-lang');
+  const other=l==='ru'?'en':'ru';
+  document.querySelectorAll('[data-ru]').forEach(el=>{
+    const v=el.getAttribute('data-'+l);
+    if(v===null)return;
+    const hasOwnDataChildren=Array.from(el.children).some(c=>c.hasAttribute('data-ru')||c.querySelector('[data-ru]'));
+    if(hasOwnDataChildren){el.innerHTML=v;}else{el.innerHTML=v;}
+  });
+  document.getElementById('btn-ru').classList.toggle('on',l==='ru');
+  document.getElementById('btn-en').classList.toggle('on',l==='en');
+  try{localStorage.setItem('lang',l);}catch(e){}
+  setTimeout(()=>document.body.classList.remove('fade-lang'),180);
+  if(typeof window._onLangChange==='function'){try{window._onLangChange(l);}catch(e){}}
+}
+(function(){try{let l='ru';try{l=localStorage.getItem('lang')||'ru';}catch(e){}setLang(l);}catch(err){console.error('[setLang] error:',err);document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});}})();
+function acceptCookies(){try{localStorage.setItem('cookies','accepted');}catch(e){}document.getElementById('cookies').classList.remove('show');}
+function declineCookies(){try{localStorage.setItem('cookies','declined');}catch(e){}document.getElementById('cookies').classList.remove('show');}
+(function(){var c=null;try{c=localStorage.getItem('cookies');}catch(e){}if(!c){setTimeout(function(){document.getElementById('cookies').classList.add('show');},800);}})();
+const burger=document.getElementById('burger');
+const menu=document.getElementById('menu');
+if(burger)burger.addEventListener('click',function(){menu.classList.toggle('open');burger.classList.toggle('open');});
+const io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+</script>
+
+<script>
+(function(){
+  var toggle=document.getElementById('themeToggle');
+  if(!toggle)return;
+  var meta=document.querySelector('meta[name="theme-color"]');
+  function syncMeta(t){if(meta){meta.setAttribute('content',t==='light'?'#f5f7fb':'#0b1424');}}
+  syncMeta(document.documentElement.getAttribute('data-theme')||'dark');
+  toggle.addEventListener('click',function(){
+    var cur=document.documentElement.getAttribute('data-theme')||'dark';
+    var next=cur==='dark'?'light':'dark';
+    document.documentElement.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next);}catch(e){}
+    syncMeta(next);
+  });
+})();
+</script>
+<script src="/assets/js/premium-v7.js" defer></script>
+<script>
+(function(){
+  try{
+    var data={path:location.pathname,lang:document.documentElement.lang||'ru',theme:document.documentElement.getAttribute('data-theme')||'dark'};
+    if(navigator.sendBeacon){
+      navigator.sendBeacon('/assets/api/visit.php',JSON.stringify(data));
+    }else{
+      var f=new XMLHttpRequest();f.open('POST','/assets/api/visit.php',true);f.setRequestHeader('Content-Type','application/json');f.send(JSON.stringify(data));
+    }
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
