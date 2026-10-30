@@ -90,7 +90,7 @@ docs/
 ### Formal Verification (SCC)
 
 The SCC Promela model (`scc_amagi_v3`) has been exhaustively model-checked with SPIN 6.5.2: **20 verification runs covering 15 unique claims — all verified** (safety, liveness and counterexample suites; state space 25,927,680 states; parameters W=24, M=2,000,000). The complete public dataset — models, logs, counterexample trails, checksums — is published and independently re-runnable:
-[SCC Verification Package v3.1](docs/amagi/verification/AMAGI_Supplementary_SCC_Verification_v3.1.zip) · [DOI 10.5281/zenodo.23809098](https://doi.org/10.5281/zenodo.23809098).
+[SCC Verification Package v3.1.1](docs/amagi/verification/AMAGI_Supplementary_SCC_Verification_v3.1.zip) · [DOI 10.5281/zenodo.23817489](https://doi.org/10.5281/zenodo.23817489).
 
 *Scope note: this is model-level (proof-of-logic) evidence; a board-level measurement campaign is designated Phase 2.*
 
@@ -136,21 +136,23 @@ The SCC Promela model (`scc_amagi_v3`) has been exhaustively model-checked with 
 | **Framework** | v2.0 | [10.5281/zenodo.20753400](https://doi.org/10.5281/zenodo.20753400) | `docs/amagi/specs/` |
 | **NIPU** (Processor) | v1.1 | [10.5281/zenodo.20753401](https://doi.org/10.5281/zenodo.20753401) | `docs/amagi/specs/` |
 | **MEM** (Memory) | v1.1 | [10.5281/zenodo.20753402](https://doi.org/10.5281/zenodo.20753402) | `docs/amagi/specs/` |
-| **Master Parameter Sheet** | **v2.1** | [10.5281/zenodo.23797802](https://doi.org/10.5281/zenodo.23797802) | `docs/amagi/specs/` |
-| **Master Glossary** (terminology canon) | v1.0 | [10.5281/zenodo.23797780](https://doi.org/10.5281/zenodo.23797780) | `docs/amagi/specs/` |
+| **Master Parameter Sheet** | **v2.1.1** | [10.5281/zenodo.23817440](https://doi.org/10.5281/zenodo.23817440) | `docs/amagi/specs/` |
+| **Master Glossary** (terminology canon) | v1.0.1 | [10.5281/zenodo.23817360](https://doi.org/10.5281/zenodo.23817360) | `docs/amagi/specs/` |
 | **Open Specification** | v1.1 | [10.5281/zenodo.20753403](https://doi.org/10.5281/zenodo.20753403) | `docs/amagi/specs/` |
-| **HARA** | **v1.1** | [10.5281/zenodo.23797808](https://doi.org/10.5281/zenodo.23797808) | `docs/amagi/safety-analysis/` |
-| **FMEDA** | **v1.1** | [10.5281/zenodo.23797807](https://doi.org/10.5281/zenodo.23797807) | `docs/amagi/safety-analysis/` |
-| **Traceability Matrix** | **v1.1** | [10.5281/zenodo.23797811](https://doi.org/10.5281/zenodo.23797811) | `docs/amagi/safety-analysis/` |
-| **SCC Verification Package** | v3.1 | [10.5281/zenodo.23809098](https://doi.org/10.5281/zenodo.23809098) | `docs/amagi/verification/` |
+| **HARA** | **v1.1.1** | [10.5281/zenodo.23817463](https://doi.org/10.5281/zenodo.23817463) | `docs/amagi/safety-analysis/` |
+| **FMEDA** | **v1.1.1** | [10.5281/zenodo.23817447](https://doi.org/10.5281/zenodo.23817447) | `docs/amagi/safety-analysis/` |
+| **Traceability Matrix** | **v1.1.1** | [10.5281/zenodo.23817470](https://doi.org/10.5281/zenodo.23817470) | `docs/amagi/safety-analysis/` |
+| **SCC Verification Package** | v3.1.1 | [10.5281/zenodo.23817489](https://doi.org/10.5281/zenodo.23817489) | `docs/amagi/verification/` |
 | **NIST AI RMF Profile** | v1.1 | [10.5281/zenodo.20753404](https://doi.org/10.5281/zenodo.20753404) | `docs/amagi/regulatory/` |
 | **S-APL License** | v2.0 | [10.5281/zenodo.20753406](https://doi.org/10.5281/zenodo.20753406) | `docs/amagi/governance/` |
 | **AGIAM Charter** | v1.2 | [10.5281/zenodo.20753872](https://doi.org/10.5281/zenodo.20753872) | `docs/amagi/governance/` |
-| **Master Version Control Document** | v1.1 | [10.5281/zenodo.23797812](https://doi.org/10.5281/zenodo.23797812) | `docs/amagi/governance/` |
+| **Master Version Control Document** | v1.1.1 | [10.5281/zenodo.23817478](https://doi.org/10.5281/zenodo.23817478) | `docs/amagi/governance/` |
 | **Architectural Class Definition** | v1.1 | [10.5281/zenodo.20145198](https://doi.org/10.5281/zenodo.20145198) | `docs/amagi/governance/` |
 | **Trade Secrets Notice** | v1.0 | [10.5281/zenodo.17886699](https://doi.org/10.5281/zenodo.17886699) | `docs/amagi/governance/` |
 
 *Superseded (kept in `docs/` for reference):* Master Parameter Sheet v2.0 — [10.5281/zenodo.20145212](https://doi.org/10.5281/zenodo.20145212); HARA v1.0 — [10.5281/zenodo.20753408](https://doi.org/10.5281/zenodo.20753408); FMEDA v1.0 — [10.5281/zenodo.20753410](https://doi.org/10.5281/zenodo.20753410); Traceability Matrix v1.0 — [10.5281/zenodo.20753412](https://doi.org/10.5281/zenodo.20753412).
+
+*October 31, 2026 metadata correction:* the `.1` releases (v2.1.1, v1.0.1, v1.1.1 ×4, v3.1.1) publish **byte-identical files** with corrected author metadata (canonical creator name form *Alexey Mikhailovich Burlai* across the corpus). The prior version DOIs (v2.1, v1.0, v1.1, v3.1) remain valid and resolve to their respective records; document contents and in-document version designations are unchanged.
 
 ### Althea Framework (Bioengineering)
 
