@@ -14,7 +14,8 @@ This repository hosts the complete **AMAGI & Althea Ecosystem** — a dual-archi
 **Author**: Alexey Mikhailovich Burlai
 **ORCID**: [0009-0001-4679-5967](https://orcid.org/0009-0001-4679-5967)
 **Contact**: lexintrud@gmail.com
-**Legal Entity**: AGIAM Technologies Ltd (UK) / LLC "Althea" (Russia)
+**Legal Entities**: LLC "Althea" (Russia) — active · AGIAM Technologies Ltd (UK) — in formation (inactive shell, not an active legal entity)
+**Corpus state of this README**: October 31, 2026
 
 ---
 
@@ -27,13 +28,21 @@ docs/
 │   │   ├── Amagi_Framework_v2.0_Specification.pdf
 │   │   ├── Amagi_NIPU_v1.1_Specification.pdf
 │   │   ├── Amagi_MEM_v1.1_Specification.pdf
-│   │   ├── Amagi_Master_Parameter_Sheet_v2.0.pdf
+│   │   ├── Amagi_Master_Parameter_Sheet_v2.1.pdf
+│   │   ├── Amagi_Master_Parameter_Sheet_v2.0.pdf   # superseded by v2.1 (kept for reference)
+│   │   ├── AMAGI_Master_Glossary_v1.0.pdf          # canonical terminology register
 │   │   └── Amagi_Open_Specification_v1.1.pdf
 │   │
 │   ├── safety-analysis/          # Functional Safety Artifacts
-│   │   ├── Amagi_HARA_v1.0.pdf
-│   │   ├── Amagi_FMEDA_v1.0.pdf
-│   │   └── Amagi_Traceability_Matrix_v1.0.pdf
+│   │   ├── Amagi_HARA_v1.1.pdf
+│   │   ├── Amagi_HARA_v1.0.pdf                     # superseded by v1.1 (kept for reference)
+│   │   ├── Amagi_FMEDA_v1.1.pdf
+│   │   ├── Amagi_FMEDA_v1.0.pdf                    # superseded by v1.1 (kept for reference)
+│   │   ├── Amagi_Traceability_Matrix_v1.1.pdf
+│   │   └── Amagi_Traceability_Matrix_v1.0.pdf      # superseded by v1.1 (kept for reference)
+│   │
+│   ├── verification/             # Formal verification artifacts (public, independently re-runnable)
+│   │   └── AMAGI_Supplementary_SCC_Verification_v3.1.zip
 │   │
 │   ├── regulatory/               # Compliance & Regulatory Mapping
 │   │   └── AMAGI_NIST_AI_RMF_Profile_v1.1.pdf
@@ -41,13 +50,15 @@ docs/
 │   └── governance/               # Legal, Licensing & Institutional
 │       ├── AGIAM_Charter_v1.2.pdf
 │       ├── Amagi-SAPL_v2.0.pdf
+│       ├── Amagi_Framework_Master_Version_Control_Document_v1.1.pdf
 │       ├── Amagi_Architectural_Class_Definition_v1.1.pdf
 │       └── Amagi_Framework_Trade_Secrets_Notice_v1.0.pdf
 │
 └── althea/
     ├── specs/                    # Bioengineering Specifications
     │   ├── Althea_v4.0_Official_Publication.pdf
-    │   └── Althea_AMAGI_Strategic_Partnership_Offer_v1.0.pdf
+    │   ├── Althea_AMAGI_Strategic_Partnership_Offer_v1.1.pdf
+    │   └── Althea_AMAGI_Strategic_Partnership_Offer_v1.0.pdf   # superseded by v1.1 (kept for reference)
     │
     └── clinical-protocols/       # Standardized Operating Procedures
         └── SOP_Althea_CRISPR-TTP_v2.0.pdf
@@ -62,11 +73,13 @@ docs/
 | # | Invariant | Description |
 |---|-----------|-------------|
 | INV-001 | **Single-Core Determinism** | No caches, no speculation, fixed-latency instruction stream |
-| INV-002 | **Hardware-Enforced TTP Triad** | CRTM response ≤ 15 µs, EGW gate-close ≤ 50 ns, cryptographic attestation |
+| INV-002 | **Hardware-Enforced Temporal Triad** | CRTM response ≤ 15 µs, EGW gate-close ≤ 50 ns, cryptographic attestation |
 | INV-003 | **Dual-Tier Trust Model** | Tier-1 (Safety Kernel) vs Tier-2 (Application Sandbox), one-way isolation |
 | INV-004 | **Memory Partitioning** | MAG (eFuse/OTP), SHMF (executable), Audit Log (append-only hash-chained) |
 | INV-005 | **Cryptographic Determinism** | ML-KEM-1024, ML-DSA-44, SLH-DSA-128f — post-quantum from first boot |
 | INV-006 | **Provable Shutdown** | Any invariant violation forces CRTM-safe state within one watchdog tick |
+
+> **Terminology (binding, AMAGI Master Glossary v1.0 §8.3, resolution D-09):** the triad *Trigger → Programmable Delay → Localized Activation* is canonically named the **Temporal Triad**. In the AMAGI corpus the acronym *TTP* denotes the Tautological Truth Predicate; in the Althea corpus it denotes Temporally Programmed Delivery. The two are distinct and are not conflated.
 
 ### Key Subsystems
 
@@ -74,12 +87,19 @@ docs/
 - **MEM** (Self-Protecting Memory) — three-tier memory hierarchy (MAG / SHMF / Audit Diode)
 - **MPS** (Master Parameter Sheet) — single source of truth for all quantitative parameters
 
+### Formal Verification (SCC)
+
+The SCC Promela model (`scc_amagi_v3`) has been exhaustively model-checked with SPIN 6.5.2: **20 verification runs covering 15 unique claims — all verified** (safety, liveness and counterexample suites; state space 25,927,680 states; parameters W=24, M=2,000,000). The complete public dataset — models, logs, counterexample trails, checksums — is published and independently re-runnable:
+[SCC Verification Package v3.1](docs/amagi/verification/AMAGI_Supplementary_SCC_Verification_v3.1.zip) · [DOI 10.5281/zenodo.23809098](https://doi.org/10.5281/zenodo.23809098).
+
+*Scope note: this is model-level (proof-of-logic) evidence; a board-level measurement campaign is designated Phase 2.*
+
 ### Regulatory Coverage
 
 | Standard | Scope |
 |----------|-------|
 | ISO/IEC 15408 (Common Criteria) | EAL4+ Protection Profile |
-| IEC 61508 | SIL2 functional safety |
+| IEC 61508 | SIL 2 @1oo1 / SIL 3 @1oo2 (capability; Phase 2 target 2027) |
 | ISO 26262 | ASIL D automotive safety |
 | EU AI Act Annex IV | High-risk AI system documentation |
 | NIST AI RMF (AI 100-1) | Target Profile |
@@ -102,7 +122,8 @@ docs/
 - **EMA**: ATMP classification determined (Feb 2026)
 - **FDA CBER**: INTERACT meeting confirmed (Feb 2026)
 - **Russian MoH**: Expert evaluation completed (Feb 2026)
-- **Peer-reviewed**: [Frontiers in Genetics, 2026](https://doi.org/10.3389/fgene.2026.1727708)
+- **Peer-reviewed**: [Frontiers in Genetics, 2026](https://doi.org/10.3389/fgene.2026.1727708) — article type: *Brief Research Report*; all efficacy figures are computational projections ("Projected Efficacy" / "in silico modeling predicts"); wet-lab validation is the explicit next step
+- *Regulatory status as reported in the Strategic Partnership Offer (February 2026), carried forward*
 
 ---
 
@@ -115,16 +136,21 @@ docs/
 | **Framework** | v2.0 | [10.5281/zenodo.20753400](https://doi.org/10.5281/zenodo.20753400) | `docs/amagi/specs/` |
 | **NIPU** (Processor) | v1.1 | [10.5281/zenodo.20753401](https://doi.org/10.5281/zenodo.20753401) | `docs/amagi/specs/` |
 | **MEM** (Memory) | v1.1 | [10.5281/zenodo.20753402](https://doi.org/10.5281/zenodo.20753402) | `docs/amagi/specs/` |
-| **Master Parameter Sheet** | v2.0 | [10.5281/zenodo.20145212](https://doi.org/10.5281/zenodo.20145212) | `docs/amagi/specs/` |
+| **Master Parameter Sheet** | **v2.1** | [10.5281/zenodo.23797802](https://doi.org/10.5281/zenodo.23797802) | `docs/amagi/specs/` |
+| **Master Glossary** (terminology canon) | v1.0 | [10.5281/zenodo.23797780](https://doi.org/10.5281/zenodo.23797780) | `docs/amagi/specs/` |
 | **Open Specification** | v1.1 | [10.5281/zenodo.20753403](https://doi.org/10.5281/zenodo.20753403) | `docs/amagi/specs/` |
-| **HARA** | v1.0 | [10.5281/zenodo.20753408](https://doi.org/10.5281/zenodo.20753408) | `docs/amagi/safety-analysis/` |
-| **FMEDA** | v1.0 | [10.5281/zenodo.20753410](https://doi.org/10.5281/zenodo.20753410) | `docs/amagi/safety-analysis/` |
-| **Traceability Matrix** | v1.0 | [10.5281/zenodo.20753412](https://doi.org/10.5281/zenodo.20753412) | `docs/amagi/safety-analysis/` |
+| **HARA** | **v1.1** | [10.5281/zenodo.23797808](https://doi.org/10.5281/zenodo.23797808) | `docs/amagi/safety-analysis/` |
+| **FMEDA** | **v1.1** | [10.5281/zenodo.23797807](https://doi.org/10.5281/zenodo.23797807) | `docs/amagi/safety-analysis/` |
+| **Traceability Matrix** | **v1.1** | [10.5281/zenodo.23797811](https://doi.org/10.5281/zenodo.23797811) | `docs/amagi/safety-analysis/` |
+| **SCC Verification Package** | v3.1 | [10.5281/zenodo.23809098](https://doi.org/10.5281/zenodo.23809098) | `docs/amagi/verification/` |
 | **NIST AI RMF Profile** | v1.1 | [10.5281/zenodo.20753404](https://doi.org/10.5281/zenodo.20753404) | `docs/amagi/regulatory/` |
 | **S-APL License** | v2.0 | [10.5281/zenodo.20753406](https://doi.org/10.5281/zenodo.20753406) | `docs/amagi/governance/` |
 | **AGIAM Charter** | v1.2 | [10.5281/zenodo.20753872](https://doi.org/10.5281/zenodo.20753872) | `docs/amagi/governance/` |
+| **Master Version Control Document** | v1.1 | [10.5281/zenodo.23797812](https://doi.org/10.5281/zenodo.23797812) | `docs/amagi/governance/` |
 | **Architectural Class Definition** | v1.1 | [10.5281/zenodo.20145198](https://doi.org/10.5281/zenodo.20145198) | `docs/amagi/governance/` |
 | **Trade Secrets Notice** | v1.0 | [10.5281/zenodo.17886699](https://doi.org/10.5281/zenodo.17886699) | `docs/amagi/governance/` |
+
+*Superseded (kept in `docs/` for reference):* Master Parameter Sheet v2.0 — [10.5281/zenodo.20145212](https://doi.org/10.5281/zenodo.20145212); HARA v1.0 — [10.5281/zenodo.20753408](https://doi.org/10.5281/zenodo.20753408); FMEDA v1.0 — [10.5281/zenodo.20753410](https://doi.org/10.5281/zenodo.20753410); Traceability Matrix v1.0 — [10.5281/zenodo.20753412](https://doi.org/10.5281/zenodo.20753412).
 
 ### Althea Framework (Bioengineering)
 
@@ -133,9 +159,11 @@ docs/
 | **Official Publication** | v4.0 | [10.3389/fgene.2026.1727708](https://doi.org/10.3389/fgene.2026.1727708) | `docs/althea/specs/` |
 | **Genomic Innovation Spec** | v4.0 | [10.5281/zenodo.17780623](https://doi.org/10.5281/zenodo.17780623) | Zenodo |
 | **Clinical Protocol (SOP)** | v2.0 | [10.5281/zenodo.17676423](https://doi.org/10.5281/zenodo.17676423) | `docs/althea/clinical-protocols/` |
-| **Strategic Partnership** | v1.0 | [10.5281/zenodo.18718186](https://doi.org/10.5281/zenodo.18718186) | `docs/althea/specs/` |
+| **Strategic Partnership Offer** | **v1.1** | [10.5281/zenodo.23816599](https://doi.org/10.5281/zenodo.23816599) | `docs/althea/specs/` |
 | **TTP Architecture** | v3.0 | [10.5281/zenodo.17237907](https://doi.org/10.5281/zenodo.17237907) | Zenodo |
 | **CRISPR Autovaccination** | v3.0 | [10.5281/zenodo.17246573](https://doi.org/10.5281/zenodo.17246573) | Zenodo |
+
+*Superseded (kept in `docs/` for reference):* Strategic Partnership Offer v1.0 — [10.5281/zenodo.18718186](https://doi.org/10.5281/zenodo.18718186).
 
 ---
 
@@ -172,7 +200,7 @@ We invite collaboration with:
 
 **Next Steps**:
 
-1. Review the [Strategic Partnership Offer](docs/althea/specs/Althea_AMAGI_Strategic_Partnership_Offer_v1.0.pdf).
+1. Review the [Strategic Partnership Offer v1.1](docs/althea/specs/Althea_AMAGI_Strategic_Partnership_Offer_v1.1.pdf) (concrete asks A1–A6, evidence classes, risk register).
 2. Contact us at `lexintrud@gmail.com`.
 3. Execute NDA and S-APL License (for commercial projects).
 
